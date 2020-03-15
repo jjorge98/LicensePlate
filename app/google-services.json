@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "534996254128",
+    "firebase_url": "https://licenseplate-c5c3b.firebaseio.com",
+    "project_id": "licenseplate-c5c3b",
+    "storage_bucket": "licenseplate-c5c3b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:534996254128:android:feeafeb18bb7aafd71ea75",
+        "android_client_info": {
+          "package_name": "br.com.licenseplate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "534996254128-de8278ij287otlpqbqknkpj1dc8m70ho.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjDCEA2C-yo-WnTsczSK90p9cvB5NjekQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "534996254128-de8278ij287otlpqbqknkpj1dc8m70ho.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
