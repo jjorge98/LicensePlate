@@ -16,12 +16,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun request(){
-        val operation = Intent(this, requestLicenseMain::class.java)
+        val operation = Intent(this, requestLicense::class.java)
         startActivity(operation)
     }
 
     private fun login(){
-        val operation = Intent(this, loginStamperMain::class.java)
+        val operation = Intent(this, loginStamper::class.java)
         startActivity(operation)
     }
 }

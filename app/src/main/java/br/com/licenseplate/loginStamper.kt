@@ -8,7 +8,7 @@ import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login_stamper.*
 
 class loginStamper : AppCompatActivity() {
-    val mAuth : FirebaseAuth = FirebaseAuth.getInstance()
+    private val auth : FirebaseAuth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +29,7 @@ class loginStamper : AppCompatActivity() {
             Toast.makeText(this, "Senha obrigatória!", Toast.LENGTH_LONG).show()
             return
         } else{
-            val operation = mAuth.signInWithEmailAndPassword(email, password)
+            val operation = auth.signInWithEmailAndPassword(email, password)
 
             operation.addOnCompleteListener{task ->
                 if(task.isSuccessful){
