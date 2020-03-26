@@ -18,7 +18,7 @@ class UserRegister : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         //Habilita o botão de retornar a tela anterior
-        this.supportActionBar?.setDisplayShowHomeEnabled(true)
+        this.supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         //Habilita o menu que está em res->menu
         menuInflater.inflate(R.menu.menu_stamper, menu)

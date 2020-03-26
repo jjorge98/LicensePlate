@@ -28,7 +28,7 @@ class loginStamper : AppCompatActivity() {
         } else if (password.isEmpty()){
             Toast.makeText(this, "Senha obrigatória!", Toast.LENGTH_LONG).show()
             return
-        } else{
+        } else {
             val operation = auth.signInWithEmailAndPassword(email, password)
 
             operation.addOnCompleteListener{task ->

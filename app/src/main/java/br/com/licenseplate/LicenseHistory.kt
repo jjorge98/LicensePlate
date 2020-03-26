@@ -19,7 +19,7 @@ class LicenseHistory : AppCompatActivity() {
     //Cria menu
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         //Mostra botão voltar a tela anterior
-        this.supportActionBar?.setDisplayShowHomeEnabled(true)
+        this.supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         //Insere o menu que está no res->menu
         menuInflater.inflate(R.menu.menu_stamper, menu)
@@ -28,7 +28,7 @@ class LicenseHistory : AppCompatActivity() {
 
     //Função que finaliza a atividade quando volta a tela anterior
     override fun onSupportNavigateUp(): Boolean {
-        this.finish()
+        finish()
 
         return true
     }

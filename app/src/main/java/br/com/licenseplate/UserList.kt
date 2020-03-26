@@ -18,7 +18,7 @@ class UserList : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         //Habilita botão retorno a atividade anterior
-        this.supportActionBar?.setDisplayShowHomeEnabled(true)
+        this.supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         //Insere o menu que está em res->menu
         menuInflater.inflate(R.menu.menu_stamper, menu)
