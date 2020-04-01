@@ -6,4 +6,44 @@
     android:layout_height="match_parent"
     tools:context=".requestLicense">
 
+    <EditText
+        android:id="@+id/autorizationNumberReqLicense"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:background="@drawable/inputs"
+        android:ems="10"
+        android:hint="AUTORIZAÇÃO"
+        android:inputType="number"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/buttonReqLicense"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/helpTextReqLicense" />
+
+    <TextView
+        android:id="@+id/helpTextReqLicense"
+        android:layout_width="371dp"
+        android:layout_height="67dp"
+        android:background="@drawable/botoes"
+        android:text="Insira o número da autorização que foi recebido no Detran"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/autorizationNumberReqLicense"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonReqLicense"
+        android:layout_width="147dp"
+        android:layout_height="51dp"
+        android:background="@drawable/botoes"
+        android:text="Próxima etapa"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/autorizationNumberReqLicense" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
