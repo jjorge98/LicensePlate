@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity() {
 
         requestLicenseMain.setOnClickListener{request()}
         loginStamperMain.setOnClickListener{login()}
+        helpMain.setOnClickListener{help()}
     }
 
     private fun request(){
@@ -22,6 +23,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun login(){
         val operation = Intent(this, loginStamper::class.java)
+        startActivity(operation)
+    }
+
+    private fun help(){
+        val operation = Intent(this, HelpLicenseRequest::class.java)
         startActivity(operation)
     }
 }
