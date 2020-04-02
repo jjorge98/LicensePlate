@@ -15,7 +15,7 @@
         android:hint="AUTORIZAÇÃO"
         android:inputType="number"
         android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/buttonReqLicense"
+        app:layout_constraintBottom_toTopOf="@+id/buttonLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/helpTextReqLicense" />
@@ -35,7 +35,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/buttonReqLicense"
+        android:id="@+id/buttonLogin"
         android:layout_width="147dp"
         android:layout_height="51dp"
         android:background="@drawable/botoes"
