@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimary">#EDB50C</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="colorazulescuro">#122253</color>
     <color name="colorpessego">#edb15b</color>
+    <color name="coloramareloq">#d8aa54</color>
     <color name="colormarrom">#8a4234</color>
     <color name="colorvermelho">#850f0d</color>
     <color name="colorbarro">#764a23</color>
-    <color name="coloramareloq">#d8aa54</color>
     <color name="colorverdeescuro">#2c4944</color>
     <color name="colormostarda">#b38728</color>
     <color name="colorareia">#8f6f48</color>

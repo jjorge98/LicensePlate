@@ -14,6 +14,7 @@ class UserRegister : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_register)
+        setSupportActionBar(findViewById(R.id.action_bar))
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

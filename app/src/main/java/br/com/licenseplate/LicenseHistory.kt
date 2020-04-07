@@ -14,6 +14,7 @@ class LicenseHistory : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_license_history)
+        setSupportActionBar(findViewById(R.id.action_bar))
     }
 
     //Cria menu
