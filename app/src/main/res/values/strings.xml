@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">LicensePlate</string>
+    <string name="requestLicense">Insira o número da autorização que foi recebido no Detran</string>
+    <string name="requestLicenseEstado">Informe seu estado</string>
+    <string-array name="Estados">
+        <item>AL</item>
+        <item>BA</item>
+        <item>DF</item>
+        <item>GO</item>
+        <item>PA</item>
+        <item>RO</item>
+        <item>SP</item>
+    </string-array>
 </resources>

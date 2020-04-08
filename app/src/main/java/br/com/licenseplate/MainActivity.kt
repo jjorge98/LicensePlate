@@ -3,12 +3,9 @@ package br.com.licenseplate
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.appcompat.app.ActionBar
-import androidx.appcompat.widget.Toolbar
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -21,12 +18,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun request(){
-        val operation = Intent(this, requestLicense::class.java)
+        val operation = Intent(this, RequestLicense::class.java)
         startActivity(operation)
     }
 
     private fun login(){
-        val operation = Intent(this, loginStamper::class.java)
+        val operation = Intent(this, LoginStamper::class.java)
         startActivity(operation)
     }
 

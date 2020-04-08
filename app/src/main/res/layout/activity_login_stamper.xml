@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background"
     android:id="@+id/loginTeste"
-    tools:context=".loginStamper">
+    tools:context=".LoginStamper">
 
     <ImageView
         android:id="@+id/logoLogin"
@@ -43,14 +43,14 @@
         android:hint="SENHA"
         android:inputType="textPassword"
         android:paddingLeft="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonLogin"
+        app:layout_constraintBottom_toTopOf="@+id/buttonReqLicense"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailLogin" />
 
     <Button
-        android:id="@+id/buttonLogin"
+        android:id="@+id/buttonReqLicense"
         android:layout_width="147dp"
         android:layout_height="51dp"
         android:background="@drawable/botoes"
@@ -74,6 +74,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonReqLicense" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 
 class LicenseHistory : AppCompatActivity() {
@@ -45,7 +44,7 @@ class LicenseHistory : AppCompatActivity() {
             startActivity(intent)
             return true
         } else if(item?.itemId == R.id.licenseRequest){
-            val intent = Intent(this, requestListStamper::class.java)
+            val intent = Intent(this, RequestListStamper::class.java)
             startActivity(intent)
             return true
         }

@@ -7,14 +7,14 @@ import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login_stamper.*
 
-class loginStamper : AppCompatActivity() {
+class LoginStamper : AppCompatActivity() {
     private val auth : FirebaseAuth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_stamper)
 
-        buttonLogin.setOnClickListener{login()}
+        buttonReqLicense.setOnClickListener{login()}
         forgotPasswordLogin.setOnClickListener{forgotPassword()}
     }
 
@@ -34,7 +34,7 @@ class loginStamper : AppCompatActivity() {
             operation.addOnCompleteListener{task ->
                 if(task.isSuccessful){
                     Toast.makeText(this, "Login efetuado com sucesso!", Toast.LENGTH_LONG).show()
-                    val intentLogin = Intent(this, requestListStamper::class.java)
+                    val intentLogin = Intent(this, RequestListStamper::class.java)
                     startActivity(intentLogin)
                 } else{
                     val error = task.exception?.localizedMessage
@@ -46,7 +46,7 @@ class loginStamper : AppCompatActivity() {
     }
 
     private fun forgotPassword(){
-        val intentForgotPassword = Intent(this, forgotPassword::class.java)
+        val intentForgotPassword = Intent(this, ForgotPassword::class.java)
         startActivity(intentForgotPassword)
     }
 }

@@ -7,7 +7,7 @@ import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_forgot_password.*
 
-class forgotPassword : AppCompatActivity() {
+class ForgotPassword : AppCompatActivity() {
     private val auth : FirebaseAuth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {

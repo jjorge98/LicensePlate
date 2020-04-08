@@ -8,7 +8,7 @@ import android.widget.ArrayAdapter
 import android.widget.ListView
 import com.google.firebase.auth.FirebaseAuth
 
-class requestListStamper : AppCompatActivity() {
+class RequestListStamper : AppCompatActivity() {
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
 

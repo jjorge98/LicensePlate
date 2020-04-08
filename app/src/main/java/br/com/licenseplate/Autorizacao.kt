@@ -1,10 +1,7 @@
 package br.com.licenseplate
 
-class Autorizacao(numAutorizacao: String, placa: String){
-    val autorizacao : String = numAutorizacao
-    val placa : String = placa
-
+data class Autorizacao(val numAutorizacao: String, val placa: String) {
     override fun toString(): String {
-        return "Autorização: $autorizacao. Placa: $placa"
+        return "Autorização: $numAutorizacao. Placa: $placa"
     }
 }
