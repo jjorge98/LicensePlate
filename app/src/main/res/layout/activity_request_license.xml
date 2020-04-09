@@ -7,15 +7,19 @@
     android:background="@drawable/background"
     tools:context=".RequestLicense">
 
-    <ImageView
-        android:id="@+id/logoReqLicense"
-        android:layout_width="295dp"
-        android:layout_height="207dp"
-        app:layout_constraintBottom_toTopOf="@+id/helpEstadoReqLicense"
+    <TextView
+        android:id="@+id/helpTextReqLicense"
+        android:layout_width="371dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/botoes"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/inputReqLicense"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerEstados" />
 
     <TextView
         android:id="@+id/helpEstadoReqLicense"
@@ -32,47 +36,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logoReqLicense" />
 
-    <Spinner
-        android:id="@+id/spinnerEstados"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/inputs"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/helpTextReqLicense"
+    <ImageView
+        android:id="@+id/logoReqLicense"
+        android:layout_width="295dp"
+        android:layout_height="207dp"
+        app:layout_constraintBottom_toTopOf="@+id/helpEstadoReqLicense"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/helpEstadoReqLicense" />
-
-    <TextView
-        android:id="@+id/helpTextReqLicense"
-        android:layout_width="371dp"
-        android:layout_height="67dp"
-        android:background="@drawable/botoes"
-        android:text="@string/requestLicense"
-        android:textAlignment="center"
-        android:textColor="#000"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/autNumberReqLicense"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerEstados" />
-
-    <EditText
-        android:id="@+id/autNumberReqLicense"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
-        android:background="@drawable/inputs"
-        android:ems="10"
-        android:hint="AUTORIZAÇÃO"
-        android:inputType="number"
-        android:textAlignment="center"
-        android:textColor="#000"
-        app:layout_constraintBottom_toTopOf="@+id/buttonReqLicense"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/helpTextReqLicense" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
 
     <Button
         android:id="@+id/buttonReqLicense"
@@ -84,6 +56,47 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/autNumberReqLicense" />
+        app:layout_constraintTop_toBottomOf="@+id/input2ReqLicense" />
+
+    <Spinner
+        android:id="@+id/spinnerEstados"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/inputs"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/helpTextReqLicense"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/helpEstadoReqLicense" />
+
+    <EditText
+        android:id="@+id/inputReqLicense"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:background="@drawable/inputs"
+        android:ems="10"
+        android:inputType="number"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/input2ReqLicense"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/helpTextReqLicense" />
+
+    <EditText
+        android:id="@+id/input2ReqLicense"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:background="@drawable/inputs"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/buttonReqLicense"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputReqLicense" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

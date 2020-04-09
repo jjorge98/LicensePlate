@@ -1,7 +1,36 @@
 <resources>
-    <string name="app_name">LicensePlate</string>
-    <string name="requestLicense">Insira o número da autorização que foi recebido no Detran</string>
-    <string name="requestLicenseEstado">Informe seu estado</string>
+    <string name="app_name">
+        LicensePlate
+    </string>
+
+    <string name="textAutorization">
+        Insira o número da autorização que foi recebido no Detran
+    </string>
+
+    <string name="textLicense">
+        Digite a placa do seu veículo
+    </string>
+
+    <string name="textAutorizationChassi">
+        Insira o número da autorização que foi recebido no Detran e o chassi do seu veículo
+    </string>
+
+    <string name="requestLicenseEstado">
+        Informe seu estado
+    </string>
+
+    <string name="autorization">
+        Autorização
+    </string>
+
+    <string name="license">
+        Placa
+    </string>
+
+    <string name="chassi">
+        Chassi
+    </string>
+
     <string-array name="Estados">
         <item>AL</item>
         <item>BA</item>
