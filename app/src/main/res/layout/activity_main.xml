@@ -7,11 +7,6 @@
     android:background="@drawable/background"
     tools:context=".MainActivity">
 
-    <include
-        android:id="@+id/action_bar"
-        layout="@layout/action_bar">
-    </include>
-
     <Button
         android:id="@+id/loginStamperMain"
         android:layout_width="189dp"

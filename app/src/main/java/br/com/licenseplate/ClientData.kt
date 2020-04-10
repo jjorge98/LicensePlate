@@ -1,5 +1,6 @@
 package br.com.licenseplate
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -24,5 +25,6 @@ class ClientData : AppCompatActivity() {
             Toast.makeText(this, "Por favor, preencha todos os campos!", Toast.LENGTH_LONG).show()
             return
         }
+
     }
 }

@@ -1,5 +1,6 @@
 package br.com.licenseplate
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -56,8 +57,8 @@ class RequestLicense : AppCompatActivity() {
                     inputReqLicense.hint = resources.getString(R.string.license)
                     input2ReqLicense.visibility = View.GONE
                 } else {
-                    helpTextReqLicense.text = resources.getString(R.string.textAutorizationChassi)
-                    inputReqLicense.hint = resources.getString(R.string.autorization)
+                    helpTextReqLicense.text = resources.getString(R.string.textAuthorizationChassi)
+                    inputReqLicense.hint = resources.getString(R.string.authorization)
                     input2ReqLicense.hint = resources.getString(R.string.chassi)
                     input2ReqLicense.visibility = View.VISIBLE
                 }
@@ -68,6 +69,8 @@ class RequestLicense : AppCompatActivity() {
     }
 
     private fun next() {
+        val intent = Intent(this, ClientData::class.java)
+
         if (estado == "BA") {
             val placa = inputReqLicense.text.toString()
 
@@ -82,20 +85,12 @@ class RequestLicense : AppCompatActivity() {
                 ).show()
             } else {
                 //Enviar pra próxima activity ou api
+                //verificar se já existe autorizacao ou placa no banco
+                intent.putExtra("placa", placa)
             }
         } else {
             val autorizacao = inputReqLicense.text.toString()
             val chassi = input2ReqLicense.text.toString().toUpperCase()
-
-            //Ver se tem como simplificar esse if
-            if ('I' in chassi || 'O' in chassi || 'Q' in chassi) {
-                Toast.makeText(
-                    this,
-                    "Chassi não obedece as normas técnicas da ABNT. Por favor, verifique o chassi e tente novamente",
-                    Toast.LENGTH_LONG
-                ).show()
-                return
-            }
 
             if (autorizacao.isEmpty() || chassi.isEmpty()) {
                 Toast.makeText(this, "Por favor, preencha todos os campos!", Toast.LENGTH_LONG)
@@ -109,8 +104,21 @@ class RequestLicense : AppCompatActivity() {
                 ).show()
                 return
             } else {
+                //Ver se tem como simplificar esse if
+                if ('I' in chassi || 'O' in chassi || 'Q' in chassi) {
+                    Toast.makeText(
+                        this,
+                        "Chassi não obedece as normas técnicas da ABNT. Por favor, verifique o chassi e tente novamente",
+                        Toast.LENGTH_LONG
+                    ).show()
+                    return
+                }
                 //Enviar pra próxima activity ou api
+                //verificar se já existe autorizacao ou placa no banco
+                intent.putExtra("autorizacao", autorizacao)
+                intent.putExtra("chassi", chassi)
             }
         }
+        startActivity(intent)
     }
 }

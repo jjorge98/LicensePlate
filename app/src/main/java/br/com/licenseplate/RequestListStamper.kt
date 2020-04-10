@@ -16,6 +16,13 @@ class RequestListStamper : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_request_list_stamper)
 
+        //setActionBar(findViewById(R.id.action_bar))
+        setSupportActionBar(findViewById(R.id.action_bar))
+
+        authorizationList()
+    }
+
+    private fun authorizationList(){
         val listView = findViewById<ListView>(R.id.listViewLicenses)
         val autorizacao = arrayOf(
             Autorizacao("202000052598847", "PBK4H24"),
@@ -24,8 +31,6 @@ class RequestListStamper : AppCompatActivity() {
         val adapter =
             ArrayAdapter<Autorizacao>(this, android.R.layout.simple_list_item_1, autorizacao)
         listView.adapter = adapter
-        //setActionBar(findViewById(R.id.action_bar))
-        setSupportActionBar(findViewById(R.id.action_bar))
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

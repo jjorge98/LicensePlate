@@ -7,6 +7,11 @@
     android:background="@drawable/background"
     tools:context=".UserList">
 
+    <include
+        android:id="@+id/action_bar"
+        layout="@layout/action_bar">
+    </include>
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"

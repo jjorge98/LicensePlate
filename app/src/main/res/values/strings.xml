@@ -11,7 +11,7 @@
         Digite a placa do seu veículo
     </string>
 
-    <string name="textAutorizationChassi">
+    <string name="textAuthorizationChassi">
         Insira o número da autorização que foi recebido no Detran e o chassi do seu veículo
     </string>
 
@@ -19,7 +19,7 @@
         Informe seu estado
     </string>
 
-    <string name="autorization">
+    <string name="authorization">
         Autorização
     </string>
 

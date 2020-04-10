@@ -7,27 +7,23 @@
     android:background="@drawable/background"
     tools:context=".RequestListStamper">
 
+    <include
+        android:id="@+id/action_bar"
+        layout="@layout/action_bar"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        app:layout_constraintBottom_toTopOf="@+id/listViewLicenses"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></include>
+
     <ListView
         android:id="@+id/listViewLicenses"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Lista de pedidos"
-        android:textAlignment="center"
-        android:textSize="45dp"
-        app:layout_constraintBottom_toTopOf="@+id/listViewLicenses"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/action_bar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
