@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".ClientData">
+    tools:context=".views.ClientData">
 
     <ImageView
         android:id="@+id/imageView3"
@@ -20,7 +20,7 @@
 
     <EditText
         android:id="@+id/nameClientData"
-        android:layout_width="wrap_content"
+        android:layout_width="320dp"
         android:layout_height="40dp"
         android:background="@drawable/inputs"
         android:ems="10"
@@ -35,7 +35,7 @@
 
     <EditText
         android:id="@+id/cpfClientData"
-        android:layout_width="wrap_content"
+        android:layout_width="320dp"
         android:layout_height="40dp"
         android:background="@drawable/inputs"
         android:ems="10"
@@ -50,7 +50,7 @@
 
     <EditText
         android:id="@+id/celClientData"
-        android:layout_width="wrap_content"
+        android:layout_width="320dp"
         android:layout_height="40dp"
         android:background="@drawable/inputs"
         android:ems="10"

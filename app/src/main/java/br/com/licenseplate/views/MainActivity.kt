@@ -1,8 +1,9 @@
-package br.com.licenseplate
+package br.com.licenseplate.views
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import br.com.licenseplate.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -18,7 +19,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun request(){
-        val operation = Intent(this, RequestLicense::class.java)
+        val operation = Intent(this, ClientData::class.java)
         startActivity(operation)
     }
 

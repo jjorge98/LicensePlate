@@ -1,20 +1,22 @@
-package br.com.licenseplate
+package br.com.licenseplate.views
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import br.com.licenseplate.R
+import android.content.Intent
 import android.view.*
 import android.widget.ArrayAdapter
 import android.widget.ListView
+import br.com.licenseplate.dataClass.Authorization
 import com.google.firebase.auth.FirebaseAuth
 
-class RequestListStamper : AppCompatActivity() {
-    private val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
+class AuthorizationList : AppCompatActivity() {
+    private val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_request_list_stamper)
+        setContentView(R.layout.activity_authorization_list)
 
         //setActionBar(findViewById(R.id.action_bar))
         setSupportActionBar(findViewById(R.id.action_bar))
@@ -25,11 +27,21 @@ class RequestListStamper : AppCompatActivity() {
     private fun authorizationList(){
         val listView = findViewById<ListView>(R.id.listViewLicenses)
         val autorizacao = arrayOf(
-            Autorizacao("202000052598847", "PBK4H24"),
-            Autorizacao("202000052598848", "PBR4H24")
+            Authorization(
+                "202000052598847",
+                "PBK4H24",
+                "04/10/2020",
+                arrayOf("Traseira")
+            ),
+            Authorization(
+                "202000052598848",
+                "PBR4H24",
+                "04/10/2020",
+                arrayOf("Traseira", "Dianteira")
+            )
         )
         val adapter =
-            ArrayAdapter<Autorizacao>(this, android.R.layout.simple_list_item_1, autorizacao)
+            ArrayAdapter<Authorization>(this, android.R.layout.simple_list_item_1, autorizacao)
         listView.adapter = adapter
     }
 

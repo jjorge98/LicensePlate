@@ -1,10 +1,11 @@
-package br.com.licenseplate
+package br.com.licenseplate.views
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import br.com.licenseplate.R
 import com.google.firebase.auth.FirebaseAuth
 
 class UserRegister : AppCompatActivity() {
@@ -38,7 +39,7 @@ class UserRegister : AppCompatActivity() {
             startActivity(intent)
             return true
         } else if(item.itemId == R.id.licenseRequest){
-            val intent = Intent(this, RequestListStamper::class.java)
+            val intent = Intent(this, AuthorizationList::class.java)
             startActivity(intent)
             return true
         } else if(item.itemId == R.id.userList){

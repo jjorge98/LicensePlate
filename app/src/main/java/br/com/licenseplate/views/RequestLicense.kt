@@ -1,4 +1,4 @@
-package br.com.licenseplate
+package br.com.licenseplate.views
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +8,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
+import br.com.licenseplate.R
 import kotlinx.android.synthetic.main.activity_request_license.*
 
 class RequestLicense : AppCompatActivity() {
@@ -17,6 +18,12 @@ class RequestLicense : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_request_license)
 
+        spinnerFill()
+
+        buttonReqLicense.setOnClickListener { next() }
+    }
+
+    private fun spinnerFill(){
         //Acha o spinner pelo id
         val spinner: Spinner = findViewById(R.id.spinnerEstados)
 
@@ -64,12 +71,10 @@ class RequestLicense : AppCompatActivity() {
                 }
             }
         }
-
-        buttonReqLicense.setOnClickListener { next() }
     }
 
     private fun next() {
-        val intent = Intent(this, ClientData::class.java)
+        val intent = Intent(this, StoreList::class.java)
 
         if (estado == "BA") {
             val placa = inputReqLicense.text.toString()

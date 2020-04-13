@@ -1,11 +1,11 @@
-package br.com.licenseplate
+package br.com.licenseplate.views
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import br.com.licenseplate.R
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_login_stamper.*
 
 class LoginStamper : AppCompatActivity() {
@@ -35,7 +35,7 @@ class LoginStamper : AppCompatActivity() {
             operation.addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     Toast.makeText(this, "Login efetuado com sucesso!", Toast.LENGTH_LONG).show()
-                    val intentLogin = Intent(this, RequestListStamper::class.java)
+                    val intentLogin = Intent(this, AuthorizationList::class.java)
                     startActivity(intentLogin)
                 } else {
                     val error = task.exception?.localizedMessage

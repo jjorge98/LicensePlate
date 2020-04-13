@@ -1,9 +1,8 @@
-package br.com.licenseplate
+package br.com.licenseplate.views
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
+import br.com.licenseplate.R
 
 class HelpLicenseRequest : AppCompatActivity() {
 

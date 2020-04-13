@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="br.com.licenseplate" >
+    package="br.com.licenseplate">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -13,18 +13,19 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
-        <activity android:name=".ClientData" >
-        </activity>
-        <activity android:name=".HelpLicenseRequest" />
-        <activity android:name=".LicenseHistory" />
-        <activity android:name=".UserList" />
-        <activity android:name=".UserRegister" />
-        <activity android:name=".ForgotPassword" />
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".views.StoreList"></activity>
+        <activity android:name=".views.AuthorizationList" />
+        <activity android:name=".views.ClientData" />
+        <activity android:name=".views.HelpLicenseRequest" />
+        <activity android:name=".views.LicenseHistory" />
+        <activity android:name=".views.UserList" />
+        <activity android:name=".views.UserRegister" />
+        <activity android:name=".views.ForgotPassword" />
         <activity android:name=".RequestListStamper" />
-        <activity android:name=".RequestLicense" />
-        <activity android:name=".LoginStamper" />
-        <activity android:name=".MainActivity" >
+        <activity android:name=".views.RequestLicense" />
+        <activity android:name=".views.LoginStamper" />
+        <activity android:name=".views.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

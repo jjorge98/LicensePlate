@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background"
     android:id="@+id/loginTeste"
-    tools:context=".LoginStamper">
+    tools:context=".views.LoginStamper">
 
     <ImageView
         android:id="@+id/logoLogin"
