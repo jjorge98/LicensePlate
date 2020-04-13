@@ -17,19 +17,17 @@ class ClientInteractor(private val context: Context) {
 
         if(cpf.length != 11){
             callback("CPF")
-        }
-
-        try{
-            val cpf = cpf.toLong()
-        }catch (e: Exception){
-            callback("CPF")
-        }
-
-        if (client.nome.isEmpty() || client.cpf.isEmpty() || client.cel.isEmpty()) {
+        } else if (client.nome.isEmpty() || client.cpf.isEmpty() || client.cel.isEmpty()) {
             callback("VAZIO")
         } else {
-            repository.save(client, id)
-            callback(null)
+            try{
+                val cpf = cpf.toLong()
+
+                repository.save(client, id)
+                callback(null)
+            }catch (e: Exception){
+                callback("CPF")
+            }
         }
     }
 }
