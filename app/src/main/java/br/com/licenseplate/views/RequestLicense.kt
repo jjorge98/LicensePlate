@@ -23,7 +23,7 @@ class RequestLicense : AppCompatActivity() {
         buttonReqLicense.setOnClickListener { next() }
     }
 
-    private fun spinnerFill(){
+    private fun spinnerFill() {
         //Acha o spinner pelo id
         val spinner: Spinner = findViewById(R.id.spinnerEstados)
 
@@ -108,16 +108,14 @@ class RequestLicense : AppCompatActivity() {
                     Toast.LENGTH_LONG
                 ).show()
                 return
+            } else if ('I' in chassi || 'O' in chassi || 'Q' in chassi || chassi[9] == 'U') {
+                Toast.makeText(
+                    this,
+                    "Chassi não obedece as normas técnicas da ABNT. Por favor, verifique o chassi e tente novamente",
+                    Toast.LENGTH_LONG
+                ).show()
+                return
             } else {
-                //Ver se tem como simplificar esse if
-                if ('I' in chassi || 'O' in chassi || 'Q' in chassi) {
-                    Toast.makeText(
-                        this,
-                        "Chassi não obedece as normas técnicas da ABNT. Por favor, verifique o chassi e tente novamente",
-                        Toast.LENGTH_LONG
-                    ).show()
-                    return
-                }
                 //Enviar pra próxima activity ou api
                 //verificar se já existe autorizacao ou placa no banco
                 intent.putExtra("autorizacao", autorizacao)
