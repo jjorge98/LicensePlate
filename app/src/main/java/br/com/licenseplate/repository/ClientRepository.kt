@@ -1,17 +1,18 @@
 package br.com.licenseplate.repository
 
 import android.content.Context
+import android.util.Log
 import br.com.licenseplate.dataClass.Client
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
-class ClientRepository(context: Context) {
+class ClientRepository(private val context: Context) {
     private val database = FirebaseDatabase.getInstance()
 
-    fun verifyID(callback: (result: Int) -> Unit) {
-        val teste = database.getReference("cliente/id")
+    fun verifyID(root: String, callback: (result: Int) -> Unit) {
+        val teste = database.getReference("$root/id")
 
         teste.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
@@ -29,11 +30,12 @@ class ClientRepository(context: Context) {
         })
     }
 
-    fun save(client: Client, id: Int) {
-        val clientNo = database.getReference("cliente/$id")
-        val teste = database.getReference("cliente/id")
+    fun save(root: String, data: Any, id: Int) {
+        val clientNo = database.getReference("$root/$id")
+        val teste = database.getReference("$root/id")
 
+        Log.w("TSTE", "$data")
+        clientNo.setValue(data)
         teste.setValue(id)
-        clientNo.setValue(client)
     }
 }

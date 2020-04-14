@@ -4,41 +4,34 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import br.com.licenseplate.R
-import com.google.firebase.auth.FirebaseAuth
+import br.com.licenseplate.viewModel.LoginViewModel
 import kotlinx.android.synthetic.main.activity_forgot_password.*
 
 class ForgotPassword : AppCompatActivity() {
-    private val auth : FirebaseAuth = FirebaseAuth.getInstance()
+    private val viewModel: LoginViewModel by lazy{
+        ViewModelProvider(this).get(LoginViewModel::class.java)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_forgot_password)
 
-        buttonForgPass.setOnClickListener{sendEmailPassword()}
+        buttonForgPass.setOnClickListener{recoverPassword()}
         backMainForgPass.setOnClickListener{backMain()}
     }
 
-    private fun sendEmailPassword(){
+    private fun recoverPassword(){
         val email = emailForgPass.text.toString()
 
-        if(email.isEmpty()){
-            Toast.makeText(this, "E-mail obrigatório!", Toast.LENGTH_LONG).show()
-            return
-        } else{
-            val operation = auth.sendPasswordResetEmail(email)
-            operation.addOnCompleteListener{task ->
-                if(task.isSuccessful){
-                    Toast.makeText(this, "E-mail de recuperação de senha enviado com sucesso!", Toast.LENGTH_LONG).show()
-                    val intentMain = Intent(this, MainActivity::class.java)
-                    startActivity(intentMain)
-                } else {
-                    val error = task.exception?.localizedMessage
-                        ?: "Algo deu errado ao enviar o e-mail de recuperação de senha. " +
-                        "Contate o adm do sistema!"
-
-                    Toast.makeText(this, error, Toast.LENGTH_LONG).show()
-                }
+        viewModel.recoverPassword(email){result ->
+            if(result[0] == "OK"){
+                Toast.makeText(this, result[1], Toast.LENGTH_LONG).show()
+                val intentMain = Intent(this, MainActivity::class.java)
+                startActivity(intentMain)
+            } else{
+                Toast.makeText(this, result[1], Toast.LENGTH_LONG).show()
             }
         }
     }

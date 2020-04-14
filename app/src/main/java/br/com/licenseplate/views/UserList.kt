@@ -6,11 +6,8 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import br.com.licenseplate.R
-import com.google.firebase.auth.FirebaseAuth
 
 class UserList : AppCompatActivity() {
-    private val auth : FirebaseAuth = FirebaseAuth.getInstance()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_list)

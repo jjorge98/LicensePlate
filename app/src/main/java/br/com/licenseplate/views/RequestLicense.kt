@@ -1,24 +1,45 @@
 package br.com.licenseplate.views
 
 import android.content.Intent
+import android.nfc.Tag
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import br.com.licenseplate.R
+import br.com.licenseplate.viewModel.ClientViewModel
 import kotlinx.android.synthetic.main.activity_request_license.*
 
 class RequestLicense : AppCompatActivity() {
     private lateinit var estado: String
+    private val viewModel: ClientViewModel by lazy {
+        ViewModelProvider(this).get(ClientViewModel::class.java)
+    }
+    private var id: Int = 0
+    private val root = "autorizacao"
+    private lateinit var nome : String
+    private lateinit var cpf : String
+    private lateinit var cel : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_request_license)
+        val intent = this.intent
+
+        nome = intent.getStringExtra("nome")
+        cpf = intent.getStringExtra("cpf")
+        cel = intent.getStringExtra("cel")
 
         spinnerFill()
+
+        viewModel.verifyID(root) { result ->
+            id = result
+        }
 
         buttonReqLicense.setOnClickListener { next() }
     }
@@ -43,7 +64,7 @@ class RequestLicense : AppCompatActivity() {
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             //Se nada for selecionado, não faz nada
             override fun onNothingSelected(parent: AdapterView<*>?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                //
             }
 
             //Se algo for selecionado, alguns campos vão aparecer. Essa função recebe 4 parametros.
@@ -62,12 +83,9 @@ class RequestLicense : AppCompatActivity() {
                     //Coloca no textview o que fazer e nos inputs a hint do que colocar
                     helpTextReqLicense.text = resources.getString(R.string.textLicense)
                     inputReqLicense.hint = resources.getString(R.string.license)
-                    input2ReqLicense.visibility = View.GONE
                 } else {
-                    helpTextReqLicense.text = resources.getString(R.string.textAuthorizationChassi)
+                    helpTextReqLicense.text = resources.getString(R.string.textAuthorization)
                     inputReqLicense.hint = resources.getString(R.string.authorization)
-                    input2ReqLicense.hint = resources.getString(R.string.chassi)
-                    input2ReqLicense.visibility = View.VISIBLE
                 }
             }
         }
@@ -77,51 +95,36 @@ class RequestLicense : AppCompatActivity() {
         val intent = Intent(this, StoreList::class.java)
 
         if (estado == "BA") {
-            val placa = inputReqLicense.text.toString()
-
-            if (placa.isEmpty()) {
-                Toast.makeText(this, "Por favor, digite uma placa", Toast.LENGTH_LONG).show()
-                return
-            } else if (placa.length != 7) {
-                Toast.makeText(
-                    this,
-                    "Por favor, digite uma placa válida! Formato válido: AAA0A00",
-                    Toast.LENGTH_LONG
-                ).show()
-            } else {
-                //Enviar pra próxima activity ou api
-                //verificar se já existe autorizacao ou placa no banco
-                intent.putExtra("placa", placa)
+            val placa = inputReqLicense.text.toString().toUpperCase()
+            viewModel.verifyBA(id, root, placa) { result ->
+                if (result == "OK") {
+                    intent.apply {
+                        putExtra("carroID", placa)
+                        putExtra("nome", nome)
+                        putExtra("cpf", cpf)
+                        putExtra("cel", cel)
+                    }
+                    startActivity(intent)
+                } else{
+                    Toast.makeText(this, result, Toast.LENGTH_LONG).show()
+                }
             }
         } else {
-            val autorizacao = inputReqLicense.text.toString()
-            val chassi = input2ReqLicense.text.toString().toUpperCase()
+            val authorization = inputReqLicense.text.toString()
 
-            if (autorizacao.isEmpty() || chassi.isEmpty()) {
-                Toast.makeText(this, "Por favor, preencha todos os campos!", Toast.LENGTH_LONG)
-                    .show()
-                return
-            } else if (autorizacao.length < 15) {
-                Toast.makeText(
-                    this,
-                    "Por favor, verifique a autorização informada e tente novamente!",
-                    Toast.LENGTH_LONG
-                ).show()
-                return
-            } else if ('I' in chassi || 'O' in chassi || 'Q' in chassi || chassi[9] == 'U') {
-                Toast.makeText(
-                    this,
-                    "Chassi não obedece as normas técnicas da ABNT. Por favor, verifique o chassi e tente novamente",
-                    Toast.LENGTH_LONG
-                ).show()
-                return
-            } else {
-                //Enviar pra próxima activity ou api
-                //verificar se já existe autorizacao ou placa no banco
-                intent.putExtra("autorizacao", autorizacao)
-                intent.putExtra("chassi", chassi)
+            viewModel.verifyAuthorization(id, root, authorization){result ->
+                if (result == "OK") {
+                    intent.apply {
+                        putExtra("carroID", authorization)
+                        putExtra("nome", nome)
+                        putExtra("cpf", cpf)
+                        putExtra("cel", cel)
+                    }
+                    startActivity(intent)
+                } else{
+                    Toast.makeText(this, result, Toast.LENGTH_LONG).show()
+                }
             }
         }
-        startActivity(intent)
     }
 }

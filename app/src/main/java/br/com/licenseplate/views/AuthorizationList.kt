@@ -24,20 +24,21 @@ class AuthorizationList : AppCompatActivity() {
         authorizationList()
     }
 
-    private fun authorizationList(){
+    private fun authorizationList() {
         val listView = findViewById<ListView>(R.id.listViewLicenses)
+        //TODO
         val autorizacao = arrayOf(
             Authorization(
                 "202000052598847",
                 "PBK4H24",
                 "04/10/2020",
-                arrayOf("Traseira")
+                "Traseira", 0
             ),
             Authorization(
                 "202000052598848",
                 "PBR4H24",
                 "04/10/2020",
-                arrayOf("Traseira", "Dianteira")
+                "Traseira, Dianteira", 0
             )
         )
         val adapter =
