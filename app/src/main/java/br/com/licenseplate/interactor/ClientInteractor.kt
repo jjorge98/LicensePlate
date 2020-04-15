@@ -13,9 +13,8 @@ class ClientInteractor(private val context: Context) {
         repository.verifyID(root, callback)
     }
 
-    fun verifyData(root: String, client: Client, id: Int, callback: (result: String?) -> Unit) {
-        val cpf = client.cpf.replace(".", "").replace("-", "")
-
+    fun saveClientData(root: String, client: Client, id: Int, callback: (result: String?) -> Unit) {
+        val cpf = client.cpf
         if (cpf.length != 11) {
             callback("CPF")
         } else if (client.nome.isEmpty() || client.cpf.isEmpty() || client.cel.isEmpty()) {

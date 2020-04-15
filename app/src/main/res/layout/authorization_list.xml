@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/licenseNameAT"
+        android:layout_width="206dp"
+        android:layout_height="38dp"
+        android:background="@drawable/botoes"
+        android:text="@string/license"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/AuthorizationNameAT"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/authorizationAT"
+        android:layout_width="206dp"
+        android:layout_height="35dp"
+        android:background="@drawable/botoes"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/placaAT"
+        app:layout_constraintTop_toBottomOf="@+id/AuthorizationNameAT" />
+
+    <TextView
+        android:id="@+id/placaAT"
+        android:layout_width="206dp"
+        android:layout_height="35dp"
+        android:background="@drawable/botoes"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/authorizationAT"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/licenseNameAT" />
+
+    <TextView
+        android:id="@+id/AuthorizationNameAT"
+        android:layout_width="206dp"
+        android:layout_height="38dp"
+        android:background="@drawable/botoes"
+        android:text="@string/authorization"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/licenseNameAT"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

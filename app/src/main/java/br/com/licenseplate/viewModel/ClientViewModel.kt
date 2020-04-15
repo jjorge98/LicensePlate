@@ -23,9 +23,10 @@ class ClientViewModel(val app: Application) : AndroidViewModel(app) {
         id: Int,
         callback: (result: String) -> Unit
     ) {
-        val client = Client(nome, cpf, cel)
+        val newCpf = cpf.replace(".", "").replace("-", "")
+        val client = Client(nome, newCpf, cel)
 
-        interactor.verifyData(root, client, id) { result ->
+        interactor.saveClientData(root, client, id) { result ->
             if (result == "VAZIO") {
                 callback("Por favor, preencha todos os campos!")
             } else if (result == "CPF") {

@@ -6,13 +6,24 @@ import br.com.licenseplate.R
 import android.content.Intent
 import android.view.*
 import android.widget.ArrayAdapter
+import android.widget.LinearLayout
 import android.widget.ListView
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.licenseplate.dataClass.Authorization
+import br.com.licenseplate.viewModel.StamperViewModel
+import br.com.licenseplate.views.adapter.AuthorizationAdapter
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.main.activity_authorization_list.*
+import kotlinx.android.synthetic.main.authorization_list.*
 
 
 class AuthorizationList : AppCompatActivity() {
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
+    private val viewModel: StamperViewModel by lazy {
+        ViewModelProvider(this).get(StamperViewModel::class.java)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,29 +32,23 @@ class AuthorizationList : AppCompatActivity() {
         //setActionBar(findViewById(R.id.action_bar))
         setSupportActionBar(findViewById(R.id.action_bar))
 
+        rvConfigure()
+
         authorizationList()
     }
 
+    private fun rvConfigure(){
+        recyclerViewAuthorizationList.layoutManager = LinearLayoutManager(this)
+    }
+
     private fun authorizationList() {
-        val listView = findViewById<ListView>(R.id.listViewLicenses)
-        //TODO
-        val autorizacao = arrayOf(
-            Authorization(
-                "202000052598847",
-                "PBK4H24",
-                "04/10/2020",
-                "Traseira", 0
-            ),
-            Authorization(
-                "202000052598848",
-                "PBR4H24",
-                "04/10/2020",
-                "Traseira, Dianteira", 0
-            )
-        )
-        val adapter =
-            ArrayAdapter<Authorization>(this, android.R.layout.simple_list_item_1, autorizacao)
-        listView.adapter = adapter
+
+        viewModel.resultado.observe(this, Observer { authorizations ->
+            val adapter = AuthorizationAdapter(authorizations)
+            recyclerViewAuthorizationList.adapter = adapter
+        })
+
+        viewModel.authorizationList()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

@@ -34,7 +34,6 @@ class ClientRepository(private val context: Context) {
         val clientNo = database.getReference("$root/$id")
         val teste = database.getReference("$root/id")
 
-        Log.w("TSTE", "$data")
         clientNo.setValue(data)
         teste.setValue(id)
     }

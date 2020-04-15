@@ -12,17 +12,19 @@
         layout="@layout/action_bar"
         android:layout_width="0dp"
         android:layout_height="60dp"
-        app:layout_constraintBottom_toTopOf="@+id/listViewLicenses"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerViewAuthorizationList"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"></include>
 
-    <ListView
-        android:id="@+id/listViewLicenses"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewAuthorizationList"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/action_bar" />
 
