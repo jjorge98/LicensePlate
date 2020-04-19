@@ -1,9 +1,9 @@
 package br.com.licenseplate.interactor
 
 import android.content.Context
-import br.com.licenseplate.dataClass.Authorization
+import br.com.licenseplate.data_class.Authorization
 import br.com.licenseplate.repository.ClientRepository
-import br.com.licenseplate.dataClass.Client
+import br.com.licenseplate.data_class.Client
 import java.lang.Exception
 
 class ClientInteractor(private val context: Context) {
@@ -37,9 +37,9 @@ class ClientInteractor(private val context: Context) {
         authorization: Authorization,
         callback: (result: String?) -> Unit
     ) {
-        if (authorization.placa.isEmpty()) {
+        if (authorization.placa?.isEmpty()!!) {
             callback("VAZIO")
-        } else if (authorization.placa.length != 7) {
+        } else if (authorization.placa?.length != 7) {
             callback("PLACA")
         } else {
             var ver = 0
@@ -65,10 +65,10 @@ class ClientInteractor(private val context: Context) {
         authorization: Authorization,
         callback: (result: String?) -> Unit
     ) {
-        if (authorization.numAutorizacao.isEmpty()) {
+        if (authorization.numAutorizacao?.isEmpty()!!) {
             callback("VAZIO")
         } else if (authorization.numAutorizacao.length < 15) {
-            callback("LENGHT")
+            callback("LENGTH")
         } else {
             repository.save(root, authorization, id)
             callback(null)

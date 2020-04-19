@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/licenseNameAT"
         android:layout_width="206dp"
         android:layout_height="38dp"
-        android:background="@drawable/botoes"
+        android:background="@drawable/adapter_line"
         android:text="@string/license"
         android:textAlignment="center"
         android:textAllCaps="false"
@@ -23,7 +23,6 @@
         android:id="@+id/authorizationAT"
         android:layout_width="206dp"
         android:layout_height="35dp"
-        android:background="@drawable/botoes"
         android:textAlignment="center"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,7 +34,6 @@
         android:id="@+id/placaAT"
         android:layout_width="206dp"
         android:layout_height="35dp"
-        android:background="@drawable/botoes"
         android:textAlignment="center"
         android:textSize="20dp"
         app:layout_constraintEnd_toStartOf="@+id/authorizationAT"
@@ -47,7 +45,7 @@
         android:id="@+id/AuthorizationNameAT"
         android:layout_width="206dp"
         android:layout_height="38dp"
-        android:background="@drawable/botoes"
+        android:background="@drawable/adapter_line"
         android:text="@string/authorization"
         android:textAlignment="center"
         android:textSize="20dp"

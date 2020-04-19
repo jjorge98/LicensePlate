@@ -1,4 +1,4 @@
-package br.com.licenseplate.viewModel
+package br.com.licenseplate.view_model
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -80,5 +80,13 @@ class LoginViewModel(val app: Application) : AndroidViewModel(app) {
                 callback(resultado)
             }
         }
+    }
+
+    fun verifyLogin(callback: (result: Int) -> Unit){
+        interactor.verifyLogin(callback)
+    }
+
+    fun logout(){
+        interactor.logout()
     }
 }

@@ -18,4 +18,8 @@
         android:id="@+id/licenseHistory"
         android:title="Histórico de placas"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/logout"
+        android:title="Sair"
+        app:showAsAction="never" />
 </menu>

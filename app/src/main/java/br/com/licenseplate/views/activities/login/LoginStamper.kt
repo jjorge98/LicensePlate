@@ -1,16 +1,17 @@
-package br.com.licenseplate.views
+package br.com.licenseplate.views.activities.login
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import br.com.licenseplate.R
-import br.com.licenseplate.viewModel.LoginViewModel
+import br.com.licenseplate.view_model.LoginViewModel
+import br.com.licenseplate.views.activities.stamper.AuthorizationList
 import kotlinx.android.synthetic.main.activity_login_stamper.*
 
 class LoginStamper : AppCompatActivity() {
-    private val viewModel: LoginViewModel by lazy{
+    private val viewModel: LoginViewModel by lazy {
         ViewModelProvider(this).get(LoginViewModel::class.java)
     }
 

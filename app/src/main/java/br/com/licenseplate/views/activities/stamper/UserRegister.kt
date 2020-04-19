@@ -1,15 +1,19 @@
-package br.com.licenseplate.views
+package br.com.licenseplate.views.activities.stamper
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import br.com.licenseplate.R
-import com.google.firebase.auth.FirebaseAuth
+import br.com.licenseplate.view_model.LoginViewModel
+import br.com.licenseplate.views.activities.MainActivity
 
 class UserRegister : AppCompatActivity() {
-    private val auth : FirebaseAuth = FirebaseAuth.getInstance()
+    private val viewModel: LoginViewModel by lazy {
+        ViewModelProvider(this).get(LoginViewModel::class.java)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,18 +38,22 @@ class UserRegister : AppCompatActivity() {
 
     //Itens do menu
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(item.itemId == R.id.licenseHistory) {
+        if (item.itemId == R.id.licenseHistory) {
             val intent = Intent(this, LicenseHistory::class.java)
             startActivity(intent)
             return true
-        } else if(item.itemId == R.id.licenseRequest){
+        } else if (item.itemId == R.id.licenseRequest) {
             val intent = Intent(this, AuthorizationList::class.java)
             startActivity(intent)
             return true
-        } else if(item.itemId == R.id.userList){
+        } else if (item.itemId == R.id.userList) {
             val intent = Intent(this, UserList::class.java)
             startActivity(intent)
             return true
+        } else if (item.itemId == R.id.logout) {
+            viewModel.logout()
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
 
         return false

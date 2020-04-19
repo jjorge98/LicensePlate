@@ -1,8 +1,6 @@
 package br.com.licenseplate.repository
 
 import android.content.Context
-import android.util.Log
-import br.com.licenseplate.dataClass.Client
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -12,9 +10,9 @@ class ClientRepository(private val context: Context) {
     private val database = FirebaseDatabase.getInstance()
 
     fun verifyID(root: String, callback: (result: Int) -> Unit) {
-        val teste = database.getReference("$root/id")
+        val query = database.getReference("ids/$root")
 
-        teste.addValueEventListener(object : ValueEventListener {
+        query.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
                 //
             }
@@ -32,7 +30,7 @@ class ClientRepository(private val context: Context) {
 
     fun save(root: String, data: Any, id: Int) {
         val clientNo = database.getReference("$root/$id")
-        val teste = database.getReference("$root/id")
+        val teste = database.getReference("ids/$root")
 
         clientNo.setValue(data)
         teste.setValue(id)

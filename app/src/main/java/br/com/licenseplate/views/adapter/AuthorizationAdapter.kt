@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import br.com.licenseplate.dataClass.Authorization
+import br.com.licenseplate.data_class.Authorization
 import androidx.recyclerview.widget.RecyclerView
 import br.com.licenseplate.R
 import kotlinx.android.synthetic.main.authorization_list.view.*

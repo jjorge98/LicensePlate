@@ -1,18 +1,16 @@
-package br.com.licenseplate.views
+package br.com.licenseplate.views.activities.client
 
 import android.content.Intent
-import android.nfc.Tag
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import br.com.licenseplate.R
-import br.com.licenseplate.viewModel.ClientViewModel
+import br.com.licenseplate.view_model.ClientViewModel
 import kotlinx.android.synthetic.main.activity_request_license.*
 
 class RequestLicense : AppCompatActivity() {
@@ -22,9 +20,9 @@ class RequestLicense : AppCompatActivity() {
     }
     private var id: Int = 0
     private val root = "autorizacao"
-    private lateinit var nome : String
-    private lateinit var cpf : String
-    private lateinit var cel : String
+    private lateinit var nome: String
+    private lateinit var cpf: String
+    private lateinit var cel: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -100,28 +98,30 @@ class RequestLicense : AppCompatActivity() {
                 if (result == "OK") {
                     intent.apply {
                         putExtra("carroID", placa)
+                        putExtra("uf", estado)
                         putExtra("nome", nome)
                         putExtra("cpf", cpf)
                         putExtra("cel", cel)
                     }
                     startActivity(intent)
-                } else{
+                } else {
                     Toast.makeText(this, result, Toast.LENGTH_LONG).show()
                 }
             }
         } else {
             val authorization = inputReqLicense.text.toString()
 
-            viewModel.verifyAuthorization(id, root, authorization){result ->
+            viewModel.verifyAuthorization(id, root, authorization) { result ->
                 if (result == "OK") {
                     intent.apply {
                         putExtra("carroID", authorization)
+                        putExtra("uf", estado)
                         putExtra("nome", nome)
                         putExtra("cpf", cpf)
                         putExtra("cel", cel)
                     }
                     startActivity(intent)
-                } else{
+                } else {
                     Toast.makeText(this, result, Toast.LENGTH_LONG).show()
                 }
             }

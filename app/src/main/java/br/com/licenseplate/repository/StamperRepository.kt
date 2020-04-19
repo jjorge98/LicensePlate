@@ -1,14 +1,11 @@
 package br.com.licenseplate.repository
 
-import android.content.ContentValues
 import android.content.Context
-import android.util.Log
-import br.com.licenseplate.dataClass.Authorization
+import br.com.licenseplate.data_class.Authorization
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import java.lang.Exception
 
 class StamperRepository(private val context: Context) {
     private val database = FirebaseDatabase.getInstance()
@@ -23,16 +20,16 @@ class StamperRepository(private val context: Context) {
             }
 
             override fun onDataChange(p0: DataSnapshot) {
-                try {
-                    val authorization = p0.getValue(Authorization::class.java)
-                    if (authorization != null) {
-                        result.add(authorization)
+                val list = p0.children
+                list.forEach { l ->
+                    val aut = l.getValue(Authorization::class.java)
+
+                    if(aut != null){
+                        result.add(aut)
                     }
-                } catch (e: Exception) {
                 }
                 callback(result.toTypedArray())
             }
-
         })
     }
 }

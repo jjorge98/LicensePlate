@@ -1,10 +1,10 @@
-package br.com.licenseplate.viewModel
+package br.com.licenseplate.view_model
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import br.com.licenseplate.dataClass.Authorization
+import br.com.licenseplate.data_class.Authorization
 import br.com.licenseplate.interactor.ClientInteractor
-import br.com.licenseplate.dataClass.Client
+import br.com.licenseplate.data_class.Client
 import java.text.DateFormat
 import java.util.*
 

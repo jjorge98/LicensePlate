@@ -1,54 +1,47 @@
-package br.com.licenseplate.views
+package br.com.licenseplate.views.activities.stamper
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import br.com.licenseplate.R
 import android.content.Intent
-import android.view.*
-import android.widget.ArrayAdapter
-import android.widget.LinearLayout
-import android.widget.ListView
+import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import br.com.licenseplate.dataClass.Authorization
-import br.com.licenseplate.viewModel.StamperViewModel
+import br.com.licenseplate.R
+import br.com.licenseplate.view_model.LoginViewModel
+import br.com.licenseplate.view_model.StamperViewModel
+import br.com.licenseplate.views.activities.MainActivity
 import br.com.licenseplate.views.adapter.AuthorizationAdapter
-import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_authorization_list.*
-import kotlinx.android.synthetic.main.authorization_list.*
 
 
 class AuthorizationList : AppCompatActivity() {
-    private val auth: FirebaseAuth = FirebaseAuth.getInstance()
-    private val viewModel: StamperViewModel by lazy {
+    private val viewModelS: StamperViewModel by lazy {
         ViewModelProvider(this).get(StamperViewModel::class.java)
+    }
+
+    private val viewModelL: LoginViewModel by lazy {
+        ViewModelProvider(this).get(LoginViewModel::class.java)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_authorization_list)
 
-        //setActionBar(findViewById(R.id.action_bar))
         setSupportActionBar(findViewById(R.id.action_bar))
-
-        rvConfigure()
 
         authorizationList()
     }
 
-    private fun rvConfigure(){
-        recyclerViewAuthorizationList.layoutManager = LinearLayoutManager(this)
-    }
-
     private fun authorizationList() {
-
-        viewModel.resultado.observe(this, Observer { authorizations ->
+        recyclerViewAuthorizationList.layoutManager = LinearLayoutManager(this)
+        viewModelS.resultado.observe(this, Observer { authorizations ->
             val adapter = AuthorizationAdapter(authorizations)
             recyclerViewAuthorizationList.adapter = adapter
         })
 
-        viewModel.authorizationList()
+        viewModelS.authorizationList()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -66,20 +59,24 @@ class AuthorizationList : AppCompatActivity() {
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
         //Cada if é um item do menu
-        if (item?.itemId == R.id.userRegister) {
+        if (item.itemId == R.id.userRegister) {
             val intentR = Intent(this, UserRegister::class.java)
             startActivity(intentR)
             return true
-        } else if (item?.itemId == R.id.userList) {
+        } else if (item.itemId == R.id.userList) {
             val intentR = Intent(this, UserList::class.java)
             startActivity(intentR)
             return true
-        } else if (item?.itemId == R.id.licenseHistory) {
+        } else if (item.itemId == R.id.licenseHistory) {
             val intentR = Intent(this, LicenseHistory::class.java)
             startActivity(intentR)
             return true
+        } else if (item.itemId == R.id.logout) {
+            viewModelL.logout()
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
 
         return false

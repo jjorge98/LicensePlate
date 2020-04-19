@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".views.UserList">
+    tools:context=".views.activities.stamper.UserList">
 
     <include
         android:id="@+id/action_bar"

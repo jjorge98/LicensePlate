@@ -1,7 +1,7 @@
-package br.com.licenseplate.views
+package br.com.licenseplate.views.activities.client
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import br.com.licenseplate.R
 
 class HelpLicenseRequest : AppCompatActivity() {

@@ -1,4 +1,4 @@
-package br.com.licenseplate.dataClass
+package br.com.licenseplate.data_class
 
 data class Stamper(
     val nome: String,

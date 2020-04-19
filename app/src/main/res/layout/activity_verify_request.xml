@@ -5,75 +5,78 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    android:id="@+id/loginTeste"
-    tools:context=".views.activities.login.LoginStamper">
+    tools:context=".views.activities.client.VerifyRequest">
 
     <ImageView
-        android:id="@+id/logoLogin"
+        android:id="@+id/logoVerifyRequest"
         android:layout_width="295dp"
         android:layout_height="207dp"
-        app:layout_constraintBottom_toTopOf="@+id/emailLogin"
+        app:layout_constraintBottom_toTopOf="@+id/textVerifyRequest"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo" />
 
-    <EditText
-        android:id="@+id/emailLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:background="@drawable/inputs"
-        android:ems="10"
-        android:hint="E-MAIL"
-        android:inputType="textEmailAddress"
-        android:paddingLeft="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/passwordLogin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logoLogin" />
-
-    <EditText
-        android:id="@+id/passwordLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:background="@drawable/inputs"
-        android:ems="10"
-        android:hint="SENHA"
-        android:inputType="textPassword"
-        android:paddingLeft="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonReqLicense"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailLogin" />
-
-    <Button
-        android:id="@+id/buttonReqLicense"
-        android:layout_width="147dp"
-        android:layout_height="51dp"
-        android:background="@drawable/botoes"
-        android:text="Login"
-        android:textStyle="bold"
-
-        app:layout_constraintBottom_toTopOf="@+id/forgotPasswordLogin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordLogin" />
-
     <TextView
-        android:id="@+id/forgotPasswordLogin"
+        android:id="@+id/textVerifyRequest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Esqueci minha senha"
+        android:background="@drawable/botoes"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
+        android:paddingRight="5dp"
+        android:paddingBottom="5dp"
+        android:text="Digite o número do seu pedido:"
+        android:textColor="#000"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/numReqVerifyRequest"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logoVerifyRequest" />
+
+    <EditText
+        android:id="@+id/numReqVerifyRequest"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:background="@drawable/inputs"
+        android:ems="10"
+        android:hint="Número do pedido"
         android:textAlignment="center"
-        android:textSize="18sp"
+        android:textColor="#000"
+        android:textSize="20sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/buttonVerifyRequest"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textVerifyRequest" />
+
+    <Button
+        android:id="@+id/buttonVerifyRequest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/botoes"
+        android:text="Verificar"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/resultVerifyRequest"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/numReqVerifyRequest" />
+
+    <TextView
+        android:id="@+id/resultVerifyRequest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/botoes"
+        android:textAlignment="center"
+        android:textColor="#000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonReqLicense" />
-
+        app:layout_constraintTop_toBottomOf="@+id/buttonVerifyRequest" />
 </androidx.constraintlayout.widget.ConstraintLayout>

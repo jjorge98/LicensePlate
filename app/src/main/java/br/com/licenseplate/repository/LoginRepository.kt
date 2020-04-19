@@ -40,4 +40,18 @@ class LoginRepository(private val context: Context) {
             }
         }
     }
+
+    fun verifyLogin(callback: (result: Int) -> Unit){
+        auth.addAuthStateListener {v ->
+            if(v.currentUser == null){
+                callback(0)
+            } else{
+                callback(1)
+            }
+        }
+    }
+
+    fun logout(){
+        auth.signOut()
+    }
 }

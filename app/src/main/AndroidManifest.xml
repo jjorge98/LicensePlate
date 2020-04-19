@@ -14,18 +14,19 @@
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".views.StoreList"></activity>
-        <activity android:name=".views.AuthorizationList" />
-        <activity android:name=".views.ClientData" />
-        <activity android:name=".views.HelpLicenseRequest" />
-        <activity android:name=".views.LicenseHistory" />
-        <activity android:name=".views.UserList" />
-        <activity android:name=".views.UserRegister" />
-        <activity android:name=".views.ForgotPassword" />
+        <activity android:name=".views.activities.client.VerifyRequest"></activity>
+        <activity android:name=".views.activities.client.StoreList" />
+        <activity android:name=".views.activities.stamper.AuthorizationList" />
+        <activity android:name=".views.activities.client.ClientData" />
+        <activity android:name=".views.activities.client.HelpLicenseRequest" />
+        <activity android:name=".views.activities.stamper.LicenseHistory" />
+        <activity android:name=".views.activities.stamper.UserList" />
+        <activity android:name=".views.activities.stamper.UserRegister" />
+        <activity android:name=".views.activities.login.ForgotPassword" />
         <activity android:name=".RequestListStamper" />
-        <activity android:name=".views.RequestLicense" />
-        <activity android:name=".views.LoginStamper" />
-        <activity android:name=".views.MainActivity">
+        <activity android:name=".views.activities.client.RequestLicense" />
+        <activity android:name=".views.activities.login.LoginStamper" />
+        <activity android:name=".views.activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
