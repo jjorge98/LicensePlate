@@ -21,6 +21,16 @@ class UserList : AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.action_bar))
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.verifyLogin { result ->
+            if (result == 0) {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }
+        }
+    }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         //Habilita botão retorno a atividade anterior
         this.supportActionBar?.setDisplayHomeAsUpEnabled(true)

@@ -21,6 +21,16 @@ class LicenseHistory : AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.action_bar))
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.verifyLogin { result ->
+            if (result == 0) {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }
+        }
+    }
+
     //Cria menu
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         //Mostra botão voltar a tela anterior

@@ -34,6 +34,16 @@ class AuthorizationList : AppCompatActivity() {
         authorizationList()
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModelL.verifyLogin { result ->
+            if (result == 0) {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }
+        }
+    }
+
     private fun authorizationList() {
         recyclerViewAuthorizationList.layoutManager = LinearLayoutManager(this)
         viewModelS.resultado.observe(this, Observer { authorizations ->
