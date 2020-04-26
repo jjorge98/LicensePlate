@@ -21,6 +21,8 @@
     <string name="motoPrice">Preço unidade placa de moto</string>
     <string name="location">Localização</string>
     <string name="save">Salvar</string>
+    <string name="all_users">Todos os usuários:</string>
+    <string name="stores">Lojas</string>
 
     <string-array name="Estados">
         <item>AL</item>

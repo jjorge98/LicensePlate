@@ -19,6 +19,8 @@ import br.com.licenseplate.views.activities.MainActivity
 import kotlinx.android.synthetic.main.activity_user_register.*
 
 class UserRegister : AppCompatActivity() {
+    //TODO("Arrumar uid/auth/authstatelistener")
+    //TODO("Motivo: está deslogando o usuário administrador quando cria um novo usuário")
     private lateinit var login: String
     private lateinit var loja: String
     private val viewModelL: LoginViewModel by lazy {
@@ -87,8 +89,6 @@ class UserRegister : AppCompatActivity() {
     }
 
     private fun spinnerStoresFill() {
-        //Cria um array adapter com o array que está no xml de strings
-        //ToDo: Pesquisar no banco e fazer o proprio adapter
         viewModelA.stores.observe(this, Observer { authorizations ->
             val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, authorizations)
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -162,9 +162,8 @@ class UserRegister : AppCompatActivity() {
             startActivity(intent)
             return true
         } else if (item.itemId == R.id.storeList) {
-            //ToDo: Criar store list
-//            val intent = Intent(this, StoreListAdm::class.java)
-//            startActivity(intent)
+            val intent = Intent(this, StoreListAdm::class.java)
+            startActivity(intent)
             return true
         } else if (item.itemId == R.id.userList) {
             val intent = Intent(this, UserList::class.java)

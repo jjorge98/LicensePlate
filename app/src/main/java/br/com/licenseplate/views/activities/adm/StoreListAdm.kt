@@ -1,10 +1,10 @@
 package br.com.licenseplate.views.activities.adm
 
 import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,10 +12,10 @@ import br.com.licenseplate.R
 import br.com.licenseplate.viewmodel.AdmViewModel
 import br.com.licenseplate.viewmodel.LoginViewModel
 import br.com.licenseplate.views.activities.MainActivity
-import br.com.licenseplate.views.adapter.UserAdapter
-import kotlinx.android.synthetic.main.activity_user_list.*
+import br.com.licenseplate.views.adapter.StoreAdapter
+import kotlinx.android.synthetic.main.activity_store_list_adm.*
 
-class UserList : AppCompatActivity() {
+class StoreListAdm : AppCompatActivity() {
     private val viewModelL: LoginViewModel by lazy {
         ViewModelProvider(this).get(LoginViewModel::class.java)
     }
@@ -25,10 +25,10 @@ class UserList : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_user_list)
+        setContentView(R.layout.activity_store_list_adm)
         setSupportActionBar(findViewById(R.id.action_bar))
 
-        userList()
+        storeList()
     }
 
     override fun onResume() {
@@ -62,8 +62,8 @@ class UserList : AppCompatActivity() {
             val intent = Intent(this, StoreRegister::class.java)
             startActivity(intent)
             return true
-        } else if (item.itemId == R.id.storeList) {
-            val intent = Intent(this, StoreListAdm::class.java)
+        } else if (item.itemId == R.id.userList) {
+            val intent = Intent(this, UserList::class.java)
             startActivity(intent)
             return true
         } else if (item.itemId == R.id.userRegister) {
@@ -79,13 +79,13 @@ class UserList : AppCompatActivity() {
         return false
     }
 
-    private fun userList() {
-        recyclerViewUserList.layoutManager = LinearLayoutManager(this)
-        viewModelA.users.observe(this, Observer { users ->
-            val adapter = UserAdapter(users)
-            recyclerViewUserList.adapter = adapter
+    private fun storeList(){
+        viewModelA.storeList.observe(this, Observer{ store ->
+            recyclerViewStoreListAdm.layoutManager = LinearLayoutManager(this)
+            val adapter = StoreAdapter(store)
+            recyclerViewStoreListAdm.adapter = adapter
         })
 
-        viewModelA.userList()
+        viewModelA.storeListAdm()
     }
 }

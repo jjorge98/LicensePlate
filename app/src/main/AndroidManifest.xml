@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".views.activities.adm.StoreRegister"></activity>
+        <activity android:name=".views.activities.adm.StoreListAdm"></activity>
+        <activity android:name=".views.activities.adm.StoreRegister" />
         <activity android:name=".views.activities.login.ForgotPassword" />
         <activity android:name=".views.activities.login.LoginStamper" />
         <activity android:name=".views.activities.adm.UserList" />

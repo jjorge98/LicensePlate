@@ -4,12 +4,14 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import br.com.licenseplate.dataclass.Stamper
+import br.com.licenseplate.dataclass.Store
 import br.com.licenseplate.interactor.AdmInteractor
 
 class AdmViewModel(val app: Application) : AndroidViewModel(app) {
     private val interactor = AdmInteractor(app.applicationContext)
     val stores = MutableLiveData<Array<String>>()
     val users = MutableLiveData<Array<Stamper>>()
+    val storeList = MutableLiveData<Array<Store>>()
 
     fun storesList() {
         val names = mutableListOf<String>()
@@ -20,6 +22,12 @@ class AdmViewModel(val app: Application) : AndroidViewModel(app) {
                 }
             }
             stores.value = names.toTypedArray()
+        }
+    }
+
+    fun storeListAdm(){
+        interactor.storeList { response ->
+            storeList.value = response
         }
     }
 

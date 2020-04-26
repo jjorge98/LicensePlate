@@ -62,12 +62,11 @@ class StoreRegister : AppCompatActivity() {
             startActivity(intent)
             return true
         } else if (item.itemId == R.id.storeList) {
-            //ToDo: Criar store list
-//            val intent = Intent(this, StoreListAdm::class.java)
-//            startActivity(intent)
+            val intent = Intent(this, StoreListAdm::class.java)
+            startActivity(intent)
             return true
-        } else if (item.itemId == R.id.userRegister) {
-            val intent = Intent(this, UserRegister::class.java)
+        } else if (item.itemId == R.id.userList) {
+            val intent = Intent(this, UserList::class.java)
             startActivity(intent)
             return true
         } else if (item.itemId == R.id.logout) {
