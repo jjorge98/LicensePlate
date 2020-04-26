@@ -6,7 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import br.com.licenseplate.R
-import br.com.licenseplate.view_model.LoginViewModel
+import br.com.licenseplate.viewmodel.LoginViewModel
 import br.com.licenseplate.views.activities.MainActivity
 import kotlinx.android.synthetic.main.activity_forgot_password.*
 

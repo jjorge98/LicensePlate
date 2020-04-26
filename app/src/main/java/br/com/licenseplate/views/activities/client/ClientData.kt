@@ -6,7 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import br.com.licenseplate.R
-import br.com.licenseplate.view_model.ClientViewModel
+import br.com.licenseplate.viewmodel.ClientViewModel
 import kotlinx.android.synthetic.main.activity_client_data.*
 
 class ClientData : AppCompatActivity() {

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="205dp"
+    android:layout_height="205dp"
+    android:background="@drawable/adapter_line">
+
+    <ImageView
+        android:id="@+id/licenseImgAT"
+        android:layout_width="180dp"
+        android:layout_height="62dp"
+        app:layout_constraintBottom_toTopOf="@+id/authorizationAT"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/particular" />
+
+    <TextView
+        android:id="@+id/placaAT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="sans-serif-black"
+        android:text="PBR4A44"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/licenseImgAT"
+        app:layout_constraintEnd_toEndOf="@+id/licenseImgAT"
+        app:layout_constraintStart_toStartOf="@+id/licenseImgAT"
+        app:layout_constraintTop_toTopOf="@+id/licenseImgAT" />
+
+    <TextView
+        android:id="@+id/authorizationAT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:text="202000015580148"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/clientAT"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/licenseImgAT"
+        app:layout_constraintVertical_bias="0.153" />
+
+    <TextView
+        android:id="@+id/clientAT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:text="Jorge"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/cellAT"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/authorizationAT" />
+
+    <TextView
+        android:id="@+id/cellAT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:text="61991070571"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/clientAT" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

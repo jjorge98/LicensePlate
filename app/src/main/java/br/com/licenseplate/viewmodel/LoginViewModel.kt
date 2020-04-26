@@ -1,7 +1,8 @@
-package br.com.licenseplate.view_model
+package br.com.licenseplate.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import br.com.licenseplate.dataclass.Stamper
 import br.com.licenseplate.interactor.LoginInteractor
 
 class LoginViewModel(val app: Application) : AndroidViewModel(app) {
@@ -82,7 +83,7 @@ class LoginViewModel(val app: Application) : AndroidViewModel(app) {
         }
     }
 
-    fun verifyLogin(callback: (result: Int) -> Unit){
+    fun verifyLogin(callback: (result: Stamper?) -> Unit){
         interactor.verifyLogin(callback)
     }
 

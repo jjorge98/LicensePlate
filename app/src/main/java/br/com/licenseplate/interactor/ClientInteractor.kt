@@ -1,12 +1,12 @@
 package br.com.licenseplate.interactor
 
 import android.content.Context
-import br.com.licenseplate.data_class.Authorization
+import br.com.licenseplate.dataclass.Authorization
 import br.com.licenseplate.repository.ClientRepository
-import br.com.licenseplate.data_class.Client
+import br.com.licenseplate.dataclass.Client
 import java.lang.Exception
 
-class ClientInteractor(private val context: Context) {
+class ClientInteractor(val context: Context) {
     private val repository = ClientRepository(context)
 
     fun verifyID(root: String, callback: (result: Int) -> Unit) {

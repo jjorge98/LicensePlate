@@ -12,5 +12,7 @@
     <color name="colorverdeescuro">#2c4944</color>
     <color name="colormostarda">#b38728</color>
     <color name="colorareia">#8f6f48</color>
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
 
 </resources>

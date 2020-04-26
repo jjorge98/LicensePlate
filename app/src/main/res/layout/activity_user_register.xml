@@ -5,20 +5,158 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".views.activities.stamper.UserRegister">
+    tools:context=".views.activities.adm.UserRegister">
 
     <include
         android:id="@+id/action_bar"
-        layout="@layout/action_bar">
-    </include>
+        layout="@layout/action_bar"
+        app:layout_constraintBottom_toTopOf="@+id/textViewUserRegister"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></include>
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textViewUserRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="UserRegister"
+        android:fontFamily="@font/alike_angular"
+        android:text="Cadastrar usuário"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/action_bar" />
+
+    <Spinner
+        android:id="@+id/spinnerLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:background="@drawable/inputs"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerStores"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewUserRegister" />
+
+    <Spinner
+        android:id="@+id/spinnerStores"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:background="@drawable/inputs"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/nameUserRegister"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerLogin" />
+
+    <EditText
+        android:id="@+id/nameUserRegister"
+        android:layout_width="370dp"
+        android:layout_height="40dp"
+        android:background="@drawable/inputs"
+        android:ems="10"
+        android:hint="Nome completo"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/cpfUserRegister"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerStores" />
+
+    <EditText
+        android:id="@+id/cpfUserRegister"
+        android:layout_width="370dp"
+        android:layout_height="40dp"
+        android:background="@drawable/inputs"
+        android:ems="10"
+        android:hint="CPF"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/rgUserRegister"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameUserRegister" />
+
+    <EditText
+        android:id="@+id/rgUserRegister"
+        android:layout_width="370dp"
+        android:layout_height="40dp"
+        android:background="@drawable/inputs"
+        android:ems="10"
+        android:hint="Rg"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/emailUserRegister"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cpfUserRegister" />
+
+    <EditText
+        android:id="@+id/emailUserRegister"
+        android:layout_width="370dp"
+        android:layout_height="40dp"
+        android:background="@drawable/inputs"
+        android:ems="10"
+        android:hint="E-mail"
+        android:inputType="textEmailAddress"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/passwordUserRegister"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rgUserRegister" />
+
+    <EditText
+        android:id="@+id/passwordUserRegister"
+        android:layout_width="370dp"
+        android:layout_height="40dp"
+        android:background="@drawable/inputs"
+        android:ems="10"
+        android:hint="Senha"
+        android:inputType="textPassword"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/confirmPassUserRegister"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailUserRegister" />
+
+    <EditText
+        android:id="@+id/confirmPassUserRegister"
+        android:layout_width="370dp"
+        android:layout_height="40dp"
+        android:background="@drawable/inputs"
+        android:ems="10"
+        android:hint="Confirme a senha"
+        android:inputType="textPassword"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/saveUserRegister"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordUserRegister" />
+
+    <Button
+        android:id="@+id/saveUserRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/botoes"
+        android:text="@string/save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/confirmPassUserRegister" />
 </androidx.constraintlayout.widget.ConstraintLayout>

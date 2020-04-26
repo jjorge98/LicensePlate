@@ -6,7 +6,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import br.com.licenseplate.R
-import br.com.licenseplate.view_model.LoginViewModel
+import br.com.licenseplate.viewmodel.LoginViewModel
+import br.com.licenseplate.views.activities.adm.UserRegister
 import br.com.licenseplate.views.activities.stamper.AuthorizationList
 import kotlinx.android.synthetic.main.activity_login_stamper.*
 
@@ -30,8 +31,16 @@ class LoginStamper : AppCompatActivity() {
         viewModel.login(email, password) { result ->
             Toast.makeText(this, result[1], Toast.LENGTH_LONG).show()
             if (result[0] == "OK") {
-                val intentLogin = Intent(this, AuthorizationList::class.java)
-                startActivity(intentLogin)
+                viewModel.verifyLogin { result ->
+                    if (result?.login == 1) {
+                        val intentLogin = Intent(this, AuthorizationList::class.java)
+                        startActivity(intentLogin)
+                    } else {
+                        val intent = Intent(this, UserRegister::class.java)
+                        startActivity(intent)
+                    }
+                }
+
             }
         }
     }

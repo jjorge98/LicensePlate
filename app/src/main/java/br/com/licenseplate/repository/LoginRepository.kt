@@ -1,11 +1,17 @@
 package br.com.licenseplate.repository
 
 import android.content.Context
+import br.com.licenseplate.dataclass.Stamper
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class LoginRepository(private val context: Context) {
-    //variável que pega a instancia do firebase auth
+    //variável que pega a instância do firebase auth e database respectivamente
     private val auth = FirebaseAuth.getInstance()
+    private val database = FirebaseDatabase.getInstance()
 
     //função de recuperação de senha que recebe um email e um callback
     fun recoverPassword(email: String, callback: (result: String?) -> Unit) {
@@ -25,15 +31,15 @@ class LoginRepository(private val context: Context) {
     }
 
     //função de login que recebe um email, uma senha e um callback
-    fun login(email: String, password: String, callback: (result: String?) -> Unit){
+    fun login(email: String, password: String, callback: (result: String?) -> Unit) {
         //variável que recebe a operação de login
         val operation = auth.signInWithEmailAndPassword(email, password)
 
         //Coloca o listener para quando completar, a gente verificar se teve sucesso ou falha
         operation.addOnCompleteListener { task ->
-            if(task.isSuccessful){
+            if (task.isSuccessful) {
                 callback("OK")
-            } else{
+            } else {
                 //variável de erro pode ser nula, caso não encontre a mensagem de erro da tarefa
                 val error = task.exception?.localizedMessage
                 callback(error)
@@ -41,17 +47,40 @@ class LoginRepository(private val context: Context) {
         }
     }
 
-    fun verifyLogin(callback: (result: Int) -> Unit){
-        auth.addAuthStateListener {v ->
-            if(v.currentUser == null){
-                callback(0)
-            } else{
-                callback(1)
+    fun verifyLogin(callback: (result: Stamper?) -> Unit) {
+        val user = auth.currentUser
+        auth.addAuthStateListener { v ->
+            if (v.currentUser == null) {
+                callback(null)
+            } else {
+                //1 - estampador
+                //2 - administrador
+                val uid = v.uid
+
+                getUser(uid, callback)
             }
         }
     }
 
-    fun logout(){
+    private fun getUser(uid: String?, callback: (result: Stamper?) -> Unit) {
+        val query = database.getReference("user")
+
+        query.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+                callback(null)
+            }
+
+            override fun onDataChange(p0: DataSnapshot) {
+                if (uid != null) {
+                    val user = p0.child(uid).getValue(Stamper::class.java)
+
+                    callback(user)
+                }
+            }
+        })
+    }
+
+    fun logout() {
         auth.signOut()
     }
 }

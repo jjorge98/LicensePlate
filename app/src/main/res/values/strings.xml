@@ -1,35 +1,26 @@
 <resources>
-    <string name="app_name">
-        LicensePlate
-    </string>
-
-    <string name="textAutorization">
-        Insira o número da autorização que foi recebido no Detran
-    </string>
-
-    <string name="textLicense">
-        Digite a placa do seu veículo
-    </string>
-
-    <string name="textAuthorization">
-        Insira o número da autorização que foi recebido no Detran
-    </string>
-
-    <string name="requestLicenseEstado">
-        Informe seu estado
-    </string>
-
-    <string name="authorization">
-        Autorização
-    </string>
-
-    <string name="license">
-        Placa
-    </string>
-
-    <string name="next">
-        Próximo
-    </string>
+    <string name="app_name">LicensePlate</string>
+    <string name="textAutorization">Insira o número da autorização que foi recebido no Detran</string>
+    <string name="textLicense">Digite a placa do seu veículo</string>
+    <string name="textAuthorization">Insira o número da autorização que foi recebido no Detran</string>
+    <string name="requestLicenseEstado">Informe seu estado</string>
+    <string name="authorization">Autorização</string>
+    <string name="license">Placa</string>
+    <string name="next">Próximo</string>
+    <string name="storelist">Listar lojas</string>
+    <string name="userlist">Listar usuários</string>
+    <string name="userregister">Cadastrar usuário</string>
+    <string name="storeregister">Cadastrar loja</string>
+    <string name="logout">Sair</string>
+    <string name="licenseHistory">Histórico de placas</string>
+    <string name="licenseRequest">Solicitações de placa</string>
+    <string name="login">Login</string>
+    <string name="id_loja">ID Loja</string>
+    <string name="carPrice">Preço unidade placa de carro</string>
+    <string name="nome_fantasia">Nome Fantasia</string>
+    <string name="motoPrice">Preço unidade placa de moto</string>
+    <string name="location">Localização</string>
+    <string name="save">Salvar</string>
 
     <string-array name="Estados">
         <item>AL</item>
@@ -39,5 +30,13 @@
         <item>PA</item>
         <item>RO</item>
         <item>SP</item>
+    </string-array>
+
+    <string-array name="Logins">
+        <item>Administrador</item>
+        <item>Estampador</item>
+    </string-array>
+    <string-array name="Stores">
+
     </string-array>
 </resources>

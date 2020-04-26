@@ -1,7 +1,7 @@
 package br.com.licenseplate.repository
 
 import android.content.Context
-import br.com.licenseplate.data_class.Authorization
+import br.com.licenseplate.dataclass.Authorization
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase

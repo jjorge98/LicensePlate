@@ -1,6 +1,7 @@
 package br.com.licenseplate.interactor
 
 import android.content.Context
+import br.com.licenseplate.dataclass.Stamper
 import br.com.licenseplate.repository.LoginRepository
 
 class LoginInteractor(private val context: Context) {
@@ -35,7 +36,7 @@ class LoginInteractor(private val context: Context) {
         }
     }
 
-    fun verifyLogin(callback: (result: Int) -> Unit){
+    fun verifyLogin(callback: (result: Stamper?) -> Unit){
         repository.verifyLogin(callback)
     }
 

@@ -1,4 +1,4 @@
-package br.com.licenseplate.data_class
+package br.com.licenseplate.dataclass
 
 data class Client(
     val nome: String,

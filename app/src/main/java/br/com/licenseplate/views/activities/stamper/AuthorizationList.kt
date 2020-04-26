@@ -7,10 +7,10 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import br.com.licenseplate.R
-import br.com.licenseplate.view_model.LoginViewModel
-import br.com.licenseplate.view_model.StamperViewModel
+import br.com.licenseplate.viewmodel.LoginViewModel
+import br.com.licenseplate.viewmodel.StamperViewModel
 import br.com.licenseplate.views.activities.MainActivity
 import br.com.licenseplate.views.adapter.AuthorizationAdapter
 import kotlinx.android.synthetic.main.activity_authorization_list.*
@@ -37,7 +37,7 @@ class AuthorizationList : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         viewModelL.verifyLogin { result ->
-            if (result == 0) {
+            if (result == null) {
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
             }
@@ -45,7 +45,7 @@ class AuthorizationList : AppCompatActivity() {
     }
 
     private fun authorizationList() {
-        recyclerViewAuthorizationList.layoutManager = LinearLayoutManager(this)
+        recyclerViewAuthorizationList.layoutManager = GridLayoutManager(this, 2)
         viewModelS.resultado.observe(this, Observer { authorizations ->
             val adapter = AuthorizationAdapter(authorizations)
             recyclerViewAuthorizationList.adapter = adapter
@@ -71,15 +71,7 @@ class AuthorizationList : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         //Cada if é um item do menu
-        if (item.itemId == R.id.userRegister) {
-            val intentR = Intent(this, UserRegister::class.java)
-            startActivity(intentR)
-            return true
-        } else if (item.itemId == R.id.userList) {
-            val intentR = Intent(this, UserList::class.java)
-            startActivity(intentR)
-            return true
-        } else if (item.itemId == R.id.licenseHistory) {
+        if (item.itemId == R.id.licenseHistory) {
             val intentR = Intent(this, LicenseHistory::class.java)
             startActivity(intentR)
             return true

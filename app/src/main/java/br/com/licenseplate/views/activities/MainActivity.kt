@@ -2,11 +2,11 @@ package br.com.licenseplate.views.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import br.com.licenseplate.R
-import br.com.licenseplate.view_model.LoginViewModel
+import br.com.licenseplate.viewmodel.LoginViewModel
+import br.com.licenseplate.views.activities.adm.UserRegister
 import br.com.licenseplate.views.activities.client.ClientData
 import br.com.licenseplate.views.activities.client.HelpLicenseRequest
 import br.com.licenseplate.views.activities.client.VerifyRequest
@@ -42,18 +42,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun login() {
-        lateinit var intent: Intent
         viewModel.verifyLogin { result ->
-            if (result == 0) {
-                intent = Intent(this, LoginStamper::class.java)
+            if (result == null) {
+                val intent = Intent(this, LoginStamper::class.java)
+                startActivity(intent)
+            } else if (result.login == 1) {
+                val intent = Intent(this, AuthorizationList::class.java)
+                startActivity(intent)
             } else {
-                intent = Intent(this, AuthorizationList::class.java)
+                val intent = Intent(this, UserRegister::class.java)
+                startActivity(intent)
             }
         }
-
-        Handler().postDelayed({
-            startActivity(intent)
-        }, 1000)
     }
 
     private fun help() {

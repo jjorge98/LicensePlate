@@ -7,7 +7,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import br.com.licenseplate.R
-import br.com.licenseplate.view_model.LoginViewModel
+import br.com.licenseplate.viewmodel.LoginViewModel
 import br.com.licenseplate.views.activities.MainActivity
 
 class LicenseHistory : AppCompatActivity() {
@@ -24,7 +24,7 @@ class LicenseHistory : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         viewModel.verifyLogin { result ->
-            if (result == 0) {
+            if (result == null) {
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
             }
@@ -50,15 +50,7 @@ class LicenseHistory : AppCompatActivity() {
 
     //Itens do menu
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item?.itemId == R.id.userRegister) {
-            val intent = Intent(this, UserRegister::class.java)
-            startActivity(intent)
-            return true
-        } else if (item?.itemId == R.id.userList) {
-            val intent = Intent(this, UserList::class.java)
-            startActivity(intent)
-            return true
-        } else if (item?.itemId == R.id.licenseRequest) {
+        if (item?.itemId == R.id.licenseRequest) {
             val intent = Intent(this, AuthorizationList::class.java)
             startActivity(intent)
             return true
