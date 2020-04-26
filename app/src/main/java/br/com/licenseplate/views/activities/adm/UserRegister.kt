@@ -19,8 +19,7 @@ import br.com.licenseplate.views.activities.MainActivity
 import kotlinx.android.synthetic.main.activity_user_register.*
 
 class UserRegister : AppCompatActivity() {
-    //TODO("Arrumar uid/auth/authstatelistener")
-    //TODO("Motivo: está deslogando o usuário administrador quando cria um novo usuário")
+    //TODO("Arrumar uid/auth/authstatelistener. MOTIVO: está deslogando o usuário administrador quando cria um novo usuário")
     private lateinit var login: String
     private lateinit var loja: String
     private val viewModelL: LoginViewModel by lazy {

@@ -82,7 +82,7 @@ class StoreListAdm : AppCompatActivity() {
     private fun storeList(){
         viewModelA.storeList.observe(this, Observer{ store ->
             recyclerViewStoreListAdm.layoutManager = LinearLayoutManager(this)
-            val adapter = StoreAdapter(store)
+            val adapter = StoreAdapter(store, applicationContext, viewModelA)
             recyclerViewStoreListAdm.adapter = adapter
         })
 

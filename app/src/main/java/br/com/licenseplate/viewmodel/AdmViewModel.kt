@@ -128,4 +128,8 @@ class AdmViewModel(val app: Application) : AndroidViewModel(app) {
             }
         }
     }
+
+    fun deleteStore(store: Store){
+        interactor.deleteStore(store)
+    }
 }

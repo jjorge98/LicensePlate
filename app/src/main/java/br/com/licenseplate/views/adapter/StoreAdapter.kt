@@ -1,18 +1,27 @@
 package br.com.licenseplate.views.adapter
 
-import android.content.ContentValues.TAG
-import android.util.Log
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
+import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.com.licenseplate.R
 import br.com.licenseplate.dataclass.Store
+import br.com.licenseplate.viewmodel.AdmViewModel
+import br.com.licenseplate.views.activities.adm.StoreListAdm
 import kotlinx.android.synthetic.main.store_list.view.*
 
-class StoreAdapter(private val stores: Array<Store>) :
+class StoreAdapter(
+    private val stores: Array<Store>,
+    private val context: Context,
+    private val viewModelA: AdmViewModel
+) :
     RecyclerView.Adapter<StoreAdapter.StoreViewHolder>() {
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -32,6 +41,29 @@ class StoreAdapter(private val stores: Array<Store>) :
         holder.location.text = store.localizacao
         holder.car.text = store.valCarro.toString()
         holder.moto.text = store.valMoto.toString()
+
+        holder.itemView.setOnClickListener {
+            showPopup(holder, store)
+        }
+    }
+
+    private fun showPopup(holder: StoreViewHolder, store: Store) {
+        val popup = PopupMenu(context, holder.itemView)
+        val inflater: MenuInflater = popup.menuInflater
+
+        inflater.inflate(R.menu.menu_store, popup.menu)
+
+        popup.setOnMenuItemClickListener { itemSelected ->
+            if (itemSelected?.itemId == R.id.deleteStore) {
+                viewModelA.deleteStore(store)
+                val intent = Intent(context.applicationContext, StoreListAdm::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                context.startActivity(intent)
+                return@setOnMenuItemClickListener true
+            }
+            return@setOnMenuItemClickListener true
+        }
+        popup.show()
     }
 
     class StoreViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

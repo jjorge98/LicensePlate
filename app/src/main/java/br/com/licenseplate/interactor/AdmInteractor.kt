@@ -72,7 +72,7 @@ class AdmInteractor(val context: Context) {
             if (ver == 0) {
                 try {
                     val moto = motoPrice.toDouble()
-                    val store = Store(name, carPrice.toDouble(), moto, location)
+                    val store = Store(name, carPrice.toDouble(), moto, location, id.toInt())
                     repository.storeSave(store, id)
                     callback(null)
                 } catch (e: Exception) {
@@ -80,5 +80,9 @@ class AdmInteractor(val context: Context) {
                 }
             }
         }
+    }
+
+    fun deleteStore(store: Store){
+        repository.deleteStore(store)
     }
 }

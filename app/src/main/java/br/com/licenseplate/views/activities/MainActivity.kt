@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import br.com.licenseplate.R
 import br.com.licenseplate.viewmodel.LoginViewModel
-import br.com.licenseplate.views.activities.adm.UserRegister
+import br.com.licenseplate.views.activities.adm.StoreListAdm
 import br.com.licenseplate.views.activities.client.ClientData
 import br.com.licenseplate.views.activities.client.HelpLicenseRequest
 import br.com.licenseplate.views.activities.client.VerifyRequest
@@ -46,11 +46,11 @@ class MainActivity : AppCompatActivity() {
             if (result == null) {
                 val intent = Intent(this, LoginStamper::class.java)
                 startActivity(intent)
-            } else if (result.login == 1) {
-                val intent = Intent(this, AuthorizationList::class.java)
+            } else if (result.login == 2) {
+                val intent = Intent(this, StoreListAdm::class.java)
                 startActivity(intent)
             } else {
-                val intent = Intent(this, UserRegister::class.java)
+                val intent = Intent(this, AuthorizationList::class.java)
                 startActivity(intent)
             }
         }

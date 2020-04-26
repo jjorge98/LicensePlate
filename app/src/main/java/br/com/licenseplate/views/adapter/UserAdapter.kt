@@ -28,11 +28,9 @@ class UserAdapter(private val users: Array<Stamper>) :
         holder.store.text = user.loja
         if (user.login == 1) {
             holder.login.text = "Estampador"
-        } else{
+        } else {
             holder.login.text = "Administrador"
         }
-
-
     }
 
     class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

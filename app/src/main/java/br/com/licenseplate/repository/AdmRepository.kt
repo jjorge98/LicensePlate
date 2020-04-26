@@ -91,4 +91,10 @@ class AdmRepository(val context: Context) {
 
         reference.setValue(store)
     }
+
+    fun deleteStore(store: Store){
+        val reference = database.getReference("stores/${store.id}")
+
+        reference.removeValue()
+    }
 }
