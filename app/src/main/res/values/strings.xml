@@ -23,6 +23,8 @@
     <string name="save">Salvar</string>
     <string name="all_users">Todos os usuários:</string>
     <string name="stores">Lojas</string>
+    <string name="receiveRequest">Receber solicitação</string>
+    <string name="finishRequest">Finalizar requisição</string>
 
     <string-array name="Estados">
         <item>AL</item>
