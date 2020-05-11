@@ -47,7 +47,7 @@ class AuthorizationList : AppCompatActivity() {
     private fun authorizationList() {
         recyclerViewAuthorizationList.layoutManager = GridLayoutManager(this, 2)
         viewModelS.resultado.observe(this, Observer { authorizations ->
-            val adapter = AuthorizationAdapter(authorizations)
+            val adapter = AuthorizationAdapter(authorizations, this)
             recyclerViewAuthorizationList.adapter = adapter
         })
 

@@ -2,7 +2,6 @@ package br.com.licenseplate.views.activities.adm
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -15,6 +14,8 @@ import br.com.licenseplate.views.activities.MainActivity
 import kotlinx.android.synthetic.main.activity_store_register.*
 
 class StoreRegister : AppCompatActivity() {
+    private var id: Int = 0
+    private val root = "loja"
     private val viewModelL: LoginViewModel by lazy {
         ViewModelProvider(this).get(LoginViewModel::class.java)
     }
@@ -26,6 +27,10 @@ class StoreRegister : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_store_register)
         setSupportActionBar(findViewById(R.id.action_bar))
+
+        viewModelA.getID(root) { result ->
+            id = result
+        }
 
         saveStoreRegister.setOnClickListener { saveStore() }
     }
@@ -83,9 +88,9 @@ class StoreRegister : AppCompatActivity() {
         val carPrice = carPriceStoreRegister.text.toString()
         val motoPrice = motoPriceStoreRegister.text.toString()
         val location = locationStoreRegister.text.toString()
-        val id = idStoreRegister.text.toString()
+        val cnpj = cnpjStoreRegister.text.toString()
 
-        viewModelA.storeSave(name, carPrice, motoPrice, location, id) { response ->
+        viewModelA.storeSave(name, carPrice, motoPrice, location, cnpj, id, root) { response ->
             Toast.makeText(this, response[1], Toast.LENGTH_SHORT).show()
         }
     }

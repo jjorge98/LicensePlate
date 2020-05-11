@@ -15,7 +15,7 @@
     <string name="licenseHistory">Histórico de placas</string>
     <string name="licenseRequest">Solicitações de placa</string>
     <string name="login">Login</string>
-    <string name="id_loja">ID Loja</string>
+    <string name="cnpj">CNPJ</string>
     <string name="carPrice">Preço unidade placa de carro</string>
     <string name="nome_fantasia">Nome Fantasia</string>
     <string name="motoPrice">Preço unidade placa de moto</string>
@@ -43,4 +43,5 @@
     <string-array name="Stores">
 
     </string-array>
+    <string name="title_activity_store_maps">Map</string>
 </resources>

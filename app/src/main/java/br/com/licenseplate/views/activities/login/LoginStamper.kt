@@ -22,6 +22,7 @@ class LoginStamper : AppCompatActivity() {
 
         buttonReqLicense.setOnClickListener { login() }
         forgotPasswordLogin.setOnClickListener { forgotPassword() }
+        registerLoginStamper.setOnClickListener { register() }
     }
 
     private fun login() {
@@ -32,9 +33,13 @@ class LoginStamper : AppCompatActivity() {
             Toast.makeText(this, result[1], Toast.LENGTH_LONG).show()
             if (result[0] == "OK") {
                 viewModel.verifyLogin { result ->
-                    if (result?.login == 1) {
-                        val intentLogin = Intent(this, AuthorizationList::class.java)
-                        startActivity(intentLogin)
+                    if (result?.login == 0) {
+                        viewModel.loginNotVerified { response ->
+                            Toast.makeText(this, response, Toast.LENGTH_SHORT).show()
+                        }
+                    } else if (result?.login == 1) {
+                        val intent = Intent(this, AuthorizationList::class.java)
+                        startActivity(intent)
                     } else {
                         val intent = Intent(this, UserRegister::class.java)
                         startActivity(intent)
@@ -46,7 +51,12 @@ class LoginStamper : AppCompatActivity() {
     }
 
     private fun forgotPassword() {
-        val intentForgotPassword = Intent(this, ForgotPassword::class.java)
-        startActivity(intentForgotPassword)
+        val intent = Intent(this, ForgotPassword::class.java)
+        startActivity(intent)
+    }
+
+    private fun register() {
+        val intent = Intent(this, RegisterUser::class.java)
+        startActivity(intent)
     }
 }

@@ -91,19 +91,19 @@
         android:inputType="textPersonName"
         android:textAlignment="center"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/idStoreRegister"
+        app:layout_constraintBottom_toTopOf="@+id/cnpjStoreRegister"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/motoPriceStoreRegister" />
 
     <EditText
-        android:id="@+id/idStoreRegister"
+        android:id="@+id/cnpjStoreRegister"
         android:layout_width="350dp"
         android:layout_height="35dp"
         android:background="@drawable/inputs"
         android:ems="10"
-        android:hint="@string/id_loja"
+        android:hint="@string/cnpj"
         android:inputType="number"
         android:textAlignment="center"
         android:textColor="@color/black"
@@ -123,6 +123,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idStoreRegister" />
+        app:layout_constraintTop_toBottomOf="@+id/cnpjStoreRegister" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

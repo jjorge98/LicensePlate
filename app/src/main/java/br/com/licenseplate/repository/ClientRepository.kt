@@ -29,10 +29,10 @@ class ClientRepository(private val context: Context) {
     }
 
     fun save(root: String, data: Any, id: Int) {
-        val clientNo = database.getReference("$root/$id")
-        val teste = database.getReference("ids/$root")
+        val dataNode = database.getReference("$root/$id")
+        val idNode = database.getReference("ids/$root")
 
-        clientNo.setValue(data)
-        teste.setValue(id)
+        dataNode.setValue(data)
+        idNode.setValue(id)
     }
 }

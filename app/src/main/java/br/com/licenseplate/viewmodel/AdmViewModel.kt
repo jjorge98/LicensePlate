@@ -13,6 +13,10 @@ class AdmViewModel(val app: Application) : AndroidViewModel(app) {
     val users = MutableLiveData<Array<Stamper>>()
     val storeList = MutableLiveData<Array<Store>>()
 
+    fun getID(root: String, callback: (result: Int) -> Unit) {
+        interactor.getID(root, callback)
+    }
+
     fun storesList() {
         val names = mutableListOf<String>()
         interactor.storeList { result ->
@@ -25,7 +29,7 @@ class AdmViewModel(val app: Application) : AndroidViewModel(app) {
         }
     }
 
-    fun storeListAdm(){
+    fun storeListAdm() {
         interactor.storeList { response ->
             storeList.value = response
         }
@@ -100,13 +104,16 @@ class AdmViewModel(val app: Application) : AndroidViewModel(app) {
         car: String,
         moto: String,
         location: String,
-        id: String,
+        cnpj: String,
+        id: Int,
+        root: String,
         callback: (Array<String>) -> Unit
     ) {
         val carPrice = moto.replace(",", ".")
         val motoPrice = car.replace(",", ".")
+        val newCnpj = cnpj.replace(".", "").replace("-", "").replace("/", "")
 
-        interactor.storeSave(name, carPrice, motoPrice, location, id) { response ->
+        interactor.storeSave(name, carPrice, motoPrice, location, newCnpj, id, root) { response ->
             if (response == null) {
                 val result = arrayOf("OK", "Loja cadastrada com sucesso!")
                 callback(result)
@@ -125,11 +132,15 @@ class AdmViewModel(val app: Application) : AndroidViewModel(app) {
                     "Preço de placa de moto inválido. Por favor, verifique e tente novamente!"
                 )
                 callback(result)
+            } else if (response == "CNPJ") {
+                val result =
+                    arrayOf("ERROR", "CNPJ inválido. Por favor, verifique e tente novamente!")
+                callback(result)
             }
         }
     }
 
-    fun deleteStore(store: Store){
+    fun deleteStore(store: Store) {
         interactor.deleteStore(store)
     }
 }

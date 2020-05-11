@@ -1,9 +1,7 @@
-package br.com.licenseplate.views.activities.adm
+package br.com.licenseplate.views.activities.login
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -16,28 +14,27 @@ import br.com.licenseplate.R
 import br.com.licenseplate.viewmodel.AdmViewModel
 import br.com.licenseplate.viewmodel.LoginViewModel
 import br.com.licenseplate.views.activities.MainActivity
-import kotlinx.android.synthetic.main.activity_user_register.*
+import kotlinx.android.synthetic.main.activity_profile_register.*
 
-class UserRegister : AppCompatActivity() {
-    private lateinit var login: String
+class ProfileRegister : AppCompatActivity() {
     private lateinit var loja: String
-    private val viewModelL: LoginViewModel by lazy {
-        ViewModelProvider(this).get(LoginViewModel::class.java)
-    }
+    private lateinit var login: String
     private val viewModelA: AdmViewModel by lazy {
         ViewModelProvider(this).get(AdmViewModel::class.java)
+    }
+    private val viewModelL: LoginViewModel by lazy {
+        ViewModelProvider(this).get(LoginViewModel::class.java)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_user_register)
-        setSupportActionBar(findViewById(R.id.action_bar))
-
-        spinnerStores.visibility = View.GONE
+        setContentView(R.layout.activity_profile_register)
 
         spinnerLoginFill()
+        spinnerStores.visibility = View.GONE
+        spinnerStoresFill()
 
-        saveUserRegister.setOnClickListener { saveUser() }
+        saveProfileRegister.setOnClickListener { saveProfile() }
     }
 
     private fun spinnerLoginFill() {
@@ -95,17 +92,6 @@ class UserRegister : AppCompatActivity() {
 
         viewModelA.storesList()
 
-        ArrayAdapter.createFromResource(
-            this,
-            R.array.Logins,
-            android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            //Seta o meio de abertura do spinner: dropdown
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            //Coloca o adaptador no spinner
-            spinnerStores.adapter = adapter
-        }
-
         //Adiciona um listener no spinner
         spinnerStores.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             //Se nada for selecionado, não faz nada
@@ -128,64 +114,18 @@ class UserRegister : AppCompatActivity() {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        viewModelL.verifyLogin { result ->
-            if (result == null) {
+    private fun saveProfile() {
+        val name = nameProfileRegister.text.toString()
+        val cpf = cpfProfileRegister.text.toString()
+        val rg = rgProfileRegister.text.toString()
+
+        viewModelL.saveProfile(name, cpf, rg, loja) {response ->
+            Toast.makeText(this, response[1], Toast.LENGTH_SHORT).show()
+
+            if(response[0] == "OK"){
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
             }
-        }
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        //Habilita o botão de retornar a tela anterior
-        this.supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-        //Habilita o menu que está em res->menu
-        menuInflater.inflate(R.menu.menu_adm, menu)
-        return true
-    }
-
-    //Função que finaliza a atividade e volta a atividade anterior
-    override fun onSupportNavigateUp(): Boolean {
-        finish()
-        return true
-    }
-
-    //Itens do menu
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.storeRegister) {
-            val intent = Intent(this, StoreRegister::class.java)
-            startActivity(intent)
-            return true
-        } else if (item.itemId == R.id.storeList) {
-            val intent = Intent(this, StoreListAdm::class.java)
-            startActivity(intent)
-            return true
-        } else if (item.itemId == R.id.userList) {
-            val intent = Intent(this, UserList::class.java)
-            startActivity(intent)
-            return true
-        } else if (item.itemId == R.id.logout) {
-            viewModelL.logout()
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
-
-        return false
-    }
-
-    private fun saveUser() {
-        val nome = nameUserRegister.text.toString()
-        val cpf = cpfUserRegister.text.toString()
-        val rg = rgUserRegister.text.toString()
-        val email = emailUserRegister.text.toString()
-        val password = passwordUserRegister.text.toString()
-        val confirmPassword = confirmPassUserRegister.text.toString()
-
-        viewModelA.saveUser(nome, cpf, rg, email, password, confirmPassword, login, loja) { response ->
-            Toast.makeText(this, response[1], Toast.LENGTH_SHORT).show()
         }
     }
 }

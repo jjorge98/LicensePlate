@@ -90,7 +90,7 @@ class RequestLicense : AppCompatActivity() {
     }
 
     private fun next() {
-        val intent = Intent(this, StoreList::class.java)
+        val intent = Intent(this, StoreMapsActivity::class.java)
 
         if (estado == "BA") {
             val placa = inputReqLicense.text.toString().toUpperCase()

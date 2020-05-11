@@ -1,10 +1,10 @@
 package br.com.licenseplate.views.activities.adm
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -79,8 +79,8 @@ class StoreListAdm : AppCompatActivity() {
         return false
     }
 
-    private fun storeList(){
-        viewModelA.storeList.observe(this, Observer{ store ->
+    private fun storeList() {
+        viewModelA.storeList.observe(this, Observer { store ->
             recyclerViewStoreListAdm.layoutManager = LinearLayoutManager(this)
             val adapter = StoreAdapter(store, applicationContext, viewModelA)
             recyclerViewStoreListAdm.adapter = adapter

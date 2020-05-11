@@ -38,6 +38,7 @@ class StoreAdapter(
         val store = stores[position]
 
         holder.store.text = store.nome
+        holder.cnpj.text = store.cnpj
         holder.location.text = store.localizacao
         holder.car.text = store.valCarro.toString()
         holder.moto.text = store.valMoto.toString()
@@ -68,6 +69,7 @@ class StoreAdapter(
 
     class StoreViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val store: TextView = itemView.storeName
+        val cnpj: TextView = itemView.cnpj
         val location: TextView = itemView.storeLocation
         val car: TextView = itemView.carPrice
         val moto: TextView = itemView.motoPrice

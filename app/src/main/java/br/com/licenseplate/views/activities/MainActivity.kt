@@ -9,6 +9,7 @@ import br.com.licenseplate.viewmodel.LoginViewModel
 import br.com.licenseplate.views.activities.adm.StoreListAdm
 import br.com.licenseplate.views.activities.client.ClientData
 import br.com.licenseplate.views.activities.client.HelpLicenseRequest
+import br.com.licenseplate.views.activities.client.StoreMapsActivity
 import br.com.licenseplate.views.activities.client.VerifyRequest
 import br.com.licenseplate.views.activities.login.LoginStamper
 import br.com.licenseplate.views.activities.stamper.AuthorizationList
@@ -57,7 +58,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun help() {
-        val operation = Intent(this, HelpLicenseRequest::class.java)
+//        val operation = Intent(this, HelpLicenseRequest::class.java)
+        val operation = Intent(this, StoreMapsActivity::class.java)
         startActivity(operation)
     }
 }

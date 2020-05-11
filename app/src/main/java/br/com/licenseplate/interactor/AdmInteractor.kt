@@ -8,6 +8,10 @@ import br.com.licenseplate.repository.AdmRepository
 class AdmInteractor(val context: Context) {
     private val repository = AdmRepository(context)
 
+    fun getID(root: String, callback: (result: Int) -> Unit) {
+        repository.getID(root, callback)
+    }
+
     fun storeList(callback: (result: Array<Store>) -> Unit) {
         repository.storeList(callback)
     }
@@ -55,11 +59,15 @@ class AdmInteractor(val context: Context) {
         carPrice: String,
         motoPrice: String,
         location: String,
-        id: String,
+        cnpj: String,
+        id: Int,
+        root: String,
         callback: (result: String?) -> Unit
     ) {
-        if (name.isEmpty() || carPrice.isEmpty() || motoPrice.isEmpty() || location.isEmpty() || id.isEmpty()) {
+        if (name.isEmpty() || carPrice.isEmpty() || motoPrice.isEmpty() || location.isEmpty() || cnpj.isEmpty()) {
             callback("VAZIO")
+        } else if(cnpj.length != 14){
+
         } else {
             var ver = 0
             try {
@@ -72,9 +80,17 @@ class AdmInteractor(val context: Context) {
             if (ver == 0) {
                 try {
                     val moto = motoPrice.toDouble()
-                    val store = Store(name, carPrice.toDouble(), moto, location, id.toInt())
-                    repository.storeSave(store, id)
-                    callback(null)
+
+                    try {
+                        val newCnpj = cnpj.toLong()
+
+                        val store = Store(name, cnpj, carPrice.toDouble(), moto, location, id)
+                        repository.storeSave(store, id, root)
+                        callback(null)
+                    } catch (e: Exception) {
+                        callback("CNPJ")
+                    }
+
                 } catch (e: Exception) {
                     callback("MOTO")
                 }
@@ -82,7 +98,7 @@ class AdmInteractor(val context: Context) {
         }
     }
 
-    fun deleteStore(store: Store){
+    fun deleteStore(store: Store) {
         repository.deleteStore(store)
     }
 }

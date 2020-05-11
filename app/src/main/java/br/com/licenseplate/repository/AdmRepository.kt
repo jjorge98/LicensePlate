@@ -1,8 +1,6 @@
 package br.com.licenseplate.repository
 
-import android.content.ContentValues.TAG
 import android.content.Context
-import android.util.Log
 import br.com.licenseplate.dataclass.Stamper
 import br.com.licenseplate.dataclass.Store
 import com.google.firebase.auth.FirebaseAuth
@@ -14,6 +12,25 @@ import com.google.firebase.database.ValueEventListener
 class AdmRepository(val context: Context) {
     private val database = FirebaseDatabase.getInstance()
     private val auth = FirebaseAuth.getInstance()
+
+    fun getID(root: String, callback: (result: Int) -> Unit) {
+        val query = database.getReference("ids/$root")
+
+        query.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+                //
+            }
+
+            override fun onDataChange(p0: DataSnapshot) {
+                val result = p0.getValue(Int::class.java)
+                if (result == null) {
+                    callback(1)
+                } else {
+                    callback(result.plus(1))
+                }
+            }
+        })
+    }
 
     fun storeList(callback: (result: Array<Store>) -> Unit) {
         val query = database.getReference("stores")
@@ -86,13 +103,15 @@ class AdmRepository(val context: Context) {
         })
     }
 
-    fun storeSave(store: Store, id: String) {
-        val reference = database.getReference("stores/$id")
+    fun storeSave(store: Store, id: Int, root: String) {
+        val reference = database.getReference("$root/$id")
+        val idNo = database.getReference("ids/$root")
 
         reference.setValue(store)
+        idNo.setValue(id)
     }
 
-    fun deleteStore(store: Store){
+    fun deleteStore(store: Store) {
         val reference = database.getReference("stores/${store.id}")
 
         reference.removeValue()

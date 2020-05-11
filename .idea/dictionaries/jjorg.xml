@@ -1,10 +1,14 @@
 <component name="ProjectDictionaryState">
   <dictionary name="jjorg">
     <words>
+      <w>administrador</w>
       <w>autorizacao</w>
       <w>autorização</w>
       <w>chassi</w>
+      <w>cnpj</w>
+      <w>coloramareloq</w>
       <w>estampador</w>
+      <w>geocoder</w>
       <w>interactor</w>
       <w>loja</w>
       <w>materiais</w>
@@ -16,6 +20,7 @@
       <w>solicitação</w>
       <w>teste</w>
       <w>tipo</w>
+      <w>vazio</w>
     </words>
   </dictionary>
 </component>

@@ -30,6 +30,31 @@ class LoginRepository(private val context: Context) {
         }
     }
 
+    fun register(email: String, password: String, callback: (result: String?) -> Unit) {
+        //variável que recebe a operação de cadastro
+        val operation = auth.createUserWithEmailAndPassword(email, password)
+
+        //Coloca o listener para quando completar, a gente verificar se teve sucesso ou falha
+        operation.addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                callback("OK")
+            } else {
+                //variável de erro pode ser nula, caso não encontre a mensagem de erro da tarefa
+                val error = task.exception?.localizedMessage
+                callback(error)
+            }
+        }
+    }
+
+    fun saveProfile(user: Stamper) {
+        val currentUser = auth.currentUser
+        val uid = auth.currentUser?.uid
+
+        val query = database.getReference("user/$uid")
+
+        query.setValue(user)
+    }
+
     //função de login que recebe um email, uma senha e um callback
     fun login(email: String, password: String, callback: (result: String?) -> Unit) {
         //variável que recebe a operação de login
