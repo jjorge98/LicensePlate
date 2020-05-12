@@ -4,6 +4,7 @@ import android.content.Context
 import br.com.licenseplate.dataclass.Authorization
 import br.com.licenseplate.repository.ClientRepository
 import br.com.licenseplate.dataclass.Client
+import br.com.licenseplate.dataclass.Store
 import java.lang.Exception
 
 class ClientInteractor(val context: Context) {
@@ -73,5 +74,9 @@ class ClientInteractor(val context: Context) {
             repository.save(root, authorization, id)
             callback(null)
         }
+    }
+
+    fun storeList(callback: (result: Array<Store>) -> Unit) {
+        repository.storeList(callback)
     }
 }

@@ -13,7 +13,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.licenseplate.R
-import br.com.licenseplate.viewmodel.AdmViewModel
+import br.com.licenseplate.viewmodel.ClientViewModel
 import br.com.licenseplate.views.adapter.StoreMapAdapter
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -37,8 +37,8 @@ class StoreMapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnM
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var lastLocation: Location
 
-    private val viewModelA: AdmViewModel by lazy {
-        ViewModelProvider(this).get(AdmViewModel::class.java)
+    private val viewModelC: ClientViewModel by lazy {
+        ViewModelProvider(this).get(ClientViewModel::class.java)
     }
 
     companion object {
@@ -64,8 +64,8 @@ class StoreMapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnM
         mapFragment.getMapAsync(this)
     }
 
-    private fun storesRecyclerView() {
-        viewModelA.storeList.observe(this, Observer { store ->
+    private fun storesRecyclerView(location: LatLng) {
+        viewModelC.storeList.observe(this, Observer { store ->
             storesMapRecyclerView.layoutManager = LinearLayoutManager(this)
             val adapter = StoreMapAdapter(store, applicationContext, map)
             storesMapRecyclerView.adapter = adapter
@@ -82,13 +82,12 @@ class StoreMapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnM
             }
         })
 
-        viewModelA.storeListAdm()
+        viewModelC.storeListAdm(location)
     }
 
-    //TODO: Arrumar o nome que fica quando clica num icone
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
-        storesRecyclerView()
+
         // Add a marker and move the camera
 //        val myPlace = LatLng(-15.773028, -47.778600)
 //        map.addMarker(MarkerOptions().position(myPlace).title("Marker in my place"))
@@ -97,10 +96,10 @@ class StoreMapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnM
         map.uiSettings.isZoomControlsEnabled = true
         map.setOnMarkerClickListener(this)
 
-        setUpMap()
+        setUpMap(googleMap)
     }
 
-    private fun setUpMap() {
+    private fun setUpMap(googleMap: GoogleMap) {
         if (ActivityCompat.checkSelfPermission(
                 this,
                 android.Manifest.permission.ACCESS_FINE_LOCATION
@@ -115,12 +114,14 @@ class StoreMapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnM
         }
 
         map.isMyLocationEnabled = true
-
         fusedLocationClient.lastLocation.addOnSuccessListener(this) { location ->
             // Got last known location. In some rare situations this can be null.
             if (location != null) {
                 lastLocation = location
                 val currentLatLng = LatLng(location.latitude, location.longitude)
+
+                storesRecyclerView(currentLatLng)
+
                 placeMarkerOnMap(currentLatLng)
                 map.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 14f))
             }
@@ -145,14 +146,10 @@ class StoreMapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnM
 
             if (null != addresses && addresses.isNotEmpty()) {
                 addressText = addresses[0].getAddressLine(0)
-//                for (i in 0 until address.maxAddressLineIndex) {
-//                    addressText += if (i == 0) address.getAddressLine(i) else "\n" + address.getAddressLine(
-//                        i
-//                    )
-//                }
+                Log.w("TAG", "$addresses")
             }
         } catch (e: IOException) {
-            Log.e("MapsActivity", e.localizedMessage)
+            //
         }
 
         return addressText
@@ -160,6 +157,7 @@ class StoreMapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnM
 
     override fun onMarkerClick(marker: Marker?): Boolean {
         marker?.showInfoWindow()
+
         return true
     }
 }

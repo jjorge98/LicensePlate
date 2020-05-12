@@ -1,6 +1,7 @@
 package br.com.licenseplate.repository
 
 import android.content.Context
+import br.com.licenseplate.dataclass.Store
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -34,5 +35,27 @@ class ClientRepository(private val context: Context) {
 
         dataNode.setValue(data)
         idNode.setValue(id)
+    }
+
+    fun storeList(callback: (result: Array<Store>) -> Unit) {
+        val query = database.getReference("stores")
+        val result = mutableListOf<Store>()
+
+        query.addValueEventListener(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+                //
+            }
+
+            override fun onDataChange(p0: DataSnapshot) {
+                val list = p0.children
+                list.forEach { l ->
+                    val aut = l.getValue(Store::class.java)
+                    if (aut != null) {
+                        result.add(aut)
+                    }
+                }
+                callback(result.toTypedArray())
+            }
+        })
     }
 }
