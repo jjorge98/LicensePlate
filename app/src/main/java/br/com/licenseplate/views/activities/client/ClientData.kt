@@ -13,7 +13,6 @@ import kotlinx.android.synthetic.main.activity_client_data.*
 class ClientData : AppCompatActivity() {
     private var carroID: String? = null
     private var uf: String? = null
-    private var id: Int? = null
 
     private val viewModel: ClientViewModel by lazy {
         ViewModelProvider(this).get(ClientViewModel::class.java)
@@ -26,8 +25,6 @@ class ClientData : AppCompatActivity() {
         val intent = this.intent
         carroID = intent.getStringExtra("carroID")
         uf = intent.getStringExtra("uf")
-        id = intent.getIntExtra("id", 0)
-        Log.w("TAG", "$id")
 
         buttonClientData.setOnClickListener { proximo() }
     }
@@ -45,7 +42,6 @@ class ClientData : AppCompatActivity() {
                 intent.putExtra("cel", cel)
                 intent.putExtra("carroID", carroID)
                 intent.putExtra("uf", uf)
-                intent.putExtra("id", id)
                 startActivity(intent)
             } else {
                 Toast.makeText(this, result, Toast.LENGTH_LONG).show()

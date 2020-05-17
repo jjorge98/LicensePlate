@@ -31,9 +31,10 @@ class StoreMapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnM
     var cel: String? = null
     var carroID: String? = null
     var uf: String? = null
-    var id: Int? = null
     //fim variáveis vindas de activities anteriores
 
+    var id = 0
+    val root = "autorizacaoCliente"
     private lateinit var map: GoogleMap
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var lastLocation: Location
@@ -59,7 +60,6 @@ class StoreMapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnM
         cel = intent.getStringExtra("cel")
         carroID = intent.getStringExtra("carroID")
         uf = intent.getStringExtra("uf")
-        id = intent.getIntExtra("id", 0)
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
@@ -140,6 +140,9 @@ class StoreMapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnM
     }
 
     override fun onMarkerClick(marker: Marker?): Boolean {
+        viewModelC.verifyID(root) { result ->
+            id = result
+        }
         if (lastSelectedMark != null && lastSelectedMark == marker) {
             viewModelC.saveAuthorization(carroID, uf, nome, cel, cpf, marker?.tag as Int?, id)
             val intent = Intent(this, FinishedRequest::class.java)
