@@ -19,18 +19,12 @@ class RequestLicense : AppCompatActivity() {
     private val viewModel: ClientViewModel by lazy {
         ViewModelProvider(this).get(ClientViewModel::class.java)
     }
-    private var id: Int = 0
-    private val root = "autorizacaoCliente"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_request_license)
 
         spinnerFill()
-
-        viewModel.verifyID(root) { result ->
-            id = result
-        }
 
         buttonReqLicense.setOnClickListener { next() }
     }
@@ -92,7 +86,6 @@ class RequestLicense : AppCompatActivity() {
                     intent.apply {
                         putExtra("carroID", placa)
                         putExtra("uf", estado)
-                        putExtra("id", id)
                     }
                     startActivity(intent)
                 } else {
@@ -107,7 +100,6 @@ class RequestLicense : AppCompatActivity() {
                     intent.apply {
                         putExtra("carroID", authorization)
                         putExtra("uf", estado)
-                        putExtra("id", id)
                     }
                     startActivity(intent)
                 } else {

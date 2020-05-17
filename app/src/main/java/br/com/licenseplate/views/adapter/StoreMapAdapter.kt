@@ -50,6 +50,9 @@ class StoreMapAdapter(
         holder.moto.text = store.valMoto.toString()
 
         holder.itemView.setOnClickListener { selected ->
+            viewModelC.verifyID(cl.root) { result ->
+                cl.id = result
+            }
             if (selected == lastSelectedStore) {
                 viewModelC.saveAuthorization(cl.carroID, cl.uf, cl.nome, cl.cel, cl.cpf, store.id, cl.id)
                 val intent = Intent(context.applicationContext, FinishedRequest::class.java)
