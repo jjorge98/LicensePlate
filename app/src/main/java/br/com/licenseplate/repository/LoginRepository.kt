@@ -101,6 +101,9 @@ class LoginRepository(private val context: Context) {
                 if (uid != null) {
                     val user = p0.child(uid).getValue(Stamper::class.java)
 
+                    if(user == null){
+                        callback(Stamper())
+                    }
                     callback(user)
                 }
             }
