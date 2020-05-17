@@ -1,12 +1,10 @@
 package br.com.licenseplate.views.activities.client
 
+import android.content.Intent
 import android.content.pm.PackageManager
-import android.location.Address
-import android.location.Geocoder
 import android.location.Location
 import android.os.Bundle
 import android.text.TextUtils.indexOf
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.Observer
@@ -25,17 +23,21 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.activity_store_maps.*
-import java.io.IOException
 
 class StoreMapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
-    //    private lateinit var nome: String
-//    private lateinit var cpf: String
-//    private lateinit var cel: String
-//    private lateinit var carroID: String
-//    private lateinit var uf: String
+    //início variaveis vindas de activities anteriores
+    var nome: String? = null
+    var cpf: String? = null
+    var cel: String? = null
+    var carroID: String? = null
+    var uf: String? = null
+    var id: Int? = null
+    //fim variáveis vindas de activities anteriores
+
     private lateinit var map: GoogleMap
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var lastLocation: Location
+    private var lastSelectedMark: Marker? = null
 
     private val viewModelC: ClientViewModel by lazy {
         ViewModelProvider(this).get(ClientViewModel::class.java)
@@ -51,12 +53,13 @@ class StoreMapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnM
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
-//        val intent = this.intent
-//        nome = intent.getStringExtra("nome")
-//        cpf = intent.getStringExtra("cpf")
-//        cel = intent.getStringExtra("cel")
-//        carroID = intent.getStringExtra("carroID")
-//        uf = intent.getStringExtra("uf")
+        val intent = this.intent
+        nome = intent.getStringExtra("nome")
+        cpf = intent.getStringExtra("cpf")
+        cel = intent.getStringExtra("cel")
+        carroID = intent.getStringExtra("carroID")
+        uf = intent.getStringExtra("uf")
+        id = intent.getIntExtra("id", 0)
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
@@ -67,7 +70,7 @@ class StoreMapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnM
     private fun storesRecyclerView(location: LatLng) {
         viewModelC.storeList.observe(this, Observer { store ->
             storesMapRecyclerView.layoutManager = LinearLayoutManager(this)
-            val adapter = StoreMapAdapter(store, applicationContext, map)
+            val adapter = StoreMapAdapter(store, this, map, this, viewModelC)
             storesMapRecyclerView.adapter = adapter
 
             store.forEach { s ->
@@ -77,19 +80,19 @@ class StoreMapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnM
 
                 if (latitude != null && longitude != null) {
                     val currentLatLng = LatLng(latitude, longitude)
-                    placeMarkerOnMap(currentLatLng)
+                    placeMarkerOnMap(currentLatLng, s.id)
                 }
             }
         })
 
-        viewModelC.storeListAdm(location)
+        viewModelC.storeList(location)
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
 
         // Add a marker and move the camera
-//        val myPlace = LatLng(-15.773028, -47.778600)
+//        val myPlace = LatLng(0.0, 0.0)
 //        map.addMarker(MarkerOptions().position(myPlace).title("Marker in my place"))
 //        map.moveCamera(CameraUpdateFactory.newLatLngZoom(myPlace, 15.0f))
 
@@ -119,44 +122,33 @@ class StoreMapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnM
             if (location != null) {
                 lastLocation = location
                 val currentLatLng = LatLng(location.latitude, location.longitude)
-
                 storesRecyclerView(currentLatLng)
 
-                placeMarkerOnMap(currentLatLng)
                 map.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 14f))
             }
         }
     }
 
     //Função que coloca um marcador no mapa.
-    private fun placeMarkerOnMap(location: LatLng) {
-        val titleStr = getAddress(location)
-        val markerOptions = MarkerOptions().position(location).title(titleStr)
+    private fun placeMarkerOnMap(location: LatLng, id: Int?) {
+        viewModelC.getAddress(location) { titleStr ->
+            val markerOptions = MarkerOptions().position(location).title(titleStr)
 
-        map.addMarker(markerOptions)
-    }
-
-    private fun getAddress(latLng: LatLng): String {
-        val geocoder = Geocoder(this)
-        val addresses: List<Address>?
-        var addressText = ""
-
-        try {
-            addresses = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1)
-
-            if (null != addresses && addresses.isNotEmpty()) {
-                addressText = addresses[0].getAddressLine(0)
-                Log.w("TAG", "$addresses")
-            }
-        } catch (e: IOException) {
-            //
+            map.addMarker(markerOptions).tag = id
         }
 
-        return addressText
     }
 
     override fun onMarkerClick(marker: Marker?): Boolean {
-        marker?.showInfoWindow()
+        if (lastSelectedMark != null && lastSelectedMark == marker) {
+            viewModelC.saveAuthorization(carroID, uf, nome, cel, cpf, marker?.tag as Int?, id)
+            val intent = Intent(this, FinishedRequest::class.java)
+            intent.putExtra("id", id)
+            startActivity(intent)
+        } else {
+            lastSelectedMark = marker
+            marker?.showInfoWindow()
+        }
 
         return true
     }

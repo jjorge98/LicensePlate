@@ -2,6 +2,7 @@ package br.com.licenseplate.views.activities.client
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -19,19 +20,11 @@ class RequestLicense : AppCompatActivity() {
         ViewModelProvider(this).get(ClientViewModel::class.java)
     }
     private var id: Int = 0
-    private val root = "autorizacao"
-    private lateinit var nome: String
-    private lateinit var cpf: String
-    private lateinit var cel: String
+    private val root = "autorizacaoCliente"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_request_license)
-        val intent = this.intent
-
-        nome = intent.getStringExtra("nome")
-        cpf = intent.getStringExtra("cpf")
-        cel = intent.getStringExtra("cel")
 
         spinnerFill()
 
@@ -77,7 +70,7 @@ class RequestLicense : AppCompatActivity() {
                 //Variável que pega o item que o usuário selecionou
                 estado = parent?.getItemAtPosition(position).toString()
 
-                if (estado == "BA") {
+                if (estado == "BA" || estado == "DF") {
                     //Coloca no textview o que fazer e nos inputs a hint do que colocar
                     helpTextReqLicense.text = resources.getString(R.string.textLicense)
                     inputReqLicense.hint = resources.getString(R.string.license)
@@ -90,18 +83,16 @@ class RequestLicense : AppCompatActivity() {
     }
 
     private fun next() {
-        val intent = Intent(this, StoreMapsActivity::class.java)
+        val intent = Intent(this, ClientData::class.java)
 
-        if (estado == "BA") {
+        if (estado == "BA" || estado == "DF") {
             val placa = inputReqLicense.text.toString().toUpperCase()
-            viewModel.verifyBA(id, root, placa) { result ->
+            viewModel.verifyLicenseNumber(placa) { result ->
                 if (result == "OK") {
                     intent.apply {
                         putExtra("carroID", placa)
                         putExtra("uf", estado)
-                        putExtra("nome", nome)
-                        putExtra("cpf", cpf)
-                        putExtra("cel", cel)
+                        putExtra("id", id)
                     }
                     startActivity(intent)
                 } else {
@@ -111,14 +102,12 @@ class RequestLicense : AppCompatActivity() {
         } else {
             val authorization = inputReqLicense.text.toString()
 
-            viewModel.verifyAuthorization(id, root, authorization) { result ->
+            viewModel.verifyAuthorization(authorization) { result ->
                 if (result == "OK") {
                     intent.apply {
                         putExtra("carroID", authorization)
                         putExtra("uf", estado)
-                        putExtra("nome", nome)
-                        putExtra("cpf", cpf)
-                        putExtra("cel", cel)
+                        putExtra("id", id)
                     }
                     startActivity(intent)
                 } else {

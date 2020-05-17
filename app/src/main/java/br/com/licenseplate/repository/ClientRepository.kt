@@ -1,11 +1,15 @@
 package br.com.licenseplate.repository
 
 import android.content.Context
+import android.location.Address
+import android.location.Geocoder
 import br.com.licenseplate.dataclass.Store
+import com.google.android.gms.maps.model.LatLng
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import java.io.IOException
 
 class ClientRepository(private val context: Context) {
     private val database = FirebaseDatabase.getInstance()
@@ -29,7 +33,7 @@ class ClientRepository(private val context: Context) {
         })
     }
 
-    fun save(root: String, data: Any, id: Int) {
+    fun save(root: String, data: Any, id: Int?) {
         val dataNode = database.getReference("$root/$id")
         val idNode = database.getReference("ids/$root")
 
@@ -57,5 +61,18 @@ class ClientRepository(private val context: Context) {
                 callback(result.toTypedArray())
             }
         })
+    }
+
+    fun getAddress(latLng: LatLng, callback: (result: List<Address>) -> Unit) {
+        val geocoder = Geocoder(context)
+        val addresses: List<Address>?
+
+        try {
+            addresses = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1)
+
+            callback(addresses)
+        } catch (e: IOException) {
+            //
+        }
     }
 }

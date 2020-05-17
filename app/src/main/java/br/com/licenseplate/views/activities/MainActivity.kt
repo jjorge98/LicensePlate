@@ -7,9 +7,8 @@ import androidx.lifecycle.ViewModelProvider
 import br.com.licenseplate.R
 import br.com.licenseplate.viewmodel.LoginViewModel
 import br.com.licenseplate.views.activities.adm.StoreListAdm
-import br.com.licenseplate.views.activities.client.ClientData
 import br.com.licenseplate.views.activities.client.HelpLicenseRequest
-import br.com.licenseplate.views.activities.client.StoreMapsActivity
+import br.com.licenseplate.views.activities.client.RequestLicense
 import br.com.licenseplate.views.activities.client.VerifyRequest
 import br.com.licenseplate.views.activities.login.LoginStamper
 import br.com.licenseplate.views.activities.stamper.AuthorizationList
@@ -23,7 +22,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         setSupportActionBar(findViewById(R.id.action_bar))
 
         requestLicenseMain.setOnClickListener { request() }
@@ -33,7 +31,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun request() {
-        val operation = Intent(this, ClientData::class.java)
+        val operation = Intent(this, RequestLicense::class.java)
         startActivity(operation)
     }
 
@@ -58,8 +56,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun help() {
-//        val operation = Intent(this, HelpLicenseRequest::class.java)
-        val operation = Intent(this, StoreMapsActivity::class.java)
+        val operation = Intent(this, HelpLicenseRequest::class.java)
         startActivity(operation)
     }
 }

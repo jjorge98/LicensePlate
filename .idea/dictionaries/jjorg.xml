@@ -2,9 +2,12 @@
   <dictionary name="jjorg">
     <words>
       <w>administrador</w>
+      <w>anteriores</w>
       <w>autorizacao</w>
       <w>autorização</w>
+      <w>carro</w>
       <w>chassi</w>
+      <w>cliente</w>
       <w>cnpj</w>
       <w>coloramareloq</w>
       <w>estampador</w>
@@ -13,6 +16,7 @@
       <w>loja</w>
       <w>materiais</w>
       <w>moto</w>
+      <w>pivo</w>
       <w>placa</w>
       <w>proximo</w>
       <w>receber</w>
@@ -20,7 +24,10 @@
       <w>solicitação</w>
       <w>teste</w>
       <w>tipo</w>
+      <w>troca</w>
+      <w>variáveis</w>
       <w>vazio</w>
+      <w>vindas</w>
     </words>
   </dictionary>
 </component>
