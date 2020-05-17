@@ -43,6 +43,8 @@ class ProfileRegister : AppCompatActivity() {
             if (result == null) {
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
+            } else if(result.login == 0){
+                //Direcionar a tela de tudo ok, mas falta resgistro
             }
         }
     }
