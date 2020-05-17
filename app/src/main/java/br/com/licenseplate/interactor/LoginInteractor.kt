@@ -49,9 +49,10 @@ class LoginInteractor(private val context: Context) {
         cpf: String,
         rg: String,
         store: String,
+        cel: String,
         callback: (result: String) -> Unit
     ) {
-        if (name.isEmpty() || cpf.isEmpty() || rg.isEmpty()) {
+        if (name.isEmpty() || cpf.isEmpty() || rg.isEmpty() || cel.isEmpty()) {
             callback("VAZIO")
         } else if (cpf.length != 11) {
             callback("CPF")
@@ -59,7 +60,7 @@ class LoginInteractor(private val context: Context) {
             try {
                 val tryCpf = cpf.toLong()
 
-                val user = Stamper(name, cpf, rg, store, 0)
+                val user = Stamper(name, cpf, rg, store, 0, cel)
 
                 repository.saveProfile(user)
                 callback("OK")

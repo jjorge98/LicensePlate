@@ -47,12 +47,14 @@ class LoginRepository(private val context: Context) {
     }
 
     fun saveProfile(user: Stamper) {
-        val currentUser = auth.currentUser
         val uid = auth.currentUser?.uid
+
+        user.uid = uid
 
         val query = database.getReference("user/$uid")
 
         query.setValue(user)
+        logout()
     }
 
     //função de login que recebe um email, uma senha e um callback
@@ -73,11 +75,11 @@ class LoginRepository(private val context: Context) {
     }
 
     fun verifyLogin(callback: (result: Stamper?) -> Unit) {
-        val user = auth.currentUser
         auth.addAuthStateListener { v ->
             if (v.currentUser == null) {
                 callback(null)
             } else {
+                //0 - not verified
                 //1 - estampador
                 //2 - administrador
                 val uid = v.uid

@@ -12,9 +12,11 @@
         android:layout_width="295dp"
         android:layout_height="207dp"
         app:layout_constraintBottom_toTopOf="@+id/textViewRegisterUser"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo"
-        tools:layout_editor_absoluteX="58dp" />
+        app:srcCompat="@drawable/logo" />
 
     <TextView
         android:id="@+id/textViewRegisterUser"
@@ -26,8 +28,10 @@
         android:textColor="@color/black"
         android:textSize="35sp"
         app:layout_constraintBottom_toTopOf="@+id/emailRegisterUser"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"
-        tools:layout_editor_absoluteX="136dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
     <EditText
         android:id="@+id/emailRegisterUser"
@@ -40,8 +44,10 @@
         android:textAlignment="center"
         android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/passwordRegisterUser"
-        app:layout_constraintTop_toBottomOf="@+id/textViewRegisterUser"
-        tools:layout_editor_absoluteX="21dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewRegisterUser" />
 
     <EditText
         android:id="@+id/confirmPasswordRegisterUser"
@@ -54,8 +60,10 @@
         android:textAlignment="center"
         android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/registerRegisterUser"
-        app:layout_constraintTop_toBottomOf="@+id/passwordRegisterUser"
-        tools:layout_editor_absoluteX="21dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordRegisterUser" />
 
     <EditText
         android:id="@+id/passwordRegisterUser"
@@ -68,8 +76,10 @@
         android:textAlignment="center"
         android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/confirmPasswordRegisterUser"
-        app:layout_constraintTop_toBottomOf="@+id/emailRegisterUser"
-        tools:layout_editor_absoluteX="21dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailRegisterUser" />
 
     <Button
         android:id="@+id/registerRegisterUser"
@@ -78,6 +88,8 @@
         android:background="@drawable/botoes"
         android:text="Cadastrar"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/confirmPasswordRegisterUser"
-        tools:layout_editor_absoluteX="162dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/confirmPasswordRegisterUser" />
 </androidx.constraintlayout.widget.ConstraintLayout>

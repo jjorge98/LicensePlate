@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/adapter_line"
@@ -12,7 +13,7 @@
         android:layout_height="wrap_content"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
-        android:text="Nome"
+        android:text="@string/name"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="20sp"
@@ -26,9 +27,41 @@
         android:id="@+id/cpfUserList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="5dp"
         android:paddingTop="5dp"
-        android:text="CPF"
+        android:paddingBottom="5dp"
+        android:text="@string/cpf"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/rgUserList"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameUserList" />
+
+    <TextView
+        android:id="@+id/rgUserList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:text="@string/rg"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/celUserList"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cpfUserList" />
+
+    <TextView
+        android:id="@+id/celUserList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:text="@string/telefone"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="20sp"
@@ -36,14 +69,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameUserList" />
+        app:layout_constraintTop_toBottomOf="@+id/rgUserList" />
 
     <TextView
         android:id="@+id/loginUserList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="5dp"
         android:paddingTop="5dp"
+        android:paddingBottom="5dp"
         android:text="@string/login"
         android:textAlignment="center"
         android:textColor="@color/black"
@@ -52,15 +85,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cpfUserList" />
+        app:layout_constraintTop_toBottomOf="@+id/celUserList" />
 
     <TextView
         android:id="@+id/storeUserList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="5dp"
         android:paddingTop="5dp"
-        android:text="Loja"
+        android:paddingBottom="5dp"
+        android:text="@string/store"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="20sp"

@@ -63,8 +63,8 @@
         android:layout_height="40dp"
         android:background="@drawable/inputs"
         android:ems="10"
+        android:hint="Nome completo"
         android:inputType="textPersonName"
-        android:text="Nome completo"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/cpfProfileRegister"
         app:layout_constraintEnd_toEndOf="parent"
@@ -72,14 +72,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinnerStores" />
 
+
     <EditText
         android:id="@+id/cpfProfileRegister"
         android:layout_width="370dp"
         android:layout_height="40dp"
         android:background="@drawable/inputs"
         android:ems="10"
+        android:hint="@string/cpf"
         android:inputType="textPersonName"
-        android:text="CPF"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/rgProfileRegister"
         app:layout_constraintEnd_toEndOf="parent"
@@ -93,15 +94,29 @@
         android:layout_height="40dp"
         android:background="@drawable/inputs"
         android:ems="10"
+        android:hint="@string/rg"
         android:inputType="textPersonName"
-        android:text="RG"
         android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/saveProfileRegister"
+        app:layout_constraintBottom_toTopOf="@+id/celProfileRegister"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cpfProfileRegister" />
 
+    <EditText
+        android:id="@+id/celProfileRegister"
+        android:layout_width="370dp"
+        android:layout_height="40dp"
+        android:background="@drawable/inputs"
+        android:ems="10"
+        android:hint="@string/telefone"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/saveProfileRegister"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rgProfileRegister" />
 
     <Button
         android:id="@+id/saveProfileRegister"
@@ -113,5 +128,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rgProfileRegister" />
+        app:layout_constraintTop_toBottomOf="@+id/celProfileRegister" />
 </androidx.constraintlayout.widget.ConstraintLayout>

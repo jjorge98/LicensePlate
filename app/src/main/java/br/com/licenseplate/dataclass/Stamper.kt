@@ -5,5 +5,7 @@ data class Stamper(
     val cpf: String? = null,
     val rg: String? = null,
     val loja: String? = null,
-    val login: Int? = null
+    var login: Int? = null,
+    val cel: String? = null,
+    var uid: String? = null
 )

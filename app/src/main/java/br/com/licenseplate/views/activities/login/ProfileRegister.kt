@@ -37,6 +37,16 @@ class ProfileRegister : AppCompatActivity() {
         saveProfileRegister.setOnClickListener { saveProfile() }
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModelL.verifyLogin { result ->
+            if (result == null) {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }
+        }
+    }
+
     private fun spinnerLoginFill() {
         val spinner: Spinner = findViewById(R.id.spinnerLogin)
 
@@ -118,8 +128,9 @@ class ProfileRegister : AppCompatActivity() {
         val name = nameProfileRegister.text.toString()
         val cpf = cpfProfileRegister.text.toString()
         val rg = rgProfileRegister.text.toString()
+        val cel = celProfileRegister.text.toString()
 
-        viewModelL.saveProfile(name, cpf, rg, loja) {response ->
+        viewModelL.saveProfile(name, cpf, rg, loja, cel) {response ->
             Toast.makeText(this, response[1], Toast.LENGTH_SHORT).show()
 
             if(response[0] == "OK"){

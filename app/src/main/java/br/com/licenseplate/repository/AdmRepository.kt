@@ -54,36 +54,54 @@ class AdmRepository(val context: Context) {
         })
     }
 
-    fun saveUser(
-        user: Stamper,
-        email: String,
-        password: String,
-        callback: (result: String?) -> Unit
-    ) {
-        val currentUser = auth.currentUser
-        val operation = auth.createUserWithEmailAndPassword(email, password)
+    fun userList(callback: (Array<Stamper>) -> Unit) {
+        val users = database.getReference("user")
+        val result = mutableListOf<Stamper>()
 
-        operation.addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                val uid = auth.currentUser?.uid
+        val query = users.orderByChild("login").equalTo(2.0)
 
-                val query = database.getReference("user/$uid")
-
-                query.setValue(user)
-                if (currentUser != null) {
-                    auth.updateCurrentUser(currentUser)
-                }
-                callback("OK")
-            } else {
-                val error = task.exception?.localizedMessage
-                callback(error)
+        query.addValueEventListener(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+                //
             }
-        }
+
+            override fun onDataChange(p0: DataSnapshot) {
+                val list = p0.children
+                list.forEach { l ->
+                    val aut = l.getValue(Stamper::class.java)
+                    if (aut != null) {
+                        result.add(aut)
+                    }
+                }
+                callback(result.toTypedArray())
+            }
+        })
+
+        val query2 = users.orderByChild("login").equalTo(1.0)
+
+        query2.addValueEventListener(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+                //
+            }
+
+            override fun onDataChange(p0: DataSnapshot) {
+                val list = p0.children
+                list.forEach { l ->
+                    val aut = l.getValue(Stamper::class.java)
+                    if (aut != null) {
+                        result.add(aut)
+                    }
+                }
+                callback(result.toTypedArray())
+            }
+        })
     }
 
-    fun userList(callback: (Array<Stamper>) -> Unit) {
-        val query = database.getReference("user")
+    fun userListRegister(callback: (Array<Stamper>) -> Unit) {
+        val users = database.getReference("user")
         val result = mutableListOf<Stamper>()
+
+        val query = users.orderByChild("login").equalTo(0.0)
 
         query.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
@@ -113,6 +131,18 @@ class AdmRepository(val context: Context) {
 
     fun deleteStore(store: Store) {
         val reference = database.getReference("stores/${store.id}")
+
+        reference.removeValue()
+    }
+
+    fun userRegisterConfirmation(stamper: Stamper){
+        val query = database.getReference("user/${stamper.uid}")
+
+        query.setValue(stamper)
+    }
+
+    fun deleteUser(stamper: Stamper) {
+        val reference = database.getReference("stores/${stamper.uid}")
 
         reference.removeValue()
     }

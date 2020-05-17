@@ -16,42 +16,12 @@ class AdmInteractor(val context: Context) {
         repository.storeList(callback)
     }
 
-    fun saveUser(
-        nome: String, cpf: String, rg: String, login: String,
-        loja: String, email: String, password: String, confirmPassword: String,
-        callback: (result: String?) -> Unit
-    ) {
-        if (nome.isEmpty() || cpf.isEmpty() || rg.isEmpty() || email.isEmpty() ||
-            password.isEmpty() || confirmPassword.isEmpty()
-        ) {
-            callback("VAZIO")
-        } else if (password.length < 6) {
-            callback("SENHA")
-        } else if (password != confirmPassword) {
-            callback("SENHAS")
-        } else if (cpf.length != 11) {
-            callback("CPF")
-        } else {
-            try {
-                val tryCpf = cpf.toLong()
-                var typeLogin: Int
-                if (login == "Administrador") {
-                    typeLogin = 2
-                } else {
-                    typeLogin = 1
-                }
-
-                val user = Stamper(nome, cpf, rg, loja, typeLogin)
-
-                repository.saveUser(user, email, password, callback)
-            } catch (e: Exception) {
-                callback("CPF")
-            }
-        }
-    }
-
     fun userList(callback: (Array<Stamper>) -> Unit) {
         repository.userList(callback)
+    }
+
+    fun userListRegister(callback: (Array<Stamper>) -> Unit) {
+        repository.userListRegister(callback)
     }
 
     fun storeSave(
@@ -66,7 +36,7 @@ class AdmInteractor(val context: Context) {
     ) {
         if (name.isEmpty() || carPrice.isEmpty() || motoPrice.isEmpty() || location.isEmpty() || cnpj.isEmpty()) {
             callback("VAZIO")
-        } else if(cnpj.length != 14){
+        } else if (cnpj.length != 14) {
 
         } else {
             var ver = 0
@@ -100,5 +70,19 @@ class AdmInteractor(val context: Context) {
 
     fun deleteStore(store: Store) {
         repository.deleteStore(store)
+    }
+
+    fun userRegisterConfirmation(stamper: Stamper) {
+        if (stamper.loja == "S/L") {
+            stamper.login = 2
+        } else {
+            stamper.login = 1
+        }
+
+        repository.userRegisterConfirmation(stamper)
+    }
+
+    fun deleteUser(stamper: Stamper) {
+        repository.deleteUser(stamper)
     }
 }

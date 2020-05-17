@@ -2,6 +2,7 @@ package br.com.licenseplate.views.activities.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -33,19 +34,21 @@ class LoginStamper : AppCompatActivity() {
             Toast.makeText(this, result[1], Toast.LENGTH_LONG).show()
             if (result[0] == "OK") {
                 viewModel.verifyLogin { result ->
-                    if (result?.login == 0) {
+                    if (result == null) {
+                        val intent = Intent(this, ProfileRegister::class.java)
+                        startActivity(intent)
+                    } else if (result.login == 0) {
                         viewModel.loginNotVerified { response ->
                             Toast.makeText(this, response, Toast.LENGTH_SHORT).show()
                         }
-                    } else if (result?.login == 1) {
+                    } else if (result.login == 1) {
                         val intent = Intent(this, AuthorizationList::class.java)
                         startActivity(intent)
-                    } else {
+                    } else if(result.login == 2) {
                         val intent = Intent(this, UserRegister::class.java)
                         startActivity(intent)
                     }
                 }
-
             }
         }
     }

@@ -13,7 +13,6 @@ import br.com.licenseplate.viewmodel.AdmViewModel
 import br.com.licenseplate.viewmodel.LoginViewModel
 import br.com.licenseplate.views.activities.MainActivity
 import br.com.licenseplate.views.adapter.StoreAdapter
-import com.google.android.gms.maps.model.LatLng
 import kotlinx.android.synthetic.main.activity_store_list_adm.*
 
 class StoreListAdm : AppCompatActivity() {
@@ -83,7 +82,7 @@ class StoreListAdm : AppCompatActivity() {
     private fun storeList() {
         viewModelA.storeList.observe(this, Observer { store ->
             recyclerViewStoreListAdm.layoutManager = LinearLayoutManager(this)
-            val adapter = StoreAdapter(store, applicationContext, viewModelA)
+            val adapter = StoreAdapter(store, this, viewModelA)
             recyclerViewStoreListAdm.adapter = adapter
         })
 

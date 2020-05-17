@@ -82,7 +82,7 @@ class UserList : AppCompatActivity() {
     private fun userList() {
         recyclerViewUserList.layoutManager = LinearLayoutManager(this)
         viewModelA.users.observe(this, Observer { users ->
-            val adapter = UserAdapter(users)
+            val adapter = UserAdapter(users,this, viewModelA)
             recyclerViewUserList.adapter = adapter
         })
 

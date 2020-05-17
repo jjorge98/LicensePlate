@@ -58,7 +58,6 @@ class StoreAdapter(
             if (itemSelected?.itemId == R.id.deleteStore) {
                 viewModelA.deleteStore(store)
                 val intent = Intent(context.applicationContext, StoreListAdm::class.java)
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 context.startActivity(intent)
                 return@setOnMenuItemClickListener true
             }

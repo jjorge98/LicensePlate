@@ -25,6 +25,18 @@
     <string name="stores">Lojas</string>
     <string name="receiveRequest">Receber solicitação</string>
     <string name="finishRequest">Finalizar requisição</string>
+    <string name="userRegister">Cadastrar usuários</string>
+    <string name="title_activity_store_maps">Map</string>
+    <string name="textViewFinishedRequest">Sua solicitação foi concluída! Por favor, anote ou tire print do seu número de protocolo para consulta do processo!</string>
+    <string name="protocolNumber">Número de protocolo:</string>
+    <string name="backMain">Voltar a tela inicial</string>
+    <string name="telefone">Telefone</string>
+    <string name="store">Loja</string>
+    <string name="cpf">CPF</string>
+    <string name="name">Nome</string>
+    <string name="rg">RG</string>
+    <string name="register">Cadastrar</string>
+    <string name="delete">Excluir</string>
 
     <string-array name="Estados">
         <item>AL</item>
@@ -43,5 +55,4 @@
     <string-array name="Stores">
 
     </string-array>
-    <string name="title_activity_store_maps">Map</string>
 </resources>

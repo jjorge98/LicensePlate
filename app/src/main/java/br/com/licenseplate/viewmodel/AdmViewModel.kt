@@ -35,66 +35,14 @@ class AdmViewModel(val app: Application) : AndroidViewModel(app) {
         }
     }
 
-    fun saveUser(
-        nome: String,
-        cpf: String,
-        rg: String,
-        email: String,
-        password: String,
-        confirmPassword: String,
-        login: String,
-        loja: String,
-        callback: (Array<String>) -> Unit
-    ) {
-        val newCpf = cpf.replace(".", "").replace("-", "")
-
-        interactor.saveUser(
-            nome,
-            newCpf,
-            rg,
-            login,
-            loja,
-            email,
-            password,
-            confirmPassword
-        ) { response ->
-            if (response == "OK") {
-                val result = arrayOf("OK", "Usuário cadastrado com sucesso")
-                callback(result)
-            } else if (response == "VAZIO") {
-                val result = arrayOf("ERROR", "Por favor, preencha todos os campos!")
-                callback(result)
-            } else if (response == "SENHA") {
-                val result = arrayOf(
-                    "ERROR",
-                    "A senha deve conter no mínimo 6 dígitos. Por favor verifique e tente novamente!"
-                )
-                callback(result)
-            } else if (response == "SENHAS") {
-                val result = arrayOf(
-                    "ERROR",
-                    "As senhas não conferem. Por favor verifique e tente novamente!"
-                )
-                callback(result)
-            } else if (response == "CPF") {
-                val result =
-                    arrayOf("ERROR", "CPF inválido. Por favor verifique e tente novamente!")
-                callback(result)
-            } else if (response == null) {
-                val result = arrayOf(
-                    "ERROR",
-                    "Ocorreu um erro ao cadastrar usuário. Por favor, tente novamente!"
-                )
-                callback(result)
-            } else {
-                val result = arrayOf("ERROR", response)
-                callback(result)
-            }
+    fun userList() {
+        interactor.userList { response ->
+            users.value = response
         }
     }
 
-    fun userList() {
-        interactor.userList { response ->
+    fun userListRegister() {
+        interactor.userListRegister { response ->
             users.value = response
         }
     }
@@ -142,5 +90,13 @@ class AdmViewModel(val app: Application) : AndroidViewModel(app) {
 
     fun deleteStore(store: Store) {
         interactor.deleteStore(store)
+    }
+
+    fun userRegisterConfirmation(stamper: Stamper) {
+        interactor.userRegisterConfirmation(stamper)
+    }
+
+    fun deleteUser(stamper: Stamper) {
+        interactor.deleteUser(stamper)
     }
 }
