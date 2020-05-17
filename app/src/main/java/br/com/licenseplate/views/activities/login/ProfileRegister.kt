@@ -130,10 +130,10 @@ class ProfileRegister : AppCompatActivity() {
         val rg = rgProfileRegister.text.toString()
         val cel = celProfileRegister.text.toString()
 
-        viewModelL.saveProfile(name, cpf, rg, loja, cel) {response ->
+        viewModelL.saveProfile(name, cpf, rg, loja, cel) { response ->
             Toast.makeText(this, response[1], Toast.LENGTH_SHORT).show()
 
-            if(response[0] == "OK"){
+            if (response[0] == "OK") {
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
             }
