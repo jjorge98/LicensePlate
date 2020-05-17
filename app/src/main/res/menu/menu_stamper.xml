@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/userRegister"
-        android:title="Cadastrar usuário" />
-    <item
-        android:id="@+id/userList"
-        android:title="Listar usuários" />
-    <item
         android:id="@+id/licenseRequest"
-        android:title="Solicitações de placa" />
+        android:title="@string/licenseRequest"
+        app:showAsAction="never" />
     <item
         android:id="@+id/licenseHistory"
-        android:title="Histórico de placas" />
+        android:title="@string/licenseHistory"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/logout"
+        android:title="@string/logout"
+        app:showAsAction="never" />
 </menu>

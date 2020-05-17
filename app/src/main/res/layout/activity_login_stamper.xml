@@ -2,15 +2,16 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/loginTeste"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".loginStamper">
+    android:background="@drawable/background"
+    tools:context=".views.activities.login.LoginStamper">
 
     <ImageView
         android:id="@+id/logoLogin"
         android:layout_width="295dp"
         android:layout_height="207dp"
-        android:layout_marginTop="60dp"
         app:layout_constraintBottom_toTopOf="@+id/emailLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -24,7 +25,7 @@
         android:layout_height="40dp"
         android:background="@drawable/inputs"
         android:ems="10"
-        android:hint="EMAIL"
+        android:hint="E-MAIL"
         android:inputType="textEmailAddress"
         android:paddingLeft="20dp"
         app:layout_constraintBottom_toTopOf="@+id/passwordLogin"
@@ -42,24 +43,24 @@
         android:hint="SENHA"
         android:inputType="textPassword"
         android:paddingLeft="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonLogin"
+        app:layout_constraintBottom_toTopOf="@+id/buttonReqLicense"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailLogin" />
 
     <Button
-        android:id="@+id/buttonLogin"
+        android:id="@+id/buttonReqLicense"
         android:layout_width="147dp"
         android:layout_height="51dp"
         android:background="@drawable/botoes"
         android:text="Login"
         android:textStyle="bold"
+
         app:layout_constraintBottom_toTopOf="@+id/forgotPasswordLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-
         app:layout_constraintTop_toBottomOf="@+id/passwordLogin" />
 
     <TextView
@@ -68,12 +69,28 @@
         android:layout_height="wrap_content"
         android:text="Esqueci minha senha"
         android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/registerLoginStamper"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonReqLicense" />
+
+    <TextView
+        android:id="@+id/registerLoginStamper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cadastre-se"
+        android:textAlignment="center"
+        android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />
+        app:layout_constraintTop_toBottomOf="@+id/forgotPasswordLogin" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

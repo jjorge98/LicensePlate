@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".views.activities.client.ClientData">
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="295dp"
+        android:layout_height="207dp"
+        android:src="@drawable/logo"
+        app:layout_constraintBottom_toTopOf="@+id/nameClientData"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/nameClientData"
+        android:layout_width="320dp"
+        android:layout_height="40dp"
+        android:background="@drawable/inputs"
+        android:ems="10"
+        android:hint="Nome"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/cpfClientData"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <EditText
+        android:id="@+id/cpfClientData"
+        android:layout_width="320dp"
+        android:layout_height="40dp"
+        android:background="@drawable/inputs"
+        android:ems="10"
+        android:hint="CPF"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/celClientData"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameClientData" />
+
+    <EditText
+        android:id="@+id/celClientData"
+        android:layout_width="320dp"
+        android:layout_height="40dp"
+        android:background="@drawable/inputs"
+        android:ems="10"
+        android:hint="Telefone"
+        android:inputType="phone"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/buttonClientData"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cpfClientData" />
+
+    <Button
+        android:id="@+id/buttonClientData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/botoes"
+        android:text="@string/next"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/celClientData" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

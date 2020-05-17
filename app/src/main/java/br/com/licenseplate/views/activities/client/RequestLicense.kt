@@ -1,0 +1,119 @@
+package br.com.licenseplate.views.activities.client
+
+import android.content.Intent
+import android.os.Bundle
+import android.util.Log
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
+import br.com.licenseplate.R
+import br.com.licenseplate.viewmodel.ClientViewModel
+import kotlinx.android.synthetic.main.activity_request_license.*
+
+class RequestLicense : AppCompatActivity() {
+    private lateinit var estado: String
+    private val viewModel: ClientViewModel by lazy {
+        ViewModelProvider(this).get(ClientViewModel::class.java)
+    }
+    private var id: Int = 0
+    private val root = "autorizacaoCliente"
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_request_license)
+
+        spinnerFill()
+
+        viewModel.verifyID(root) { result ->
+            id = result
+        }
+
+        buttonReqLicense.setOnClickListener { next() }
+    }
+
+    private fun spinnerFill() {
+        //Acha o spinner pelo id
+        val spinner: Spinner = findViewById(R.id.spinnerEstados)
+
+        //Cria um array adapter com o array que está no xml de strings
+        ArrayAdapter.createFromResource(
+            this,
+            R.array.Estados,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            //Seta o meio de abertura do spinner: dropdown
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            //Coloca o adaptador no spinner
+            spinner.adapter = adapter
+        }
+
+        //Adiciona um listener no spinner
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            //Se nada for selecionado, não faz nada
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                //
+            }
+
+            //Se algo for selecionado, alguns campos vão aparecer. Essa função recebe 4 parametros.
+            //Os que mais importam pra gente são parent que é o adapterview com os itens do spinner
+            // e a posição que é a que o usuário selecionou
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                //Variável que pega o item que o usuário selecionou
+                estado = parent?.getItemAtPosition(position).toString()
+
+                if (estado == "BA" || estado == "DF") {
+                    //Coloca no textview o que fazer e nos inputs a hint do que colocar
+                    helpTextReqLicense.text = resources.getString(R.string.textLicense)
+                    inputReqLicense.hint = resources.getString(R.string.license)
+                } else {
+                    helpTextReqLicense.text = resources.getString(R.string.textAuthorization)
+                    inputReqLicense.hint = resources.getString(R.string.authorization)
+                }
+            }
+        }
+    }
+
+    private fun next() {
+        val intent = Intent(this, ClientData::class.java)
+
+        if (estado == "BA" || estado == "DF") {
+            val placa = inputReqLicense.text.toString().toUpperCase()
+            viewModel.verifyLicenseNumber(placa) { result ->
+                if (result == "OK") {
+                    intent.apply {
+                        putExtra("carroID", placa)
+                        putExtra("uf", estado)
+                        putExtra("id", id)
+                    }
+                    startActivity(intent)
+                } else {
+                    Toast.makeText(this, result, Toast.LENGTH_LONG).show()
+                }
+            }
+        } else {
+            val authorization = inputReqLicense.text.toString()
+
+            viewModel.verifyAuthorization(authorization) { result ->
+                if (result == "OK") {
+                    intent.apply {
+                        putExtra("carroID", authorization)
+                        putExtra("uf", estado)
+                        putExtra("id", id)
+                    }
+                    startActivity(intent)
+                } else {
+                    Toast.makeText(this, result, Toast.LENGTH_LONG).show()
+                }
+            }
+        }
+    }
+}

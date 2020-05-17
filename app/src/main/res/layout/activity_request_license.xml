@@ -4,6 +4,83 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".requestLicense">
+    android:background="@drawable/background"
+    tools:context=".views.activities.client.RequestLicense">
 
+    <ImageView
+        android:id="@+id/logoReqLicense"
+        android:layout_width="295dp"
+        android:layout_height="207dp"
+        app:layout_constraintBottom_toTopOf="@+id/helpEstadoReqLicense"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/helpEstadoReqLicense"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/botoes"
+        android:text="@string/requestLicenseEstado"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerEstados"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logoReqLicense" />
+
+
+    <Spinner
+        android:id="@+id/spinnerEstados"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/inputs"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/helpTextReqLicense"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/helpEstadoReqLicense" />
+
+    <TextView
+        android:id="@+id/helpTextReqLicense"
+        android:layout_width="371dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/botoes"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/inputReqLicense"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerEstados" />
+
+    <EditText
+        android:id="@+id/inputReqLicense"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:background="@drawable/inputs"
+        android:ems="10"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/buttonReqLicense"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/helpTextReqLicense" />
+
+    <Button
+        android:id="@+id/buttonReqLicense"
+        android:layout_width="147dp"
+        android:layout_height="51dp"
+        android:background="@drawable/botoes"
+        android:text="Próxima etapa"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputReqLicense" />
 </androidx.constraintlayout.widget.ConstraintLayout>

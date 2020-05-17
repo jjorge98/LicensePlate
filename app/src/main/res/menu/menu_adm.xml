@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/storeRegister"
+        android:title="@string/storeregister"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/userRegister"
+        android:title="@string/userregister"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/storeList"
+        android:title="@string/storelist"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/userList"
+        android:title="@string/userlist"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/logout"
+        android:title="@string/logout"
+        app:showAsAction="never" />
+
+</menu>

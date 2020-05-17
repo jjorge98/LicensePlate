@@ -4,15 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserRegister">
+    android:background="@drawable/background"
+    tools:context=".views.activities.adm.UserRegister">
+
+    <include
+        android:id="@+id/action_bar"
+        layout="@layout/action_bar"
+        app:layout_constraintBottom_toTopOf="@+id/textViewUserRegister"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></include>
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
+        android:id="@+id/textViewUserRegister"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="UserRegister"
+        android:fontFamily="@font/alike_angular"
+        android:text="@string/userRegister"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerViewUserRegister"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/action_bar" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewUserRegister"
+        android:layout_width="409dp"
+        android:layout_height="605dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewUserRegister" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
