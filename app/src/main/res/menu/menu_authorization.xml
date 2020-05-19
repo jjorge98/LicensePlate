@@ -9,4 +9,8 @@
         android:id="@+id/finishRequest"
         android:title="@string/finishRequest"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/seeClientData"
+        android:title="@string/see_client_data"
+        app:showAsAction="never" />
 </menu>

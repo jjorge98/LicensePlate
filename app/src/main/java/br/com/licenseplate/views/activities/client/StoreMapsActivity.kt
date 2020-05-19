@@ -4,7 +4,9 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
+import android.os.Handler
 import android.text.TextUtils.indexOf
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.Observer
@@ -23,22 +25,25 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.activity_store_maps.*
-
+//TODO: Fazer filtro de localização nas lojas pra mostrar no mapa
 class StoreMapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
     //início variaveis vindas de activities anteriores
-    var nome: String? = null
-    var cpf: String? = null
-    var cel: String? = null
-    var carroID: String? = null
-    var uf: String? = null
+    private var nome: String? = null
+    private var cpf: String? = null
+    private var cel: String? = null
+    private var placa: String? = null
+    private var uf: String? = null
+    private var numAutorizacao: String? = null
+    private var materiais: String? = null
+    private var categoria: String? = null
     //fim variáveis vindas de activities anteriores
 
     var id = 0
-    val root = "autorizacaoCliente"
+    private val root = "autorizacaoCliente"
     private lateinit var map: GoogleMap
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var lastLocation: Location
-    private var lastSelectedMark: Marker? = null
+    var lastSelectedMark: Marker? = null
 
     private val viewModelC: ClientViewModel by lazy {
         ViewModelProvider(this).get(ClientViewModel::class.java)
@@ -58,13 +63,18 @@ class StoreMapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnM
         nome = intent.getStringExtra("nome")
         cpf = intent.getStringExtra("cpf")
         cel = intent.getStringExtra("cel")
-        carroID = intent.getStringExtra("carroID")
+        placa = intent.getStringExtra("placa")
         uf = intent.getStringExtra("uf")
+        numAutorizacao = intent.getStringExtra("numAutorizacao")
+        materiais = intent.getStringExtra("materiais")
+        categoria = intent.getStringExtra("categoria")
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
+        buttonMap.setOnClickListener { next() }
     }
 
     private fun storesRecyclerView(location: LatLng) {
@@ -140,19 +150,38 @@ class StoreMapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnM
     }
 
     override fun onMarkerClick(marker: Marker?): Boolean {
+        lastSelectedMark = marker
+        marker?.showInfoWindow()
+
+        return true
+    }
+
+    private fun next() {
         viewModelC.verifyID(root) { result ->
             id = result
         }
-        if (lastSelectedMark != null && lastSelectedMark == marker) {
-            viewModelC.saveAuthorization(carroID, uf, nome, cel, cpf, marker?.tag as Int?, id)
-            val intent = Intent(this, FinishedRequest::class.java)
-            intent.putExtra("id", id)
-            startActivity(intent)
-        } else {
-            lastSelectedMark = marker
-            marker?.showInfoWindow()
-        }
 
-        return true
+        Handler().postDelayed({
+            viewModelC.saveAuthorization(
+                placa,
+                nome,
+                cel,
+                cpf,
+                lastSelectedMark,
+                id,
+                numAutorizacao,
+                materiais,
+                categoria
+            ) { response ->
+                if (response[0] == "ERROR") {
+                    Toast.makeText(this, response[1], Toast.LENGTH_SHORT).show()
+                } else {
+                    val intent = Intent(this, FinishedRequest::class.java)
+                    intent.putExtra("id", id)
+                    startActivity(intent)
+                    finish()
+                }
+            }
+        }, 2000)
     }
 }

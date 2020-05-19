@@ -2,7 +2,6 @@ package br.com.licenseplate.views.activities.client
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -11,8 +10,11 @@ import br.com.licenseplate.viewmodel.ClientViewModel
 import kotlinx.android.synthetic.main.activity_client_data.*
 
 class ClientData : AppCompatActivity() {
-    private var carroID: String? = null
+    private var placa: String? = null
     private var uf: String? = null
+    private var numAutorizacao: String? = null
+    private var materiais: String? = null
+    private var categoria: String? = null
 
     private val viewModel: ClientViewModel by lazy {
         ViewModelProvider(this).get(ClientViewModel::class.java)
@@ -23,8 +25,11 @@ class ClientData : AppCompatActivity() {
         setContentView(R.layout.activity_client_data)
 
         val intent = this.intent
-        carroID = intent.getStringExtra("carroID")
+        placa = intent.getStringExtra("placa")
         uf = intent.getStringExtra("uf")
+        numAutorizacao = intent.getStringExtra("numAutorizacao")
+        materiais = intent.getStringExtra("materiais")
+        categoria = intent.getStringExtra("categoria")
 
         buttonClientData.setOnClickListener { proximo() }
     }
@@ -37,11 +42,15 @@ class ClientData : AppCompatActivity() {
         viewModel.verifyClientData(nome, cpf, cel) { result ->
             if (result == "OK") {
                 val intent = Intent(this, StoreMapsActivity::class.java)
+                //Colocar as novas variáveis no extra
                 intent.putExtra("nome", nome)
                 intent.putExtra("cpf", cpf)
                 intent.putExtra("cel", cel)
-                intent.putExtra("carroID", carroID)
+                intent.putExtra("placa", placa)
                 intent.putExtra("uf", uf)
+                intent.putExtra("numAutorizacao", numAutorizacao)
+                intent.putExtra("materiais", materiais)
+                intent.putExtra("categoria", categoria)
                 startActivity(intent)
             } else {
                 Toast.makeText(this, result, Toast.LENGTH_LONG).show()

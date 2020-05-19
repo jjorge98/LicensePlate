@@ -41,8 +41,7 @@ class ProfileRegister : AppCompatActivity() {
         super.onResume()
         viewModelL.verifyLogin { result ->
             if (result == null) {
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
+                //
             } else if(result.login == 0){
                 //TODO: Direcionar a tela de tudo ok, mas falta resgistro
             }

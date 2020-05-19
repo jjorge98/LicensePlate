@@ -8,7 +8,12 @@ import br.com.licenseplate.dataclass.AuthorizationClient
 import br.com.licenseplate.dataclass.Client
 import br.com.licenseplate.dataclass.Store
 import br.com.licenseplate.repository.ClientRepository
+import br.com.licenseplate.repository.apiretrofit.DetranAPI
+import br.com.licenseplate.repository.apiretrofit.dto.AuthorizationDTO
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
+import java.text.DateFormat
+import java.util.*
 import kotlin.math.asin
 import kotlin.math.cos
 import kotlin.math.sin
@@ -16,6 +21,8 @@ import kotlin.math.sqrt
 
 class ClientInteractor(val context: Context) {
     private val repository = ClientRepository(context)
+    private val detranRepository =
+        DetranAPI(context, "https://homologacao.emplacbrasil.com.br/api/")
 
     fun verifyID(root: String, callback: (result: Int) -> Unit) {
         repository.verifyID(root, callback)
@@ -42,39 +49,39 @@ class ClientInteractor(val context: Context) {
 
     fun verifyLicenseNumber(
         authorization: Authorization,
-        callback: (result: String?) -> Unit
+        callback: (result: String?, responseAPI: AuthorizationDTO?) -> Unit
     ) {
         if (authorization.placa?.isEmpty()!!) {
-            callback("VAZIO")
+            callback("VAZIO", null)
         } else if (authorization.placa!!.length != 7) {
-            callback("PLACA")
+            callback("PLACA", null)
         } else {
             var ver = 0
-            for (i in 0 until 7) {
-                if ((i == 3 || i == 5 || i == 6) && !authorization.placa!![i].isDigit()) {
+            for (i in 0 until 7) {//PBR4724
+                if ((i == 0 || i == 1 || i == 2) && !authorization.placa!![i].isLetter()) {
                     ver = 1
-                    callback("PLACA")
-                } else if ((i != 3 && i != 5 && i != 6) && !authorization.placa!![i].isLetter()) {
+                    callback("PLACA", null)
+                } else if ((i == 3 || i == 5 || i == 6) && !authorization.placa!![i].isDigit()) {
                     ver = 1
-                    callback("PLACA")
+                    callback("PLACA", null)
                 }
             }
             if (ver == 0) {
-                callback(null)
+                detranRepository.getLicensePlateInfo(authorization.placa, callback)
             }
         }
     }
 
     fun verifyAuthorization(
         authorization: Authorization,
-        callback: (result: String?) -> Unit
+        callback: (result: String?, responseAPI: AuthorizationDTO?) -> Unit
     ) {
         if (authorization.numAutorizacao?.isEmpty()!!) {
-            callback("VAZIO")
+            callback("VAZIO", null)
         } else if (authorization.numAutorizacao!!.length < 15) {
-            callback("LENGTH")
+            callback("LENGTH", null)
         } else {
-            callback(null)
+            detranRepository.getAuthorizationInfo(authorization.numAutorizacao, callback)
         }
     }
 
@@ -205,7 +212,29 @@ class ClientInteractor(val context: Context) {
         }
     }
 
-    fun saveAuthorization(autCli: AuthorizationClient){
-        repository.save("autorizacaoCliente", autCli, autCli.id)
+    fun saveAuthorization(
+        placa: String?,
+        nome: String?,
+        cel: String?,
+        cpf: String?,
+        marker: Marker?,
+        id: Int?,
+        numAutorizacao: String?,
+        materiais: String?,
+        categoria: String?,
+        callback: (result: String) -> Unit
+    ) {
+        if (marker == null) {
+            callback("VAZIO")
+        } else {
+            val calendar = Calendar.getInstance()
+            val date = DateFormat.getDateInstance().format(calendar.time)
+            val authorization = Authorization(numAutorizacao, placa, date, materiais, 0, categoria)
+            val client = Client(nome, cpf, cel)
+            val autCli = AuthorizationClient(authorization, client, marker.tag as Int, id)
+
+            repository.save("autorizacaoCliente", autCli, autCli.id)
+            callback("OK")
+        }
     }
 }
