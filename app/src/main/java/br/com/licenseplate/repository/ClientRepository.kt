@@ -1,8 +1,10 @@
 package br.com.licenseplate.repository
 
+import android.content.ContentValues.TAG
 import android.content.Context
 import android.location.Address
 import android.location.Geocoder
+import android.util.Log
 import br.com.licenseplate.dataclass.Store
 import com.google.android.gms.maps.model.LatLng
 import com.google.firebase.database.DataSnapshot

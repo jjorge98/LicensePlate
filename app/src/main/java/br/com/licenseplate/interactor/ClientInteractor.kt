@@ -85,11 +85,61 @@ class ClientInteractor(val context: Context) {
         }
     }
 
-    fun storeList(location: LatLng, callback: (result: Array<Store>) -> Unit) {
+    fun storeList(location: LatLng, uf: String?, callback: (result: Array<Store>) -> Unit) {
         repository.storeList { response ->
-            mergeSort(response, location, 0, response.size - 1)
-            callback(response)
+            filterUF(response, uf) { arrayUFStores ->
+                if (arrayUFStores.size > 1) {
+                    mergeSort(arrayUFStores, location, 0, response.size - 1)
+                    callback(arrayUFStores)
+                }
+            }
         }
+    }
+
+    private fun filterUF(
+        stores: Array<Store>,
+        uf: String?,
+        callback: (result: Array<Store>) -> Unit
+    ) {
+        val resultStores = mutableListOf<Store>()
+        var estado = if (uf == "DF") {
+            "Distrito Federal"
+        } else if (uf == "GO") {
+            "Goiás"
+        } else if (uf == "RO") {
+            "Rondônia"
+        } else {
+            "São Paulo"
+        }
+
+        stores.forEach { store ->
+            val latitude =
+                store.localizacao?.substring(
+                    0,
+                    indexOf(store.localizacao, ',')
+                )
+                    ?.toDouble()
+            val longitude =
+                store.localizacao?.substring(
+                    indexOf(
+                        store.localizacao,
+                        ", "
+                    ) + 1
+                )?.toDouble()
+            val latLng = if (latitude != null && longitude != null) {
+                LatLng(latitude, longitude)
+            } else {
+                LatLng(0.0, 0.0)
+            }
+
+            getAddress(latLng) { address ->
+                if (address[0].adminArea == estado) {
+                    resultStores.add(store)
+                }
+            }
+        }
+
+        callback(resultStores.toTypedArray())
     }
 
     fun getAddress(latLng: LatLng, callback: (result: List<Address>) -> Unit) {

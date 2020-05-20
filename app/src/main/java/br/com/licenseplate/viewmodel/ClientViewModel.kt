@@ -100,8 +100,8 @@ class ClientViewModel(val app: Application) : AndroidViewModel(app) {
         }
     }
 
-    fun storeList(location: LatLng) {
-        interactor.storeList(location) { response ->
+    fun storeList(location: LatLng, uf: String?) {
+        interactor.storeList(location, uf) { response ->
             storeList.value = response
         }
     }

@@ -25,7 +25,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.activity_store_maps.*
-//TODO: Fazer filtro de localização nas lojas pra mostrar no mapa
+
 class StoreMapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
     //início variaveis vindas de activities anteriores
     private var nome: String? = null
@@ -95,7 +95,7 @@ class StoreMapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnM
             }
         })
 
-        viewModelC.storeList(location)
+        viewModelC.storeList(location, uf)
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
