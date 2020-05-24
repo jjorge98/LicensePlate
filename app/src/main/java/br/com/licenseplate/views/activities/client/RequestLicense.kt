@@ -2,7 +2,6 @@ package br.com.licenseplate.views.activities.client
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -64,7 +63,7 @@ class RequestLicense : AppCompatActivity() {
                 //Variável que pega o item que o usuário selecionou
                 estado = parent?.getItemAtPosition(position).toString()
 
-                if (estado == "BA" || estado == "DF") {
+                if (estado == "DF") {
                     //Coloca no textview o que fazer e nos inputs a hint do que colocar
                     helpTextReqLicense.text = resources.getString(R.string.textLicense)
                     inputReqLicense.hint = resources.getString(R.string.license)
@@ -79,12 +78,15 @@ class RequestLicense : AppCompatActivity() {
     private fun next() {
         val intent = Intent(this, ClientData::class.java)
 
-        if (estado == "BA" || estado == "DF") {
+        if (estado == "DF") {
             val placa = inputReqLicense.text.toString().toUpperCase()
-            viewModel.verifyLicenseNumber(placa) { result ->
+            viewModel.verifyLicenseNumber(placa) { result, authorizationResponse ->
                 if (result == "OK") {
                     intent.apply {
-                        putExtra("carroID", placa)
+                        putExtra("numAutorizacao", authorizationResponse?.numAutorizacao)
+                        putExtra("placa", authorizationResponse?.placa)
+                        putExtra("materiais", authorizationResponse?.materiais)
+                        putExtra("categoria", authorizationResponse?.categoria)
                         putExtra("uf", estado)
                     }
                     startActivity(intent)
@@ -95,10 +97,13 @@ class RequestLicense : AppCompatActivity() {
         } else {
             val authorization = inputReqLicense.text.toString()
 
-            viewModel.verifyAuthorization(authorization) { result ->
+            viewModel.verifyAuthorization(authorization) { result, authorizationResponse ->
                 if (result == "OK") {
                     intent.apply {
-                        putExtra("carroID", authorization)
+                        putExtra("numAutorizacao", authorizationResponse?.numAutorizacao)
+                        putExtra("placa", authorizationResponse?.placa)
+                        putExtra("materiais", authorizationResponse?.materiais)
+                        putExtra("categoria", authorizationResponse?.categoria)
                         putExtra("uf", estado)
                     }
                     startActivity(intent)

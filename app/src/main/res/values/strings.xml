@@ -37,13 +37,11 @@
     <string name="rg">RG</string>
     <string name="register">Cadastrar</string>
     <string name="delete">Excluir</string>
+    <string name="see_client_data">Ver dados do cliente</string>
 
     <string-array name="Estados">
-        <item>AL</item>
-        <item>BA</item>
         <item>DF</item>
         <item>GO</item>
-        <item>PA</item>
         <item>RO</item>
         <item>SP</item>
     </string-array>

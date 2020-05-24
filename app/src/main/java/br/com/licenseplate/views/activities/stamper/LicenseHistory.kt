@@ -11,7 +11,7 @@ import br.com.licenseplate.viewmodel.LoginViewModel
 import br.com.licenseplate.views.activities.MainActivity
 
 class LicenseHistory : AppCompatActivity() {
-    private val viewModel: LoginViewModel by lazy {
+    private val viewModelL: LoginViewModel by lazy {
         ViewModelProvider(this).get(LoginViewModel::class.java)
     }
 
@@ -23,8 +23,9 @@ class LicenseHistory : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        viewModel.verifyLogin { result ->
+        viewModelL.verifyLogin { result ->
             if (result == null) {
+                viewModelL.logout()
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
             }
@@ -55,7 +56,7 @@ class LicenseHistory : AppCompatActivity() {
             startActivity(intent)
             return true
         } else if (item.itemId == R.id.logout) {
-            viewModel.logout()
+            viewModelL.logout()
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }

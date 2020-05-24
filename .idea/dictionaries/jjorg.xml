@@ -2,28 +2,45 @@
   <dictionary name="jjorg">
     <words>
       <w>administrador</w>
+      <w>aluguel</w>
       <w>anteriores</w>
       <w>autorizacao</w>
       <w>autorização</w>
       <w>carro</w>
+      <w>categoria</w>
       <w>chassi</w>
       <w>cliente</w>
       <w>cnpj</w>
+      <w>colecao</w>
+      <w>coleção</w>
       <w>coloramareloq</w>
+      <w>detran</w>
+      <w>diplomático</w>
+      <w>distrito</w>
       <w>estampador</w>
+      <w>experiencia</w>
+      <w>experiência</w>
       <w>geocoder</w>
+      <w>goias</w>
+      <w>gson</w>
       <w>interactor</w>
       <w>loja</w>
       <w>materiais</w>
       <w>moto</w>
+      <w>oficial</w>
       <w>pivo</w>
       <w>placa</w>
+      <w>placas</w>
       <w>proximo</w>
       <w>receber</w>
       <w>resultado</w>
+      <w>rondonia</w>
+      <w>rondônia</w>
+      <w>serpro</w>
       <w>solicitação</w>
       <w>teste</w>
       <w>tipo</w>
+      <w>tipos</w>
       <w>troca</w>
       <w>variáveis</w>
       <w>vazio</w>

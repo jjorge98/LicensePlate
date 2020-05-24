@@ -5,9 +5,10 @@ data class Authorization(
     var placa: String? = null,
     var data: String? = null,
     var materiais : String? = null,
-    var status: Int? = null
+    var status: Int? = null,
+    var categoria: String? = null
 ) {
     override fun toString(): String {
-        return "Autorização: $numAutorizacao. Placa: $placa. Data: $data. Materiais: $materiais. Status: $status"
+        return "Autorização: $numAutorizacao. Placa: $placa. Data: $data. Materiais: $materiais. Status: $status. Categoria: $categoria"
     }
 }

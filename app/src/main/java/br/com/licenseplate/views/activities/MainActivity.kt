@@ -2,9 +2,12 @@ package br.com.licenseplate.views.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import br.com.licenseplate.R
+import br.com.licenseplate.repository.ClientRepository
+import br.com.licenseplate.repository.apiretrofit.DetranAPI
 import br.com.licenseplate.viewmodel.LoginViewModel
 import br.com.licenseplate.views.activities.adm.StoreListAdm
 import br.com.licenseplate.views.activities.client.HelpLicenseRequest
@@ -18,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     private val viewModel: LoginViewModel by lazy {
         ViewModelProvider(this).get(LoginViewModel::class.java)
     }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

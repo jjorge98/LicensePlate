@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="205dp"
     android:layout_height="205dp"
     android:background="@drawable/adapter_line">
@@ -25,7 +26,7 @@
         android:text="PBR4A44"
         android:textAlignment="center"
         android:textColor="#000"
-        android:textSize="30sp"
+        android:textSize="32sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/licenseImgAT"
         app:layout_constraintEnd_toEndOf="@+id/licenseImgAT"
@@ -40,45 +41,44 @@
         android:text="202000015580148"
         android:textAlignment="center"
         android:textColor="#000"
-        android:textSize="14sp"
+        android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/clientAT"
+        app:layout_constraintBottom_toTopOf="@+id/materiaisAT"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/licenseImgAT"
-        app:layout_constraintVertical_bias="0.153" />
+        app:layout_constraintTop_toBottomOf="@+id/licenseImgAT" />
 
     <TextView
-        android:id="@+id/clientAT"
+        android:id="@+id/materiaisAT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-black"
-        android:text="Jorge"
+        android:text="Par"
         android:textAlignment="center"
         android:textColor="#000"
-        android:textSize="14sp"
+        android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/cellAT"
+        app:layout_constraintBottom_toTopOf="@+id/categoriaAT"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/authorizationAT" />
 
     <TextView
-        android:id="@+id/cellAT"
+        android:id="@+id/categoriaAT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-black"
-        android:text="61991070571"
+        android:text="Particular"
         android:textAlignment="center"
         android:textColor="#000"
-        android:textSize="14sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/clientAT" />
+        app:layout_constraintTop_toBottomOf="@+id/materiaisAT" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

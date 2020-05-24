@@ -4,11 +4,11 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import br.com.licenseplate.dataclass.Authorization
-import br.com.licenseplate.dataclass.AuthorizationClient
 import br.com.licenseplate.dataclass.Client
 import br.com.licenseplate.dataclass.Store
 import br.com.licenseplate.interactor.ClientInteractor
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
 import java.text.DateFormat
 import java.util.*
 
@@ -40,49 +40,68 @@ class ClientViewModel(val app: Application) : AndroidViewModel(app) {
         }
     }
 
-    fun verifyLicenseNumber(placa: String, callback: (result: String) -> Unit) {
+    fun verifyLicenseNumber(
+        placa: String,
+        callback: (result: String?, responseAuthorization: Authorization?) -> Unit
+    ) {
         val calendar = Calendar.getInstance()
         val date = DateFormat.getDateInstance().format(calendar.time)
         val authorization = Authorization("0", placa, date, "0", 0)
 
-        interactor.verifyLicenseNumber(authorization) { result ->
+        interactor.verifyLicenseNumber(authorization) { result, responseAPI ->
             if (result == "VAZIO") {
                 val resultado = "Por favor, preencha todos os campos!"
-                callback(resultado)
+                callback(resultado, null)
             } else if (result == "PLACA") {
                 val resultado = "Formato de placa inválido! Formato de placa: 'AAA0A00'"
-                callback(resultado)
+                callback(resultado, null)
+            } else if (result == "ERROR") {
+                val resultado =
+                    "Ocorreu um erro ao buscar informações no Detran. Por favor, tente novamente ou contate o adm do sistema."
+                callback(resultado, null)
+            } else if (responseAPI?.resultado == "ERRO") {
+                callback(responseAPI.details, null)
             } else {
+                authorization.numAutorizacao = responseAPI?.serpro?.numAutorizacao
+                authorization.categoria = responseAPI?.serpro?.categoria
+                authorization.materiais = responseAPI?.serpro?.tiposPlacas
+                authorization.placa = responseAPI?.serpro?.placa
                 val resultado = "OK"
-                callback(resultado)
+                callback(resultado, authorization)
             }
         }
     }
 
     fun verifyAuthorization(
         authorization: String,
-        callback: (result: String) -> Unit
+        callback: (result: String?, responseAuthorization: Authorization?) -> Unit
     ) {
         val calendar = Calendar.getInstance()
         val date = DateFormat.getDateInstance().format(calendar.time)
         val authorization = Authorization(authorization, "0", date, "0", 0)
 
-        interactor.verifyAuthorization(authorization) { result ->
+        interactor.verifyAuthorization(authorization) { result, responseAPI ->
             if (result == "VAZIO") {
                 val resultado = "Por favor, preencha todos os campos!"
-                callback(resultado)
+                callback(resultado, null)
             } else if (result == "LENGTH") {
                 val resultado = "Autorização inválida. Por favor verifique e tente novamente!"
-                callback(resultado)
+                callback(resultado, null)
+            } else if (responseAPI?.resultado == "ERRO") {
+                callback(responseAPI.details, null)
             } else {
+                authorization.numAutorizacao = responseAPI?.serpro?.numAutorizacao
+                authorization.categoria = responseAPI?.serpro?.categoria
+                authorization.materiais = responseAPI?.serpro?.tiposPlacas
+                authorization.placa = responseAPI?.serpro?.placa
                 val resultado = "OK"
-                callback(resultado)
+                callback(resultado, authorization)
             }
         }
     }
 
-    fun storeList(location: LatLng) {
-        interactor.storeList(location) { response ->
+    fun storeList(location: LatLng, uf: String?) {
+        interactor.storeList(location, uf) { response ->
             storeList.value = response
         }
     }
@@ -99,24 +118,35 @@ class ClientViewModel(val app: Application) : AndroidViewModel(app) {
     }
 
     fun saveAuthorization(
-        carroID: String?,
-        uf: String?,
+        placa: String?,
         nome: String?,
         cel: String?,
         cpf: String?,
-        idLoja: Int?,
-        id: Int?
+        marker: Marker?,
+        id: Int?,
+        numAutorizacao: String?,
+        materiais: String?,
+        categoria: String?,
+        callback: (result: Array<String>) -> Unit
     ) {
-        val calendar = Calendar.getInstance()
-        val date = DateFormat.getDateInstance().format(calendar.time)
-        val authorization = if (uf == "BA" || uf == "DF") {
-            Authorization("0", carroID, date, "0", 0)
-        } else {
-            Authorization(carroID, "0", date, "0", 0)
+        interactor.saveAuthorization(
+            placa,
+            nome,
+            cel,
+            cpf,
+            marker,
+            id,
+            numAutorizacao,
+            materiais,
+            categoria
+        ) { response ->
+            if (response == "VAZIO") {
+                val response = arrayOf("ERROR", "Por favor, escolha uma loja e tente novamente!")
+                callback(response)
+            } else {
+                val response = arrayOf("OK")
+                callback(response)
+            }
         }
-        val client = Client(nome, cpf, cel)
-        val autCli = AuthorizationClient(authorization, client, idLoja, id)
-
-        interactor.saveAuthorization(autCli)
     }
 }
