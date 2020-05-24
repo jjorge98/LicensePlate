@@ -112,5 +112,6 @@ class LoginRepository(private val context: Context) {
 
     fun logout() {
         auth.signOut()
+        return
     }
 }

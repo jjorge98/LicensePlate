@@ -1,4 +1,4 @@
-package br.com.licenseplate.views.adapter
+package br.com.licenseplate.views.adapters
 
 import android.content.Context
 import android.text.TextUtils.indexOf

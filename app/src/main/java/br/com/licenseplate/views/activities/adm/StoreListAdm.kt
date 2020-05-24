@@ -12,7 +12,7 @@ import br.com.licenseplate.R
 import br.com.licenseplate.viewmodel.AdmViewModel
 import br.com.licenseplate.viewmodel.LoginViewModel
 import br.com.licenseplate.views.activities.MainActivity
-import br.com.licenseplate.views.adapter.StoreAdapter
+import br.com.licenseplate.views.adapters.StoreAdapter
 import kotlinx.android.synthetic.main.activity_store_list_adm.*
 
 class StoreListAdm : AppCompatActivity() {
@@ -35,7 +35,6 @@ class StoreListAdm : AppCompatActivity() {
         super.onResume()
         viewModelL.verifyLogin { result ->
             if (result == null) {
-                viewModelL.logout()
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
             }

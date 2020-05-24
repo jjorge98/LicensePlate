@@ -1,4 +1,4 @@
-package br.com.licenseplate.views.adapter
+package br.com.licenseplate.views.adapters
 
 import android.annotation.SuppressLint
 import android.content.Context

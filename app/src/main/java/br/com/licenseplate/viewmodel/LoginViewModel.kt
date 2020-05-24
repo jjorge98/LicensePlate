@@ -146,6 +146,11 @@ class LoginViewModel(val app: Application) : AndroidViewModel(app) {
                     "Senha inválida. Por favor, verifique e tente novamente!"
                 )
                 callback(resultado)
+            } else if ("blocked" in result) {
+                val resultado = arrayOf(
+                    "ERROR",
+                    "Houveram muitas tentativas inválidas de login, portanto seu dispositivo foi bloqueado. Por favor, tente novamente mais tarde!"
+                )
             } else {
                 val resultado = arrayOf("ERROR", result)
                 callback(resultado)

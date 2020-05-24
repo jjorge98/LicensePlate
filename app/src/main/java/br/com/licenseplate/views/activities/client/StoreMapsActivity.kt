@@ -14,7 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.licenseplate.R
 import br.com.licenseplate.viewmodel.ClientViewModel
-import br.com.licenseplate.views.adapter.StoreMapAdapter
+import br.com.licenseplate.views.adapters.StoreMapAdapter
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory

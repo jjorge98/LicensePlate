@@ -1,5 +1,8 @@
 package br.com.licenseplate.views.activities.stamper
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
@@ -12,7 +15,7 @@ import br.com.licenseplate.R
 import br.com.licenseplate.viewmodel.LoginViewModel
 import br.com.licenseplate.viewmodel.StamperViewModel
 import br.com.licenseplate.views.activities.MainActivity
-import br.com.licenseplate.views.adapter.AuthorizationAdapter
+import br.com.licenseplate.views.adapters.AuthorizationAdapter
 import kotlinx.android.synthetic.main.activity_authorization_list.*
 
 
@@ -38,7 +41,6 @@ class AuthorizationList : AppCompatActivity() {
         super.onResume()
         viewModelL.verifyLogin { result ->
             if (result == null) {
-                viewModelL.logout()
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
             }
@@ -48,7 +50,7 @@ class AuthorizationList : AppCompatActivity() {
     private fun authorizationList() {
         recyclerViewAuthorizationList.layoutManager = GridLayoutManager(this, 2)
         viewModelS.resultado.observe(this, Observer { authorizations ->
-            val adapter = AuthorizationAdapter(authorizations, this)
+            val adapter = AuthorizationAdapter(authorizations, this, this)
             recyclerViewAuthorizationList.adapter = adapter
         })
 
@@ -77,9 +79,9 @@ class AuthorizationList : AppCompatActivity() {
             startActivity(intentR)
             return true
         } else if (item.itemId == R.id.logout) {
-            viewModelL.logout()
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
+            viewModelL.logout()
         }
 
         return false

@@ -12,7 +12,7 @@ import br.com.licenseplate.R
 import br.com.licenseplate.viewmodel.AdmViewModel
 import br.com.licenseplate.viewmodel.LoginViewModel
 import br.com.licenseplate.views.activities.MainActivity
-import br.com.licenseplate.views.adapter.UserAdapter
+import br.com.licenseplate.views.adapters.UserAdapter
 import kotlinx.android.synthetic.main.activity_user_register.*
 
 class UserRegister : AppCompatActivity() {
@@ -35,7 +35,6 @@ class UserRegister : AppCompatActivity() {
         super.onResume()
         viewModelL.verifyLogin { result ->
             if (result == null) {
-                viewModelL.logout()
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
             }
@@ -72,9 +71,9 @@ class UserRegister : AppCompatActivity() {
             startActivity(intent)
             return true
         } else if (item.itemId == R.id.logout) {
-            viewModelL.logout()
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
+            viewModelL.logout()
         }
 
         return false

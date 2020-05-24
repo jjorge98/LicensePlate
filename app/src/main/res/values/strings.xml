@@ -38,6 +38,7 @@
     <string name="register">Cadastrar</string>
     <string name="delete">Excluir</string>
     <string name="see_client_data">Ver dados do cliente</string>
+    <string name="denyRequest">Recusar solicitação</string>
 
     <string-array name="Estados">
         <item>DF</item>
@@ -47,10 +48,24 @@
     </string-array>
 
     <string-array name="Logins">
-        <item>Administrador</item>
+        <item>Fabricante</item>
         <item>Estampador</item>
     </string-array>
     <string-array name="Stores">
 
     </string-array>
+
+    <string-array name="DeleteReasons">
+        <item>Falta de material para estampagem</item>
+        <item>Autorização já incluída em um sistema</item>
+        <item>Problema com a autorização</item>
+        <item>Problemas técnicos</item>
+    </string-array>
+
+    <string name="cancelReason">Informe o motivo do cancelamento</string>
+    <string name="verifyRequest">Verificar solicitação</string>
+    <string name="restrictedArea">Área reservada</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
