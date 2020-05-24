@@ -54,7 +54,6 @@ class LoginRepository(private val context: Context) {
         val query = database.getReference("user/$uid")
 
         query.setValue(user)
-        logout()
     }
 
     //função de login que recebe um email, uma senha e um callback
@@ -101,7 +100,7 @@ class LoginRepository(private val context: Context) {
                 if (uid != null) {
                     val user = p0.child(uid).getValue(Stamper::class.java)
 
-                    if(user == null){
+                    if (user == null) {
                         callback(Stamper())
                     }
                     callback(user)

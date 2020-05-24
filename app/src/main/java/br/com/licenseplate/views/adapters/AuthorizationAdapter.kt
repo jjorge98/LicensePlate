@@ -11,7 +11,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
-import br.com.licenseplate.InfoClientFragment
+import br.com.licenseplate.views.fragments.InfoClientFragment
 import br.com.licenseplate.R
 import br.com.licenseplate.dataclass.AuthorizationClient
 import br.com.licenseplate.viewmodel.StamperViewModel
@@ -234,7 +234,10 @@ class AuthorizationAdapter(
                     return@setOnMenuItemClickListener true
                 }
                 R.id.seeClientData -> {
-                    val infoFragment = InfoClientFragment(authorization.client)
+                    val infoFragment =
+                        InfoClientFragment(
+                            authorization.client
+                        )
                     val manager1 = view.supportFragmentManager
                     val transaction1 = manager1.beginTransaction()
                     transaction1.add(infoFragment, "infoFragment")

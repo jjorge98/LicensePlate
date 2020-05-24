@@ -18,7 +18,8 @@
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".views.activities.client.FinishedRequest"></activity>
+        <activity android:name=".views.activities.login.LackVerificationActivity"></activity>
+        <activity android:name=".views.activities.client.FinishedRequest" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").

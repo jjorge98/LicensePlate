@@ -92,10 +92,9 @@ class LoginViewModel(val app: Application) : AndroidViewModel(app) {
 
         interactor.saveProfile(name, newCpf, rg, store, cel) { response ->
             if (response == "OK") {
-                logout()
                 val result = arrayOf(
                     "OK",
-                    "Perfil cadastrado com sucesso! Por favor, aguarde até seu login ser verificado por um administrador!"
+                    "Perfil cadastrado com sucesso!"
                 )
 
                 callback(result)
@@ -164,11 +163,5 @@ class LoginViewModel(val app: Application) : AndroidViewModel(app) {
 
     fun logout() {
         interactor.logout()
-    }
-
-    fun loginNotVerified(callback: (result: String) -> Unit) {
-        val message =
-            "Seu login ainda não foi verificado! Por favor contate um adm do sistema para verificar seu processo!"
-        callback(message)
     }
 }

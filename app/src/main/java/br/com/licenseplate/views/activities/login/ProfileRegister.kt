@@ -14,6 +14,8 @@ import br.com.licenseplate.R
 import br.com.licenseplate.viewmodel.AdmViewModel
 import br.com.licenseplate.viewmodel.LoginViewModel
 import br.com.licenseplate.views.activities.MainActivity
+import br.com.licenseplate.views.activities.adm.UserRegister
+import br.com.licenseplate.views.activities.stamper.AuthorizationList
 import kotlinx.android.synthetic.main.activity_profile_register.*
 
 class ProfileRegister : AppCompatActivity() {
@@ -41,9 +43,8 @@ class ProfileRegister : AppCompatActivity() {
         super.onResume()
         viewModelL.verifyLogin { result ->
             if (result == null) {
-                //
-            } else if(result.login == 0){
-                //TODO: Direcionar a tela de tudo ok, mas falta resgistro
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
             }
         }
     }
@@ -135,8 +136,9 @@ class ProfileRegister : AppCompatActivity() {
             Toast.makeText(this, response[1], Toast.LENGTH_SHORT).show()
 
             if (response[0] == "OK") {
-                val intent = Intent(this, MainActivity::class.java)
+                val intent = Intent(this, LackVerificationActivity::class.java)
                 startActivity(intent)
+                finish()
             }
         }
     }

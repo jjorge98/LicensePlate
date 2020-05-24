@@ -2,10 +2,16 @@
   <dictionary name="jjorg">
     <words>
       <w>administrador</w>
+      <w>aguarde</w>
       <w>aluguel</w>
+      <w>anote</w>
       <w>anteriores</w>
       <w>autorizacao</w>
+      <w>autorization</w>
       <w>autorização</w>
+      <w>cadastrado</w>
+      <w>cadastrar</w>
+      <w>cancelamento</w>
       <w>carro</w>
       <w>categoria</w>
       <w>chassi</w>
@@ -15,49 +21,97 @@
       <w>coleção</w>
       <w>coloramareloq</w>
       <w>colorgreen</w>
+      <w>concluída</w>
+      <w>consulta</w>
+      <w>contate</w>
+      <w>dados</w>
       <w>detran</w>
+      <w>digite</w>
       <w>diplomático</w>
       <w>distrito</w>
+      <w>estado</w>
+      <w>estados</w>
       <w>estampador</w>
       <w>estampagem</w>
+      <w>excluir</w>
       <w>excluída</w>
       <w>experiencia</w>
       <w>experiência</w>
       <w>fabricante</w>
       <w>falta</w>
+      <w>finalizar</w>
       <w>geocoder</w>
       <w>goias</w>
       <w>gson</w>
+      <w>histórico</w>
+      <w>houve</w>
       <w>incluída</w>
       <w>informe</w>
+      <w>inicial</w>
+      <w>insira</w>
       <w>interactor</w>
+      <w>listar</w>
+      <w>localização</w>
+      <w>logins</w>
       <w>loja</w>
+      <w>lojas</w>
       <w>materiais</w>
+      <w>motivo</w>
       <w>moto</w>
+      <w>novamente</w>
+      <w>número</w>
       <w>oficial</w>
+      <w>perfil</w>
       <w>pivo</w>
       <w>placa</w>
       <w>placas</w>
+      <w>preço</w>
       <w>problema</w>
       <w>problemas</w>
+      <w>processo</w>
+      <w>protocolo</w>
       <w>proximo</w>
+      <w>próximo</w>
       <w>receber</w>
+      <w>recebido</w>
+      <w>recusar</w>
+      <w>requisição</w>
+      <w>reservada</w>
       <w>respectivamente</w>
       <w>resultado</w>
       <w>rondonia</w>
       <w>rondônia</w>
+      <w>sair</w>
+      <w>salvar</w>
       <w>serpro</w>
       <w>sistema</w>
       <w>solicitação</w>
+      <w>solicitações</w>
+      <w>storelist</w>
+      <w>storeregister</w>
       <w>sucesso</w>
+      <w>tela</w>
+      <w>telefone</w>
+      <w>tente</w>
       <w>teste</w>
       <w>tipo</w>
       <w>tipos</w>
+      <w>todos</w>
       <w>troca</w>
       <w>técnicos</w>
+      <w>unidade</w>
+      <w>userlist</w>
+      <w>userregister</w>
+      <w>usuário</w>
+      <w>usuários</w>
       <w>variáveis</w>
       <w>vazio</w>
+      <w>verificar</w>
+      <w>verificação</w>
+      <w>veículo</w>
       <w>vindas</w>
+      <w>voltar</w>
+      <w>área</w>
     </words>
   </dictionary>
 </component>

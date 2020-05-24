@@ -2,18 +2,17 @@ package br.com.licenseplate.views.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import br.com.licenseplate.R
-import br.com.licenseplate.repository.ClientRepository
-import br.com.licenseplate.repository.apiretrofit.DetranAPI
 import br.com.licenseplate.viewmodel.LoginViewModel
-import br.com.licenseplate.views.activities.adm.StoreListAdm
+import br.com.licenseplate.views.activities.adm.UserRegister
 import br.com.licenseplate.views.activities.client.HelpLicenseRequest
 import br.com.licenseplate.views.activities.client.RequestLicense
 import br.com.licenseplate.views.activities.client.VerifyRequest
+import br.com.licenseplate.views.activities.login.LackVerificationActivity
 import br.com.licenseplate.views.activities.login.LoginStamper
+import br.com.licenseplate.views.activities.login.ProfileRegister
 import br.com.licenseplate.views.activities.stamper.AuthorizationList
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -49,11 +48,18 @@ class MainActivity : AppCompatActivity() {
             if (result == null) {
                 val intent = Intent(this, LoginStamper::class.java)
                 startActivity(intent)
-            } else if (result.login == 2) {
-                val intent = Intent(this, StoreListAdm::class.java)
+            } else if (result.uid == null) {
+                val intent = Intent(this, ProfileRegister::class.java)
                 startActivity(intent)
-            } else {
+            } else if (
+                result.login == 0) {
+                val intent = Intent(this, LackVerificationActivity::class.java)
+                startActivity(intent)
+            } else if (result.login == 1) {
                 val intent = Intent(this, AuthorizationList::class.java)
+                startActivity(intent)
+            } else if (result.login == 2) {
+                val intent = Intent(this, UserRegister::class.java)
                 startActivity(intent)
             }
         }
