@@ -1,6 +1,5 @@
 package br.com.licenseplate.views.adapters
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
@@ -13,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.licenseplate.R
 import br.com.licenseplate.dataclass.Stamper
 import br.com.licenseplate.viewmodel.AdmViewModel
+import br.com.licenseplate.views.activities.adm.UserList
 import br.com.licenseplate.views.activities.adm.UserRegister
 import kotlinx.android.synthetic.main.user_list.view.*
 
@@ -31,15 +31,14 @@ class UserAdapter(
         return users.size
     }
 
-    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
         val user = users[position]
 
-        holder.name.text = "Nome: " + user.nome
-        holder.cpf.text = "CPF: " + user.cpf
-        holder.rg.text = "RG: " + user.rg
-        holder.cel.text = "Telefone: " + user.cel
-        holder.store.text = "Loja: " + user.loja
+        holder.name.text = user.nome
+        holder.cpf.text = user.cpf
+        holder.rg.text = user.rg
+        holder.cel.text = user.cel
+        holder.store.text = user.loja
         if (user.login == 1) {
             holder.login.text = "Estampador"
         } else {
@@ -71,7 +70,7 @@ class UserAdapter(
             } else if (itemSelected?.itemId == R.id.deleteUserRegister) {
                 viewModelA.deleteUser(stamper)
 
-                val intent = Intent(context.applicationContext, UserRegister::class.java)
+                val intent = Intent(context.applicationContext, UserList::class.java)
                 context.startActivity(intent)
                 return@setOnMenuItemClickListener true
             }

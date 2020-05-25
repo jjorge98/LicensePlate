@@ -11,12 +11,12 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
-import br.com.licenseplate.views.fragments.InfoClientFragment
 import br.com.licenseplate.R
 import br.com.licenseplate.dataclass.AuthorizationClient
 import br.com.licenseplate.viewmodel.StamperViewModel
 import br.com.licenseplate.views.activities.stamper.AuthorizationList
 import br.com.licenseplate.views.fragments.DeleteRequestFragment
+import br.com.licenseplate.views.fragments.InfoClientFragment
 import kotlinx.android.synthetic.main.authorization_card.view.*
 
 class AuthorizationAdapter(
