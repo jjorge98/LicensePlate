@@ -17,6 +17,12 @@ class StamperViewModel(app: Application) : AndroidViewModel(app) {
         }
     }
 
+    fun authorizationHistoryList() {
+        interactor.authorizationHistoryList { result ->
+            resultado.value = result
+        }
+    }
+
     fun deleteRequest(
         authorization: AuthorizationClient,
         reason: String,

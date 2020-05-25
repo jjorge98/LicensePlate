@@ -22,6 +22,20 @@ class StamperInteractor(context: Context) {
         }
     }
 
+    fun authorizationHistoryList(callback: (result: Array<AuthorizationClient>) -> Unit) {
+        val result = mutableListOf<AuthorizationClient>()
+
+        repository.authorizationList { response ->
+            response.forEach { authorizationClient ->
+                if (authorizationClient.authorization?.status == 2) {
+                    result.add(authorizationClient)
+                }
+            }
+
+            callback(result.toTypedArray())
+        }
+    }
+
     fun deleteRequest(authorization: AuthorizationClient, deleted: DeletedRequest) {
         repository.deleteRequest(authorization, deleted)
     }

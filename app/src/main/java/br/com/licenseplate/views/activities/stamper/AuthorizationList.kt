@@ -15,7 +15,6 @@ import br.com.licenseplate.views.activities.MainActivity
 import br.com.licenseplate.views.adapters.AuthorizationAdapter
 import kotlinx.android.synthetic.main.activity_authorization_list.*
 
-
 class AuthorizationList : AppCompatActivity() {
     private val viewModelS: StamperViewModel by lazy {
         ViewModelProvider(this).get(StamperViewModel::class.java)
