@@ -37,7 +37,7 @@ class AdmInteractor(val context: Context) {
         if (name.isEmpty() || carPrice.isEmpty() || motoPrice.isEmpty() || location.isEmpty() || cnpj.isEmpty()) {
             callback("VAZIO")
         } else if (cnpj.length != 14) {
-
+            callback("CNPJ")
         } else {
             var ver = 0
             try {

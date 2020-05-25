@@ -12,9 +12,9 @@
     <string name="userregister">Cadastrar usuário</string>
     <string name="storeregister">Cadastrar loja</string>
     <string name="logout">Sair</string>
-    <string name="licenseHistory">Histórico de placas finalizadas</string>
-    <string name="licenseReceived">Solicitações recebidas</string>
-    <string name="licenseRequest">Solicitações de placa</string>
+    <string name="licenseRequest">Solicitações recebidas</string>
+    <string name="licenseReceived">Solicitações aceitas</string>
+    <string name="licenseHistory">Solicitações finalizadas</string>
     <string name="login">Login</string>
     <string name="cnpj">CNPJ</string>
     <string name="carPrice">Preço unidade placa de carro</string>
