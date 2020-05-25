@@ -91,4 +91,11 @@ class StamperRepository(private val context: Context) {
 
         reference.setValue(1)
     }
+
+    fun finishRequest(authorization: AuthorizationClient) {
+        val reference =
+            database.getReference("autorizacaoCliente/${authorization.id}/authorization/status")
+
+        reference.setValue(2)
+    }
 }

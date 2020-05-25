@@ -3,23 +3,18 @@ package br.com.licenseplate.views.fragments
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import androidx.lifecycle.ViewModelProvider
 import br.com.licenseplate.R
 import br.com.licenseplate.dataclass.Client
-import br.com.licenseplate.viewmodel.StamperViewModel
 import kotlinx.android.synthetic.main.fragment_info_client.*
 
 class InfoClientFragment(private val client: Client?) : DialogFragment() {
-    lateinit var reason: String
-    private val viewModelS: StamperViewModel by lazy {
-        ViewModelProvider(this).get(StamperViewModel::class.java)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -31,6 +26,7 @@ class InfoClientFragment(private val client: Client?) : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         fillTexts()
+
         okButtonInfoClient.setOnClickListener { okDismiss() }
     }
 
@@ -59,10 +55,22 @@ class InfoClientFragment(private val client: Client?) : DialogFragment() {
             val clip: ClipData = ClipData.newPlainText("Copy cpf", client?.cpf)
             clipboard.setPrimaryClip(clip)
         }
+
+        whatsappInfoClient.setOnClickListener {
+            val whatsAppRoot = "http://api.whatsapp.com/"
+            val number =
+                "send?phone=+55" + client?.cel
+
+            val uri = whatsAppRoot + number
+
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse(uri)
+            startActivity(intent)
+        }
+
     }
 
-    private fun okDismiss(){
+    private fun okDismiss() {
         this.dismiss()
     }
-    //TODO: Think about put a whatsapp icon to direct to the client cel
 }

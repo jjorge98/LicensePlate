@@ -23,6 +23,12 @@ class StamperViewModel(app: Application) : AndroidViewModel(app) {
         }
     }
 
+    fun authorizationReceivedList() {
+        interactor.authorizationReceivedList { result ->
+            resultado.value = result
+        }
+    }
+
     fun deleteRequest(
         authorization: AuthorizationClient,
         reason: String,
@@ -40,6 +46,14 @@ class StamperViewModel(app: Application) : AndroidViewModel(app) {
 
         val response =
             "Autorização da placa '${authorization.authorization?.placa}' recebida com sucesso!"
+        callback(response)
+    }
+
+    fun finishRequest(authorization: AuthorizationClient, callback: (String) -> Unit) {
+        interactor.finishRequest(authorization)
+
+        val response =
+            "Autorização da placa '${authorization.authorization?.placa}' finalizada com sucesso!"
         callback(response)
     }
 }

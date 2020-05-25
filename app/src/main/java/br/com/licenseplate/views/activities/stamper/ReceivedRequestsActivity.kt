@@ -12,21 +12,21 @@ import br.com.licenseplate.R
 import br.com.licenseplate.viewmodel.LoginViewModel
 import br.com.licenseplate.viewmodel.StamperViewModel
 import br.com.licenseplate.views.activities.MainActivity
-import br.com.licenseplate.views.adapters.AuthorizationListAdapter
-import kotlinx.android.synthetic.main.activity_authorization_list.*
+import br.com.licenseplate.views.adapters.AuthorizationReceivedAdapter
+import kotlinx.android.synthetic.main.activity_received_requests.*
 
-class AuthorizationList : AppCompatActivity() {
-    private val viewModelS: StamperViewModel by lazy {
-        ViewModelProvider(this).get(StamperViewModel::class.java)
-    }
-
+class ReceivedRequestsActivity : AppCompatActivity() {
     private val viewModelL: LoginViewModel by lazy {
         ViewModelProvider(this).get(LoginViewModel::class.java)
     }
 
+    private val viewModelS: StamperViewModel by lazy {
+        ViewModelProvider(this).get(StamperViewModel::class.java)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_authorization_list)
+        setContentView(R.layout.activity_received_requests)
 
         setSupportActionBar(findViewById(R.id.action_bar))
 
@@ -44,13 +44,13 @@ class AuthorizationList : AppCompatActivity() {
     }
 
     private fun authorizationList() {
-        recyclerViewAuthorizationList.layoutManager = GridLayoutManager(this, 2)
+        recyclerViewReceivedRequests.layoutManager = GridLayoutManager(this, 2)
         viewModelS.resultado.observe(this, Observer { authorizations ->
-            val adapter = AuthorizationListAdapter(authorizations, this, this)
-            recyclerViewAuthorizationList.adapter = adapter
+            val adapter = AuthorizationReceivedAdapter(authorizations, this, this)
+            recyclerViewReceivedRequests.adapter = adapter
         })
 
-        viewModelS.authorizationList()
+        viewModelS.authorizationReceivedList()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -74,8 +74,8 @@ class AuthorizationList : AppCompatActivity() {
             val intentR = Intent(this, LicenseHistoryActivity::class.java)
             startActivity(intentR)
             return true
-        } else if (item.itemId == R.id.receivedRequest) {
-            val intent = Intent(this, ReceivedRequestsActivity::class.java)
+        } else if (item.itemId == R.id.licenseRequest) {
+            val intent = Intent(this, AuthorizationList::class.java)
             startActivity(intent)
         } else if (item.itemId == R.id.logout) {
             val intent = Intent(this, MainActivity::class.java)

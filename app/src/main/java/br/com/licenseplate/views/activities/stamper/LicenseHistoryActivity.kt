@@ -15,7 +15,7 @@ import br.com.licenseplate.views.activities.MainActivity
 import br.com.licenseplate.views.adapters.AuthorizationHistoryAdapter
 import kotlinx.android.synthetic.main.activity_license_history.*
 
-class LicenseHistory : AppCompatActivity() {
+class LicenseHistoryActivity : AppCompatActivity() {
     private val viewModelL: LoginViewModel by lazy {
         ViewModelProvider(this).get(LoginViewModel::class.java)
     }
@@ -75,6 +75,9 @@ class LicenseHistory : AppCompatActivity() {
             val intent = Intent(this, AuthorizationList::class.java)
             startActivity(intent)
             return true
+        } else if (item.itemId == R.id.receivedRequest) {
+            val intent = Intent(this, ReceivedRequestsActivity::class.java)
+            startActivity(intent)
         } else if (item.itemId == R.id.logout) {
             viewModelL.logout()
             val intent = Intent(this, MainActivity::class.java)

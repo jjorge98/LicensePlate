@@ -7,6 +7,10 @@
         android:title="@string/licenseRequest"
         app:showAsAction="never" />
     <item
+        android:id="@+id/receivedRequest"
+        android:title="@string/licenseReceived"
+        app:showAsAction="never" />
+    <item
         android:id="@+id/licenseHistory"
         android:title="@string/licenseHistory"
         app:showAsAction="never" />

@@ -22,6 +22,20 @@ class StamperInteractor(context: Context) {
         }
     }
 
+    fun authorizationReceivedList(callback: (result: Array<AuthorizationClient>) -> Unit) {
+        val result = mutableListOf<AuthorizationClient>()
+
+        repository.authorizationList { response ->
+            response.forEach { authorizationClient ->
+                if (authorizationClient.authorization?.status == 1) {
+                    result.add(authorizationClient)
+                }
+            }
+
+            callback(result.toTypedArray())
+        }
+    }
+
     fun authorizationHistoryList(callback: (result: Array<AuthorizationClient>) -> Unit) {
         val result = mutableListOf<AuthorizationClient>()
 
@@ -42,5 +56,9 @@ class StamperInteractor(context: Context) {
 
     fun receiveRequest(authorization: AuthorizationClient) {
         repository.receiveRequest(authorization)
+    }
+
+    fun finishRequest(authorization: AuthorizationClient) {
+        repository.finishRequest(authorization)
     }
 }
