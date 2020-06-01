@@ -2,6 +2,7 @@ package br.com.licenseplate.views.activities.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -14,11 +15,11 @@ import br.com.licenseplate.R
 import br.com.licenseplate.viewmodel.AdmViewModel
 import br.com.licenseplate.viewmodel.LoginViewModel
 import br.com.licenseplate.views.activities.MainActivity
-import br.com.licenseplate.views.activities.adm.UserRegister
-import br.com.licenseplate.views.activities.stamper.AuthorizationList
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_profile_register.*
 
-class ProfileRegister : AppCompatActivity() {
+class ProfileRegisterActivity : AppCompatActivity() {
+    private val auth = FirebaseAuth.getInstance()
     private lateinit var loja: String
     private lateinit var login: String
     private val viewModelA: AdmViewModel by lazy {
@@ -37,6 +38,7 @@ class ProfileRegister : AppCompatActivity() {
         spinnerStoresFill()
 
         saveProfileRegister.setOnClickListener { saveProfile() }
+        backMainProfileRegister.setOnClickListener { main() }
     }
 
     override fun onResume() {
@@ -141,5 +143,11 @@ class ProfileRegister : AppCompatActivity() {
                 finish()
             }
         }
+    }
+
+    private fun main(){
+        viewModelL.logout()
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 }

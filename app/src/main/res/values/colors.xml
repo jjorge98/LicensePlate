@@ -16,5 +16,6 @@
     <color name="white">#ffffff</color>
     <color name="colorgreen">#2e7d32</color>
     <color name="colorred">#d50000</color>
+    <color name="cyanLighten4">#b2ebf2</color>
 
 </resources>

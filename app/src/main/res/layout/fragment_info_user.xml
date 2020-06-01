@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.fragments.InfoClientFragment">
+    tools:context=".views.fragments.InfoUserFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -12,69 +12,25 @@
         android:background="@drawable/background">
 
         <TextView
-            android:id="@+id/titleInfoClient"
+            android:id="@+id/titleInfoUser"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="24dp"
             android:fontFamily="@font/alike_angular"
-            android:text="@string/clientData"
+            android:text="@string/userData"
             android:textAlignment="center"
             android:textColor="@color/cyanLighten4"
             android:textSize="25sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/nameInfoClient"
+            app:layout_constraintBottom_toTopOf="@+id/cpfInfoUser"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/nameTextInfoClient"
-            android:layout_width="87dp"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/alike_angular"
-            android:text="@string/name"
-            android:textAlignment="center"
-            android:textColor="@color/cyanLighten4"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/nameInfoClient"
-            app:layout_constraintEnd_toStartOf="@+id/nameInfoClient"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/nameInfoClient" />
-
-        <TextView
-            android:id="@+id/nameInfoClient"
-            android:layout_width="260dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
-            android:fontFamily="@font/alike_angular"
-            android:textAlignment="center"
-            android:textColor="@color/cyanLighten4"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/cpfInfoClient"
-            app:layout_constraintEnd_toStartOf="@+id/copyNameInfoClient"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/nameTextInfoClient"
-            app:layout_constraintTop_toBottomOf="@+id/titleInfoClient" />
-
-        <ImageView
-            android:id="@+id/copyNameInfoClient"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginEnd="6dp"
-            android:src="@drawable/copy"
-            app:layout_constraintBottom_toBottomOf="@+id/nameInfoClient"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/nameInfoClient"
-            app:layout_constraintTop_toTopOf="@+id/nameInfoClient" />
-
-        <TextView
-            android:id="@+id/cpfTextInfoClient"
+            android:id="@+id/cpfTextInfoUser"
             android:layout_width="87dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/alike_angular"
@@ -83,14 +39,14 @@
             android:textColor="@color/cyanLighten4"
             android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/cpfInfoClient"
-            app:layout_constraintEnd_toStartOf="@+id/cpfInfoClient"
+            app:layout_constraintBottom_toBottomOf="@+id/cpfInfoUser"
+            app:layout_constraintEnd_toStartOf="@+id/cpfInfoUser"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/cpfInfoClient" />
+            app:layout_constraintTop_toTopOf="@+id/cpfInfoUser" />
 
         <TextView
-            android:id="@+id/cpfInfoClient"
+            android:id="@+id/cpfInfoUser"
             android:layout_width="260dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
@@ -99,26 +55,70 @@
             android:textAlignment="center"
             android:textColor="@color/cyanLighten4"
             android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/celInfoClient"
-            app:layout_constraintEnd_toStartOf="@+id/copyCpfInfoClient"
+            app:layout_constraintBottom_toTopOf="@+id/rgInfoUser"
+            app:layout_constraintEnd_toStartOf="@+id/copyCpfInfoUser"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/cpfTextInfoClient"
-            app:layout_constraintTop_toBottomOf="@+id/nameInfoClient" />
+            app:layout_constraintStart_toEndOf="@+id/cpfTextInfoUser"
+            app:layout_constraintTop_toBottomOf="@+id/titleInfoUser" />
 
         <ImageView
-            android:id="@+id/copyCpfInfoClient"
+            android:id="@+id/copyCpfInfoUser"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginEnd="6dp"
             android:src="@drawable/copy"
-            app:layout_constraintBottom_toBottomOf="@+id/cpfInfoClient"
+            app:layout_constraintBottom_toBottomOf="@+id/cpfInfoUser"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/cpfInfoClient"
-            app:layout_constraintTop_toTopOf="@+id/cpfInfoClient" />
+            app:layout_constraintStart_toEndOf="@+id/cpfInfoUser"
+            app:layout_constraintTop_toTopOf="@+id/cpfInfoUser" />
 
         <TextView
-            android:id="@+id/celTextInfoClient"
+            android:id="@+id/rgTextInfoUser"
+            android:layout_width="87dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/alike_angular"
+            android:text="@string/rg"
+            android:textAlignment="center"
+            android:textColor="@color/cyanLighten4"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/rgInfoUser"
+            app:layout_constraintEnd_toStartOf="@+id/rgInfoUser"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/rgInfoUser" />
+
+        <TextView
+            android:id="@+id/rgInfoUser"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:fontFamily="@font/alike_angular"
+            android:textAlignment="center"
+            android:textColor="@color/cyanLighten4"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/celInfoUser"
+            app:layout_constraintEnd_toStartOf="@+id/copyRgInfoUser"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/rgTextInfoUser"
+            app:layout_constraintTop_toBottomOf="@+id/cpfInfoUser" />
+
+        <ImageView
+            android:id="@+id/copyRgInfoUser"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="6dp"
+            android:src="@drawable/copy"
+            app:layout_constraintBottom_toBottomOf="@+id/rgInfoUser"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/rgInfoUser"
+            app:layout_constraintTop_toTopOf="@+id/rgInfoUser" />
+
+        <TextView
+            android:id="@+id/celTextInfoUser"
             android:layout_width="87dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/alike_angular"
@@ -127,14 +127,14 @@
             android:textColor="@color/cyanLighten4"
             android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/celInfoClient"
-            app:layout_constraintEnd_toStartOf="@+id/celInfoClient"
+            app:layout_constraintBottom_toBottomOf="@+id/celInfoUser"
+            app:layout_constraintEnd_toStartOf="@+id/celInfoUser"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/celInfoClient" />
+            app:layout_constraintTop_toTopOf="@+id/celInfoUser" />
 
         <TextView
-            android:id="@+id/celInfoClient"
+            android:id="@+id/celInfoUser"
             android:layout_width="260dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
@@ -143,37 +143,37 @@
             android:textAlignment="center"
             android:textColor="@color/cyanLighten4"
             android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/okButtonInfoClient"
-            app:layout_constraintEnd_toStartOf="@+id/copyCelInfoClient"
+            app:layout_constraintBottom_toTopOf="@+id/okButtonInfoUser"
+            app:layout_constraintEnd_toStartOf="@+id/copyCelInfoUser"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/celTextInfoClient"
-            app:layout_constraintTop_toBottomOf="@+id/cpfInfoClient" />
+            app:layout_constraintStart_toEndOf="@+id/celTextInfoUser"
+            app:layout_constraintTop_toBottomOf="@+id/rgInfoUser" />
 
         <ImageView
-            android:id="@+id/copyCelInfoClient"
+            android:id="@+id/copyCelInfoUser"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginEnd="6dp"
             android:src="@drawable/copy"
-            app:layout_constraintBottom_toBottomOf="@+id/celInfoClient"
+            app:layout_constraintBottom_toBottomOf="@+id/celInfoUser"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/celInfoClient"
-            app:layout_constraintTop_toTopOf="@+id/celInfoClient" />
+            app:layout_constraintStart_toEndOf="@+id/celInfoUser"
+            app:layout_constraintTop_toTopOf="@+id/celInfoUser" />
 
         <ImageView
-            android:id="@+id/whatsappInfoClient"
+            android:id="@+id/whatsappInfoUser"
             android:layout_width="70dp"
             android:layout_height="45dp"
             android:src="@drawable/whatsapp"
-            app:layout_constraintBottom_toBottomOf="@+id/okButtonInfoClient"
-            app:layout_constraintEnd_toStartOf="@+id/okButtonInfoClient"
+            app:layout_constraintBottom_toBottomOf="@+id/okButtonInfoUser"
+            app:layout_constraintEnd_toStartOf="@+id/okButtonInfoUser"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/okButtonInfoClient" />
+            app:layout_constraintTop_toTopOf="@+id/okButtonInfoUser" />
 
         <Button
-            android:id="@+id/okButtonInfoClient"
+            android:id="@+id/okButtonInfoUser"
             android:layout_width="wrap_content"
             android:layout_height="45dp"
             android:layout_marginTop="24dp"
@@ -183,8 +183,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/whatsappInfoClient"
-            app:layout_constraintTop_toBottomOf="@+id/celInfoClient" />
+            app:layout_constraintStart_toEndOf="@+id/whatsappInfoUser"
+            app:layout_constraintTop_toBottomOf="@+id/celInfoUser" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

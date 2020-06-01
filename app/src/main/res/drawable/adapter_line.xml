@@ -2,8 +2,8 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- Border Color -->
     <stroke
-        android:width="2dp"
-        android:color="@color/colormarrom" />
+        android:width="1dp"
+        android:color="@color/white" />
 
     <!-- Round Corners -->
     <corners android:radius="7dp" />

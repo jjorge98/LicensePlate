@@ -53,6 +53,7 @@ class AdmViewModel(val app: Application) : AndroidViewModel(app) {
         moto: String,
         location: String,
         cnpj: String,
+        cel: String,
         id: Int,
         root: String,
         callback: (Array<String>) -> Unit
@@ -60,8 +61,9 @@ class AdmViewModel(val app: Application) : AndroidViewModel(app) {
         val carPrice = moto.replace(",", ".")
         val motoPrice = car.replace(",", ".")
         val newCnpj = cnpj.replace(".", "").replace("-", "").replace("/", "")
+        val newCel = cel.replace("(", "").replace(")", "").replace("-", "")
 
-        interactor.storeSave(name, carPrice, motoPrice, location, newCnpj, id, root) { response ->
+        interactor.storeSave(name, carPrice, motoPrice, location, newCnpj, cel, id, root) { response ->
             if (response == null) {
                 val result = arrayOf("OK", "Loja cadastrada com sucesso!")
                 callback(result)

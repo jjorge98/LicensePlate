@@ -1,10 +1,8 @@
 package br.com.licenseplate.interactor
 
-import android.content.ContentValues.TAG
 import android.content.Context
 import android.location.Address
 import android.text.TextUtils.indexOf
-import android.util.Log
 import br.com.licenseplate.dataclass.Authorization
 import br.com.licenseplate.dataclass.AuthorizationClient
 import br.com.licenseplate.dataclass.Client
@@ -16,10 +14,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import java.text.DateFormat
 import java.util.*
-import kotlin.math.asin
-import kotlin.math.cos
-import kotlin.math.sin
-import kotlin.math.sqrt
+import kotlin.math.*
 
 class ClientInteractor(val context: Context) {
     private val repository = ClientRepository(context)
@@ -43,8 +38,7 @@ class ClientInteractor(val context: Context) {
         }
     }
 
-    private fun validaCpf(cpf: String?): Boolean {
-        //TODO: Fix this and make cnpj verification
+    fun validaCpf(cpf: String?): Boolean {
         if (cpf == null) {
             return false
         }
@@ -54,9 +48,9 @@ class ClientInteractor(val context: Context) {
             } catch (e: Exception) {
                 return false
             }
-            Log.w(TAG, "1")
-            var v1 = 0
-            var v2 = 0
+
+            var v1: Long = 0
+            var v2: Long = 0
             var aux = false
 
             for (i in 1 until cpf.length) {
@@ -64,44 +58,52 @@ class ClientInteractor(val context: Context) {
                     aux = true
                 }
             }
-            Log.w(TAG, "2")
 
             if (!aux) {
                 return false
             }
 
             var p = 10
+            var newCpf = cpf.toLong()
             for (i in 0 until cpf.length - 2) {
-                v1 += cpf[i].toInt() * p
+                val pot = 10.0.pow(p).toLong()
+                val n = newCpf / pot
+                newCpf %= pot
+
+                v1 += n * p
                 p--
             }
 
             v1 = (v1 * 10) % 11
 
-            if (v1 == 10) {
+            if (v1 == 10.toLong()) {
                 v1 = 0
             }
 
-            Log.w(TAG, "3")
-            if (v1 != cpf[9].toInt()) {
+            if (v1 != newCpf / 10) {
                 return false
             }
 
             p = 11
 
+            newCpf = cpf.toLong()
             for (i in 0 until cpf.length - 1) {
-                v2 += cpf[i].toInt() * p
+                val pot = 10.0.pow(p - 1).toLong()
+                val n = newCpf / pot
+                newCpf %= pot
+
+                v2 += n * p
                 p--
             }
 
             v2 = (v2 * 10) % 11
 
-            if (v2 == 10) {
+            if (v2 == 10.toLong()) {
                 v2 = 0
             }
+            newCpf %= 10
 
-            Log.w(TAG, "4")
-            return v2 == cpf[10].toInt()
+            return v2 == newCpf
         } else {
             return false;
         }
@@ -117,7 +119,7 @@ class ClientInteractor(val context: Context) {
             callback("PLACA", null)
         } else {
             var ver = 0
-            for (i in 0 until 7) {//PBR4724
+            for (i in 0 until 7) {
                 if ((i == 0 || i == 1 || i == 2) && !authorization.placa!![i].isLetter()) {
                     ver = 1
                     callback("PLACA", null)
@@ -350,6 +352,53 @@ class ClientInteractor(val context: Context) {
 
             repository.save("autorizacaoCliente", autCli, autCli.id)
             callback("OK")
+        }
+    }
+
+    fun verifyProcess(
+        licensePlate: String,
+        callback: (response: String, autCli: AuthorizationClient?, store: Store?) -> Unit
+    ) {
+        if (licensePlate.isEmpty()!!) {
+            callback("VAZIO", null, null)
+        } else if (licensePlate.length != 7) {
+            callback("PLACA", null, null)
+        } else {
+            var ver = 0
+            for (i in 0 until 7) {//PBR4724
+                if ((i == 0 || i == 1 || i == 2) && !licensePlate[i].isLetter()) {
+                    ver = 1
+                    callback("PLACA", null, null)
+                } else if ((i == 3 || i == 5 || i == 6) && !licensePlate[i].isDigit()) {
+                    ver = 1
+                    callback("PLACA", null, null)
+                }
+            }
+            if (ver == 0) {
+                repository.verifyProcess(licensePlate, callback)
+            }
+        }
+    }
+
+    fun verifyLicensePlate(licensePlate: String, callback: (result: String) -> Unit) {
+        if (licensePlate.isEmpty()) {
+            callback("VAZIO")
+        } else if (licensePlate.length != 7) {
+            callback("PLACA")
+        } else {
+            var ver = 0
+            for (i in 0 until 7) {
+                if ((i == 0 || i == 1 || i == 2) && !licensePlate[i].isLetter()) {
+                    ver = 1
+                    callback("PLACA")
+                } else if ((i == 3 || i == 5 || i == 6) && !licensePlate[i].isDigit()) {
+                    ver = 1
+                    callback("PLACA")
+                }
+            }
+            if (ver == 0) {
+                callback("OK")
+            }
         }
     }
 }

@@ -10,7 +10,7 @@ import br.com.licenseplate.viewmodel.LoginViewModel
 import br.com.licenseplate.views.activities.MainActivity
 import kotlinx.android.synthetic.main.activity_forgot_password.*
 
-class ForgotPassword : AppCompatActivity() {
+class ForgotPasswordActivity : AppCompatActivity() {
     private val viewModel: LoginViewModel by lazy {
         ViewModelProvider(this).get(LoginViewModel::class.java)
     }

@@ -9,7 +9,7 @@ import br.com.licenseplate.R
 import br.com.licenseplate.viewmodel.ClientViewModel
 import kotlinx.android.synthetic.main.activity_client_data.*
 
-class ClientData : AppCompatActivity() {
+class ClientDataActivity : AppCompatActivity() {
     private var placa: String? = null
     private var uf: String? = null
     private var numAutorizacao: String? = null

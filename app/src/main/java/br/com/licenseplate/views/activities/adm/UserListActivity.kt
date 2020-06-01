@@ -15,7 +15,7 @@ import br.com.licenseplate.views.activities.MainActivity
 import br.com.licenseplate.views.adapters.UserAdapter
 import kotlinx.android.synthetic.main.activity_user_list.*
 
-class UserList : AppCompatActivity() {
+class UserListActivity : AppCompatActivity() {
     private val viewModelL: LoginViewModel by lazy {
         ViewModelProvider(this).get(LoginViewModel::class.java)
     }
@@ -59,15 +59,15 @@ class UserList : AppCompatActivity() {
     //função com os itens do menu
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.storeRegister) {
-            val intent = Intent(this, StoreRegister::class.java)
+            val intent = Intent(this, StoreRegisterActivity::class.java)
             startActivity(intent)
             return true
         } else if (item.itemId == R.id.storeList) {
-            val intent = Intent(this, StoreListAdm::class.java)
+            val intent = Intent(this, StoreListAdmActivity::class.java)
             startActivity(intent)
             return true
         } else if (item.itemId == R.id.userRegister) {
-            val intent = Intent(this, UserRegister::class.java)
+            val intent = Intent(this, UserRegisterActivity::class.java)
             startActivity(intent)
             return true
         } else if (item.itemId == R.id.logout) {
@@ -82,7 +82,7 @@ class UserList : AppCompatActivity() {
     private fun userList() {
         recyclerViewUserList.layoutManager = LinearLayoutManager(this)
         viewModelA.users.observe(this, Observer { users ->
-            val adapter = UserAdapter(users, this, viewModelA)
+            val adapter = UserAdapter(users, this, viewModelA, this)
             recyclerViewUserList.adapter = adapter
         })
 

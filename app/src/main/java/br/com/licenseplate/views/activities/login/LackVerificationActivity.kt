@@ -19,12 +19,16 @@ class LackVerificationActivity : AppCompatActivity() {
         setContentView(R.layout.activity_lack_verification)
 
         backMainLackVerification.setOnClickListener { backMain() }
+        logoutLackVerification.setOnClickListener { logout() }
     }
 
     private fun backMain() {
-        viewModelL.logout()
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
+    }
+
+    private fun logout(){
+        viewModelL.logout()
     }
 
     override fun onBackPressed() {

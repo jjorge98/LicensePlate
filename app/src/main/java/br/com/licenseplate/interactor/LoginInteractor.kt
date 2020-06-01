@@ -54,19 +54,12 @@ class LoginInteractor(private val context: Context) {
     ) {
         if (name.isEmpty() || cpf.isEmpty() || rg.isEmpty() || cel.isEmpty()) {
             callback("VAZIO")
-        } else if (cpf.length != 11) {
+        } else if (!ClientInteractor(context).validaCpf(cpf)) {
             callback("CPF")
         } else {
-            try {
-                val tryCpf = cpf.toLong()
-
-                val user = Stamper(name, cpf, rg, store, 0, cel)
-
-                repository.saveProfile(user)
-                callback("OK")
-            } catch (e: Exception) {
-                callback("CPF")
-            }
+            val user = Stamper(name, cpf, rg, store, 0, cel)
+            repository.saveProfile(user)
+            callback("OK")
         }
     }
 

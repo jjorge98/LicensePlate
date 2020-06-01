@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:text="@string/textLackVerification"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="@color/cyanLighten4"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/backMainLackVerification"
@@ -37,11 +37,23 @@
         android:id="@+id/backMainLackVerification"
         android:layout_width="51dp"
         android:layout_height="51dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/logoutLackVerification"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textLackVerification"
         app:srcCompat="@drawable/icone_back_menu" />
+
+    <Button
+        android:id="@+id/logoutLackVerification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/botoes"
+        android:text="@string/logout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/backMainLackVerification" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

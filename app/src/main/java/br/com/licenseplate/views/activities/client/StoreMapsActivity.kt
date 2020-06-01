@@ -176,7 +176,7 @@ class StoreMapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnM
                 if (response[0] == "ERROR") {
                     Toast.makeText(this, response[1], Toast.LENGTH_SHORT).show()
                 } else {
-                    val intent = Intent(this, FinishedRequest::class.java)
+                    val intent = Intent(this, FinishedRequestActivity::class.java)
                     intent.putExtra("id", id)
                     startActivity(intent)
                     finish()

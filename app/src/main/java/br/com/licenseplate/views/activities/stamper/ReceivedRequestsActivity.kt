@@ -75,7 +75,7 @@ class ReceivedRequestsActivity : AppCompatActivity() {
             startActivity(intentR)
             return true
         } else if (item.itemId == R.id.licenseRequest) {
-            val intent = Intent(this, AuthorizationList::class.java)
+            val intent = Intent(this, AuthorizationListActivity::class.java)
             startActivity(intent)
         } else if (item.itemId == R.id.logout) {
             val intent = Intent(this, MainActivity::class.java)

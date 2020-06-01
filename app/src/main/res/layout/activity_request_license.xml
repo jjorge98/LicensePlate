@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".views.activities.client.RequestLicense">
-
+    tools:context=".views.activities.client.RequestLicenseActivity">
+<!-- TODO: Pesquisar sobre máscaras -->
     <ImageView
         android:id="@+id/logoReqLicense"
         android:layout_width="295dp"

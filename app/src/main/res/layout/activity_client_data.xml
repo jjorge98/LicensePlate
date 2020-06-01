@@ -5,18 +5,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".views.activities.client.ClientData">
+    tools:context=".views.activities.client.ClientDataActivity">
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="295dp"
         android:layout_height="207dp"
         android:src="@drawable/logo"
-        app:layout_constraintBottom_toTopOf="@+id/nameClientData"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/alike_angular"
+        android:text="@string/dataEnter"
+        android:textAlignment="center"
+        android:textColor="@color/cyanLighten4"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/nameClientData"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <EditText
         android:id="@+id/nameClientData"
@@ -24,14 +40,14 @@
         android:layout_height="40dp"
         android:background="@drawable/inputs"
         android:ems="10"
-        android:hint="Nome"
+        android:hint="@string/name"
         android:inputType="textPersonName"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/cpfClientData"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
         android:id="@+id/cpfClientData"
@@ -39,7 +55,7 @@
         android:layout_height="40dp"
         android:background="@drawable/inputs"
         android:ems="10"
-        android:hint="CPF"
+        android:hint="@string/cpf"
         android:inputType="textPersonName"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/celClientData"
@@ -54,7 +70,7 @@
         android:layout_height="40dp"
         android:background="@drawable/inputs"
         android:ems="10"
-        android:hint="Telefone"
+        android:hint="@string/telefone"
         android:inputType="phone"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/buttonClientData"

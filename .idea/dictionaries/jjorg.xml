@@ -7,13 +7,16 @@
       <w>aluguel</w>
       <w>anote</w>
       <w>anteriores</w>
+      <w>autoriação</w>
       <w>autorizacao</w>
       <w>autorization</w>
       <w>autorização</w>
       <w>cadastrado</w>
       <w>cadastrar</w>
+      <w>cancelada</w>
       <w>cancelamento</w>
       <w>carro</w>
+      <w>caso</w>
       <w>categoria</w>
       <w>chassi</w>
       <w>cliente</w>
@@ -21,27 +24,44 @@
       <w>colecao</w>
       <w>coleção</w>
       <w>coloramareloq</w>
+      <w>colorazulescuro</w>
       <w>colorgreen</w>
       <w>concluída</w>
+      <w>confirmada</w>
+      <w>confirmação</w>
       <w>consulta</w>
       <w>contate</w>
+      <w>contato</w>
+      <w>copiado</w>
       <w>dados</w>
+      <w>detalhes</w>
       <w>detran</w>
       <w>digite</w>
       <w>diplomático</w>
+      <w>dirija</w>
       <w>distrito</w>
+      <w>encontra</w>
+      <w>entre</w>
+      <w>enviar</w>
+      <w>escolha</w>
       <w>estado</w>
       <w>estados</w>
       <w>estampador</w>
+      <w>estampadora</w>
       <w>estampagem</w>
+      <w>estamparia</w>
+      <w>está</w>
       <w>excluir</w>
       <w>excluída</w>
       <w>experiencia</w>
       <w>experiência</w>
       <w>fabricante</w>
       <w>falta</w>
+      <w>faça</w>
+      <w>feita</w>
       <w>finalizadas</w>
       <w>finalizar</w>
+      <w>formato</w>
       <w>geocoder</w>
       <w>goias</w>
       <w>gson</w>
@@ -52,18 +72,25 @@
       <w>inicial</w>
       <w>insira</w>
       <w>interactor</w>
+      <w>inválido</w>
+      <w>ligue</w>
       <w>listar</w>
+      <w>localizacao</w>
       <w>localização</w>
       <w>logins</w>
       <w>loja</w>
       <w>lojas</w>
+      <w>mais</w>
       <w>materiais</w>
       <w>motivo</w>
       <w>moto</w>
       <w>novamente</w>
       <w>número</w>
       <w>oficial</w>
+      <w>outro</w>
+      <w>pelo</w>
       <w>perfil</w>
+      <w>pessoalmente</w>
       <w>pivo</w>
       <w>placa</w>
       <w>placas</w>
@@ -71,10 +98,13 @@
       <w>problema</w>
       <w>problemas</w>
       <w>processo</w>
+      <w>produção</w>
       <w>protocolo</w>
       <w>proximo</w>
       <w>próximo</w>
+      <w>queira</w>
       <w>receber</w>
+      <w>recebida</w>
       <w>recebidas</w>
       <w>recebido</w>
       <w>recusar</w>
@@ -86,8 +116,11 @@
       <w>rondônia</w>
       <w>sair</w>
       <w>salvar</w>
+      <w>sendo</w>
       <w>serpro</w>
+      <w>seus</w>
       <w>sistema</w>
+      <w>situação</w>
       <w>solicitação</w>
       <w>solicitações</w>
       <w>storelist</w>
@@ -100,6 +133,7 @@
       <w>tipo</w>
       <w>tipos</w>
       <w>todos</w>
+      <w>transferência</w>
       <w>troca</w>
       <w>técnicos</w>
       <w>unidade</w>

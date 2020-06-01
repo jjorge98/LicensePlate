@@ -67,4 +67,21 @@
     <string name="verifyRequest">Verificar solicitação</string>
     <string name="restrictedArea">Área reservada</string>
     <string name="textLackVerification">Seu perfil foi cadastrado com sucesso.\nPor favor, aguarde a verificação do perfil\nou contate o fabricante para verificar o processo!</string>
+    <string name="processVerificationText">Digite a placa do seu veículo\npara verificar o processo</string>
+    <string name="verify">Verificar</string>
+    <string name="requestHistory">Histórico de solicitações</string>
+    <string name="requests">Solicitações de estampagem</string>
+    <string name="forgotEmailText">Digite seu e-mail para recuperar a senha</string>
+    <string name="dataEnter">Digite seus dados:</string>
+    <string name="receivedRequests">Solicitações aceitas</string>
+    <string name="send">Enviar</string>
+    <string name="email">E-mail</string>
+    <string name="deleteStore">Excluir loja</string>
+    <string name="seeUserData">Ver dados do usuário</string>
+    <string name="seeStoreData">Ver dados da loja</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="clientData">Dados do cliente</string>
+    <string name="userData">Dados do usuário</string>
 </resources>

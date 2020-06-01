@@ -18,6 +18,7 @@
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".views.activities.client.AuthorizationStatusActivity"></activity>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -28,21 +29,21 @@
             android:label="@string/title_activity_store_maps" />
         <activity android:name=".views.activities.stamper.ReceivedRequestsActivity" />
         <activity android:name=".views.activities.login.LackVerificationActivity" />
-        <activity android:name=".views.activities.client.FinishedRequest" />
-        <activity android:name=".views.activities.login.ProfileRegister" />
-        <activity android:name=".views.activities.login.RegisterUser" />
-        <activity android:name=".views.activities.adm.StoreListAdm" />
-        <activity android:name=".views.activities.adm.StoreRegister" />
-        <activity android:name=".views.activities.login.ForgotPassword" />
-        <activity android:name=".views.activities.login.LoginStamper" />
-        <activity android:name=".views.activities.adm.UserList" />
-        <activity android:name=".views.activities.adm.UserRegister" />
-        <activity android:name=".views.activities.stamper.AuthorizationList" />
+        <activity android:name=".views.activities.client.FinishedRequestActivity" />
+        <activity android:name=".views.activities.login.ProfileRegisterActivity" />
+        <activity android:name=".views.activities.login.RegisterUserActivity" />
+        <activity android:name=".views.activities.adm.StoreListAdmActivity" />
+        <activity android:name=".views.activities.adm.StoreRegisterActivity" />
+        <activity android:name=".views.activities.login.ForgotPasswordActivity" />
+        <activity android:name=".views.activities.login.LoginStamperActivity" />
+        <activity android:name=".views.activities.adm.UserListActivity" />
+        <activity android:name=".views.activities.adm.UserRegisterActivity" />
+        <activity android:name=".views.activities.stamper.AuthorizationListActivity" />
         <activity android:name=".views.activities.stamper.LicenseHistoryActivity" />
-        <activity android:name=".views.activities.client.VerifyRequest" />
-        <activity android:name=".views.activities.client.ClientData" />
-        <activity android:name=".views.activities.client.HelpLicenseRequest" />
-        <activity android:name=".views.activities.client.RequestLicense" />
+        <activity android:name=".views.activities.client.VerifyRequestActivity" />
+        <activity android:name=".views.activities.client.ClientDataActivity" />
+        <activity android:name=".views.activities.client.HelpLicenseRequestActivity" />
+        <activity android:name=".views.activities.client.RequestLicenseActivity" />
         <activity android:name=".views.activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

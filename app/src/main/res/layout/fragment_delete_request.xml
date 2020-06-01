@@ -22,7 +22,7 @@
             android:layout_marginBottom="8dp"
             android:text="Por favor, informe o motivo da recusa a solicitação"
             android:textAlignment="center"
-            android:textColor="@color/black"
+            android:textColor="@color/cyanLighten4"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/spinnerDelete"

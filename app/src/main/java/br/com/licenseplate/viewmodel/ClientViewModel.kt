@@ -46,14 +46,15 @@ class ClientViewModel(val app: Application) : AndroidViewModel(app) {
     ) {
         val calendar = Calendar.getInstance()
         val date = DateFormat.getDateInstance().format(calendar.time)
-        val authorization = Authorization("0", placa, date, "0", 0)
+        val authorization = Authorization("0", placa.toUpperCase(Locale.ROOT), date, "0", 0)
 
         interactor.verifyLicenseNumber(authorization) { result, responseAPI ->
             if (result == "VAZIO") {
                 val resultado = "Por favor, preencha todos os campos!"
                 callback(resultado, null)
             } else if (result == "PLACA") {
-                val resultado = "Formato de placa inválido! Formato de placa: 'AAA0A00'"
+                val resultado =
+                    "Formato de placa inválido! Formatos de placa: 'AAA0A00' ou 'AAA0000'"
                 callback(resultado, null)
             } else if (result == "ERROR") {
                 val resultado =
@@ -146,6 +147,69 @@ class ClientViewModel(val app: Application) : AndroidViewModel(app) {
             } else {
                 val response = arrayOf("OK")
                 callback(response)
+            }
+        }
+    }
+
+    fun verifyProcess(licensePlate: String, callback: (result: String) -> Unit) {
+        interactor.verifyProcess(licensePlate.toUpperCase(Locale.ROOT)) { response, autCli, store ->
+            if (response == "OK") {
+                if (autCli?.authorization?.status == 0) {
+                    val text =
+                        "Sua solicitação falta ser confirmada pelo estampador. Por favor aguarde a " +
+                                "confirmação ou ligue na estamparia.\nTelefone: ${store?.telefone}"
+                    callback(text)
+                } else if (autCli?.authorization?.status == 1) {
+                    val text =
+                        "Sua solicitação foi recebida pelo estampador e sua placa está sendo feita. " +
+                                "Para mais detalhes, ligue na estamparia pelo número: ${store?.telefone}"
+                    callback(text)
+                } else {
+                    val text =
+                        "Sua solicitação foi concluída. Por favor, se dirija a estamparia e pegue " +
+                                "sua placa. Caso queira falar com o estampador, ligue no telefone: ${store?.telefone}"
+                    callback(text)
+                }
+
+            } else if (response == "Falta de material para estampagem") {
+                val text =
+                    "Sua solicitação foi cancelada. A estamparia de sua escolha está com o material" +
+                            " de sua autorização em falta. Caso queira, faça uma nova solicitação e " +
+                            "escolha um outro estampador!"
+                callback(text)
+            } else if (response == "Autorização já incluída em um sistema") {
+                val text =
+                    "Sua solicitação foi cancelada. Sua autorização já foi incluída em um sistema." +
+                            " Por favor, procure o DETRAN para verificar a situação de sua autorização."
+                callback(text)
+            } else if (response == "Problema com a autorização") {
+                val text =
+                    "Sua solicitação foi cancelada. Há um problema com sua autorização. Por favor," +
+                            " vá pessoalmente em uma estamparia ou no DETRAN para verificar sua autoriação;"
+                callback(text)
+            } else if (response == "Problemas técnicos") {
+                val text =
+                    "Sua solicitação foi cancelada. A estamparia de sua escolha está com problemas " +
+                            "técnicos. Caso queira, faça uma nova solicitação e escolha um outro estampador!"
+                callback(text)
+            } else {
+                val text = "Nenhuma solicitação encontrada para sua placa."
+                callback(text)
+            }
+        }
+    }
+
+    fun verifyLicensePlate(licensePlate: String, callback: (result: String) -> Unit) {
+        interactor.verifyLicensePlate(licensePlate) { result ->
+            if (result == "VAZIO") {
+                val resultado = "Por favor, digite uma placa!"
+                callback(resultado)
+            } else if (result == "PLACA") {
+                val resultado =
+                    "Formato de placa inválido! Formatos de placa: 'AAA0A00' ou 'AAA0000'"
+                callback(resultado)
+            } else {
+                callback("OK")
             }
         }
     }

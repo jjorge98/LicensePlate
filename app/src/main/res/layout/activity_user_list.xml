@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".views.activities.adm.UserList">
+    tools:context=".views.activities.adm.UserListActivity">
 
     <include
         android:id="@+id/action_bar"
@@ -20,7 +20,7 @@
         android:textAlignment="center"
         android:paddingTop="10sp"
         android:paddingBottom="10sp"
-        android:textColor="@color/black"
+        android:textColor="@color/cyanLighten4"
         android:textSize="35sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/recyclerViewUserList"

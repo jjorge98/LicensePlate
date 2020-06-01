@@ -10,60 +10,36 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.Fragment
 import br.com.licenseplate.R
-import br.com.licenseplate.dataclass.Client
-import kotlinx.android.synthetic.main.fragment_info_client.*
+import br.com.licenseplate.dataclass.Stamper
+import kotlinx.android.synthetic.main.fragment_info_user.*
 
-class InfoClientFragment(private val client: Client?) : DialogFragment() {
+class InfoUserFragment(private val stamper: Stamper) : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_info_client, container, false)
+        return inflater.inflate(R.layout.fragment_info_user, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         fillTexts()
 
-        okButtonInfoClient.setOnClickListener { okDismiss() }
+        okButtonInfoUser.setOnClickListener { okDismiss() }
     }
 
     private fun fillTexts() {
-        nameInfoClient.text = client?.nome
-        celInfoClient.text = client?.cel
-        cpfInfoClient.text = client?.cpf
+        cpfInfoUser.text = stamper.cpf
+        rgInfoUser.text = stamper.rg
+        celInfoUser.text = stamper.cel
 
-        copyNameInfoClient.setOnClickListener {
+        copyCpfInfoUser.setOnClickListener {
             val clipboard =
                 activity?.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-            val clip: ClipData = ClipData.newPlainText("Copy name", client?.nome)
-            clipboard.setPrimaryClip(clip)
-            Toast.makeText(
-                requireActivity().applicationContext,
-                "Nome copiado para a área de transferência",
-                Toast.LENGTH_SHORT
-            ).show()
-        }
-
-        copyCelInfoClient.setOnClickListener {
-            val clipboard =
-                activity?.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-            val clip: ClipData = ClipData.newPlainText("Copy cel", client?.cel)
-            clipboard.setPrimaryClip(clip)
-            Toast.makeText(
-                requireActivity().applicationContext,
-                "Telefone copiado para a área de transferência",
-                Toast.LENGTH_SHORT
-            ).show()
-        }
-
-        copyCpfInfoClient.setOnClickListener {
-            val clipboard =
-                activity?.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-            val clip: ClipData = ClipData.newPlainText("Copy cpf", client?.cpf)
+            val clip: ClipData = ClipData.newPlainText("Copy name", stamper.cpf)
             clipboard.setPrimaryClip(clip)
             Toast.makeText(
                 requireActivity().applicationContext,
@@ -72,10 +48,34 @@ class InfoClientFragment(private val client: Client?) : DialogFragment() {
             ).show()
         }
 
-        whatsappInfoClient.setOnClickListener {
+        copyRgInfoUser.setOnClickListener {
+            val clipboard =
+                activity?.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            val clip: ClipData = ClipData.newPlainText("Copy cel", stamper.rg)
+            clipboard.setPrimaryClip(clip)
+            Toast.makeText(
+                requireActivity().applicationContext,
+                "RG copiado para a área de transferência",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+
+        copyCelInfoUser.setOnClickListener {
+            val clipboard =
+                activity?.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            val clip: ClipData = ClipData.newPlainText("Copy cpf", stamper.cel)
+            clipboard.setPrimaryClip(clip)
+            Toast.makeText(
+                requireActivity().applicationContext,
+                "Telefone copiado para a área de transferência",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+
+        whatsappInfoUser.setOnClickListener {
             val whatsAppRoot = "http://api.whatsapp.com/"
             val number =
-                "send?phone=+55" + client?.cel
+                "send?phone=+55" + stamper.cel
 
             val uri = whatsAppRoot + number
 
@@ -83,10 +83,9 @@ class InfoClientFragment(private val client: Client?) : DialogFragment() {
             intent.data = Uri.parse(uri)
             startActivity(intent)
         }
-
     }
 
-    private fun okDismiss() {
-        this.dismiss()
+    private fun okDismiss(){
+        this.okDismiss()
     }
 }

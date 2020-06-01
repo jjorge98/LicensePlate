@@ -12,14 +12,16 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.licenseplate.R
 import br.com.licenseplate.dataclass.Stamper
 import br.com.licenseplate.viewmodel.AdmViewModel
-import br.com.licenseplate.views.activities.adm.UserList
-import br.com.licenseplate.views.activities.adm.UserRegister
+import br.com.licenseplate.views.activities.adm.UserListActivity
+import br.com.licenseplate.views.activities.adm.UserRegisterActivity
+import br.com.licenseplate.views.fragments.InfoUserFragment
 import kotlinx.android.synthetic.main.user_list.view.*
 
 class UserAdapter(
     private val users: Array<Stamper>,
     private val context: Context,
-    private val viewModelA: AdmViewModel
+    private val viewModelA: AdmViewModel,
+    private val view: UserListActivity?
 ) :
     RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
@@ -35,9 +37,6 @@ class UserAdapter(
         val user = users[position]
 
         holder.name.text = user.nome
-        holder.cpf.text = user.cpf
-        holder.rg.text = user.rg
-        holder.cel.text = user.cel
         holder.store.text = user.loja
         if (user.login == 1) {
             holder.login.text = "Estampador"
@@ -64,14 +63,23 @@ class UserAdapter(
             if (itemSelected?.itemId == R.id.userRegisterItem) {
                 viewModelA.userRegisterConfirmation(stamper)
 
-                val intent = Intent(context.applicationContext, UserRegister::class.java)
+                val intent = Intent(context.applicationContext, UserRegisterActivity::class.java)
                 context.startActivity(intent)
                 return@setOnMenuItemClickListener true
             } else if (itemSelected?.itemId == R.id.deleteUserRegister) {
                 viewModelA.deleteUser(stamper)
 
-                val intent = Intent(context.applicationContext, UserList::class.java)
+                val intent = Intent(context.applicationContext, UserListActivity::class.java)
                 context.startActivity(intent)
+                return@setOnMenuItemClickListener true
+            } else if (itemSelected?.itemId == R.id.seeUserData) {
+                TODO("Not showing the fragment")
+                val infoFragment = InfoUserFragment(stamper)
+                val manager1 = view?.supportFragmentManager
+                val transaction1 = manager1?.beginTransaction()
+                transaction1?.add(infoFragment, "infoFragment")
+                transaction1?.commit()
+
                 return@setOnMenuItemClickListener true
             }
             return@setOnMenuItemClickListener true
@@ -81,9 +89,6 @@ class UserAdapter(
 
     class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val name: TextView = itemView.nameUserList
-        val cpf: TextView = itemView.cpfUserList
-        val rg: TextView = itemView.rgUserList
-        val cel: TextView = itemView.celUserList
         val login: TextView = itemView.loginUserList
         val store: TextView = itemView.storeUserList
     }

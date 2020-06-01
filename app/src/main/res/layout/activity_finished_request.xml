@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".views.activities.client.FinishedRequest">
+    tools:context=".views.activities.client.FinishedRequestActivity">
 
     <ImageView
         android:id="@+id/imageView6"
@@ -25,7 +25,7 @@
         android:fontFamily="@font/alike_angular"
         android:text="@string/textViewFinishedRequest"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="@color/cyanLighten4"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/textView1FinishedRequest"
@@ -41,7 +41,7 @@
         android:fontFamily="@font/alike_angular"
         android:text="@string/protocolNumber"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="@color/cyanLighten4"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/protocolNumber"

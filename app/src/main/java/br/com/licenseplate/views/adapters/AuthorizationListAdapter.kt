@@ -1,6 +1,7 @@
 package br.com.licenseplate.views.adapters
 
 import android.content.Context
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.MenuInflater
 import android.view.View
@@ -14,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.licenseplate.R
 import br.com.licenseplate.dataclass.AuthorizationClient
 import br.com.licenseplate.viewmodel.StamperViewModel
-import br.com.licenseplate.views.activities.stamper.AuthorizationList
+import br.com.licenseplate.views.activities.stamper.AuthorizationListActivity
 import br.com.licenseplate.views.fragments.DeleteRequestFragment
 import br.com.licenseplate.views.fragments.InfoClientFragment
 import kotlinx.android.synthetic.main.authorization_card.view.*
@@ -22,7 +23,7 @@ import kotlinx.android.synthetic.main.authorization_card.view.*
 class AuthorizationListAdapter(
     private val dataSet: Array<AuthorizationClient>,
     private val context: Context,
-    private val view: AuthorizationList
+    private val view: AuthorizationListActivity
 ) :
     RecyclerView.Adapter<AuthorizationListAdapter.AuthorizationViewHolder>() {
     private val viewModelS: StamperViewModel by lazy {
@@ -128,6 +129,7 @@ class AuthorizationListAdapter(
                     3
                 ) + "\n" + authorization.authorization.placa?.substring(3)
                 holder.licensePlate.text = p
+                holder.licensePlate.setTextColor(Color.parseColor("#C4022B"))
                 holder.image.layoutParams.height = 240
                 holder.image.apply {
                     setImageResource(R.drawable.aluguel_moto)
@@ -136,6 +138,7 @@ class AuthorizationListAdapter(
             "carro_aluguel" -> {
                 holder.licensePlate.text = authorization.authorization.placa
                 holder.image.layoutParams.height = 240
+                holder.licensePlate.setTextColor(Color.parseColor("#C4022B"))
                 holder.image.apply {
                     setImageResource(R.drawable.aluguel)
                 }
@@ -146,6 +149,7 @@ class AuthorizationListAdapter(
                     3
                 ) + "\n" + authorization.authorization.placa?.substring(3)
                 holder.image.layoutParams.height = 240
+                holder.licensePlate.setTextColor(Color.parseColor("#002E9D"))
                 holder.licensePlate.text = p
                 holder.image.apply {
                     setImageResource(R.drawable.oficial_moto)
@@ -153,6 +157,7 @@ class AuthorizationListAdapter(
             }
             "carro_oficial" -> {
                 holder.licensePlate.text = authorization.authorization.placa
+                holder.licensePlate.setTextColor(Color.parseColor("#002E9D"))
                 holder.image.layoutParams.height = 240
                 holder.image.apply {
                     setImageResource(R.drawable.oficial)
@@ -164,6 +169,7 @@ class AuthorizationListAdapter(
                     3
                 ) + "\n" + authorization.authorization.placa?.substring(3)
                 holder.licensePlate.text = p
+                holder.licensePlate.setTextColor(Color.parseColor("#EFA300"))
                 holder.image.layoutParams.height = 240
                 holder.image.apply {
                     setImageResource(R.drawable.diplomata_moto)
@@ -172,6 +178,7 @@ class AuthorizationListAdapter(
             "carro_diploma" -> {
                 holder.licensePlate.text = authorization.authorization.placa
                 holder.image.layoutParams.height = 240
+                holder.licensePlate.setTextColor(Color.parseColor("#EFA300"))
                 holder.image.apply {
                     setImageResource(R.drawable.diplomata)
                 }
@@ -183,6 +190,7 @@ class AuthorizationListAdapter(
                 ) + "\n" + authorization.authorization.placa?.substring(3)
                 holder.licensePlate.text = p
                 holder.image.layoutParams.height = 240
+                holder.licensePlate.setTextColor(Color.parseColor("#00764F"))
                 holder.image.apply {
                     setImageResource(R.drawable.experiencia_moto)
                 }
@@ -190,6 +198,7 @@ class AuthorizationListAdapter(
             "carro_experiencia" -> {
                 holder.licensePlate.text = authorization.authorization.placa
                 holder.image.layoutParams.height = 240
+                holder.licensePlate.setTextColor(Color.parseColor("#00764F"))
                 holder.image.apply {
                     setImageResource(R.drawable.experiencia)
                 }
@@ -199,6 +208,7 @@ class AuthorizationListAdapter(
                     0,
                     3
                 ) + "\n" + authorization.authorization.placa?.substring(3)
+                holder.licensePlate.setTextColor(Color.parseColor("#5D6166"))
                 holder.licensePlate.text = p
                 holder.image.layoutParams.height = 240
                 holder.image.apply {
@@ -208,6 +218,7 @@ class AuthorizationListAdapter(
             "colecao" -> {
                 holder.licensePlate.text = authorization.authorization.placa
                 holder.image.layoutParams.height = 240
+                holder.licensePlate.setTextColor(Color.parseColor("#5D6166"))
                 holder.image.apply {
                     setImageResource(R.drawable.colecionador)
                 }

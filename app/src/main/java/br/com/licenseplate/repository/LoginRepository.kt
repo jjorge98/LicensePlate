@@ -1,6 +1,8 @@
 package br.com.licenseplate.repository
 
+import android.content.ContentValues.TAG
 import android.content.Context
+import android.util.Log
 import br.com.licenseplate.dataclass.Stamper
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -102,8 +104,9 @@ class LoginRepository(private val context: Context) {
 
                     if (user == null) {
                         callback(Stamper())
+                    } else {
+                        callback(user)
                     }
-                    callback(user)
                 }
             }
         })

@@ -12,10 +12,10 @@ import br.com.licenseplate.R
 import br.com.licenseplate.viewmodel.AdmViewModel
 import br.com.licenseplate.viewmodel.LoginViewModel
 import br.com.licenseplate.views.activities.MainActivity
-import br.com.licenseplate.views.adapters.StoreAdapter
-import kotlinx.android.synthetic.main.activity_store_list_adm.*
+import br.com.licenseplate.views.adapters.UserAdapter
+import kotlinx.android.synthetic.main.activity_user_register.*
 
-class StoreListAdm : AppCompatActivity() {
+class UserRegisterActivity : AppCompatActivity() {
     private val viewModelL: LoginViewModel by lazy {
         ViewModelProvider(this).get(LoginViewModel::class.java)
     }
@@ -25,10 +25,10 @@ class StoreListAdm : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_store_list_adm)
+        setContentView(R.layout.activity_user_register)
         setSupportActionBar(findViewById(R.id.action_bar))
 
-        storeList()
+        userList()
     }
 
     override fun onResume() {
@@ -42,50 +42,50 @@ class StoreListAdm : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        //Habilita botão retorno a atividade anterior
+        //Habilita o botão de retornar a tela anterior
         this.supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        //Insere o menu que está em res->menu
+        //Habilita o menu que está em res->menu
         menuInflater.inflate(R.menu.menu_adm, menu)
         return true
     }
 
-    //Função que volta a atividade anterior, finalizando essa
+    //Função que finaliza a atividade e volta a atividade anterior
     override fun onSupportNavigateUp(): Boolean {
         finish()
         return true
     }
 
-    //função com os itens do menu
+    //Itens do menu
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.storeRegister) {
-            val intent = Intent(this, StoreRegister::class.java)
+            val intent = Intent(this, StoreRegisterActivity::class.java)
+            startActivity(intent)
+            return true
+        } else if (item.itemId == R.id.storeList) {
+            val intent = Intent(this, StoreListAdmActivity::class.java)
             startActivity(intent)
             return true
         } else if (item.itemId == R.id.userList) {
-            val intent = Intent(this, UserList::class.java)
-            startActivity(intent)
-            return true
-        } else if (item.itemId == R.id.userRegister) {
-            val intent = Intent(this, UserRegister::class.java)
+            val intent = Intent(this, UserListActivity::class.java)
             startActivity(intent)
             return true
         } else if (item.itemId == R.id.logout) {
-            viewModelL.logout()
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
+            viewModelL.logout()
         }
 
         return false
     }
 
-    private fun storeList() {
-        viewModelA.storeList.observe(this, Observer { store ->
-            recyclerViewStoreListAdm.layoutManager = LinearLayoutManager(this)
-            val adapter = StoreAdapter(store, this, viewModelA)
-            recyclerViewStoreListAdm.adapter = adapter
+    private fun userList() {
+        recyclerViewUserRegister.layoutManager = LinearLayoutManager(this)
+        viewModelA.users.observe(this, Observer { users ->
+            val adapter = UserAdapter(users, this, viewModelA, null)
+            recyclerViewUserRegister.adapter = adapter
         })
 
-        viewModelA.storeListAdm()
+        viewModelA.userListRegister()
     }
 }

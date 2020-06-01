@@ -13,7 +13,7 @@ import br.com.licenseplate.R
 import br.com.licenseplate.viewmodel.ClientViewModel
 import kotlinx.android.synthetic.main.activity_request_license.*
 
-class RequestLicense : AppCompatActivity() {
+class RequestLicenseActivity : AppCompatActivity() {
     private lateinit var estado: String
     private val viewModel: ClientViewModel by lazy {
         ViewModelProvider(this).get(ClientViewModel::class.java)
@@ -76,10 +76,10 @@ class RequestLicense : AppCompatActivity() {
     }
 
     private fun next() {
-        val intent = Intent(this, ClientData::class.java)
+        val intent = Intent(this, ClientDataActivity::class.java)
 
         if (estado == "DF") {
-            val placa = inputReqLicense.text.toString().toUpperCase()
+            val placa = inputReqLicense.text.toString()
             viewModel.verifyLicenseNumber(placa) { result, authorizationResponse ->
                 if (result == "OK") {
                     intent.apply {

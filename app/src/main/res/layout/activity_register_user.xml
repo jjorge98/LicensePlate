@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".views.activities.login.RegisterUser">
+    tools:context=".views.activities.login.RegisterUserActivity">
 
     <ImageView
         android:id="@+id/imageView4"
@@ -25,7 +25,7 @@
         android:fontFamily="@font/alike_angular"
         android:text="Cadastro"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="@color/cyanLighten4"
         android:textSize="35sp"
         app:layout_constraintBottom_toTopOf="@+id/emailRegisterUser"
         app:layout_constraintEnd_toEndOf="parent"
