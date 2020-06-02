@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".views.activities.stamper.LicenseHistoryActivity">
+    tools:context=".views.activities.stamper.FinishedRequestsActivity">
 
     <include
         android:id="@+id/action_bar"
@@ -25,7 +25,7 @@
         android:fontFamily="@font/alike_angular"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:text="@string/requestHistory"
+        android:text="@string/finishedRequests"
         android:textAlignment="center"
         android:textColor="@color/cyanLighten4"
         android:textSize="30sp"

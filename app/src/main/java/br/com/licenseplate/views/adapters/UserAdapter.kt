@@ -73,7 +73,6 @@ class UserAdapter(
                 context.startActivity(intent)
                 return@setOnMenuItemClickListener true
             } else if (itemSelected?.itemId == R.id.seeUserData) {
-                TODO("Not showing the fragment")
                 val infoFragment = InfoUserFragment(stamper)
                 val manager1 = view?.supportFragmentManager
                 val transaction1 = manager1?.beginTransaction()

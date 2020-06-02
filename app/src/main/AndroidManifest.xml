@@ -39,7 +39,7 @@
         <activity android:name=".views.activities.adm.UserListActivity" />
         <activity android:name=".views.activities.adm.UserRegisterActivity" />
         <activity android:name=".views.activities.stamper.AuthorizationListActivity" />
-        <activity android:name=".views.activities.stamper.LicenseHistoryActivity" />
+        <activity android:name=".views.activities.stamper.FinishedRequestsActivity" />
         <activity android:name=".views.activities.client.VerifyRequestActivity" />
         <activity android:name=".views.activities.client.ClientDataActivity" />
         <activity android:name=".views.activities.client.HelpLicenseRequestActivity" />

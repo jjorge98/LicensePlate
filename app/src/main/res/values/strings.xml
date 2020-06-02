@@ -70,6 +70,7 @@
     <string name="processVerificationText">Digite a placa do seu veículo\npara verificar o processo</string>
     <string name="verify">Verificar</string>
     <string name="requestHistory">Histórico de solicitações</string>
+    <string name="finishedRequests">Solicitações finalizadas</string>
     <string name="requests">Solicitações de estampagem</string>
     <string name="forgotEmailText">Digite seu e-mail para recuperar a senha</string>
     <string name="dataEnter">Digite seus dados:</string>
@@ -80,8 +81,6 @@
     <string name="seeUserData">Ver dados do usuário</string>
     <string name="seeStoreData">Ver dados da loja</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="clientData">Dados do cliente</string>
     <string name="userData">Dados do usuário</string>
 </resources>

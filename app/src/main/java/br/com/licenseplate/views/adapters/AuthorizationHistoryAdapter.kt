@@ -11,14 +11,14 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.com.licenseplate.R
 import br.com.licenseplate.dataclass.AuthorizationClient
-import br.com.licenseplate.views.activities.stamper.LicenseHistoryActivity
+import br.com.licenseplate.views.activities.stamper.FinishedRequestsActivity
 import br.com.licenseplate.views.fragments.InfoClientFragment
 import kotlinx.android.synthetic.main.authorization_card.view.*
 
 class AuthorizationHistoryAdapter(
     private val dataSet: Array<AuthorizationClient>,
     private val context: Context,
-    private val view: LicenseHistoryActivity
+    private val view: FinishedRequestsActivity
 ) :
     RecyclerView.Adapter<AuthorizationHistoryAdapter.AuthorizationHistoryViewHolder>() {
     override fun onCreateViewHolder(

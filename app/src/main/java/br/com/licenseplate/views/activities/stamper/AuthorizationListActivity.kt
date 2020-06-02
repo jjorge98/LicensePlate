@@ -71,7 +71,7 @@ class AuthorizationListActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         //Cada if é um item do menu
         if (item.itemId == R.id.licenseHistory) {
-            val intentR = Intent(this, LicenseHistoryActivity::class.java)
+            val intentR = Intent(this, FinishedRequestsActivity::class.java)
             startActivity(intentR)
             return true
         } else if (item.itemId == R.id.receivedRequest) {

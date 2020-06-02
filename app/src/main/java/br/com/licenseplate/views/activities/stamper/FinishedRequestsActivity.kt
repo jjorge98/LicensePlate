@@ -13,9 +13,9 @@ import br.com.licenseplate.viewmodel.LoginViewModel
 import br.com.licenseplate.viewmodel.StamperViewModel
 import br.com.licenseplate.views.activities.MainActivity
 import br.com.licenseplate.views.adapters.AuthorizationHistoryAdapter
-import kotlinx.android.synthetic.main.activity_license_history.*
+import kotlinx.android.synthetic.main.activity_finished_requests.*
 
-class LicenseHistoryActivity : AppCompatActivity() {
+class FinishedRequestsActivity : AppCompatActivity() {
     private val viewModelL: LoginViewModel by lazy {
         ViewModelProvider(this).get(LoginViewModel::class.java)
     }
@@ -26,13 +26,13 @@ class LicenseHistoryActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_license_history)
+        setContentView(R.layout.activity_finished_requests)
 
         setSupportActionBar(findViewById(R.id.action_bar))
 
         authorizationList()
+        TODO("Fazer activity de placas entregues")
     }
-
     override fun onResume() {
         super.onResume()
         viewModelL.verifyLogin { result ->

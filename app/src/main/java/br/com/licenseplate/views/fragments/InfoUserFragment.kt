@@ -10,12 +10,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.DialogFragment
 import br.com.licenseplate.R
 import br.com.licenseplate.dataclass.Stamper
 import kotlinx.android.synthetic.main.fragment_info_user.*
 
-class InfoUserFragment(private val stamper: Stamper) : Fragment() {
+class InfoUserFragment(private val stamper: Stamper) : DialogFragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -85,7 +85,7 @@ class InfoUserFragment(private val stamper: Stamper) : Fragment() {
         }
     }
 
-    private fun okDismiss(){
+    private fun okDismiss() {
         this.okDismiss()
     }
 }
