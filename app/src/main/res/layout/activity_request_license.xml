@@ -22,7 +22,6 @@
         android:id="@+id/helpEstadoReqLicense"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/botoes"
         android:text="@string/requestLicenseEstado"
         android:textAlignment="center"
         android:textColor="#000"
@@ -49,7 +48,6 @@
         android:id="@+id/helpTextReqLicense"
         android:layout_width="371dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/botoes"
         android:textAlignment="center"
         android:textColor="#000"
         android:textSize="25sp"
@@ -80,8 +78,20 @@
         android:background="@drawable/botoes"
         android:text="Próxima etapa"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/backActivity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inputReqLicense" />
+
+    <ImageView
+        android:id="@+id/backActivity"
+        android:layout_width="51dp"
+        android:layout_height="51dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonReqLicense"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/icone_back_button" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
