@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/licenseRequest"
+        android:title="@string/licenseRequest"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/receivedRequest"
+        android:title="@string/licenseReceived"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/licenseHistory"
+        android:title="@string/licenseHistory"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/deliveredRequest"
+        android:title="@string/deliveredRequests"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/logout"
+        android:title="@string/logout"
+        app:showAsAction="never" />
+</menu>

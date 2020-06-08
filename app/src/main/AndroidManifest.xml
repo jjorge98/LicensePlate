@@ -1,21 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.com.licenseplate">
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the 'MyLocation' functionality.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".views.adapters.AuthorizationDeliveredAdapter"></activity>
+        <activity android:name=".views.activities.stamper.DeliveredRequestsActivity" />
+        <activity android:name=".views.activities.client.AuthorizationStatusActivity" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".views.activities.client.StoreMapsActivity"
+            android:label="@string/title_activity_store_maps" />
+        <activity android:name=".views.activities.stamper.ReceivedRequestsActivity" />
+        <activity android:name=".views.activities.login.LackVerificationActivity" />
+        <activity android:name=".views.activities.client.FinishedRequestActivity" />
+        <activity android:name=".views.activities.login.ProfileRegisterActivity" />
+        <activity android:name=".views.activities.login.RegisterUserActivity" />
+        <activity android:name=".views.activities.adm.StoreListAdmActivity" />
+        <activity android:name=".views.activities.adm.StoreRegisterActivity" />
+        <activity android:name=".views.activities.login.ForgotPasswordActivity" />
+        <activity android:name=".views.activities.login.LoginStamperActivity" />
+        <activity android:name=".views.activities.adm.UserListActivity" />
+        <activity android:name=".views.activities.adm.UserRegisterActivity" />
+        <activity android:name=".views.activities.stamper.AuthorizationListActivity" />
+        <activity android:name=".views.activities.stamper.FinishedRequestsActivity" />
+        <activity android:name=".views.activities.client.VerifyRequestActivity" />
+        <activity android:name=".views.activities.client.ClientDataActivity" />
+        <activity android:name=".views.activities.client.HelpLicenseRequestActivity" />
+        <activity android:name=".views.activities.client.RequestLicenseActivity" />
+        <activity android:name=".views.activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

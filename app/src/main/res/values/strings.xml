@@ -1,3 +1,89 @@
 <resources>
     <string name="app_name">LicensePlate</string>
+    <string name="textAutorization">Insira o número da autorização que foi recebido no Detran</string>
+    <string name="textLicense">Digite a placa do seu veículo</string>
+    <string name="textAuthorization">Insira o número da autorização que foi recebido no Detran</string>
+    <string name="requestLicenseEstado">Informe seu estado</string>
+    <string name="authorization">Autorização</string>
+    <string name="license">Placa</string>
+    <string name="next">Próximo</string>
+    <string name="storelist">Listar lojas</string>
+    <string name="userlist">Listar usuários</string>
+    <string name="userregister">Cadastrar usuário</string>
+    <string name="storeregister">Cadastrar loja</string>
+    <string name="logout">Sair</string>
+    <string name="licenseRequest">Solicitações recebidas</string>
+    <string name="licenseReceived">Solicitações aceitas</string>
+    <string name="licenseHistory">Solicitações finalizadas</string>
+    <string name="login">Login</string>
+    <string name="cnpj">CNPJ</string>
+    <string name="carPrice">Preço unidade placa de carro</string>
+    <string name="nome_fantasia">Nome Fantasia</string>
+    <string name="motoPrice">Preço unidade placa de moto</string>
+    <string name="location">Localização</string>
+    <string name="save">Salvar</string>
+    <string name="all_users">Todos os usuários:</string>
+    <string name="stores">Lojas</string>
+    <string name="receiveRequest">Receber solicitação</string>
+    <string name="finishRequest">Finalizar requisição</string>
+    <string name="userRegister">Cadastrar usuários</string>
+    <string name="title_activity_store_maps">Map</string>
+    <string name="textViewFinishedRequest">Sua solicitação foi concluída! Por favor, anote ou tire print do seu número de protocolo para consulta do processo!</string>
+    <string name="protocolNumber">Número de protocolo:</string>
+    <string name="backMain">Voltar a tela inicial</string>
+    <string name="telefone">Telefone</string>
+    <string name="store">Loja</string>
+    <string name="cpf">CPF</string>
+    <string name="name">Nome</string>
+    <string name="rg">RG</string>
+    <string name="register">Cadastrar</string>
+    <string name="delete">Excluir</string>
+    <string name="see_client_data">Ver dados do cliente</string>
+    <string name="denyRequest">Recusar solicitação</string>
+
+    <string-array name="Estados">
+        <item>DF</item>
+        <item>GO</item>
+        <item>RO</item>
+        <item>SP</item>
+    </string-array>
+
+    <string-array name="Logins">
+        <item>Fabricante</item>
+        <item>Estampador</item>
+    </string-array>
+    <string-array name="Stores">
+
+    </string-array>
+
+    <string-array name="DeleteReasons">
+        <item>Falta de material para estampagem</item>
+        <item>Autorização já incluída em um sistema</item>
+        <item>Problema com a autorização</item>
+        <item>Problemas técnicos</item>
+    </string-array>
+
+    <string name="cancelReason">Informe o motivo do cancelamento</string>
+    <string name="verifyRequest">Verificar solicitação</string>
+    <string name="restrictedArea">Área reservada</string>
+    <string name="textLackVerification">Seu perfil foi cadastrado com sucesso.\nPor favor, aguarde a verificação do perfil\nou contate o fabricante para verificar o processo!</string>
+    <string name="processVerificationText">Digite a placa do seu veículo\npara verificar o processo</string>
+    <string name="verify">Verificar</string>
+    <string name="requestHistory">Histórico de solicitações</string>
+    <string name="finishedRequests">Solicitações finalizadas</string>
+    <string name="requests">Solicitações de estampagem</string>
+    <string name="forgotEmailText">Digite seu e-mail para recuperar a senha</string>
+    <string name="dataEnter">Digite seus dados:</string>
+    <string name="receivedRequests">Solicitações aceitas</string>
+    <string name="send">Enviar</string>
+    <string name="email">E-mail</string>
+    <string name="deleteStore">Excluir loja</string>
+    <string name="seeUserData">Ver dados do usuário</string>
+    <string name="seeStoreData">Ver dados da loja</string>
+
+    <string name="clientData">Dados do cliente</string>
+    <string name="userData">Dados do usuário</string>
+    <string name="deliveredRequests">Solicitações entregues</string>
+    <string name="deliveredLicensePlate">Placas entregues</string>
+    <string name="deliverLicensePlate">Entregar placa</string>
 </resources>

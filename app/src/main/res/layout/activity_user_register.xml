@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".views.activities.adm.UserRegisterActivity">
+
+    <include
+        android:id="@+id/action_bar"
+        layout="@layout/action_bar"
+        app:layout_constraintBottom_toTopOf="@+id/textViewUserRegister"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></include>
+
+    <TextView
+        android:id="@+id/textViewUserRegister"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/alike_angular"
+        android:text="@string/userRegister"
+        android:textAlignment="center"
+        android:textColor="@color/cyanLighten4"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerViewUserRegister"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/action_bar" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewUserRegister"
+        android:layout_width="409dp"
+        android:layout_height="605dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewUserRegister" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

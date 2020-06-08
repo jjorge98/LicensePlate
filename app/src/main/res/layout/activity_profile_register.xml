@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/backProfileRegister"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".views.activities.login.ProfileRegisterActivity">
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="295dp"
+        android:layout_height="207dp"
+        app:layout_constraintBottom_toTopOf="@+id/profileText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <Spinner
+        android:id="@+id/spinnerLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:background="@drawable/inputs"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerStores"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileText" />
+
+    <Spinner
+        android:id="@+id/spinnerStores"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:background="@drawable/inputs"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/nameProfileRegister"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerLogin" />
+
+    <EditText
+        android:id="@+id/nameProfileRegister"
+        android:layout_width="370dp"
+        android:layout_height="40dp"
+        android:background="@drawable/inputs"
+        android:ems="10"
+        android:hint="Nome completo"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/cpfProfileRegister"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerStores" />
+
+    <EditText
+        android:id="@+id/cpfProfileRegister"
+        android:layout_width="370dp"
+        android:layout_height="40dp"
+        android:background="@drawable/inputs"
+        android:ems="10"
+        android:hint="@string/cpf"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/rgProfileRegister"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameProfileRegister" />
+
+    <EditText
+        android:id="@+id/rgProfileRegister"
+        android:layout_width="370dp"
+        android:layout_height="40dp"
+        android:background="@drawable/inputs"
+        android:ems="10"
+        android:hint="@string/rg"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/celProfileRegister"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cpfProfileRegister" />
+
+    <EditText
+        android:id="@+id/celProfileRegister"
+        android:layout_width="370dp"
+        android:layout_height="40dp"
+        android:background="@drawable/inputs"
+        android:ems="10"
+        android:hint="@string/telefone"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/saveProfileRegister"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rgProfileRegister" />
+
+    <Button
+        android:id="@+id/saveProfileRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/botoes"
+        android:text="Salvar"
+        app:layout_constraintBottom_toTopOf="@+id/backMainProfileRegister"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/celProfileRegister" />
+
+    <TextView
+        android:id="@+id/profileText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/alike_angular"
+        android:text="Perfil"
+        android:textAlignment="center"
+        android:textColor="@color/cyanLighten4"
+        android:textSize="35sp"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+
+    <ImageView
+        android:id="@+id/backMainProfileRegister"
+        android:layout_width="51dp"
+        android:layout_height="51dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/saveProfileRegister"
+        app:srcCompat="@drawable/icone_back_menu" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

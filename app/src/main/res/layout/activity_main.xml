@@ -4,15 +4,91 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="@drawable/background"
+    tools:context=".views.activities.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+    <ImageView
+        android:id="@+id/logoMain"
+        android:layout_width="295dp"
+        android:layout_height="207dp"
+        android:adjustViewBounds="true"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="140dp"
+        android:layout_height="110dp"
+        app:layout_constraintBottom_toTopOf="@+id/requestLicenseMain"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logoMain"
+        app:srcCompat="@drawable/icone_solicitante" />
+
+    <Button
+        android:id="@+id/requestLicenseMain"
+        android:layout_width="189dp"
+        android:layout_height="46dp"
+        android:background="@drawable/botoes"
+        android:text="Solicitação de placa"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/verifyStatusLicenseMain"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <Button
+        android:id="@+id/verifyStatusLicenseMain"
+        android:layout_width="189dp"
+        android:layout_height="46dp"
+        android:background="@drawable/botoes"
+        android:text="@string/verifyRequest"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/requestLicenseMain" />
+
+    <ImageView
+        android:id="@+id/helpMain"
+        android:layout_width="83dp"
+        android:layout_height="124dp"
+        app:layout_constraintBottom_toBottomOf="@+id/verifyStatusLicenseMain"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/requestLicenseMain"
+        app:layout_constraintTop_toTopOf="@+id/requestLicenseMain"
+        app:srcCompat="@drawable/help" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="140dp"
+        android:layout_height="110dp"
+        app:layout_constraintBottom_toTopOf="@+id/loginStamperMain"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/verifyStatusLicenseMain"
+        app:srcCompat="@drawable/icone_estampador" />
+
+    <Button
+        android:id="@+id/loginStamperMain"
+        android:layout_width="189dp"
+        android:layout_height="46dp"
+        android:background="@drawable/botoes"
+        android:text="@string/restrictedArea"
+        android:textColor="#000"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

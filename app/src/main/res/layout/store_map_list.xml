@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/adapter_line"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/storeNameMap"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Emplacar Comércio de placas para veículos ltda"
+        android:textAlignment="center"
+        android:textColor="@color/cyanLighten4"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/carMap"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Preço unidade placa de carro:"
+        android:textAlignment="center"
+        android:textColor="@color/cyanLighten4"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/motoMap"
+        app:layout_constraintEnd_toStartOf="@+id/carPriceMap"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/storeNameMap" />
+
+    <TextView
+        android:id="@+id/carPriceMap"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="R$ 80.00"
+        android:textAlignment="center"
+        android:textColor="@color/cyanLighten4"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/motoPriceMap"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/carMap"
+        app:layout_constraintTop_toBottomOf="@+id/storeNameMap" />
+
+    <TextView
+        android:id="@+id/motoMap"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Preço unidade placa de moto"
+        android:textAlignment="center"
+        android:textColor="@color/cyanLighten4"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/motoPriceMap"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/carMap" />
+
+    <TextView
+        android:id="@+id/motoPriceMap"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="R$ 120,00"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/cyanLighten4"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/motoMap"
+        app:layout_constraintTop_toBottomOf="@+id/carPriceMap" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/seeClientData"
+        android:title="@string/see_client_data"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/deliverRequest"
+        android:title="@string/deliverLicensePlate"
+        app:showAsAction="never" />
+</menu>

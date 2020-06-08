@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".views.activities.stamper.AuthorizationListActivity">
+
+    <include
+        android:id="@+id/action_bar"
+        layout="@layout/action_bar"
+        android:layout_width="411dp"
+        android:layout_height="60dp"
+        app:layout_constraintBottom_toTopOf="@+id/textReceivedRequests"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></include>
+
+    <TextView
+        android:id="@+id/textReceivedRequests"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/alike_angular"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:text="@string/requests"
+        android:textAlignment="center"
+        android:textColor="@color/cyanLighten4"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerViewAuthorizationList"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/action_bar" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewAuthorizationList"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textReceivedRequests" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
