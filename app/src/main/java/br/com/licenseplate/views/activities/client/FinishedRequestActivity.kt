@@ -8,7 +8,7 @@ import br.com.licenseplate.R
 import br.com.licenseplate.views.activities.MainActivity
 import kotlinx.android.synthetic.main.activity_finished_request.*
 
-class FinishedRequest : AppCompatActivity() {
+class FinishedRequestActivity : AppCompatActivity() {
     private var id: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {

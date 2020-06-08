@@ -14,7 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.licenseplate.R
 import br.com.licenseplate.viewmodel.ClientViewModel
-import br.com.licenseplate.views.adapter.StoreMapAdapter
+import br.com.licenseplate.views.adapters.StoreMapAdapter
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -101,11 +101,6 @@ class StoreMapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnM
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
 
-        // Add a marker and move the camera
-//        val myPlace = LatLng(0.0, 0.0)
-//        map.addMarker(MarkerOptions().position(myPlace).title("Marker in my place"))
-//        map.moveCamera(CameraUpdateFactory.newLatLngZoom(myPlace, 15.0f))
-
         map.uiSettings.isZoomControlsEnabled = true
         map.setOnMarkerClickListener(this)
 
@@ -176,7 +171,7 @@ class StoreMapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnM
                 if (response[0] == "ERROR") {
                     Toast.makeText(this, response[1], Toast.LENGTH_SHORT).show()
                 } else {
-                    val intent = Intent(this, FinishedRequest::class.java)
+                    val intent = Intent(this, FinishedRequestActivity::class.java)
                     intent.putExtra("id", id)
                     startActivity(intent)
                     finish()

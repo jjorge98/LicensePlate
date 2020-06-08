@@ -9,14 +9,16 @@ import br.com.licenseplate.interactor.AdmInteractor
 
 class AdmViewModel(val app: Application) : AndroidViewModel(app) {
     private val interactor = AdmInteractor(app.applicationContext)
-    val stores = MutableLiveData<Array<String>>()
-    val users = MutableLiveData<Array<Stamper>>()
-    val storeList = MutableLiveData<Array<Store>>()
+    val stores = MutableLiveData<List<String>>()
+    val users = MutableLiveData<List<Stamper>>()
+    val storeList = MutableLiveData<List<Store>>()
 
+    //Função que chama o interactor para pegar o id
     fun getID(root: String, callback: (result: Int) -> Unit) {
         interactor.getID(root, callback)
     }
 
+    //Função que chama o interactor para pegar as lojas e listá-las na view com a mutable live data stores
     fun storesList() {
         val names = mutableListOf<String>()
         interactor.storeList { result ->
@@ -25,25 +27,25 @@ class AdmViewModel(val app: Application) : AndroidViewModel(app) {
                     names.add(store.nome)
                 }
             }
-            stores.value = names.toTypedArray()
+            stores.value = names.toList()
         }
     }
 
     fun storeListAdm() {
         interactor.storeList { response ->
-            storeList.value = response
+            storeList.value = response.asList()
         }
     }
 
     fun userList() {
         interactor.userList { response ->
-            users.value = response
+            users.value = response.asList()
         }
     }
 
     fun userListRegister() {
         interactor.userListRegister { response ->
-            users.value = response
+            users.value = response.asList()
         }
     }
 
@@ -53,6 +55,7 @@ class AdmViewModel(val app: Application) : AndroidViewModel(app) {
         moto: String,
         location: String,
         cnpj: String,
+        cel: String,
         id: Int,
         root: String,
         callback: (Array<String>) -> Unit
@@ -60,8 +63,18 @@ class AdmViewModel(val app: Application) : AndroidViewModel(app) {
         val carPrice = moto.replace(",", ".")
         val motoPrice = car.replace(",", ".")
         val newCnpj = cnpj.replace(".", "").replace("-", "").replace("/", "")
+        val newCel = cel.replace("(", "").replace(")", "").replace("-", "")
 
-        interactor.storeSave(name, carPrice, motoPrice, location, newCnpj, id, root) { response ->
+        interactor.storeSave(
+            name,
+            carPrice,
+            motoPrice,
+            location,
+            newCnpj,
+            cel,
+            id,
+            root
+        ) { response ->
             if (response == null) {
                 val result = arrayOf("OK", "Loja cadastrada com sucesso!")
                 callback(result)

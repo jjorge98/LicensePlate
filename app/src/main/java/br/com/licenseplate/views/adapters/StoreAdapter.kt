@@ -1,4 +1,4 @@
-package br.com.licenseplate.views.adapter
+package br.com.licenseplate.views.adapters
 
 import android.content.Context
 import android.content.Intent
@@ -12,11 +12,11 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.licenseplate.R
 import br.com.licenseplate.dataclass.Store
 import br.com.licenseplate.viewmodel.AdmViewModel
-import br.com.licenseplate.views.activities.adm.StoreListAdm
+import br.com.licenseplate.views.activities.adm.StoreListAdmActivity
 import kotlinx.android.synthetic.main.store_list.view.*
 
 class StoreAdapter(
-    private val stores: Array<Store>,
+    var stores: List<Store>,
     private val context: Context,
     private val viewModelA: AdmViewModel
 ) :
@@ -57,7 +57,7 @@ class StoreAdapter(
         popup.setOnMenuItemClickListener { itemSelected ->
             if (itemSelected?.itemId == R.id.deleteStore) {
                 viewModelA.deleteStore(store)
-                val intent = Intent(context.applicationContext, StoreListAdm::class.java)
+                val intent = Intent(context.applicationContext, StoreListAdmActivity::class.java)
                 context.startActivity(intent)
                 return@setOnMenuItemClickListener true
             }

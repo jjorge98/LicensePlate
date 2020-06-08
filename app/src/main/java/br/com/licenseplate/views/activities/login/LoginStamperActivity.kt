@@ -1,18 +1,19 @@
 package br.com.licenseplate.views.activities.login
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import br.com.licenseplate.R
 import br.com.licenseplate.viewmodel.LoginViewModel
-import br.com.licenseplate.views.activities.adm.UserRegister
-import br.com.licenseplate.views.activities.stamper.AuthorizationList
+import br.com.licenseplate.views.activities.adm.UserRegisterActivity
+import br.com.licenseplate.views.activities.stamper.AuthorizationListActivity
 import kotlinx.android.synthetic.main.activity_login_stamper.*
 
-class LoginStamper : AppCompatActivity() {
+class LoginStamperActivity : AppCompatActivity() {
     private val viewModel: LoginViewModel by lazy {
         ViewModelProvider(this).get(LoginViewModel::class.java)
     }
@@ -24,6 +25,10 @@ class LoginStamper : AppCompatActivity() {
         buttonReqLicense.setOnClickListener { login() }
         forgotPasswordLogin.setOnClickListener { forgotPassword() }
         registerLoginStamper.setOnClickListener { register() }
+        backLoginStamper.setOnTouchListener { _, _ ->
+            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
+        }
     }
 
     private fun login() {
@@ -34,18 +39,21 @@ class LoginStamper : AppCompatActivity() {
             Toast.makeText(this, result[1], Toast.LENGTH_LONG).show()
             if (result[0] == "OK") {
                 viewModel.verifyLogin { result ->
-                    if (result == null) {
-                        val intent = Intent(this, ProfileRegister::class.java)
+                    if (result?.uid == null) {
+                        val intent = Intent(this, ProfileRegisterActivity::class.java)
                         startActivity(intent)
-                    } else if (result.login == 0) {
-                        viewModel.loginNotVerified { response ->
-                            Toast.makeText(this, response, Toast.LENGTH_SHORT).show()
-                        }
+                    } else if (
+                        result.login == 0) {
+                        val intent = Intent(this, LackVerificationActivity::class.java)
+                        startActivity(intent)
                     } else if (result.login == 1) {
-                        val intent = Intent(this, AuthorizationList::class.java)
+                        val intent = Intent(this, AuthorizationListActivity::class.java)
                         startActivity(intent)
-                    } else if(result.login == 2) {
-                        val intent = Intent(this, UserRegister::class.java)
+                    } else if (result.login == 2) {
+                        val intent = Intent(this, UserRegisterActivity::class.java)
+                        startActivity(intent)
+                    } else {
+                        val intent = Intent(this, LoginStamperActivity::class.java)
                         startActivity(intent)
                     }
                 }
@@ -54,12 +62,12 @@ class LoginStamper : AppCompatActivity() {
     }
 
     private fun forgotPassword() {
-        val intent = Intent(this, ForgotPassword::class.java)
+        val intent = Intent(this, ForgotPasswordActivity::class.java)
         startActivity(intent)
     }
 
     private fun register() {
-        val intent = Intent(this, RegisterUser::class.java)
+        val intent = Intent(this, RegisterUserActivity::class.java)
         startActivity(intent)
     }
 }

@@ -12,30 +12,31 @@ import br.com.licenseplate.R
 import br.com.licenseplate.viewmodel.AdmViewModel
 import br.com.licenseplate.viewmodel.LoginViewModel
 import br.com.licenseplate.views.activities.MainActivity
-import br.com.licenseplate.views.adapter.StoreAdapter
-import kotlinx.android.synthetic.main.activity_store_list_adm.*
+import br.com.licenseplate.views.adapters.UserAdapter
+import kotlinx.android.synthetic.main.activity_user_list.*
 
-class StoreListAdm : AppCompatActivity() {
+class UserListActivity : AppCompatActivity() {
     private val viewModelL: LoginViewModel by lazy {
         ViewModelProvider(this).get(LoginViewModel::class.java)
     }
     private val viewModelA: AdmViewModel by lazy {
         ViewModelProvider(this).get(AdmViewModel::class.java)
     }
+    val adapter = UserAdapter(emptyList(), this, viewModelA, this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_store_list_adm)
+        setContentView(R.layout.activity_user_list)
         setSupportActionBar(findViewById(R.id.action_bar))
 
-        storeList()
+        initRecyclerView()
+        userList()
     }
 
     override fun onResume() {
         super.onResume()
         viewModelL.verifyLogin { result ->
             if (result == null) {
-                viewModelL.logout()
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
             }
@@ -60,15 +61,15 @@ class StoreListAdm : AppCompatActivity() {
     //função com os itens do menu
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.storeRegister) {
-            val intent = Intent(this, StoreRegister::class.java)
+            val intent = Intent(this, StoreRegisterActivity::class.java)
             startActivity(intent)
             return true
-        } else if (item.itemId == R.id.userList) {
-            val intent = Intent(this, UserList::class.java)
+        } else if (item.itemId == R.id.storeList) {
+            val intent = Intent(this, StoreListAdmActivity::class.java)
             startActivity(intent)
             return true
         } else if (item.itemId == R.id.userRegister) {
-            val intent = Intent(this, UserRegister::class.java)
+            val intent = Intent(this, UserRegisterActivity::class.java)
             startActivity(intent)
             return true
         } else if (item.itemId == R.id.logout) {
@@ -80,13 +81,17 @@ class StoreListAdm : AppCompatActivity() {
         return false
     }
 
-    private fun storeList() {
-        viewModelA.storeList.observe(this, Observer { store ->
-            recyclerViewStoreListAdm.layoutManager = LinearLayoutManager(this)
-            val adapter = StoreAdapter(store, this, viewModelA)
-            recyclerViewStoreListAdm.adapter = adapter
-        })
+    private fun initRecyclerView(){
+        recyclerViewUserList.layoutManager = LinearLayoutManager(this)
+        recyclerViewUserList.adapter = adapter
 
-        viewModelA.storeListAdm()
+        viewModelA.users.observe(this, Observer { users ->
+            adapter.users = users
+            adapter.notifyDataSetChanged()
+        })
+    }
+
+    private fun userList() {
+        viewModelA.userList()
     }
 }

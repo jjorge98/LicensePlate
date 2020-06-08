@@ -1,6 +1,8 @@
 package br.com.licenseplate.repository
 
+import android.content.ContentValues.TAG
 import android.content.Context
+import android.util.Log
 import br.com.licenseplate.dataclass.Stamper
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -54,7 +56,6 @@ class LoginRepository(private val context: Context) {
         val query = database.getReference("user/$uid")
 
         query.setValue(user)
-        logout()
     }
 
     //função de login que recebe um email, uma senha e um callback
@@ -101,10 +102,11 @@ class LoginRepository(private val context: Context) {
                 if (uid != null) {
                     val user = p0.child(uid).getValue(Stamper::class.java)
 
-                    if(user == null){
+                    if (user == null) {
                         callback(Stamper())
+                    } else {
+                        callback(user)
                     }
-                    callback(user)
                 }
             }
         })
@@ -112,5 +114,6 @@ class LoginRepository(private val context: Context) {
 
     fun logout() {
         auth.signOut()
+        return
     }
 }

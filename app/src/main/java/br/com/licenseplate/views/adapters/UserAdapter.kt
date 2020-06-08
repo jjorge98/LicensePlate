@@ -1,6 +1,5 @@
-package br.com.licenseplate.views.adapter
+package br.com.licenseplate.views.adapters
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
@@ -13,13 +12,16 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.licenseplate.R
 import br.com.licenseplate.dataclass.Stamper
 import br.com.licenseplate.viewmodel.AdmViewModel
-import br.com.licenseplate.views.activities.adm.UserRegister
+import br.com.licenseplate.views.activities.adm.UserListActivity
+import br.com.licenseplate.views.activities.adm.UserRegisterActivity
+import br.com.licenseplate.views.fragments.InfoUserFragment
 import kotlinx.android.synthetic.main.user_list.view.*
 
 class UserAdapter(
-    private val users: Array<Stamper>,
+    var users: List<Stamper>,
     private val context: Context,
-    private val viewModelA: AdmViewModel
+    private val viewModelA: AdmViewModel,
+    private val view: UserListActivity?
 ) :
     RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
@@ -31,15 +33,11 @@ class UserAdapter(
         return users.size
     }
 
-    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
         val user = users[position]
 
-        holder.name.text = "Nome: " + user.nome
-        holder.cpf.text = "CPF: " + user.cpf
-        holder.rg.text = "RG: " + user.rg
-        holder.cel.text = "Telefone: " + user.cel
-        holder.store.text = "Loja: " + user.loja
+        holder.name.text = user.nome
+        holder.store.text = user.loja
         if (user.login == 1) {
             holder.login.text = "Estampador"
         } else {
@@ -65,14 +63,22 @@ class UserAdapter(
             if (itemSelected?.itemId == R.id.userRegisterItem) {
                 viewModelA.userRegisterConfirmation(stamper)
 
-                val intent = Intent(context.applicationContext, UserRegister::class.java)
+                val intent = Intent(context.applicationContext, UserRegisterActivity::class.java)
                 context.startActivity(intent)
                 return@setOnMenuItemClickListener true
             } else if (itemSelected?.itemId == R.id.deleteUserRegister) {
                 viewModelA.deleteUser(stamper)
 
-                val intent = Intent(context.applicationContext, UserRegister::class.java)
+                val intent = Intent(context.applicationContext, UserListActivity::class.java)
                 context.startActivity(intent)
+                return@setOnMenuItemClickListener true
+            } else if (itemSelected?.itemId == R.id.seeUserData) {
+                val infoFragment = InfoUserFragment(stamper)
+                val manager1 = view?.supportFragmentManager
+                val transaction1 = manager1?.beginTransaction()
+                transaction1?.add(infoFragment, "infoFragment")
+                transaction1?.commit()
+
                 return@setOnMenuItemClickListener true
             }
             return@setOnMenuItemClickListener true
@@ -82,9 +88,6 @@ class UserAdapter(
 
     class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val name: TextView = itemView.nameUserList
-        val cpf: TextView = itemView.cpfUserList
-        val rg: TextView = itemView.rgUserList
-        val cel: TextView = itemView.celUserList
         val login: TextView = itemView.loginUserList
         val store: TextView = itemView.storeUserList
     }

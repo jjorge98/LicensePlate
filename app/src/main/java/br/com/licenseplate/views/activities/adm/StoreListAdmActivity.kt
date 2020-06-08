@@ -12,30 +12,31 @@ import br.com.licenseplate.R
 import br.com.licenseplate.viewmodel.AdmViewModel
 import br.com.licenseplate.viewmodel.LoginViewModel
 import br.com.licenseplate.views.activities.MainActivity
-import br.com.licenseplate.views.adapter.UserAdapter
-import kotlinx.android.synthetic.main.activity_user_register.*
+import br.com.licenseplate.views.adapters.StoreAdapter
+import kotlinx.android.synthetic.main.activity_store_list_adm.*
 
-class UserRegister : AppCompatActivity() {
+class StoreListAdmActivity : AppCompatActivity() {
     private val viewModelL: LoginViewModel by lazy {
         ViewModelProvider(this).get(LoginViewModel::class.java)
     }
     private val viewModelA: AdmViewModel by lazy {
         ViewModelProvider(this).get(AdmViewModel::class.java)
     }
+    val adapter = StoreAdapter(emptyList(), this, viewModelA)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_user_register)
+        setContentView(R.layout.activity_store_list_adm)
         setSupportActionBar(findViewById(R.id.action_bar))
 
-        userList()
+        initRecyclerView()
+        storeList()
     }
 
     override fun onResume() {
         super.onResume()
         viewModelL.verifyLogin { result ->
             if (result == null) {
-                viewModelL.logout()
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
             }
@@ -43,32 +44,32 @@ class UserRegister : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        //Habilita o botão de retornar a tela anterior
+        //Habilita botão retorno a atividade anterior
         this.supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        //Habilita o menu que está em res->menu
+        //Insere o menu que está em res->menu
         menuInflater.inflate(R.menu.menu_adm, menu)
         return true
     }
 
-    //Função que finaliza a atividade e volta a atividade anterior
+    //Função que volta a atividade anterior, finalizando essa
     override fun onSupportNavigateUp(): Boolean {
         finish()
         return true
     }
 
-    //Itens do menu
+    //função com os itens do menu
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.storeRegister) {
-            val intent = Intent(this, StoreRegister::class.java)
-            startActivity(intent)
-            return true
-        } else if (item.itemId == R.id.storeList) {
-            val intent = Intent(this, StoreListAdm::class.java)
+            val intent = Intent(this, StoreRegisterActivity::class.java)
             startActivity(intent)
             return true
         } else if (item.itemId == R.id.userList) {
-            val intent = Intent(this, UserList::class.java)
+            val intent = Intent(this, UserListActivity::class.java)
+            startActivity(intent)
+            return true
+        } else if (item.itemId == R.id.userRegister) {
+            val intent = Intent(this, UserRegisterActivity::class.java)
             startActivity(intent)
             return true
         } else if (item.itemId == R.id.logout) {
@@ -80,13 +81,17 @@ class UserRegister : AppCompatActivity() {
         return false
     }
 
-    private fun userList() {
-        recyclerViewUserRegister.layoutManager = LinearLayoutManager(this)
-        viewModelA.users.observe(this, Observer { users ->
-            val adapter = UserAdapter(users, this, viewModelA)
-            recyclerViewUserRegister.adapter = adapter
-        })
+    private fun initRecyclerView() {
+        recyclerViewStoreListAdm.layoutManager = LinearLayoutManager(this)
+        recyclerViewStoreListAdm.adapter = adapter
 
-        viewModelA.userListRegister()
+        viewModelA.storeList.observe(this, Observer { store ->
+            adapter.stores = store
+            adapter.notifyDataSetChanged()
+        })
+    }
+
+    private fun storeList() {
+        viewModelA.storeListAdm()
     }
 }

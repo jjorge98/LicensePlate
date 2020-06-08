@@ -18,15 +18,10 @@
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".views.activities.client.FinishedRequest"></activity>
-        <!--
-             The API key for Google Maps-based APIs is defined as a string resource.
-             (See the file "res/values/google_maps_api.xml").
-             Note that the API key is linked to the encryption key used to sign the APK.
-             You need a different API key for each encryption key, including the release key that is used to
-             sign the APK for publishing.
-             You can define the keys for the debug and release targets in src/debug/ and src/release/.
-        -->
+        <activity android:name=".views.adapters.AuthorizationDeliveredAdapter"></activity>
+        <activity android:name=".views.activities.stamper.DeliveredRequestsActivity" />
+        <activity android:name=".views.activities.client.AuthorizationStatusActivity" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
@@ -34,20 +29,23 @@
         <activity
             android:name=".views.activities.client.StoreMapsActivity"
             android:label="@string/title_activity_store_maps" />
-        <activity android:name=".views.activities.login.ProfileRegister" />
-        <activity android:name=".views.activities.login.RegisterUser" />
-        <activity android:name=".views.activities.adm.StoreListAdm" />
-        <activity android:name=".views.activities.adm.StoreRegister" />
-        <activity android:name=".views.activities.login.ForgotPassword" />
-        <activity android:name=".views.activities.login.LoginStamper" />
-        <activity android:name=".views.activities.adm.UserList" />
-        <activity android:name=".views.activities.adm.UserRegister" />
-        <activity android:name=".views.activities.stamper.AuthorizationList" />
-        <activity android:name=".views.activities.stamper.LicenseHistory" />
-        <activity android:name=".views.activities.client.VerifyRequest" />
-        <activity android:name=".views.activities.client.ClientData" />
-        <activity android:name=".views.activities.client.HelpLicenseRequest" />
-        <activity android:name=".views.activities.client.RequestLicense" />
+        <activity android:name=".views.activities.stamper.ReceivedRequestsActivity" />
+        <activity android:name=".views.activities.login.LackVerificationActivity" />
+        <activity android:name=".views.activities.client.FinishedRequestActivity" />
+        <activity android:name=".views.activities.login.ProfileRegisterActivity" />
+        <activity android:name=".views.activities.login.RegisterUserActivity" />
+        <activity android:name=".views.activities.adm.StoreListAdmActivity" />
+        <activity android:name=".views.activities.adm.StoreRegisterActivity" />
+        <activity android:name=".views.activities.login.ForgotPasswordActivity" />
+        <activity android:name=".views.activities.login.LoginStamperActivity" />
+        <activity android:name=".views.activities.adm.UserListActivity" />
+        <activity android:name=".views.activities.adm.UserRegisterActivity" />
+        <activity android:name=".views.activities.stamper.AuthorizationListActivity" />
+        <activity android:name=".views.activities.stamper.FinishedRequestsActivity" />
+        <activity android:name=".views.activities.client.VerifyRequestActivity" />
+        <activity android:name=".views.activities.client.ClientDataActivity" />
+        <activity android:name=".views.activities.client.HelpLicenseRequestActivity" />
+        <activity android:name=".views.activities.client.RequestLicenseActivity" />
         <activity android:name=".views.activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -14,39 +14,105 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import java.text.DateFormat
 import java.util.*
-import kotlin.math.asin
-import kotlin.math.cos
-import kotlin.math.sin
-import kotlin.math.sqrt
+import kotlin.math.*
 
 class ClientInteractor(val context: Context) {
     private val repository = ClientRepository(context)
     private val detranRepository =
         DetranAPI(context, "https://homologacao.emplacbrasil.com.br/api/")
 
+    //Função que pega o próximo ID no banco de dados
     fun verifyID(root: String, callback: (result: Int) -> Unit) {
         repository.verifyID(root, callback)
     }
 
+    //Função que faz as verificações dos dados dos clientes
     fun verifyClientData(client: Client, callback: (result: String?) -> Unit) {
         val cpf = client.cpf
         if (client.nome != null && client.cpf != null && client.cel != null) {
-            if (cpf?.length != 11) {
-                callback("CPF")
-            } else if (client.nome.isEmpty() || client.cpf.isEmpty() || client.cel.isEmpty()) {
+            if (client.nome.isEmpty() || client.cpf.isEmpty() || client.cel.isEmpty()) {
                 callback("VAZIO")
+            } else if (!validaCpf(cpf)) {
+                callback("CPF")
             } else {
-                try {
-                    cpf.toLong()
-
-                    callback(null)
-                } catch (e: Exception) {
-                    callback("CPF")
-                }
+                callback(null)
             }
         }
     }
 
+    //Função que valida cpf
+    fun validaCpf(cpf: String?): Boolean {
+        if (cpf == null) {
+            return false
+        }
+        if (cpf.length == 11) {
+            try {
+                cpf.toLong()
+            } catch (e: Exception) {
+                return false
+            }
+
+            var v1: Long = 0
+            var v2: Long = 0
+            var aux = false
+
+            for (i in 1 until cpf.length) {
+                if (cpf[i - 1] != cpf[i]) {
+                    aux = true
+                }
+            }
+
+            if (!aux) {
+                return false
+            }
+
+            var p = 10
+            var newCpf = cpf.toLong()
+            for (i in 0 until cpf.length - 2) {
+                val pot = 10.0.pow(p).toLong()
+                val n = newCpf / pot
+                newCpf %= pot
+
+                v1 += n * p
+                p--
+            }
+
+            v1 = (v1 * 10) % 11
+
+            if (v1 == 10.toLong()) {
+                v1 = 0
+            }
+
+            if (v1 != newCpf / 10) {
+                return false
+            }
+
+            p = 11
+
+            newCpf = cpf.toLong()
+            for (i in 0 until cpf.length - 1) {
+                val pot = 10.0.pow(p - 1).toLong()
+                val n = newCpf / pot
+                newCpf %= pot
+
+                v2 += n * p
+                p--
+            }
+
+            v2 = (v2 * 10) % 11
+
+            if (v2 == 10.toLong()) {
+                v2 = 0
+            }
+            newCpf %= 10
+
+            return v2 == newCpf
+        } else {
+            return false
+        }
+    }
+
+    //Função que verifica a placa
     fun verifyLicenseNumber(
         authorization: Authorization,
         callback: (result: String?, responseAPI: AuthorizationDTO?) -> Unit
@@ -57,7 +123,7 @@ class ClientInteractor(val context: Context) {
             callback("PLACA", null)
         } else {
             var ver = 0
-            for (i in 0 until 7) {//PBR4724
+            for (i in 0 until 7) {
                 if ((i == 0 || i == 1 || i == 2) && !authorization.placa!![i].isLetter()) {
                     ver = 1
                     callback("PLACA", null)
@@ -72,6 +138,7 @@ class ClientInteractor(val context: Context) {
         }
     }
 
+    //Função que verifica o número da autorização
     fun verifyAuthorization(
         authorization: Authorization,
         callback: (result: String?, responseAPI: AuthorizationDTO?) -> Unit
@@ -85,6 +152,7 @@ class ClientInteractor(val context: Context) {
         }
     }
 
+    //Função para listar as lojas ao cliente. Possui o merge sort para mostrar em ordem de distância
     fun storeList(location: LatLng, uf: String?, callback: (result: Array<Store>) -> Unit) {
         repository.storeList { response ->
             filterUF(response, uf) { arrayUFStores ->
@@ -96,20 +164,26 @@ class ClientInteractor(val context: Context) {
         }
     }
 
+    //Função que filtra as lojas por estado
     private fun filterUF(
         stores: Array<Store>,
         uf: String?,
         callback: (result: Array<Store>) -> Unit
     ) {
         val resultStores = mutableListOf<Store>()
-        var estado = if (uf == "DF") {
-            "Distrito Federal"
-        } else if (uf == "GO") {
-            "Goiás"
-        } else if (uf == "RO") {
-            "Rondônia"
-        } else {
-            "São Paulo"
+        val estado = when (uf) {
+            "DF" -> {
+                "Distrito Federal"
+            }
+            "GO" -> {
+                "Goiás"
+            }
+            "RO" -> {
+                "Rondônia"
+            }
+            else -> {
+                "São Paulo"
+            }
         }
 
         stores.forEach { store ->
@@ -142,10 +216,12 @@ class ClientInteractor(val context: Context) {
         callback(resultStores.toTypedArray())
     }
 
+    //Função para pegar o endereço passando latitude e longitude
     fun getAddress(latLng: LatLng, callback: (result: List<Address>) -> Unit) {
         repository.getAddress(latLng, callback)
     }
 
+    //Função para calcular a distância
     private fun distance(start: LatLng, end: LatLng): Double {
         val lat1 = start.latitude
         val lat2 = end.latitude
@@ -161,6 +237,7 @@ class ClientInteractor(val context: Context) {
         return 6366000 * c
     }
 
+    //Função para ordenar como merge sort
     private fun mergeSort(storeArray: Array<Store>, clientLatLng: LatLng, start: Int, end: Int) {
         var middle: Int
 
@@ -172,6 +249,7 @@ class ClientInteractor(val context: Context) {
         }
     }
 
+    //Função auxiliar do merge sort que intercala os array que foram divididos no merge sort
     private fun intersperse(
         storeArray: Array<Store>,
         clientLatLng: LatLng,
@@ -262,6 +340,7 @@ class ClientInteractor(val context: Context) {
         }
     }
 
+    //Função para salvar a autorização no banco
     fun saveAuthorization(
         placa: String?,
         nome: String?,
@@ -285,6 +364,55 @@ class ClientInteractor(val context: Context) {
 
             repository.save("autorizacaoCliente", autCli, autCli.id)
             callback("OK")
+        }
+    }
+
+    //Função para verificar o processo do cliente
+    fun verifyProcess(
+        licensePlate: String,
+        callback: (response: String, autCli: AuthorizationClient?, store: Store?) -> Unit
+    ) {
+        if (licensePlate.isEmpty()) {
+            callback("VAZIO", null, null)
+        } else if (licensePlate.length != 7) {
+            callback("PLACA", null, null)
+        } else {
+            var ver = 0
+            for (i in 0 until 7) {//PBR4724
+                if ((i == 0 || i == 1 || i == 2) && !licensePlate[i].isLetter()) {
+                    ver = 1
+                    callback("PLACA", null, null)
+                } else if ((i == 3 || i == 5 || i == 6) && !licensePlate[i].isDigit()) {
+                    ver = 1
+                    callback("PLACA", null, null)
+                }
+            }
+            if (ver == 0) {
+                repository.verifyProcess(licensePlate, callback)
+            }
+        }
+    }
+
+    //Função para verificar a placa do cliente na tela de verificar o processo
+    fun verifyLicensePlate(licensePlate: String, callback: (result: String) -> Unit) {
+        if (licensePlate.isEmpty()) {
+            callback("VAZIO")
+        } else if (licensePlate.length != 7) {
+            callback("PLACA")
+        } else {
+            var ver = 0
+            for (i in 0 until 7) {
+                if ((i == 0 || i == 1 || i == 2) && !licensePlate[i].isLetter()) {
+                    ver = 1
+                    callback("PLACA")
+                } else if ((i == 3 || i == 5 || i == 6) && !licensePlate[i].isDigit()) {
+                    ver = 1
+                    callback("PLACA")
+                }
+            }
+            if (ver == 0) {
+                callback("OK")
+            }
         }
     }
 }

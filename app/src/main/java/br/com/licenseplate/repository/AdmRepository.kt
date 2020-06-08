@@ -3,7 +3,6 @@ package br.com.licenseplate.repository
 import android.content.Context
 import br.com.licenseplate.dataclass.Stamper
 import br.com.licenseplate.dataclass.Store
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -11,7 +10,6 @@ import com.google.firebase.database.ValueEventListener
 
 class AdmRepository(val context: Context) {
     private val database = FirebaseDatabase.getInstance()
-    private val auth = FirebaseAuth.getInstance()
 
     fun getID(root: String, callback: (result: Int) -> Unit) {
         val query = database.getReference("ids/$root")
@@ -135,14 +133,14 @@ class AdmRepository(val context: Context) {
         reference.removeValue()
     }
 
-    fun userRegisterConfirmation(stamper: Stamper){
+    fun userRegisterConfirmation(stamper: Stamper) {
         val query = database.getReference("user/${stamper.uid}")
 
         query.setValue(stamper)
     }
 
     fun deleteUser(stamper: Stamper) {
-        val reference = database.getReference("stores/${stamper.uid}")
+        val reference = database.getReference("user/${stamper.uid}")
 
         reference.removeValue()
     }

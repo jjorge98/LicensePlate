@@ -6,8 +6,8 @@
         android:title="@string/receiveRequest"
         app:showAsAction="never" />
     <item
-        android:id="@+id/finishRequest"
-        android:title="@string/finishRequest"
+        android:id="@+id/denyRequest"
+        android:title="@string/denyRequest"
         app:showAsAction="never" />
     <item
         android:id="@+id/seeClientData"

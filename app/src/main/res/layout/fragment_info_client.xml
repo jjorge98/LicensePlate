@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.fragments.InfoClientFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background">
+
+        <TextView
+            android:id="@+id/titleInfoClient"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="24dp"
+            android:fontFamily="@font/alike_angular"
+            android:text="@string/clientData"
+            android:textAlignment="center"
+            android:textColor="@color/cyanLighten4"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/nameInfoClient"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/nameTextInfoClient"
+            android:layout_width="87dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/alike_angular"
+            android:text="@string/name"
+            android:textAlignment="center"
+            android:textColor="@color/cyanLighten4"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/nameInfoClient"
+            app:layout_constraintEnd_toStartOf="@+id/nameInfoClient"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/nameInfoClient" />
+
+        <TextView
+            android:id="@+id/nameInfoClient"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:fontFamily="@font/alike_angular"
+            android:textAlignment="center"
+            android:textColor="@color/cyanLighten4"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/cpfInfoClient"
+            app:layout_constraintEnd_toStartOf="@+id/copyNameInfoClient"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/nameTextInfoClient"
+            app:layout_constraintTop_toBottomOf="@+id/titleInfoClient" />
+
+        <ImageView
+            android:id="@+id/copyNameInfoClient"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="6dp"
+            android:src="@drawable/copy"
+            app:layout_constraintBottom_toBottomOf="@+id/nameInfoClient"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/nameInfoClient"
+            app:layout_constraintTop_toTopOf="@+id/nameInfoClient" />
+
+        <TextView
+            android:id="@+id/cpfTextInfoClient"
+            android:layout_width="87dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/alike_angular"
+            android:text="@string/cpf"
+            android:textAlignment="center"
+            android:textColor="@color/cyanLighten4"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/cpfInfoClient"
+            app:layout_constraintEnd_toStartOf="@+id/cpfInfoClient"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/cpfInfoClient" />
+
+        <TextView
+            android:id="@+id/cpfInfoClient"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:fontFamily="@font/alike_angular"
+            android:textAlignment="center"
+            android:textColor="@color/cyanLighten4"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/celInfoClient"
+            app:layout_constraintEnd_toStartOf="@+id/copyCpfInfoClient"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/cpfTextInfoClient"
+            app:layout_constraintTop_toBottomOf="@+id/nameInfoClient" />
+
+        <ImageView
+            android:id="@+id/copyCpfInfoClient"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="6dp"
+            android:src="@drawable/copy"
+            app:layout_constraintBottom_toBottomOf="@+id/cpfInfoClient"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/cpfInfoClient"
+            app:layout_constraintTop_toTopOf="@+id/cpfInfoClient" />
+
+        <TextView
+            android:id="@+id/celTextInfoClient"
+            android:layout_width="87dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/alike_angular"
+            android:text="@string/telefone"
+            android:textAlignment="center"
+            android:textColor="@color/cyanLighten4"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/celInfoClient"
+            app:layout_constraintEnd_toStartOf="@+id/celInfoClient"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/celInfoClient" />
+
+        <TextView
+            android:id="@+id/celInfoClient"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:fontFamily="@font/alike_angular"
+            android:textAlignment="center"
+            android:textColor="@color/cyanLighten4"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/okButtonInfoClient"
+            app:layout_constraintEnd_toStartOf="@+id/copyCelInfoClient"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/celTextInfoClient"
+            app:layout_constraintTop_toBottomOf="@+id/cpfInfoClient" />
+
+        <ImageView
+            android:id="@+id/copyCelInfoClient"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="6dp"
+            android:src="@drawable/copy"
+            app:layout_constraintBottom_toBottomOf="@+id/celInfoClient"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/celInfoClient"
+            app:layout_constraintTop_toTopOf="@+id/celInfoClient" />
+
+        <ImageView
+            android:id="@+id/whatsappInfoClient"
+            android:layout_width="70dp"
+            android:layout_height="45dp"
+            android:src="@drawable/whatsapp"
+            app:layout_constraintBottom_toBottomOf="@+id/okButtonInfoClient"
+            app:layout_constraintEnd_toStartOf="@+id/okButtonInfoClient"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/okButtonInfoClient" />
+
+        <Button
+            android:id="@+id/okButtonInfoClient"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/botoes"
+            android:text="@android:string/ok"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/whatsappInfoClient"
+            app:layout_constraintTop_toBottomOf="@+id/celInfoClient" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

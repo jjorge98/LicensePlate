@@ -12,11 +12,10 @@ import br.com.licenseplate.R
 import br.com.licenseplate.viewmodel.LoginViewModel
 import br.com.licenseplate.viewmodel.StamperViewModel
 import br.com.licenseplate.views.activities.MainActivity
-import br.com.licenseplate.views.adapter.AuthorizationAdapter
+import br.com.licenseplate.views.adapters.AuthorizationListAdapter
 import kotlinx.android.synthetic.main.activity_authorization_list.*
 
-
-class AuthorizationList : AppCompatActivity() {
+class AuthorizationListActivity : AppCompatActivity() {
     private val viewModelS: StamperViewModel by lazy {
         ViewModelProvider(this).get(StamperViewModel::class.java)
     }
@@ -25,12 +24,15 @@ class AuthorizationList : AppCompatActivity() {
         ViewModelProvider(this).get(LoginViewModel::class.java)
     }
 
+    val adapter = AuthorizationListAdapter(emptyList(), this, this)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_authorization_list)
 
         setSupportActionBar(findViewById(R.id.action_bar))
 
+        initRecyclerView()
         authorizationList()
     }
 
@@ -38,21 +40,10 @@ class AuthorizationList : AppCompatActivity() {
         super.onResume()
         viewModelL.verifyLogin { result ->
             if (result == null) {
-                viewModelL.logout()
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
             }
         }
-    }
-
-    private fun authorizationList() {
-        recyclerViewAuthorizationList.layoutManager = GridLayoutManager(this, 2)
-        viewModelS.resultado.observe(this, Observer { authorizations ->
-            val adapter = AuthorizationAdapter(authorizations, this)
-            recyclerViewAuthorizationList.adapter = adapter
-        })
-
-        viewModelS.authorizationList()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -73,15 +64,36 @@ class AuthorizationList : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         //Cada if é um item do menu
         if (item.itemId == R.id.licenseHistory) {
-            val intentR = Intent(this, LicenseHistory::class.java)
+            val intentR = Intent(this, FinishedRequestsActivity::class.java)
             startActivity(intentR)
             return true
+        } else if (item.itemId == R.id.receivedRequest) {
+            val intent = Intent(this, ReceivedRequestsActivity::class.java)
+            startActivity(intent)
+        } else if (item.itemId == R.id.deliveredRequest) {
+            val intent = Intent(this, DeliveredRequestsActivity::class.java)
+            startActivity(intent)
         } else if (item.itemId == R.id.logout) {
-            viewModelL.logout()
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
+            viewModelL.logout()
         }
 
         return false
+    }
+
+    private fun initRecyclerView() {
+        recyclerViewAuthorizationList.layoutManager = GridLayoutManager(this, 2)
+        recyclerViewAuthorizationList.adapter = adapter
+
+        viewModelS.resultado.observe(this, Observer { authorizations ->
+            adapter.dataSet = authorizations
+            adapter.notifyDataSetChanged()
+        })
+
+    }
+
+    private fun authorizationList() {
+        viewModelS.authorizationList()
     }
 }

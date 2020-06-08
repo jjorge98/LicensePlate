@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".views.activities.adm.StoreListAdm">
+    tools:context=".views.activities.adm.StoreListAdmActivity">
 
     <include
         android:id="@+id/action_bar"
@@ -25,7 +25,7 @@
         android:paddingBottom="10dp"
         android:text="@string/stores"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="@color/cyanLighten4"
         android:textSize="35sp"
         app:layout_constraintBottom_toTopOf="@+id/recyclerViewStoreListAdm"
         app:layout_constraintEnd_toEndOf="parent"

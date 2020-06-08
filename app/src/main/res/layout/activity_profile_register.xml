@@ -2,10 +2,22 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/backProfileRegister"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".views.activities.login.ProfileRegister">
+    tools:context=".views.activities.login.ProfileRegisterActivity">
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="295dp"
+        android:layout_height="207dp"
+        app:layout_constraintBottom_toTopOf="@+id/profileText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
 
     <Spinner
         android:id="@+id/spinnerLogin"
@@ -31,32 +43,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinnerLogin" />
 
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="295dp"
-        android:layout_height="207dp"
-        app:layout_constraintBottom_toTopOf="@+id/profileText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo" />
-
-    <TextView
-        android:id="@+id/profileText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/alike_angular"
-        android:text="Perfil"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="35sp"
-        app:layout_constraintBottom_toTopOf="@+id/spinnerLogin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
-
     <EditText
         android:id="@+id/nameProfileRegister"
         android:layout_width="370dp"
@@ -71,7 +57,6 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinnerStores" />
-
 
     <EditText
         android:id="@+id/cpfProfileRegister"
@@ -124,9 +109,37 @@
         android:layout_height="wrap_content"
         android:background="@drawable/botoes"
         android:text="Salvar"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/backMainProfileRegister"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/celProfileRegister" />
+
+    <TextView
+        android:id="@+id/profileText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/alike_angular"
+        android:text="Perfil"
+        android:textAlignment="center"
+        android:textColor="@color/cyanLighten4"
+        android:textSize="35sp"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+
+    <ImageView
+        android:id="@+id/backMainProfileRegister"
+        android:layout_width="51dp"
+        android:layout_height="51dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/saveProfileRegister"
+        app:srcCompat="@drawable/icone_back_menu" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

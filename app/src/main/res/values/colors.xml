@@ -14,5 +14,8 @@
     <color name="colorareia">#8f6f48</color>
     <color name="black">#000000</color>
     <color name="white">#ffffff</color>
+    <color name="colorgreen">#2e7d32</color>
+    <color name="colorred">#d50000</color>
+    <color name="cyanLighten4">#b2ebf2</color>
 
 </resources>

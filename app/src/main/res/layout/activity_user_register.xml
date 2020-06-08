@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".views.activities.adm.UserRegister">
+    tools:context=".views.activities.adm.UserRegisterActivity">
 
     <include
         android:id="@+id/action_bar"
@@ -23,7 +23,7 @@
         android:fontFamily="@font/alike_angular"
         android:text="@string/userRegister"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="@color/cyanLighten4"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/recyclerViewUserRegister"
         app:layout_constraintEnd_toEndOf="parent"

@@ -12,22 +12,24 @@ import br.com.licenseplate.R
 import br.com.licenseplate.viewmodel.AdmViewModel
 import br.com.licenseplate.viewmodel.LoginViewModel
 import br.com.licenseplate.views.activities.MainActivity
-import br.com.licenseplate.views.adapter.UserAdapter
-import kotlinx.android.synthetic.main.activity_user_list.*
+import br.com.licenseplate.views.adapters.UserAdapter
+import kotlinx.android.synthetic.main.activity_user_register.*
 
-class UserList : AppCompatActivity() {
+class UserRegisterActivity : AppCompatActivity() {
     private val viewModelL: LoginViewModel by lazy {
         ViewModelProvider(this).get(LoginViewModel::class.java)
     }
     private val viewModelA: AdmViewModel by lazy {
         ViewModelProvider(this).get(AdmViewModel::class.java)
     }
+    private var adapter = UserAdapter(emptyList(), this, viewModelA, null)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_user_list)
+        setContentView(R.layout.activity_user_register)
         setSupportActionBar(findViewById(R.id.action_bar))
 
+        initRecyclerView()
         userList()
     }
 
@@ -35,7 +37,6 @@ class UserList : AppCompatActivity() {
         super.onResume()
         viewModelL.verifyLogin { result ->
             if (result == null) {
-                viewModelL.logout()
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
             }
@@ -43,50 +44,54 @@ class UserList : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        //Habilita botão retorno a atividade anterior
+        //Habilita o botão de retornar a tela anterior
         this.supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        //Insere o menu que está em res->menu
+        //Habilita o menu que está em res->menu
         menuInflater.inflate(R.menu.menu_adm, menu)
         return true
     }
 
-    //Função que volta a atividade anterior, finalizando essa
+    //Função que finaliza a atividade e volta a atividade anterior
     override fun onSupportNavigateUp(): Boolean {
         finish()
         return true
     }
 
-    //função com os itens do menu
+    //Itens do menu
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.storeRegister) {
-            val intent = Intent(this, StoreRegister::class.java)
+            val intent = Intent(this, StoreRegisterActivity::class.java)
             startActivity(intent)
             return true
         } else if (item.itemId == R.id.storeList) {
-            val intent = Intent(this, StoreListAdm::class.java)
+            val intent = Intent(this, StoreListAdmActivity::class.java)
             startActivity(intent)
             return true
-        } else if (item.itemId == R.id.userRegister) {
-            val intent = Intent(this, UserRegister::class.java)
+        } else if (item.itemId == R.id.userList) {
+            val intent = Intent(this, UserListActivity::class.java)
             startActivity(intent)
             return true
         } else if (item.itemId == R.id.logout) {
-            viewModelL.logout()
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
+            viewModelL.logout()
         }
 
         return false
     }
 
-    private fun userList() {
-        recyclerViewUserList.layoutManager = LinearLayoutManager(this)
-        viewModelA.users.observe(this, Observer { users ->
-            val adapter = UserAdapter(users,this, viewModelA)
-            recyclerViewUserList.adapter = adapter
-        })
+    private fun initRecyclerView() {
+        recyclerViewUserRegister.layoutManager = LinearLayoutManager(this)
+        recyclerViewUserRegister.adapter = adapter
 
-        viewModelA.userList()
+        viewModelA.users.observe(this, Observer { users ->
+            adapter.users = users
+            adapter.notifyDataSetChanged()
+        })
+    }
+
+    private fun userList() {
+        viewModelA.userListRegister()
     }
 }

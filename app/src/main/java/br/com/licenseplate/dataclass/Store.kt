@@ -6,5 +6,6 @@ data class Store(
     val valCarro: Double? = null,
     val valMoto: Double? = null,
     val localizacao: String? = null,
+    val telefone: String? = null,
     val id: Int? = null
 )

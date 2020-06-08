@@ -40,6 +40,8 @@ class LoginViewModel(val app: Application) : AndroidViewModel(app) {
         }
     }
 
+    //função de salvar o perfil do usuário. Quando o perfil é salvo, fica a pendência de perfil.
+    //quem pode confirmar e retirar a pendência é só um fabricante (adm).
     fun registerUser(
         email: String,
         password: String,
@@ -56,7 +58,7 @@ class LoginViewModel(val app: Application) : AndroidViewModel(app) {
                 val resultado = arrayOf("ERROR", "Por favor, preencha todos os campos!")
                 callback(resultado)
             } else if (result == "SENHAS") {
-                val resultado = arrayOf("ERROR", "As senhas informadas estão diferentes!")
+                val resultado = arrayOf("ERROR", "As senhas informadas estão diferentes. Por favor, verifique e tente novamente!")
                 callback(resultado)
             } else if (result == "SENHA") {
                 val resultado = arrayOf("ERROR", "A senha deve ter no mínimo 6 caracteres!")
@@ -65,6 +67,12 @@ class LoginViewModel(val app: Application) : AndroidViewModel(app) {
                 val resultado = arrayOf(
                     "ERROR",
                     "Algo deu errado ao fazer o cadastro. Contate o adm do sistema!"
+                )
+                callback(resultado)
+            } else if ("is already in use by" in result) {
+                val resultado = arrayOf(
+                    "ERROR",
+                    "O e-mail informado já foi registrado no sistema. Caso tenha perdido acesso, recupere sua senha na página anterior, em 'Esqueci minha senha'!"
                 )
                 callback(resultado)
             } else if ("badly" in result) {
@@ -92,10 +100,9 @@ class LoginViewModel(val app: Application) : AndroidViewModel(app) {
 
         interactor.saveProfile(name, newCpf, rg, store, cel) { response ->
             if (response == "OK") {
-                logout()
                 val result = arrayOf(
                     "OK",
-                    "Perfil cadastrado com sucesso! Por favor, aguarde até seu login ser verificado por um administrador!"
+                    "Perfil cadastrado com sucesso!"
                 )
 
                 callback(result)
@@ -146,6 +153,12 @@ class LoginViewModel(val app: Application) : AndroidViewModel(app) {
                     "Senha inválida. Por favor, verifique e tente novamente!"
                 )
                 callback(resultado)
+            } else if ("blocked" in result) {
+                val resultado = arrayOf(
+                    "ERROR",
+                    "Houveram muitas tentativas inválidas de login, portanto seu dispositivo foi bloqueado. Por favor, tente novamente mais tarde!"
+                )
+                callback(resultado)
             } else {
                 val resultado = arrayOf("ERROR", result)
                 callback(resultado)
@@ -159,11 +172,5 @@ class LoginViewModel(val app: Application) : AndroidViewModel(app) {
 
     fun logout() {
         interactor.logout()
-    }
-
-    fun loginNotVerified(callback: (result: String) -> Unit) {
-        val message =
-            "Seu login ainda não foi verificado! Por favor contate um adm do sistema para verificar seu processo!"
-        callback(message)
     }
 }

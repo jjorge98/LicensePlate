@@ -1,8 +1,10 @@
 package br.com.licenseplate.views.activities.login
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
@@ -14,9 +16,11 @@ import br.com.licenseplate.R
 import br.com.licenseplate.viewmodel.AdmViewModel
 import br.com.licenseplate.viewmodel.LoginViewModel
 import br.com.licenseplate.views.activities.MainActivity
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_profile_register.*
 
-class ProfileRegister : AppCompatActivity() {
+class ProfileRegisterActivity : AppCompatActivity() {
+    private val auth = FirebaseAuth.getInstance()
     private lateinit var loja: String
     private lateinit var login: String
     private val viewModelA: AdmViewModel by lazy {
@@ -35,15 +39,19 @@ class ProfileRegister : AppCompatActivity() {
         spinnerStoresFill()
 
         saveProfileRegister.setOnClickListener { saveProfile() }
+        backMainProfileRegister.setOnClickListener { main() }
+        backMainProfileRegister.setOnTouchListener { _, _ ->
+            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
+        }
     }
 
     override fun onResume() {
         super.onResume()
         viewModelL.verifyLogin { result ->
             if (result == null) {
-                //
-            } else if(result.login == 0){
-                //TODO: Direcionar a tela de tudo ok, mas falta resgistro
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
             }
         }
     }
@@ -135,9 +143,16 @@ class ProfileRegister : AppCompatActivity() {
             Toast.makeText(this, response[1], Toast.LENGTH_SHORT).show()
 
             if (response[0] == "OK") {
-                val intent = Intent(this, MainActivity::class.java)
+                val intent = Intent(this, LackVerificationActivity::class.java)
                 startActivity(intent)
+                finish()
             }
         }
+    }
+
+    private fun main() {
+        viewModelL.logout()
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 }
