@@ -87,10 +87,21 @@
         android:layout_height="wrap_content"
         android:background="@drawable/botoes"
         android:text="@string/next"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/backActivity"
         app:layout_constraintTop_toBottomOf="@+id/celClientData" />
+
+
+    <ImageView
+        android:id="@+id/backActivity"
+        android:layout_width="51dp"
+        android:layout_height="51dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonClientData"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:srcCompat="@drawable/icone_back_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
