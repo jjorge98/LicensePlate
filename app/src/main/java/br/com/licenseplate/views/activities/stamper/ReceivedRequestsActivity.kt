@@ -24,12 +24,15 @@ class ReceivedRequestsActivity : AppCompatActivity() {
         ViewModelProvider(this).get(StamperViewModel::class.java)
     }
 
+    val adapter = AuthorizationReceivedAdapter(emptyList(), this, this)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_received_requests)
 
         setSupportActionBar(findViewById(R.id.action_bar))
 
+        initRecyclerView()
         authorizationList()
     }
 
@@ -41,16 +44,6 @@ class ReceivedRequestsActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         }
-    }
-
-    private fun authorizationList() {
-        recyclerViewReceivedRequests.layoutManager = GridLayoutManager(this, 2)
-        viewModelS.resultado.observe(this, Observer { authorizations ->
-            val adapter = AuthorizationReceivedAdapter(authorizations, this, this)
-            recyclerViewReceivedRequests.adapter = adapter
-        })
-
-        viewModelS.authorizationReceivedList()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -77,6 +70,9 @@ class ReceivedRequestsActivity : AppCompatActivity() {
         } else if (item.itemId == R.id.licenseRequest) {
             val intent = Intent(this, AuthorizationListActivity::class.java)
             startActivity(intent)
+        } else if (item.itemId == R.id.deliveredRequest) {
+            val intent = Intent(this, DeliveredRequestsActivity::class.java)
+            startActivity(intent)
         } else if (item.itemId == R.id.logout) {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
@@ -84,5 +80,19 @@ class ReceivedRequestsActivity : AppCompatActivity() {
         }
 
         return false
+    }
+
+    private fun initRecyclerView() {
+        recyclerViewReceivedRequests.layoutManager = GridLayoutManager(this, 2)
+        recyclerViewReceivedRequests.adapter = adapter
+
+        viewModelS.resultado.observe(this, Observer { authorizations ->
+            adapter.dataSet = authorizations
+            adapter.notifyDataSetChanged()
+        })
+    }
+
+    private fun authorizationList() {
+        viewModelS.authorizationReceivedList()
     }
 }

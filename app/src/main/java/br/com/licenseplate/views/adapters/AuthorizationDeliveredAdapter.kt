@@ -9,38 +9,34 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.TextView
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import br.com.licenseplate.R
 import br.com.licenseplate.dataclass.AuthorizationClient
 import br.com.licenseplate.viewmodel.StamperViewModel
-import br.com.licenseplate.views.activities.stamper.AuthorizationListActivity
-import br.com.licenseplate.views.fragments.DeleteRequestFragment
+import br.com.licenseplate.views.activities.stamper.DeliveredRequestsActivity
 import br.com.licenseplate.views.fragments.InfoClientFragment
 import kotlinx.android.synthetic.main.authorization_card.view.*
 
-class AuthorizationListAdapter(
+class AuthorizationDeliveredAdapter(
     var dataSet: List<AuthorizationClient>,
     private val context: Context,
-    private val view: AuthorizationListActivity
-) :
-    RecyclerView.Adapter<AuthorizationListAdapter.AuthorizationViewHolder>() {
-    private val viewModelS: StamperViewModel by lazy {
-        ViewModelProvider(view).get(StamperViewModel::class.java)
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AuthorizationViewHolder {
+    private val view: DeliveredRequestsActivity
+) : RecyclerView.Adapter<AuthorizationDeliveredAdapter.AuthorizationDeliveredViewHolder>() {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): AuthorizationDeliveredViewHolder {
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.authorization_card, parent, false)
-        return AuthorizationViewHolder(view)
+        return AuthorizationDeliveredViewHolder(view)
     }
 
     override fun getItemCount(): Int {
         return dataSet.size
     }
 
-    override fun onBindViewHolder(holder: AuthorizationViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: AuthorizationDeliveredViewHolder, position: Int) {
         val authorization = dataSet[position]
         holder.authorization.text = authorization.authorization?.numAutorizacao
         holder.material.text = when (authorization.authorization?.materiais) {
@@ -230,49 +226,34 @@ class AuthorizationListAdapter(
         }
     }
 
-    private fun showPopup(holder: AuthorizationViewHolder, authorization: AuthorizationClient) {
+    private fun showPopup(
+        holder: AuthorizationDeliveredViewHolder,
+        authorization: AuthorizationClient
+    ) {
         val popup = PopupMenu(context, holder.itemView)
         val inflater: MenuInflater = popup.menuInflater
 
-        inflater.inflate(R.menu.menu_authorization, popup.menu)
+        inflater.inflate(R.menu.menu_authorization_history, popup.menu)
 
         popup.setOnMenuItemClickListener { itemSelected ->
-            when (itemSelected?.itemId) {
-                R.id.receiveAuthorization -> {
-                    viewModelS.receiveRequest(authorization) { response ->
-                        Toast.makeText(context, response, Toast.LENGTH_SHORT).show()
-                    }
-                    return@setOnMenuItemClickListener true
-                }
-                R.id.seeClientData -> {
-                    val infoFragment =
-                        InfoClientFragment(
-                            authorization.client
-                        )
-                    val manager1 = view.supportFragmentManager
-                    val transaction1 = manager1.beginTransaction()
-                    transaction1.add(infoFragment, "infoFragment")
-                    transaction1.commit()
+            if (itemSelected?.itemId == R.id.seeClientData) {
+                val infoFragment =
+                    InfoClientFragment(
+                        authorization.client
+                    )
+                val manager1 = view.supportFragmentManager
+                val transaction1 = manager1.beginTransaction()
+                transaction1.add(infoFragment, "infoFragment")
+                transaction1.commit()
 
-                    return@setOnMenuItemClickListener true
-                }
-                R.id.denyRequest -> {
-                    val deleteFragment =
-                        DeleteRequestFragment(authorization)
-                    val manager = view.supportFragmentManager
-                    val transaction = manager.beginTransaction()
-                    transaction.add(deleteFragment, "deleteFragment")
-                    transaction.commit()
-
-                    return@setOnMenuItemClickListener true
-                }
-                else -> return@setOnMenuItemClickListener true
+                return@setOnMenuItemClickListener true
             }
+            return@setOnMenuItemClickListener true
         }
         popup.show()
     }
 
-    class AuthorizationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class AuthorizationDeliveredViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val authorization: TextView = itemView.authorizationAT
         val licensePlate: TextView = itemView.placaAT
         val category: TextView = itemView.categoriaAT

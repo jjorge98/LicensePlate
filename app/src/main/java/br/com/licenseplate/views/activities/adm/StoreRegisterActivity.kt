@@ -1,9 +1,11 @@
 package br.com.licenseplate.views.activities.adm
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -33,6 +35,10 @@ class StoreRegisterActivity : AppCompatActivity() {
         }
 
         saveStoreRegister.setOnClickListener { saveStore() }
+        backStoreRegister.setOnTouchListener { _, _ ->
+            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
+        }
     }
 
     override fun onResume() {

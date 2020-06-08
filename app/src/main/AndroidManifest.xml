@@ -18,7 +18,9 @@
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".views.activities.client.AuthorizationStatusActivity"></activity>
+        <activity android:name=".views.adapters.AuthorizationDeliveredAdapter"></activity>
+        <activity android:name=".views.activities.stamper.DeliveredRequestsActivity" />
+        <activity android:name=".views.activities.client.AuthorizationStatusActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

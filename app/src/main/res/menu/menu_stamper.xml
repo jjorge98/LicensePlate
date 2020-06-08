@@ -15,6 +15,10 @@
         android:title="@string/licenseHistory"
         app:showAsAction="never" />
     <item
+        android:id="@+id/deliveredRequest"
+        android:title="@string/deliveredRequests"
+        app:showAsAction="never" />
+    <item
         android:id="@+id/logout"
         android:title="@string/logout"
         app:showAsAction="never" />

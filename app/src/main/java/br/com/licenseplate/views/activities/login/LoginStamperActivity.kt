@@ -1,7 +1,9 @@
 package br.com.licenseplate.views.activities.login
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -23,6 +25,10 @@ class LoginStamperActivity : AppCompatActivity() {
         buttonReqLicense.setOnClickListener { login() }
         forgotPasswordLogin.setOnClickListener { forgotPassword() }
         registerLoginStamper.setOnClickListener { register() }
+        backLoginStamper.setOnTouchListener { _, _ ->
+            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
+        }
     }
 
     private fun login() {

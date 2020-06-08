@@ -8,25 +8,33 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.TextView
+import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import br.com.licenseplate.R
 import br.com.licenseplate.dataclass.AuthorizationClient
+import br.com.licenseplate.viewmodel.StamperViewModel
 import br.com.licenseplate.views.activities.stamper.FinishedRequestsActivity
 import br.com.licenseplate.views.fragments.InfoClientFragment
 import kotlinx.android.synthetic.main.authorization_card.view.*
 
 class AuthorizationHistoryAdapter(
-    private val dataSet: Array<AuthorizationClient>,
+    var dataSet: List<AuthorizationClient>,
     private val context: Context,
     private val view: FinishedRequestsActivity
 ) :
     RecyclerView.Adapter<AuthorizationHistoryAdapter.AuthorizationHistoryViewHolder>() {
+    private val viewModelS: StamperViewModel by lazy {
+        ViewModelProvider(view).get(StamperViewModel::class.java)
+    }
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): AuthorizationHistoryViewHolder {
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.authorization_card, parent, false)
+
         return AuthorizationHistoryViewHolder(view)
     }
 
@@ -222,7 +230,7 @@ class AuthorizationHistoryAdapter(
         val popup = PopupMenu(context, holder.itemView)
         val inflater: MenuInflater = popup.menuInflater
 
-        inflater.inflate(R.menu.menu_authorization_history, popup.menu)
+        inflater.inflate(R.menu.menu_authorization_finished, popup.menu)
 
         popup.setOnMenuItemClickListener { itemSelected ->
             if (itemSelected?.itemId == R.id.seeClientData) {
@@ -234,6 +242,12 @@ class AuthorizationHistoryAdapter(
                 val transaction1 = manager1.beginTransaction()
                 transaction1.add(infoFragment, "infoFragment")
                 transaction1.commit()
+
+                return@setOnMenuItemClickListener true
+            } else if (itemSelected?.itemId == R.id.deliverRequest) {
+                viewModelS.deliverRequest(authorization) { response ->
+                    Toast.makeText(context, response, Toast.LENGTH_SHORT).show()
+                }
 
                 return@setOnMenuItemClickListener true
             }

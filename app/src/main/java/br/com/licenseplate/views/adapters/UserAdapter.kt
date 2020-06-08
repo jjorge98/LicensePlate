@@ -18,7 +18,7 @@ import br.com.licenseplate.views.fragments.InfoUserFragment
 import kotlinx.android.synthetic.main.user_list.view.*
 
 class UserAdapter(
-    private val users: Array<Stamper>,
+    var users: List<Stamper>,
     private val context: Context,
     private val viewModelA: AdmViewModel,
     private val view: UserListActivity?

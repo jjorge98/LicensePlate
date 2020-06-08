@@ -1,9 +1,10 @@
 package br.com.licenseplate.views.activities.login
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
@@ -39,6 +40,10 @@ class ProfileRegisterActivity : AppCompatActivity() {
 
         saveProfileRegister.setOnClickListener { saveProfile() }
         backMainProfileRegister.setOnClickListener { main() }
+        backMainProfileRegister.setOnTouchListener { _, _ ->
+            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
+        }
     }
 
     override fun onResume() {
@@ -145,7 +150,7 @@ class ProfileRegisterActivity : AppCompatActivity() {
         }
     }
 
-    private fun main(){
+    private fun main() {
         viewModelL.logout()
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)

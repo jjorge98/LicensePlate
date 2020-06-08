@@ -24,15 +24,18 @@ class FinishedRequestsActivity : AppCompatActivity() {
         ViewModelProvider(this).get(StamperViewModel::class.java)
     }
 
+    val adapter = AuthorizationHistoryAdapter(emptyList(), this, this)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_finished_requests)
 
         setSupportActionBar(findViewById(R.id.action_bar))
 
+        initRecyclerView()
         authorizationList()
-        TODO("Fazer activity de placas entregues")
     }
+
     override fun onResume() {
         super.onResume()
         viewModelL.verifyLogin { result ->
@@ -41,16 +44,6 @@ class FinishedRequestsActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         }
-    }
-
-    private fun authorizationList() {
-        recyclerViewLicenseHistory.layoutManager = GridLayoutManager(this, 2)
-        viewModelS.resultado.observe(this, Observer { authorizations ->
-            val adapter = AuthorizationHistoryAdapter(authorizations, this, this)
-            recyclerViewLicenseHistory.adapter = adapter
-        })
-
-        viewModelS.authorizationHistoryList()
     }
 
     //Cria menu
@@ -78,6 +71,9 @@ class FinishedRequestsActivity : AppCompatActivity() {
         } else if (item.itemId == R.id.receivedRequest) {
             val intent = Intent(this, ReceivedRequestsActivity::class.java)
             startActivity(intent)
+        } else if (item.itemId == R.id.deliveredRequest) {
+            val intent = Intent(this, DeliveredRequestsActivity::class.java)
+            startActivity(intent)
         } else if (item.itemId == R.id.logout) {
             viewModelL.logout()
             val intent = Intent(this, MainActivity::class.java)
@@ -85,5 +81,19 @@ class FinishedRequestsActivity : AppCompatActivity() {
         }
 
         return false
+    }
+
+    private fun initRecyclerView() {
+        recyclerViewLicenseHistory.layoutManager = GridLayoutManager(this, 2)
+        recyclerViewLicenseHistory.adapter = adapter
+
+        viewModelS.resultado.observe(this, Observer { authorizations ->
+            adapter.dataSet = authorizations
+            adapter.notifyDataSetChanged()
+        })
+    }
+
+    private fun authorizationList() {
+        viewModelS.authorizationHistoryList()
     }
 }

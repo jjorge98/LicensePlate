@@ -83,4 +83,7 @@
 
     <string name="clientData">Dados do cliente</string>
     <string name="userData">Dados do usuário</string>
+    <string name="deliveredRequests">Solicitações entregues</string>
+    <string name="deliveredLicensePlate">Placas entregues</string>
+    <string name="deliverLicensePlate">Entregar placa</string>
 </resources>

@@ -5,10 +5,10 @@ import br.com.licenseplate.dataclass.Stamper
 import br.com.licenseplate.repository.LoginRepository
 
 class LoginInteractor(private val context: Context) {
-    //variável que chama o repository
+    //Variável que chama o repository
     private val repository = LoginRepository(context)
 
-    //função de recuperar senha que recebe um email e um callback
+    //Função de recuperar senha que recebe um email e um callback e chama o repository para recuperar o email
     fun recoverPassword(email: String, callback: (result: String?) -> Unit) {
         //Faz a verificação necessária (regras de negócio)
         //Se estiver tudo ok (else), ele chama a função do repository
@@ -22,6 +22,7 @@ class LoginInteractor(private val context: Context) {
         }
     }
 
+    //Função que registra o usuário
     fun registerUser(
         email: String,
         password: String,
@@ -44,6 +45,7 @@ class LoginInteractor(private val context: Context) {
         }
     }
 
+    //Função que verifica os dados dos clientes e manda pro repository salvar
     fun saveProfile(
         name: String,
         cpf: String,
@@ -63,7 +65,7 @@ class LoginInteractor(private val context: Context) {
         }
     }
 
-    //função de login que recebe um email e uma senha e um callback
+    //função de login que verifica o email e a senha e manda pro repository fazer a validação com o authenticator do firebase
     fun login(email: String, password: String, callback: (result: String?) -> Unit) {
         //Faz a verificação necessária (regras de negócio)
         //Se estiver tudo ok (else), ele chama a função do repository
@@ -77,10 +79,12 @@ class LoginInteractor(private val context: Context) {
         }
     }
 
+    //Função que chama o repository pra verificar se o usuário está logado
     fun verifyLogin(callback: (result: Stamper?) -> Unit) {
         repository.verifyLogin(callback)
     }
 
+    //Função para deslogar
     fun logout() {
         repository.logout()
     }

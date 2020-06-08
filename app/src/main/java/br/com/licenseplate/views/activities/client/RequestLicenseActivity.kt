@@ -1,8 +1,10 @@
 package br.com.licenseplate.views.activities.client
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
@@ -12,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import br.com.licenseplate.R
 import br.com.licenseplate.viewmodel.ClientViewModel
 import kotlinx.android.synthetic.main.activity_request_license.*
+import java.time.temporal.TemporalAdjusters.next
 
 class RequestLicenseActivity : AppCompatActivity() {
     private lateinit var estado: String
@@ -26,6 +29,10 @@ class RequestLicenseActivity : AppCompatActivity() {
         spinnerFill()
 
         buttonReqLicense.setOnClickListener { next() }
+        backRequestLicense.setOnTouchListener { _, _ ->
+            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
+        }
     }
 
     private fun spinnerFill() {

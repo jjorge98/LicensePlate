@@ -101,11 +101,6 @@ class StoreMapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnM
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
 
-        // Add a marker and move the camera
-//        val myPlace = LatLng(0.0, 0.0)
-//        map.addMarker(MarkerOptions().position(myPlace).title("Marker in my place"))
-//        map.moveCamera(CameraUpdateFactory.newLatLngZoom(myPlace, 15.0f))
-
         map.uiSettings.isZoomControlsEnabled = true
         map.setOnMarkerClickListener(this)
 

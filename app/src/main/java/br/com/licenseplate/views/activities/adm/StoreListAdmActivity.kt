@@ -22,12 +22,14 @@ class StoreListAdmActivity : AppCompatActivity() {
     private val viewModelA: AdmViewModel by lazy {
         ViewModelProvider(this).get(AdmViewModel::class.java)
     }
+    val adapter = StoreAdapter(emptyList(), this, viewModelA)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_store_list_adm)
         setSupportActionBar(findViewById(R.id.action_bar))
 
+        initRecyclerView()
         storeList()
     }
 
@@ -79,13 +81,17 @@ class StoreListAdmActivity : AppCompatActivity() {
         return false
     }
 
-    private fun storeList() {
-        viewModelA.storeList.observe(this, Observer { store ->
-            recyclerViewStoreListAdm.layoutManager = LinearLayoutManager(this)
-            val adapter = StoreAdapter(store, this, viewModelA)
-            recyclerViewStoreListAdm.adapter = adapter
-        })
+    private fun initRecyclerView() {
+        recyclerViewStoreListAdm.layoutManager = LinearLayoutManager(this)
+        recyclerViewStoreListAdm.adapter = adapter
 
+        viewModelA.storeList.observe(this, Observer { store ->
+            adapter.stores = store
+            adapter.notifyDataSetChanged()
+        })
+    }
+
+    private fun storeList() {
         viewModelA.storeListAdm()
     }
 }

@@ -27,7 +27,6 @@ class StamperRepository(private val context: Context) {
 
                 storeQuery(storeName, callback)
             }
-
         })
     }
 
@@ -97,5 +96,12 @@ class StamperRepository(private val context: Context) {
             database.getReference("autorizacaoCliente/${authorization.id}/authorization/status")
 
         reference.setValue(2)
+    }
+
+    fun deliverRequest(authorization: AuthorizationClient) {
+        val reference =
+            database.getReference("autorizacaoCliente/${authorization.id}/authorization/status")
+
+        reference.setValue(3)
     }
 }

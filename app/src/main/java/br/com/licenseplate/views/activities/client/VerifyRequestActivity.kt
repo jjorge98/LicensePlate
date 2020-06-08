@@ -1,7 +1,9 @@
 package br.com.licenseplate.views.activities.client
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -19,6 +21,10 @@ class VerifyRequestActivity : AppCompatActivity() {
         setContentView(R.layout.activity_verify_request)
 
         buttonVerifyRequest.setOnClickListener { verify() }
+        backVerifyRequest.setOnTouchListener { _, _ ->
+            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
+        }
     }
 
     private fun verify() {

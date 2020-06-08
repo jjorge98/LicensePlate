@@ -16,7 +16,7 @@ import br.com.licenseplate.views.activities.adm.StoreListAdmActivity
 import kotlinx.android.synthetic.main.store_list.view.*
 
 class StoreAdapter(
-    private val stores: Array<Store>,
+    var stores: List<Store>,
     private val context: Context,
     private val viewModelA: AdmViewModel
 ) :

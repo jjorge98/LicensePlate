@@ -1,6 +1,8 @@
 package br.com.licenseplate.views.adapters
 
+import android.content.ContentValues.TAG
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuInflater
 import android.view.View
@@ -19,7 +21,7 @@ import br.com.licenseplate.views.fragments.InfoClientFragment
 import kotlinx.android.synthetic.main.authorization_card.view.*
 
 class AuthorizationReceivedAdapter(
-    private val dataSet: Array<AuthorizationClient>,
+    var dataSet: List<AuthorizationClient>,
     private val context: Context,
     private val view: ReceivedRequestsActivity
 ) :

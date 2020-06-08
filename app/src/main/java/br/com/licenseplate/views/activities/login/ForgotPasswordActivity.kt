@@ -1,7 +1,9 @@
 package br.com.licenseplate.views.activities.login
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -21,6 +23,10 @@ class ForgotPasswordActivity : AppCompatActivity() {
 
         buttonForgPass.setOnClickListener { recoverPassword() }
         backMainForgPass.setOnClickListener { backMain() }
+        backForgotPassword.setOnTouchListener { _, _ ->
+            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
+        }
     }
 
     private fun recoverPassword() {

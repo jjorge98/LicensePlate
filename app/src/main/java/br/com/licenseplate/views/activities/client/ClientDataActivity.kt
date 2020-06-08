@@ -1,7 +1,9 @@
 package br.com.licenseplate.views.activities.client
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -32,6 +34,10 @@ class ClientDataActivity : AppCompatActivity() {
         categoria = intent.getStringExtra("categoria")
 
         buttonClientData.setOnClickListener { proximo() }
+        backClientData.setOnTouchListener { _, _ ->
+            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
+        }
     }
 
     private fun proximo() {

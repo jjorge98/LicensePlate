@@ -9,22 +9,27 @@ import kotlin.math.pow
 class AdmInteractor(val context: Context) {
     private val repository = AdmRepository(context)
 
+    //Função que chama o repository para pegar o próximo ID no banco de dados
     fun getID(root: String, callback: (result: Int) -> Unit) {
         repository.getID(root, callback)
     }
 
+    //Função que chama o repository para listar as lojas cadastradas
     fun storeList(callback: (result: Array<Store>) -> Unit) {
         repository.storeList(callback)
     }
 
+    //Função que chama o repository para listar todos os usuários que estão cadastrados
     fun userList(callback: (Array<Stamper>) -> Unit) {
         repository.userList(callback)
     }
 
+    //Função que chama o repository para listar todos os novos usuários que estão pendentes de cadastro
     fun userListRegister(callback: (Array<Stamper>) -> Unit) {
         repository.userListRegister(callback)
     }
 
+    //Função que verifica os campos da tela de cadastro e manda pro repository salvar se estiver tudo ok
     fun storeSave(
         name: String,
         carPrice: String,
@@ -42,6 +47,7 @@ class AdmInteractor(val context: Context) {
             callback("CNPJ")
         } else {
             var ver = 0
+            //Caso o toDouble de erro e entre no catch, os dados informados não são apenas números e portanto há um erro
             try {
                 carPrice.toDouble()
             } catch (e: Exception) {
@@ -50,6 +56,7 @@ class AdmInteractor(val context: Context) {
             }
 
             if (ver == 0) {
+                //Caso o toDouble de erro e entre no catch, os dados informados não são apenas números e portanto há um erro
                 try {
                     val moto = motoPrice.toDouble()
 
@@ -63,6 +70,7 @@ class AdmInteractor(val context: Context) {
         }
     }
 
+    //Função que valida CNPJ
     private fun validaCNPJ(cnpj: String?): Boolean {
         if (cnpj == null) {
             return false
@@ -144,10 +152,13 @@ class AdmInteractor(val context: Context) {
         }
     }
 
+    //função que chama o repository para excluir uma loja
     fun deleteStore(store: Store) {
         repository.deleteStore(store)
     }
 
+    //função para confirmar o login de um usuário. Caso a loja do usuário seja 'S/L', ele é um fabricante(adm,2),
+    //senão, ele é um estampador(1)
     fun userRegisterConfirmation(stamper: Stamper) {
         if (stamper.loja == "S/L") {
             stamper.login = 2
@@ -158,6 +169,7 @@ class AdmInteractor(val context: Context) {
         repository.userRegisterConfirmation(stamper)
     }
 
+    //função que chama o repository para excluir um usuário
     fun deleteUser(stamper: Stamper) {
         repository.deleteUser(stamper)
     }

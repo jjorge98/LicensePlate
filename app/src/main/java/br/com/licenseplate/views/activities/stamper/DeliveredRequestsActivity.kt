@@ -12,23 +12,23 @@ import br.com.licenseplate.R
 import br.com.licenseplate.viewmodel.LoginViewModel
 import br.com.licenseplate.viewmodel.StamperViewModel
 import br.com.licenseplate.views.activities.MainActivity
-import br.com.licenseplate.views.adapters.AuthorizationListAdapter
-import kotlinx.android.synthetic.main.activity_authorization_list.*
+import br.com.licenseplate.views.adapters.AuthorizationDeliveredAdapter
+import kotlinx.android.synthetic.main.activity_delivered_requests.*
 
-class AuthorizationListActivity : AppCompatActivity() {
-    private val viewModelS: StamperViewModel by lazy {
-        ViewModelProvider(this).get(StamperViewModel::class.java)
-    }
-
+class DeliveredRequestsActivity : AppCompatActivity() {
     private val viewModelL: LoginViewModel by lazy {
         ViewModelProvider(this).get(LoginViewModel::class.java)
     }
 
-    val adapter = AuthorizationListAdapter(emptyList(), this, this)
+    private val viewModelS: StamperViewModel by lazy {
+        ViewModelProvider(this).get(StamperViewModel::class.java)
+    }
+
+    lateinit var adapter: AuthorizationDeliveredAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_authorization_list)
+        setContentView(R.layout.activity_delivered_requests)
 
         setSupportActionBar(findViewById(R.id.action_bar))
 
@@ -46,8 +46,9 @@ class AuthorizationListActivity : AppCompatActivity() {
         }
     }
 
+    //Cria menu
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        //Habilita o botão de voltar a tela anterior
+        //Mostra botão voltar a tela anterior
         this.supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         //Insere o menu que está no res->menu
@@ -55,45 +56,45 @@ class AuthorizationListActivity : AppCompatActivity() {
         return true
     }
 
-    //Função que encerra a atividade ao clicar no botão voltar a tela anterior
+    //Função que finaliza a atividade quando volta a tela anterior
     override fun onSupportNavigateUp(): Boolean {
         finish()
         return true
     }
 
+    //Itens do menu
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        //Cada if é um item do menu
-        if (item.itemId == R.id.licenseHistory) {
-            val intentR = Intent(this, FinishedRequestsActivity::class.java)
-            startActivity(intentR)
+        if (item.itemId == R.id.licenseRequest) {
+            val intent = Intent(this, AuthorizationListActivity::class.java)
+            startActivity(intent)
             return true
         } else if (item.itemId == R.id.receivedRequest) {
             val intent = Intent(this, ReceivedRequestsActivity::class.java)
             startActivity(intent)
-        } else if (item.itemId == R.id.deliveredRequest) {
-            val intent = Intent(this, DeliveredRequestsActivity::class.java)
+        } else if (item.itemId == R.id.licenseHistory) {
+            val intent = Intent(this, FinishedRequestsActivity::class.java)
             startActivity(intent)
         } else if (item.itemId == R.id.logout) {
+            viewModelL.logout()
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
-            viewModelL.logout()
         }
 
         return false
     }
 
     private fun initRecyclerView() {
-        recyclerViewAuthorizationList.layoutManager = GridLayoutManager(this, 2)
-        recyclerViewAuthorizationList.adapter = adapter
+        adapter = AuthorizationDeliveredAdapter(emptyList(), this, this)
+        recyclerViewDeliveredRequests.layoutManager = GridLayoutManager(this, 2)
+        recyclerViewDeliveredRequests.adapter = adapter
 
         viewModelS.resultado.observe(this, Observer { authorizations ->
-            adapter.dataSet = authorizations
-            adapter.notifyDataSetChanged()
+            (recyclerViewDeliveredRequests.adapter as AuthorizationDeliveredAdapter).dataSet = authorizations
+            (recyclerViewDeliveredRequests.adapter as AuthorizationDeliveredAdapter).notifyDataSetChanged()
         })
-
     }
 
     private fun authorizationList() {
-        viewModelS.authorizationList()
+        viewModelS.authorizationDeliveredList()
     }
 }

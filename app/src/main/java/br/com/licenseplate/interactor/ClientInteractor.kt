@@ -21,10 +21,12 @@ class ClientInteractor(val context: Context) {
     private val detranRepository =
         DetranAPI(context, "https://homologacao.emplacbrasil.com.br/api/")
 
+    //Função que pega o próximo ID no banco de dados
     fun verifyID(root: String, callback: (result: Int) -> Unit) {
         repository.verifyID(root, callback)
     }
 
+    //Função que faz as verificações dos dados dos clientes
     fun verifyClientData(client: Client, callback: (result: String?) -> Unit) {
         val cpf = client.cpf
         if (client.nome != null && client.cpf != null && client.cel != null) {
@@ -38,6 +40,7 @@ class ClientInteractor(val context: Context) {
         }
     }
 
+    //Função que valida cpf
     fun validaCpf(cpf: String?): Boolean {
         if (cpf == null) {
             return false
@@ -105,10 +108,11 @@ class ClientInteractor(val context: Context) {
 
             return v2 == newCpf
         } else {
-            return false;
+            return false
         }
     }
 
+    //Função que verifica a placa
     fun verifyLicenseNumber(
         authorization: Authorization,
         callback: (result: String?, responseAPI: AuthorizationDTO?) -> Unit
@@ -134,6 +138,7 @@ class ClientInteractor(val context: Context) {
         }
     }
 
+    //Função que verifica o número da autorização
     fun verifyAuthorization(
         authorization: Authorization,
         callback: (result: String?, responseAPI: AuthorizationDTO?) -> Unit
@@ -147,6 +152,7 @@ class ClientInteractor(val context: Context) {
         }
     }
 
+    //Função para listar as lojas ao cliente. Possui o merge sort para mostrar em ordem de distância
     fun storeList(location: LatLng, uf: String?, callback: (result: Array<Store>) -> Unit) {
         repository.storeList { response ->
             filterUF(response, uf) { arrayUFStores ->
@@ -158,6 +164,7 @@ class ClientInteractor(val context: Context) {
         }
     }
 
+    //Função que filtra as lojas por estado
     private fun filterUF(
         stores: Array<Store>,
         uf: String?,
@@ -209,10 +216,12 @@ class ClientInteractor(val context: Context) {
         callback(resultStores.toTypedArray())
     }
 
+    //Função para pegar o endereço passando latitude e longitude
     fun getAddress(latLng: LatLng, callback: (result: List<Address>) -> Unit) {
         repository.getAddress(latLng, callback)
     }
 
+    //Função para calcular a distância
     private fun distance(start: LatLng, end: LatLng): Double {
         val lat1 = start.latitude
         val lat2 = end.latitude
@@ -228,6 +237,7 @@ class ClientInteractor(val context: Context) {
         return 6366000 * c
     }
 
+    //Função para ordenar como merge sort
     private fun mergeSort(storeArray: Array<Store>, clientLatLng: LatLng, start: Int, end: Int) {
         var middle: Int
 
@@ -239,6 +249,7 @@ class ClientInteractor(val context: Context) {
         }
     }
 
+    //Função auxiliar do merge sort que intercala os array que foram divididos no merge sort
     private fun intersperse(
         storeArray: Array<Store>,
         clientLatLng: LatLng,
@@ -329,6 +340,7 @@ class ClientInteractor(val context: Context) {
         }
     }
 
+    //Função para salvar a autorização no banco
     fun saveAuthorization(
         placa: String?,
         nome: String?,
@@ -355,11 +367,12 @@ class ClientInteractor(val context: Context) {
         }
     }
 
+    //Função para verificar o processo do cliente
     fun verifyProcess(
         licensePlate: String,
         callback: (response: String, autCli: AuthorizationClient?, store: Store?) -> Unit
     ) {
-        if (licensePlate.isEmpty()!!) {
+        if (licensePlate.isEmpty()) {
             callback("VAZIO", null, null)
         } else if (licensePlate.length != 7) {
             callback("PLACA", null, null)
@@ -380,6 +393,7 @@ class ClientInteractor(val context: Context) {
         }
     }
 
+    //Função para verificar a placa do cliente na tela de verificar o processo
     fun verifyLicensePlate(licensePlate: String, callback: (result: String) -> Unit) {
         if (licensePlate.isEmpty()) {
             callback("VAZIO")
