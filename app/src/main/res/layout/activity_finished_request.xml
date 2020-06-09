@@ -66,15 +66,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView1FinishedRequest" />
 
-    <Button
+
+    <ImageView
         android:id="@+id/buttonFinishedRequest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/botoes"
-        android:text="@string/backMain"
+        android:layout_width="51dp"
+        android:layout_height="51dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/protocolNumber" />
+        app:layout_constraintTop_toBottomOf="@+id/protocolNumber"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/icone_back_menu" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
