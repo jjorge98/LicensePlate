@@ -1,9 +1,10 @@
 <div align="center">
+    Status do Projeto: Concluído :heavy_check_mark:
    <img width="407"  alt="Logo" src="https://user-images.githubusercontent.com/48803004/84099300-a76d9800-a9df-11ea-8173-5701c3b4f8f4.png">
 </div>
 
 # Projeto de Autoatendimento LicensePlate – AtmLP  
-> Status do Projeto: Concluído :heavy_check_mark:
+
 
 
 ## DESCRIÇÃO DO PROJETO
