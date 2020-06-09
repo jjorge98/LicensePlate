@@ -20,8 +20,12 @@
 <ul>
     <li><b>Perfil Fabricante:</b> Responsável pelo gerenciamento das solicitações de cadastro de estamparias.</li>
     <li><b>Perfil Estampador:</b> O sistema permitirá o gerenciamento (confirmação e conclusão) das solicitações de placas e a consulta de todas as solicitações concluídas.</li>
-</ul>  
+</ul> 
+## PRÉ-REQUISITOS
 
+## LINGUAGEM, DEPENDENCIAS E LIBS 
+
+## COMO RODAR A APLICAÇÃO 
 
 ## PLANOS FUTUROS 
 <p align="justify"> :trophy: O projeto tem a possibilidade de incluir melhorias evolutivas como:</p>
