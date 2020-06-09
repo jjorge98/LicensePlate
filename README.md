@@ -23,13 +23,16 @@
 </ul>  
 
 
-## PLANOS FUTUROS :trophy:
-<p align="justify">O projeto tem a possibilidade de incluir melhorias evolutivas como:</p>
+## PLANOS FUTUROS 
+<p align="justify"> :trophy: O projeto tem a possibilidade de incluir melhorias evolutivas como:</p>
 <ul>
     <li>Funcionalidade de pagamentos</li>
     <li>Agendar emplacamento no local de escolha do cliente.</li>
     <li>Oferecimento de rotas para estamparia selecionada</li>
 </ul>  
 
-## DESENVOLVEDORES :octocat:
+## DESENVOLVEDORES
+<p align="justify"> :octocat: Marília </p>
+<p align="justify"> :octocat: Milena </p>
+<p align="justify"> :octocat: Jorge </p>
 
