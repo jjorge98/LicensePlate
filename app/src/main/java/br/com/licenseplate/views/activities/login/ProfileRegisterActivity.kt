@@ -104,7 +104,7 @@ class ProfileRegisterActivity : AppCompatActivity() {
 
     private fun spinnerStoresFill() {
         viewModelA.stores.observe(this, Observer { authorizations ->
-            val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, authorizations)
+            val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, authorizations.toList())
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             spinnerStores.adapter = adapter
         })

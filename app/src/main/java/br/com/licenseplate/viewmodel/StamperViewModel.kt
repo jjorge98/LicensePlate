@@ -1,38 +1,60 @@
 package br.com.licenseplate.viewmodel
 
 import android.app.Application
+import android.content.ContentValues.TAG
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import br.com.licenseplate.dataclass.AuthorizationClient
 import br.com.licenseplate.dataclass.DeletedRequest
 import br.com.licenseplate.interactor.StamperInteractor
-import okhttp3.internal.notifyAll
 
 class StamperViewModel(app: Application) : AndroidViewModel(app) {
     private val interactor = StamperInteractor(app.applicationContext)
-    val resultado = MutableLiveData<List<AuthorizationClient>>()
+    var resultado = MutableLiveData<Set<AuthorizationClient>>()
+    var i = 0
 
     fun authorizationList() {
+        val set = mutableSetOf<AuthorizationClient>()
         interactor.authorizationList { result ->
-            resultado.value = result.asList()
+            result.forEach { aut ->
+                set.add(aut)
+            }
+            resultado.value = set
         }
     }
 
     fun authorizationReceivedList() {
+        val set = mutableSetOf<AuthorizationClient>()
         interactor.authorizationReceivedList { result ->
-            resultado.value = result.asList()
+            result.forEach { aut ->
+                set.add(aut)
+            }
+            resultado.value = set
         }
     }
 
     fun authorizationHistoryList() {
+        val set = mutableSetOf<AuthorizationClient>()
+
         interactor.authorizationHistoryList { result ->
-            resultado.value = result.asList()
+            result.forEach { aut ->
+                set.add(aut)
+            }
+            resultado.value = set
         }
     }
 
     fun authorizationDeliveredList() {
+        val set = mutableSetOf<AuthorizationClient>()
         interactor.authorizationDeliveredList { result ->
-            resultado.value = result.asList()
+            Log.w(TAG, "$set")
+            result.forEach { aut ->
+                set.add(aut)
+            }
+            Log.w(TAG, "OKFIRTSS")
+            resultado.value = set
+            i++
         }
     }
 

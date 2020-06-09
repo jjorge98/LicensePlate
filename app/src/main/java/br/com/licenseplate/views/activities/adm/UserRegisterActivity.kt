@@ -86,7 +86,7 @@ class UserRegisterActivity : AppCompatActivity() {
         recyclerViewUserRegister.adapter = adapter
 
         viewModelA.users.observe(this, Observer { users ->
-            adapter.users = users
+            adapter.users = users.toList()
             adapter.notifyDataSetChanged()
         })
     }

@@ -80,7 +80,7 @@ class StoreMapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnM
     private fun storesRecyclerView(location: LatLng) {
         viewModelC.storeList.observe(this, Observer { store ->
             storesMapRecyclerView.layoutManager = LinearLayoutManager(this)
-            val adapter = StoreMapAdapter(store, this, map, this, viewModelC)
+            val adapter = StoreMapAdapter(store.toList(), this, map, this, viewModelC)
             storesMapRecyclerView.adapter = adapter
 
             store.forEach { s ->

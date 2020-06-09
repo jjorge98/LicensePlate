@@ -257,6 +257,7 @@ class ClientInteractor(val context: Context) {
         middle: Int,
         end: Int
     ) {
+        TODO("FIX THIS SHIT")
         //variáveis para cálculo de distância
         var latitude: Double?
         var longitude: Double?

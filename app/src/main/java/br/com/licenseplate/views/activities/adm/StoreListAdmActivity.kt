@@ -86,7 +86,7 @@ class StoreListAdmActivity : AppCompatActivity() {
         recyclerViewStoreListAdm.adapter = adapter
 
         viewModelA.storeList.observe(this, Observer { store ->
-            adapter.stores = store
+            adapter.stores = store.toList()
             adapter.notifyDataSetChanged()
         })
     }

@@ -14,7 +14,7 @@ import java.util.*
 
 class ClientViewModel(val app: Application) : AndroidViewModel(app) {
     private val interactor = ClientInteractor(app.applicationContext)
-    val storeList = MutableLiveData<List<Store>>()
+    val storeList = MutableLiveData<Set<Store>>()
 
     fun verifyID(root: String, callback: (result: Int) -> Unit) {
         interactor.verifyID(root, callback)
@@ -103,7 +103,7 @@ class ClientViewModel(val app: Application) : AndroidViewModel(app) {
 
     fun storeList(location: LatLng, uf: String?) {
         interactor.storeList(location, uf) { response ->
-            storeList.value = response.asList()
+            storeList.value = response.toSet()
         }
     }
 
