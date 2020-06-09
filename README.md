@@ -81,7 +81,7 @@ git checkout master
 </ul>  
 
 ## DESENVOLVEDORES
-<p align="justify"> :octocat: Marília </p>
-<p align="justify"> :octocat: Milena </p>
-<p align="justify"> :octocat: Jorge </p>
+<p align="justify"> :octocat: <a href="https://github.com/mariliaalvim"> Marília Alvim </a> </p>
+<p align="justify"> :octocat: <a href="https://github.com/MilenaNobre"> Milena Nobre </a> </p>
+<p align="justify"> :octocat: <a href="https://github.com/jjorge98"> Jorge Júnior </a> </p>
 
