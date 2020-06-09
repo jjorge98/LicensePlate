@@ -27,6 +27,20 @@
 ## LINGUAGEM, DEPENDENCIAS E LIBS 
 
 ## COMO RODAR A APLICAÇÃO 
+<p align="justify"> Para abrir uma das amostras do projeto no Android Studio, comece fazendo checkout de uma das ramificações(Branchs) de amostra e abra o diretório raiz no Android Studio.</p>
+
+1. Clone o repositório:
+```
+git clone 
+```
+
+2. Esta etapa garante que você esteja na ramificação principal. 
+```
+git checkout master
+```
+<b>Nota:</b> Se você desejar alterar para uma ramificação(Branch) diferente, substitua "master" pelo nome da ramificação(Branch) que deseja visualizar.
+
+3. Por fim, abra o diretório PI2/ no Android Studio.
 
 ## PLANOS FUTUROS 
 <p align="justify"> :trophy: O projeto tem a possibilidade de incluir melhorias evolutivas como:</p>
