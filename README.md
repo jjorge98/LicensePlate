@@ -1,5 +1,5 @@
-<div align="center">
-    Status do Projeto: Concluído :heavy_check_mark:
+<p align="center"> Status do Projeto: Concluído :heavy_check_mark:</>
+<div align="center">   
    <img width="407"  alt="Logo" src="https://user-images.githubusercontent.com/48803004/84099300-a76d9800-a9df-11ea-8173-5701c3b4f8f4.png">
 </div>
 
