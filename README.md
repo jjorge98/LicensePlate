@@ -34,7 +34,7 @@
 <ul>
    <li><b>Linguagem:</b> Kotlin</li>
    <li><b>Arquitetura:</b> MVVMI (Model – View – View Model - interactor) </li>
-   <li><b>Armazenamento de dados:</b> <a href="https://firebase.google.com/docs/auth"> Firebase Realtime Database </li>
+   <li><b>Armazenamento de dados:</b> <a href="https://firebase.google.com/docs/auth"> Firebase Realtime Database </a> </li>
    <li><b>Chatbot:</b><a href="https://dialogflow.com/docs"> DialogFlow </a></li>
    <li><b>Publicação do Chatbot:</b><a href="https://signup.heroku.com"> Heroku </a></li>
 </ul>
