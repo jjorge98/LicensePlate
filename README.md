@@ -1,7 +1,7 @@
 # Projeto de Autoatendimento LicensePlate – AtmLP  
-> Status do Projeto: Concluido :heavy_check_mark:
+> Status do Projeto: Concluído :heavy_check_mark:
 
-## Descrição do Projeto
+## DESCRIÇÃO DO PROJETO
 <p align="justify"> O software apresentado é uma ferramenta de auxílio a solicitação de estampagem de placas MERCOSUL, implementado na linguagem Kotlin com especificação para Android. </p>
 
 <p align="justify"> A finalidade da aplicação é auxiliar o atendimento da associação de estampadores que é uma unidade privada, livrando a sociedade da burocracia de ter que procurar áreas de abrangência de cada estamparia, passando ao usuário do aplicativo o conforto de efetuar seu pedido sem precisar sair de sua residência. </p>
@@ -21,4 +21,15 @@
     <li><b>Perfil Fabricante:</b> Responsável pelo gerenciamento das solicitações de cadastro de estamparias.</li>
     <li><b>Perfil Estampador:</b> O sistema permitirá o gerenciamento (confirmação e conclusão) das solicitações de placas e a consulta de todas as solicitações concluídas.</li>
 </ul>  
+
+
+## PLANOS FUTUROS :trophy:
+<p align="justify">O projeto tem a possibilidade de incluir melhorias evolutivas como:</p>
+<ul>
+    <li>Funcionalidade de pagamentos</li>
+    <li>Agendar emplacamento no local de escolha do cliente.</li>
+    <li>Oferecimento de rotas para estamparia selecionada</li>
+</ul>  
+
+## DESENVOLVEDORES :octocat:
 
