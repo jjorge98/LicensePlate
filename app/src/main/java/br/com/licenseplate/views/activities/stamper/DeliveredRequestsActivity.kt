@@ -2,6 +2,7 @@ package br.com.licenseplate.views.activities.stamper
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
@@ -89,8 +90,10 @@ class DeliveredRequestsActivity : AppCompatActivity() {
         recyclerViewDeliveredRequests.adapter = adapter
 
         viewModelS.resultado.observe(this, Observer { authorizations ->
-            (recyclerViewDeliveredRequests.adapter as AuthorizationDeliveredAdapter).dataSet = authorizations
-            (recyclerViewDeliveredRequests.adapter as AuthorizationDeliveredAdapter).notifyDataSetChanged()
+            Log.w("TAG", "$authorizations")
+            adapter.dataSet = emptyList()
+            adapter.dataSet = authorizations.toList()
+            adapter.notifyDataSetChanged()
         })
     }
 

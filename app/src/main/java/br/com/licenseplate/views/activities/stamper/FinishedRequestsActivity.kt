@@ -88,7 +88,7 @@ class FinishedRequestsActivity : AppCompatActivity() {
         recyclerViewLicenseHistory.adapter = adapter
 
         viewModelS.resultado.observe(this, Observer { authorizations ->
-            adapter.dataSet = authorizations
+            adapter.dataSet = authorizations.toList()
             adapter.notifyDataSetChanged()
         })
     }

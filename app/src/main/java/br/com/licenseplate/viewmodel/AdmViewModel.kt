@@ -9,9 +9,9 @@ import br.com.licenseplate.interactor.AdmInteractor
 
 class AdmViewModel(val app: Application) : AndroidViewModel(app) {
     private val interactor = AdmInteractor(app.applicationContext)
-    val stores = MutableLiveData<List<String>>()
-    val users = MutableLiveData<List<Stamper>>()
-    val storeList = MutableLiveData<List<Store>>()
+    val stores = MutableLiveData<Set<String>>()
+    val users = MutableLiveData<Set<Stamper>>()
+    val storeList = MutableLiveData<Set<Store>>()
 
     //Função que chama o interactor para pegar o id
     fun getID(root: String, callback: (result: Int) -> Unit) {
@@ -20,32 +20,32 @@ class AdmViewModel(val app: Application) : AndroidViewModel(app) {
 
     //Função que chama o interactor para pegar as lojas e listá-las na view com a mutable live data stores
     fun storesList() {
-        val names = mutableListOf<String>()
+        val names = mutableSetOf<String>()
         interactor.storeList { result ->
             result.forEach { store ->
                 if (store.nome != null) {
                     names.add(store.nome)
                 }
             }
-            stores.value = names.toList()
+            stores.value = names
         }
     }
 
     fun storeListAdm() {
         interactor.storeList { response ->
-            storeList.value = response.asList()
+            storeList.value = response.toSet()
         }
     }
 
     fun userList() {
         interactor.userList { response ->
-            users.value = response.asList()
+            users.value = response.toSet()
         }
     }
 
     fun userListRegister() {
         interactor.userListRegister { response ->
-            users.value = response.asList()
+            users.value = response.toSet()
         }
     }
 

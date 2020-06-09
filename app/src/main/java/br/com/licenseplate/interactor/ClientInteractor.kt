@@ -1,8 +1,10 @@
 package br.com.licenseplate.interactor
 
+import android.content.ContentValues.TAG
 import android.content.Context
 import android.location.Address
 import android.text.TextUtils.indexOf
+import android.util.Log
 import br.com.licenseplate.dataclass.Authorization
 import br.com.licenseplate.dataclass.AuthorizationClient
 import br.com.licenseplate.dataclass.Client
@@ -157,7 +159,7 @@ class ClientInteractor(val context: Context) {
         repository.storeList { response ->
             filterUF(response, uf) { arrayUFStores ->
                 if (arrayUFStores.size > 1) {
-                    mergeSort(arrayUFStores, location, 0, response.size - 1)
+                    mergeSort(arrayUFStores, location, 0, arrayUFStores.size - 1)
                     callback(arrayUFStores)
                 }
             }
@@ -241,6 +243,9 @@ class ClientInteractor(val context: Context) {
     private fun mergeSort(storeArray: Array<Store>, clientLatLng: LatLng, start: Int, end: Int) {
         var middle: Int
 
+        Log.w(TAG, "array: $storeArray")
+        Log.w(TAG, "start: $start, end: $end")
+
         if (start < end) {
             middle = (start + end) / 2
             mergeSort(storeArray, clientLatLng, start, middle)
@@ -257,6 +262,7 @@ class ClientInteractor(val context: Context) {
         middle: Int,
         end: Int
     ) {
+        Log.w(TAG, "$storeArray")
         //variáveis para cálculo de distância
         var latitude: Double?
         var longitude: Double?
