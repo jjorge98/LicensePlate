@@ -29,6 +29,16 @@
     <li><b>Perfil Estampador:</b> O sistema permitirá o gerenciamento (confirmação e conclusão) das solicitações de placas e a consulta de todas as solicitações concluídas.</li>
 </ul> 
 
+## FERRAMENTAS
+
+<ul>
+   <li><b>Linguagem:</b> Kotlin</li>
+   <li><b>Arquitetura:</b> MVVMI (Model – View – View Model - interactor) </li>
+   <li><b>Armazenamento de dados:</b> <a href="https://firebase.google.com/docs/auth"> Firebase Realtime Database </li>
+   <li><b>Chatbot:</b><a href="https://dialogflow.com/docs"> DialogFlow </a></li>
+   <li><b>Publicação do Chatbot:</b><a href="https://signup.heroku.com"> Heroku </a></li>
+</ul>
+
 ## COMO RODAR A APLICAÇÃO 
 <p align="justify"> Para abrir uma das amostras do projeto no Android Studio, comece fazendo checkout de uma das ramificações(Branchs) de amostra e abra o diretório raiz no Android Studio.</p>
 
