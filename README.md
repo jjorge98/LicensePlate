@@ -1,6 +1,7 @@
 # Projeto de Autoatendimento LicensePlate – AtmLP  
 > Status do Projeto: Concluído :heavy_check_mark:
 
+
 ## DESCRIÇÃO DO PROJETO
 <p align="justify"> O software apresentado é uma ferramenta de auxílio a solicitação de estampagem de placas MERCOSUL, implementado na linguagem Kotlin com especificação para Android. </p>
 
@@ -21,10 +22,6 @@
     <li><b>Perfil Fabricante:</b> Responsável pelo gerenciamento das solicitações de cadastro de estamparias.</li>
     <li><b>Perfil Estampador:</b> O sistema permitirá o gerenciamento (confirmação e conclusão) das solicitações de placas e a consulta de todas as solicitações concluídas.</li>
 </ul> 
-
-## PRÉ-REQUISITOS
-
-## LINGUAGEM, DEPENDENCIAS E LIBS 
 
 ## COMO RODAR A APLICAÇÃO 
 <p align="justify"> Para abrir uma das amostras do projeto no Android Studio, comece fazendo checkout de uma das ramificações(Branchs) de amostra e abra o diretório raiz no Android Studio.</p>
@@ -55,7 +52,7 @@ git checkout master
 
 2. Conecte o seu dispositivo através do USB, e faça a configuração recomendada pelo Adroid Studio, em seguida para <b>executar</b> o aplicativo clique ```Shift+F10```.
 
-### Configurar um dispositivo para execução do aplicativo
+### Configurar um emulador para execução do aplicativo
 
 <b>Nota:</b> Siga o passo a passo da <a href="https://developer.android.com/studio/run/emulator">documentação</a> do Android Studio.
 
