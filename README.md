@@ -21,6 +21,7 @@
     <li><b>Perfil Fabricante:</b> Responsável pelo gerenciamento das solicitações de cadastro de estamparias.</li>
     <li><b>Perfil Estampador:</b> O sistema permitirá o gerenciamento (confirmação e conclusão) das solicitações de placas e a consulta de todas as solicitações concluídas.</li>
 </ul> 
+
 ## PRÉ-REQUISITOS
 
 ## LINGUAGEM, DEPENDENCIAS E LIBS 
