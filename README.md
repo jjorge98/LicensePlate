@@ -84,4 +84,3 @@ git checkout master
 <p align="justify"> :octocat: <a href="https://github.com/mariliaalvim"> Marília Alvim </a> </p>
 <p align="justify"> :octocat: <a href="https://github.com/MilenaNobre"> Milena Nobre </a> </p>
 <p align="justify"> :octocat: <a href="https://github.com/jjorge98"> Jorge Júnior </a> </p>
-
