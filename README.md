@@ -9,7 +9,7 @@
 <p align="justify">  LicensePlate é a porta de entrada para o cidadão consultar o sistema básico de um estampador,partindo da solicitação de uma nova placa, por meio do qual pode também acessar outros serviços, como verificação de status do processo e retirada do produto da loja, tornando o atendimento mais eficaz. </p>
 
 ## MENU E FUNCIONALIDADES
-<p align="justify"> O aplicativo LicensePlate é inicializado no menu principal, no qual identificamos o usuário como Reservado ou Solicitante, conforme <b>Tela Inicial</b>. </p>
+<p align="justify"> O aplicativo LicensePlate é inicializado no menu principal, no qual identificamos o usuário como Reservado ou Solicitante, conforme <b><a href="https://user-images.githubusercontent.com/48803004/84092356-7dab7580-a9cd-11ea-8a00-e95aa38d0160.png">Tela Inicial<a></b>.  </p>
 <p align="justify">O usuário Solicitante terá duas linhas de ação:</p>
 <ul>
     <li><b>Solicitação de placa:</b> O sistema permitirá inserção dos dados de autorização e do usuário, na seguinte ordem: estado, nº autorização ou placa, dados pessoais (nome, CPF, telefone). E ainda, a permissão de escolher um estampador mais próximo.</li>
