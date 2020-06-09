@@ -1,11 +1,9 @@
+# Projeto de Autoatendimento LicensePlate – AtmLP  
+
 <p align="center"> Status do Projeto: Concluído :heavy_check_mark:</>
 <div align="center">   
    <img width="407"  alt="Logo" src="https://user-images.githubusercontent.com/48803004/84099300-a76d9800-a9df-11ea-8173-5701c3b4f8f4.png">
 </div>
-
-# Projeto de Autoatendimento LicensePlate – AtmLP  
-
-
 
 ## DESCRIÇÃO DO PROJETO
 <p align="justify"> O software apresentado é uma ferramenta de auxílio a solicitação de estampagem de placas MERCOSUL, implementado na linguagem Kotlin com especificação para Android. </p>
