@@ -29,18 +29,35 @@
 ## COMO RODAR A APLICAÇÃO 
 <p align="justify"> Para abrir uma das amostras do projeto no Android Studio, comece fazendo checkout de uma das ramificações(Branchs) de amostra e abra o diretório raiz no Android Studio.</p>
 
+### CLONANDO O PROJETO
+
 1. Clone o repositório:
+
 ```
-git clone 
+git clone https://github.com/jjorge98/PI2.git
 ```
 
 2. Esta etapa garante que você esteja na ramificação principal. 
+
 ```
 git checkout master
 ```
+
 <b>Nota:</b> Se você desejar alterar para uma ramificação(Branch) diferente, substitua "master" pelo nome da ramificação(Branch) que deseja visualizar.
 
 3. Por fim, abra o diretório PI2/ no Android Studio.
+
+### Configurar um dispositivo para execução do aplicativo
+
+1. No dispositivo, abra as configurações, selecione opções do desenvolvedor e ative a depuração USB.
+
+<b>Nota:</b> Se você não encontrar as opções do desenvolvedor, siga as <a href="https://developer.android.com/studio/debug/dev-options">instruções</a> para ativar as opções do desenvolvedor.
+
+2. Conecte o seu dispositivo através do USB, e faça a configuração recomendada pelo Adroid Studio, em seguida para <b>executar</b> o aplicativo clique ```Shift+F10```.
+
+### Configurar um dispositivo para execução do aplicativo
+
+<b>Nota:</b> Siga o passo a passo da <a href="https://developer.android.com/studio/run/emulator">documentação</a> do Android Studio.
 
 ## PLANOS FUTUROS 
 <p align="justify"> :trophy: O projeto tem a possibilidade de incluir melhorias evolutivas como:</p>
