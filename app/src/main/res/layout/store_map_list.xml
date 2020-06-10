@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/adapter_line"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@drawable/adapter_line">
 
     <TextView
         android:id="@+id/storeNameMap"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="23dp"
+        android:fontFamily="@font/alike_angular"
         android:text="Emplacar Comércio de placas para veículos ltda"
         android:textAlignment="center"
         android:textColor="@color/cyanLighten4"
@@ -17,13 +17,14 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/positionStoreMap"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/carMap"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/alike_angular"
         android:text="Preço unidade placa de carro:"
         android:textAlignment="center"
         android:textColor="@color/cyanLighten4"
@@ -32,13 +33,14 @@
         app:layout_constraintBottom_toTopOf="@+id/motoMap"
         app:layout_constraintEnd_toStartOf="@+id/carPriceMap"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/positionStoreMap"
         app:layout_constraintTop_toBottomOf="@+id/storeNameMap" />
 
     <TextView
         android:id="@+id/carPriceMap"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/alike_angular"
         android:text="R$ 80.00"
         android:textAlignment="center"
         android:textColor="@color/cyanLighten4"
@@ -54,6 +56,7 @@
         android:id="@+id/motoMap"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/alike_angular"
         android:text="Preço unidade placa de moto"
         android:textAlignment="center"
         android:textColor="@color/cyanLighten4"
@@ -62,13 +65,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/motoPriceMap"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/positionStoreMap"
         app:layout_constraintTop_toBottomOf="@+id/carMap" />
 
     <TextView
         android:id="@+id/motoPriceMap"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/alike_angular"
         android:text="R$ 120,00"
         android:textAlignment="center"
         android:textAllCaps="false"
@@ -79,4 +83,19 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/motoMap"
         app:layout_constraintTop_toBottomOf="@+id/carPriceMap" />
+
+    <TextView
+        android:id="@+id/positionStoreMap"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="4dp"
+        android:text="\n1º"
+        android:textAlignment="center"
+        android:textColor="@color/cyanLighten4"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/storeNameMap"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

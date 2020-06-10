@@ -73,6 +73,9 @@ class ReceivedRequestsActivity : AppCompatActivity() {
         } else if (item.itemId == R.id.deliveredRequest) {
             val intent = Intent(this, DeliveredRequestsActivity::class.java)
             startActivity(intent)
+        } else if (item.itemId == R.id.editInfoStore) {
+            val intent = Intent(this, EditInfoStoreActivity::class.java)
+            startActivity(intent)
         } else if (item.itemId == R.id.logout) {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)

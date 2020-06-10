@@ -86,4 +86,11 @@
     <string name="deliveredRequests">Solicitações entregues</string>
     <string name="deliveredLicensePlate">Placas entregues</string>
     <string name="deliverLicensePlate">Entregar placa</string>
+    <string name="editInfoStore">Editar informações da loja</string>
+    <string name="unitMotoPrice">Preço unitário da placa de moto</string>
+    <string name="storePhone">Telefone da loja</string>
+    <string name="storeEdit">Editar informações da loja</string>
+    <string name="unitCarPrice">Preço unitário placa de carro</string>
+    <string name="requestLicense">Solicitar placa</string>
+    <string name="cStores">Lojas conveniadas</string>
 </resources>

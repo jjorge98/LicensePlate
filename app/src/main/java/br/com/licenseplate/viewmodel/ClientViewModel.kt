@@ -1,6 +1,7 @@
 package br.com.licenseplate.viewmodel
 
 import android.app.Application
+import android.text.TextUtils.indexOf
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import br.com.licenseplate.dataclass.Authorization
@@ -104,6 +105,38 @@ class ClientViewModel(val app: Application) : AndroidViewModel(app) {
     fun storeList(location: LatLng, uf: String?) {
         interactor.storeList(location, uf) { response ->
             storeList.value = response.toSet()
+        }
+    }
+
+    fun allStoresList(uf: String) {
+        interactor.allStoresList(uf) { response ->
+            val set = mutableSetOf<Store>()
+            response.forEach { store ->
+                val latitude =
+                    store.localizacao?.substring(
+                        0,
+                        indexOf(store.localizacao, ',')
+                    )
+                        ?.toDouble()
+                val longitude =
+                    store.localizacao?.substring(
+                        indexOf(
+                            store.localizacao,
+                            ", "
+                        ) + 1
+                    )?.toDouble()
+                val latLng = if (latitude != null && longitude != null) {
+                    LatLng(latitude, longitude)
+                } else {
+                    LatLng(0.0, 0.0)
+                }
+                interactor.getAddress(latLng) { location ->
+                    store.localizacao = location[0].getAddressLine(0)
+                    set.add(store)
+                }
+            }
+
+            storeList.value = set
         }
     }
 

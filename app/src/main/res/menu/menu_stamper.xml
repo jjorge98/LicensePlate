@@ -19,6 +19,10 @@
         android:title="@string/deliveredRequests"
         app:showAsAction="never" />
     <item
+        android:id="@+id/editInfoStore"
+        android:title="@string/editInfoStore"
+        app:showAsAction="never" />
+    <item
         android:id="@+id/logout"
         android:title="@string/logout"
         app:showAsAction="never" />

@@ -41,6 +41,7 @@ class StoreMapAdapter(
     override fun onBindViewHolder(holder: StoreMapViewHolder, position: Int) {
         val store = stores[position]
 
+        holder.position.text = position.toString() + "º"
         holder.store.text = store.nome
         holder.car.text = store.valCarro.toString()
         holder.moto.text = store.valMoto.toString()
@@ -68,5 +69,6 @@ class StoreMapAdapter(
         val store: TextView = itemView.storeNameMap
         val car: TextView = itemView.carPriceMap
         val moto: TextView = itemView.motoPriceMap
+        val position: TextView = itemView.positionStoreMap
     }
 }
