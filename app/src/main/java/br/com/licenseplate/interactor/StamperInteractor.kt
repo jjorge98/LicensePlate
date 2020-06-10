@@ -87,4 +87,8 @@ class StamperInteractor(context: Context) {
     fun deliverRequest(authorization: AuthorizationClient) {
         repository.deliverRequest(authorization)
     }
+
+    fun editInfo(carPrice: Double, motoPrice: Double, phone: String) {
+        repository.editInfo(carPrice, motoPrice, phone)
+    }
 }

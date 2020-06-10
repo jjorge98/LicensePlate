@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/adapter_line"
+    tools:context=".views.adapters.AllStoresAdapter">
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="311dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/alike_angular"
+        android:text="@string/unitMotoPrice"
+        android:textAlignment="center"
+        android:textColor="@color/cyanLighten4"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/motoPriceAllStoresAdapter"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <TextView
+        android:id="@+id/storeAllStoresAdapter"
+        android:layout_width="411dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/alike_angular"
+        android:text="Emplacar comércio de placas para veículos ltda"
+        android:textAlignment="center"
+        android:textColor="@color/cyanLighten4"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/addressAllStoresAdapter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/addressAllStoresAdapter"
+        android:layout_width="411dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:fontFamily="@font/alike_angular"
+        android:text="Quadra 12 conjunto M casa 04 Paranoá"
+        android:textAlignment="center"
+        android:textColor="@color/cyanLighten4"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/phoneTextAllStoresAdapter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/storeAllStoresAdapter" />
+
+    <TextView
+        android:id="@+id/carPriceAllStoresAdapter"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/alike_angular"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="@color/cyanLighten4"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/motoPriceAllStoresAdapter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/phoneAllStoresAdapter" />
+
+    <TextView
+        android:id="@+id/motoPriceAllStoresAdapter"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/alike_angular"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="@color/cyanLighten4"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textView9"
+        app:layout_constraintTop_toBottomOf="@+id/carPriceAllStoresAdapter" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="311dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/alike_angular"
+        android:text="@string/unitCarPrice"
+        android:textAlignment="center"
+        android:textColor="@color/cyanLighten4"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textView9"
+        app:layout_constraintEnd_toStartOf="@+id/carPriceAllStoresAdapter"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phoneTextAllStoresAdapter" />
+
+    <TextView
+        android:id="@+id/phoneTextAllStoresAdapter"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/alike_angular"
+        android:text="@string/telefone"
+        android:textAlignment="center"
+        android:textColor="@color/cyanLighten4"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textView8"
+        app:layout_constraintEnd_toStartOf="@+id/phoneAllStoresAdapter"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addressAllStoresAdapter" />
+
+    <TextView
+        android:id="@+id/phoneAllStoresAdapter"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/alike_angular"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="@color/cyanLighten4"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/carPriceAllStoresAdapter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/phoneTextAllStoresAdapter"
+        app:layout_constraintTop_toBottomOf="@+id/addressAllStoresAdapter" />
+</androidx.constraintlayout.widget.ConstraintLayout>

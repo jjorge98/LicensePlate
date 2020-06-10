@@ -9,11 +9,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.TextView
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import br.com.licenseplate.R
 import br.com.licenseplate.dataclass.AuthorizationClient
-import br.com.licenseplate.viewmodel.StamperViewModel
 import br.com.licenseplate.views.activities.stamper.DeliveredRequestsActivity
 import br.com.licenseplate.views.fragments.InfoClientFragment
 import kotlinx.android.synthetic.main.authorization_card.view.*

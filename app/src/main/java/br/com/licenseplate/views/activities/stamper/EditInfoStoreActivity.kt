@@ -1,21 +1,21 @@
 package br.com.licenseplate.views.activities.stamper
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.GridLayoutManager
 import br.com.licenseplate.R
 import br.com.licenseplate.viewmodel.LoginViewModel
 import br.com.licenseplate.viewmodel.StamperViewModel
 import br.com.licenseplate.views.activities.MainActivity
-import br.com.licenseplate.views.adapters.AuthorizationDeliveredAdapter
-import kotlinx.android.synthetic.main.activity_delivered_requests.*
+import kotlinx.android.synthetic.main.activity_edit_info_store.*
 
-class DeliveredRequestsActivity : AppCompatActivity() {
+class EditInfoStoreActivity : AppCompatActivity() {
     private val viewModelL: LoginViewModel by lazy {
         ViewModelProvider(this).get(LoginViewModel::class.java)
     }
@@ -24,16 +24,17 @@ class DeliveredRequestsActivity : AppCompatActivity() {
         ViewModelProvider(this).get(StamperViewModel::class.java)
     }
 
-    lateinit var adapter: AuthorizationDeliveredAdapter
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_delivered_requests)
+        setContentView(R.layout.activity_edit_info_store)
 
         setSupportActionBar(findViewById(R.id.action_bar))
 
-        initRecyclerView()
-        authorizationList()
+        buttonEditInfoStore.setOnClickListener { saveInfo() }
+        backEditInfoStore.setOnTouchListener { _, _ ->
+            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
+        }
     }
 
     override fun onResume() {
@@ -46,9 +47,8 @@ class DeliveredRequestsActivity : AppCompatActivity() {
         }
     }
 
-    //Cria menu
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        //Mostra botão voltar a tela anterior
+        //Habilita o botão de voltar a tela anterior
         this.supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         //Insere o menu que está no res->menu
@@ -56,49 +56,43 @@ class DeliveredRequestsActivity : AppCompatActivity() {
         return true
     }
 
-    //Função que finaliza a atividade quando volta a tela anterior
     override fun onSupportNavigateUp(): Boolean {
         finish()
         return true
     }
 
-    //Itens do menu
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        //Cada if é um item do menu
         if (item.itemId == R.id.licenseRequest) {
             val intent = Intent(this, AuthorizationListActivity::class.java)
             startActivity(intent)
             return true
+        } else if (item.itemId == R.id.licenseHistory) {
+            val intentR = Intent(this, FinishedRequestsActivity::class.java)
+            startActivity(intentR)
+            return true
         } else if (item.itemId == R.id.receivedRequest) {
             val intent = Intent(this, ReceivedRequestsActivity::class.java)
             startActivity(intent)
-        } else if (item.itemId == R.id.licenseHistory) {
-            val intent = Intent(this, FinishedRequestsActivity::class.java)
-            startActivity(intent)
-        } else if (item.itemId == R.id.editInfoStore) {
-            val intent = Intent(this, EditInfoStoreActivity::class.java)
+        } else if (item.itemId == R.id.deliveredRequest) {
+            val intent = Intent(this, DeliveredRequestsActivity::class.java)
             startActivity(intent)
         } else if (item.itemId == R.id.logout) {
-            viewModelL.logout()
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
+            viewModelL.logout()
         }
 
         return false
     }
 
-    private fun initRecyclerView() {
-        adapter = AuthorizationDeliveredAdapter(emptyList(), this, this)
-        recyclerViewDeliveredRequests.layoutManager = GridLayoutManager(this, 2)
-        recyclerViewDeliveredRequests.adapter = adapter
+    private fun saveInfo() {
+        val carPrice = carPriceEditInfoStore.text.toString()
+        val motoPrice = motoPriceEditInfoStore.text.toString()
+        val phone = phoneEditInfoStore.text.toString()
 
-        viewModelS.resultado.observe(this, Observer { authorizations ->
-            adapter.dataSet = emptyList()
-            adapter.dataSet = authorizations.toList()
-            adapter.notifyDataSetChanged()
-        })
-    }
-
-    private fun authorizationList() {
-        viewModelS.authorizationDeliveredList()
+        viewModelS.editInfo(carPrice, motoPrice, phone) { response ->
+            Toast.makeText(this, response, Toast.LENGTH_SHORT).show()
+        }
     }
 }

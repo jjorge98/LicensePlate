@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import br.com.licenseplate.dataclass.AuthorizationClient
 import br.com.licenseplate.dataclass.DeletedRequest
 import br.com.licenseplate.interactor.StamperInteractor
+import java.lang.Exception
 
 class StamperViewModel(app: Application) : AndroidViewModel(app) {
     private val interactor = StamperInteractor(app.applicationContext)
@@ -48,11 +49,10 @@ class StamperViewModel(app: Application) : AndroidViewModel(app) {
     fun authorizationDeliveredList() {
         val set = mutableSetOf<AuthorizationClient>()
         interactor.authorizationDeliveredList { result ->
-            Log.w(TAG, "$set")
             result.forEach { aut ->
                 set.add(aut)
             }
-            Log.w(TAG, "OKFIRTSS")
+
             resultado.value = set
             i++
         }
@@ -92,5 +92,20 @@ class StamperViewModel(app: Application) : AndroidViewModel(app) {
         val response =
             "Autorização da placa '${authorization.authorization?.placa}' entregue com sucesso!"
         callback(response)
+    }
+
+    fun editInfo(carPrice: String, motoPrice: String, phone: String, callback: (String) -> Unit){
+        try {
+            val newCarPrice = carPrice.toDouble()
+            val newMotoPrice = motoPrice.toDouble()
+
+            interactor.editInfo(newCarPrice, newMotoPrice, phone)
+
+            val resultado = "Informações atualizadas com sucesso!"
+            callback(resultado)
+        }catch (e: Exception){
+            val resultado = "Preços inválidos. Por favor ajuste e tente novamente!"
+            callback(resultado)
+        }
     }
 }

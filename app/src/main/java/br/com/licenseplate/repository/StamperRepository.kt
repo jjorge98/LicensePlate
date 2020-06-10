@@ -13,6 +13,43 @@ class StamperRepository(private val context: Context) {
     private val database = FirebaseDatabase.getInstance()
     private val auth = FirebaseAuth.getInstance()
 
+    fun editInfo(carPrice: Double, motoPrice: Double, phone: String){
+        val uid = auth.uid
+        val queryStore = database.getReference("user/$uid/loja")
+
+        queryStore.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+                //
+            }
+
+            override fun onDataChange(p0: DataSnapshot) {
+                val storeName = p0.getValue(String::class.java)
+
+                storeQuery2(storeName, carPrice, motoPrice, phone)
+            }
+        })
+    }
+
+    private fun storeQuery2(storeName: String?, carPrice: Double, motoPrice: Double, phone: String){
+        val storeNode = database.getReference("stores")
+
+        val queryId = storeNode.orderByChild("nome").equalTo(storeName)
+
+        queryId.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+                //
+            }
+
+            override fun onDataChange(p0: DataSnapshot) {
+                val id = p0.children.first().child("id").getValue(Int::class.java) ?: 0
+
+                database.getReference("stores/$id/valCarro").setValue(carPrice)
+                database.getReference("stores/$id/valMoto").setValue(motoPrice)
+                database.getReference("stores/$id/telefone").setValue(phone)
+            }
+        })
+    }
+
     fun authorizationList(callback: (result: Array<AuthorizationClient>) -> Unit) {
         val uid = auth.uid
         val queryStore = database.getReference("user/$uid/loja")

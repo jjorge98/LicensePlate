@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity() {
         verifyStatusLicenseMain.setOnClickListener { verifyRequest() }
         loginStamperMain.setOnClickListener { login() }
         helpMain.setOnClickListener { help() }
+        storesMain.setOnClickListener { listAllStores() }
     }
 
     private fun request() {
@@ -65,7 +66,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun help() {
-        val operation = Intent(this, HelpLicenseRequestActivity::class.java)
-        startActivity(operation)
+        val intent = Intent(this, HelpLicenseRequestActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun listAllStores(){
+        val intent = Intent(this, AllStamperListActivity::class.java)
+        startActivity(intent)
     }
 }
