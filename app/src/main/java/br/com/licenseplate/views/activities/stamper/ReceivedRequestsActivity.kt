@@ -24,7 +24,7 @@ class ReceivedRequestsActivity : AppCompatActivity() {
         ViewModelProvider(this).get(StamperViewModel::class.java)
     }
 
-    val adapter = AuthorizationReceivedAdapter(emptyList(), this, this)
+    val adapter = AuthorizationReceivedAdapter(mutableListOf(), this, this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -90,7 +90,7 @@ class ReceivedRequestsActivity : AppCompatActivity() {
         recyclerViewReceivedRequests.adapter = adapter
 
         viewModelS.resultado.observe(this, Observer { authorizations ->
-            adapter.dataSet = authorizations.toList()
+            adapter.dataSet = authorizations.toMutableList()
             adapter.notifyDataSetChanged()
         })
     }

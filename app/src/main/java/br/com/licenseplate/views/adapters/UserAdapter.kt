@@ -2,6 +2,7 @@ package br.com.licenseplate.views.adapters
 
 import android.content.Context
 import android.content.Intent
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.MenuInflater
 import android.view.View
@@ -18,7 +19,7 @@ import br.com.licenseplate.views.fragments.InfoUserFragment
 import kotlinx.android.synthetic.main.user_list.view.*
 
 class UserAdapter(
-    var users: List<Stamper>,
+    var users: MutableList<Stamper>,
     private val context: Context,
     private val viewModelA: AdmViewModel,
     private val view: UserListActivity?
@@ -63,14 +64,20 @@ class UserAdapter(
             if (itemSelected?.itemId == R.id.userRegisterItem) {
                 viewModelA.userRegisterConfirmation(stamper)
 
-                val intent = Intent(context.applicationContext, UserRegisterActivity::class.java)
-                context.startActivity(intent)
+                Handler().postDelayed({
+                    users.remove(stamper)
+                    notifyDataSetChanged()
+                }, 2000)
+
                 return@setOnMenuItemClickListener true
             } else if (itemSelected?.itemId == R.id.deleteUserRegister) {
                 viewModelA.deleteUser(stamper)
 
-                val intent = Intent(context.applicationContext, UserListActivity::class.java)
-                context.startActivity(intent)
+                Handler().postDelayed({
+                    users.remove(stamper)
+                    notifyDataSetChanged()
+                }, 2000)
+
                 return@setOnMenuItemClickListener true
             } else if (itemSelected?.itemId == R.id.seeUserData) {
                 val infoFragment = InfoUserFragment(stamper)

@@ -2,6 +2,7 @@ package br.com.licenseplate.views.adapters
 
 import android.content.Context
 import android.graphics.Color
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.MenuInflater
 import android.view.View
@@ -20,7 +21,7 @@ import br.com.licenseplate.views.fragments.InfoClientFragment
 import kotlinx.android.synthetic.main.authorization_card.view.*
 
 class AuthorizationHistoryAdapter(
-    var dataSet: List<AuthorizationClient>,
+    var dataSet: MutableList<AuthorizationClient>,
     private val context: Context,
     private val view: FinishedRequestsActivity
 ) :
@@ -257,6 +258,11 @@ class AuthorizationHistoryAdapter(
             } else if (itemSelected?.itemId == R.id.deliverRequest) {
                 viewModelS.deliverRequest(authorization) { response ->
                     Toast.makeText(context, response, Toast.LENGTH_SHORT).show()
+
+                    Handler().postDelayed({
+                        dataSet.remove(authorization)
+                        notifyDataSetChanged()
+                    }, 2000)
                 }
 
                 return@setOnMenuItemClickListener true

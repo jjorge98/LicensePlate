@@ -1,6 +1,8 @@
 package br.com.licenseplate.repository
 
+import android.content.ContentValues.TAG
 import android.content.Context
+import android.util.Log
 import br.com.licenseplate.dataclass.AuthorizationClient
 import br.com.licenseplate.dataclass.DeletedRequest
 import com.google.firebase.auth.FirebaseAuth
@@ -13,7 +15,7 @@ class StamperRepository(private val context: Context) {
     private val database = FirebaseDatabase.getInstance()
     private val auth = FirebaseAuth.getInstance()
 
-    fun editInfo(carPrice: Double, motoPrice: Double, phone: String){
+    fun editInfo(carPrice: Double, motoPrice: Double, phone: String) {
         val uid = auth.uid
         val queryStore = database.getReference("user/$uid/loja")
 
@@ -30,7 +32,12 @@ class StamperRepository(private val context: Context) {
         })
     }
 
-    private fun storeQuery2(storeName: String?, carPrice: Double, motoPrice: Double, phone: String){
+    private fun storeQuery2(
+        storeName: String?,
+        carPrice: Double,
+        motoPrice: Double,
+        phone: String
+    ) {
         val storeNode = database.getReference("stores")
 
         val queryId = storeNode.orderByChild("nome").equalTo(storeName)
@@ -100,6 +107,7 @@ class StamperRepository(private val context: Context) {
             }
 
             override fun onDataChange(p0: DataSnapshot) {
+                result.clear()
                 val list = p0.children
                 list.forEach { l ->
                     val aut = l.getValue(AuthorizationClient::class.java)
@@ -108,6 +116,7 @@ class StamperRepository(private val context: Context) {
                         result.add(aut)
                     }
                 }
+
                 callback(result.toTypedArray())
             }
         })

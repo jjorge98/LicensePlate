@@ -153,11 +153,16 @@ class ClientInteractor(val context: Context) {
     }
 
     //Função para listar as lojas ao cliente. Possui o merge sort para mostrar em ordem de distância
-    fun storeList(location: LatLng, uf: String?, callback: (result: Array<Store>) -> Unit) {
+    fun storeList(location: LatLng?, uf: String?, callback: (result: Array<Store>) -> Unit) {
         repository.storeList { response ->
             filterUF(response, uf) { arrayUFStores ->
-                if (arrayUFStores.size > 1) {
+                if(location == null){
+                    callback(arrayUFStores)
+                }
+                else if (arrayUFStores.size > 1) {
                     mergeSort(arrayUFStores, location, 0, arrayUFStores.size - 1)
+                    callback(arrayUFStores)
+                } else{
                     callback(arrayUFStores)
                 }
             }

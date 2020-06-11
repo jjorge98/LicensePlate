@@ -77,12 +77,13 @@ class StoreMapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnM
         buttonMap.setOnClickListener { next() }
     }
 
-    private fun storesRecyclerView(location: LatLng) {
+    private fun storesRecyclerView(location: LatLng?) {
+        storesMapRecyclerView.layoutManager = LinearLayoutManager(this)
+        val adapter = StoreMapAdapter(emptyList(), this, map, this, viewModelC)
+        storesMapRecyclerView.adapter = adapter
         viewModelC.storeList.observe(this, Observer { store ->
-            storesMapRecyclerView.layoutManager = LinearLayoutManager(this)
-            val adapter = StoreMapAdapter(store.toList(), this, map, this, viewModelC)
-            storesMapRecyclerView.adapter = adapter
-
+            adapter.stores = store.toList()
+            adapter.notifyDataSetChanged()
             store.forEach { s ->
                 val latitude = s.localizacao?.substring(0, indexOf(s.localizacao, ','))?.toDouble()
                 val longitude =
@@ -118,6 +119,7 @@ class StoreMapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnM
                 arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),
                 LOCATION_PERMISSION_REQUEST_CODE
             )
+            storesRecyclerView(null)
             return
         }
 
