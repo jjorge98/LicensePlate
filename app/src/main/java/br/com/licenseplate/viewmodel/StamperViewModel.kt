@@ -100,10 +100,19 @@ class StamperViewModel(app: Application) : AndroidViewModel(app) {
             val newCarPrice = carPrice.toDouble()
             val newMotoPrice = motoPrice.toDouble()
 
-            interactor.editInfo(newCarPrice, newMotoPrice, phone)
+            interactor.editInfo(newCarPrice, newMotoPrice, phone) { response ->
+                if (response == "OK") {
+                    val resultado = "Informações atualizadas com sucesso!"
+                    callback(resultado)
+                } else if (response == "VAZIO") {
+                    val resultado = "Por favor, preencha todos os campos!"
+                    callback(resultado)
+                } else if (response == "PRICE") {
+                    val resultado = "Preços inválidos. Por favor ajuste e tente novamente!"
+                    callback(resultado)
+                }
+            }
 
-            val resultado = "Informações atualizadas com sucesso!"
-            callback(resultado)
         } catch (e: Exception) {
             val resultado = "Preços inválidos. Por favor ajuste e tente novamente!"
             callback(resultado)

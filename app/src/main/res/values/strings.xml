@@ -90,10 +90,7 @@
     <string name="unitMotoPrice">Preço unitário da placa de moto</string>
     <string name="storePhone">Telefone da loja</string>
     <string name="storeEdit">Editar informações da loja</string>
-    <string name="unitCarPrice">Preço unitário placa de carro</string>
+    <string name="unitCarPrice">Preço unitário da placa de carro</string>
     <string name="requestLicense">Solicitar placa</string>
     <string name="cStores">Lojas conveniadas</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
