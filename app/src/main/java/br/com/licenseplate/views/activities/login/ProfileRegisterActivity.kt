@@ -16,11 +16,9 @@ import br.com.licenseplate.R
 import br.com.licenseplate.viewmodel.AdmViewModel
 import br.com.licenseplate.viewmodel.LoginViewModel
 import br.com.licenseplate.views.activities.MainActivity
-import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_profile_register.*
 
 class ProfileRegisterActivity : AppCompatActivity() {
-    private val auth = FirebaseAuth.getInstance()
     private lateinit var loja: String
     private lateinit var login: String
     private val viewModelA: AdmViewModel by lazy {
@@ -40,7 +38,7 @@ class ProfileRegisterActivity : AppCompatActivity() {
 
         saveProfileRegister.setOnClickListener { saveProfile() }
         backMainProfileRegister.setOnClickListener { main() }
-        backMainProfileRegister.setOnTouchListener { _, _ ->
+        backProfileRegister.setOnTouchListener { _, _ ->
             val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             imm.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
         }
@@ -104,7 +102,8 @@ class ProfileRegisterActivity : AppCompatActivity() {
 
     private fun spinnerStoresFill() {
         viewModelA.stores.observe(this, Observer { authorizations ->
-            val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, authorizations.toList())
+            val adapter =
+                ArrayAdapter(this, android.R.layout.simple_spinner_item, authorizations.toList())
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             spinnerStores.adapter = adapter
         })

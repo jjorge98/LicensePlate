@@ -1,8 +1,12 @@
 package br.com.licenseplate.repository
 
+import android.content.ContentValues.TAG
 import android.content.Context
+import android.renderscript.Sampler
+import android.util.Log
 import br.com.licenseplate.dataclass.Stamper
 import br.com.licenseplate.dataclass.Store
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -10,6 +14,7 @@ import com.google.firebase.database.ValueEventListener
 
 class AdmRepository(val context: Context) {
     private val database = FirebaseDatabase.getInstance()
+    private val auth = FirebaseAuth.getInstance()
 
     fun getID(root: String, callback: (result: Int) -> Unit) {
         val query = database.getReference("ids/$root")
@@ -143,5 +148,40 @@ class AdmRepository(val context: Context) {
         val reference = database.getReference("user/${stamper.uid}")
 
         reference.removeValue()
+    }
+
+    fun verifyThroughChiefPassword(callback: (chiefLogin: Stamper?, user: Stamper?) -> Unit) {
+        val reference = database.getReference("chiefPassword")
+
+        reference.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+                //
+            }
+
+            override fun onDataChange(p0: DataSnapshot) {
+                val login = p0.children.first().getValue(Stamper::class.java)
+
+                getUser(login, callback)
+            }
+        })
+    }
+
+    private fun getUser(user: Stamper?, callback: (chiefLogin: Stamper?, user: Stamper?) -> Unit) {
+        val uid = auth.uid
+        val reference = database.getReference("user")
+        val query = reference.orderByChild("uid").equalTo(uid)
+
+        query.addListenerForSingleValueEvent(object: ValueEventListener{
+            override fun onCancelled(p0: DatabaseError) {
+                //
+            }
+
+            override fun onDataChange(p0: DataSnapshot) {
+                val userDB = p0.children.first().getValue(Stamper::class.java)
+
+                callback(user, userDB)
+            }
+
+        })
     }
 }

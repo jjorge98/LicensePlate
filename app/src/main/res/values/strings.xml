@@ -93,4 +93,7 @@
     <string name="unitCarPrice">Preço unitário placa de carro</string>
     <string name="requestLicense">Solicitar placa</string>
     <string name="cStores">Lojas conveniadas</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
