@@ -13,8 +13,9 @@
 
 <p align="justify"> A finalidade da aplicação é auxiliar o atendimento da associação de estampadores que é uma unidade privada, livrando a sociedade da burocracia de ter que procurar áreas de abrangência de cada estamparia, passando ao usuário do aplicativo o conforto de efetuar seu pedido sem precisar sair de sua residência. </p>
 
-<p align="justify">  LicensePlate é a porta de entrada para o cidadão consultar o sistema básico de um estampador,partindo da solicitação de uma nova placa, por meio do qual pode também acessar outros serviços, como verificação de status do processo e retirada do produto da loja, tornando o atendimento mais eficaz. </p>
+<p align="justify">  LicensePlate é a porta de entrada para o cidadão consultar o sistema básico de um estampador, partindo da solicitação de uma nova placa, por meio do qual pode também acessar outros serviços, como verificação de status do processo e retirada do produto da loja, tornando o atendimento mais eficaz. </p>
 <p align="justify"><b><a href="https://user-images.githubusercontent.com/48803004/84548533-33333d00-acdc-11ea-95ef-e63d58b01e64.jpeg">Tela Inicial<a></b>.  </p>
+   
 ## MENU E FUNCIONALIDADES
 <p align="justify"> O aplicativo LicensePlate é inicializado no menu principal, no qual identificamos o usuário como Reservado ou Solicitante, conforme <b><a href="https://user-images.githubusercontent.com/48803004/84548533-33333d00-acdc-11ea-95ef-e63d58b01e64.jpeg">Tela Inicial<a></b>.  </p>
 <p align="justify">O usuário Solicitante terá duas linhas de ação:</p>
