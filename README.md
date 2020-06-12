@@ -47,7 +47,7 @@
 1. Clone o repositório:
 
 ```
-git clone https://github.com/jjorge98/PI2.git
+git clone https://github.com/jjorge98/LicensePlate.git
 ```
 
 2. Esta etapa garante que você esteja na ramificação principal. 
@@ -58,7 +58,7 @@ git checkout master
 
 <b>Nota:</b> Se você desejar alterar para uma ramificação(Branch) diferente, substitua "master" pelo nome da ramificação(Branch) que deseja visualizar.
 
-3. Por fim, abra o diretório PI2/ no Android Studio.
+3. Por fim, abra o diretório LicensePlate/ no Android Studio.
 
 ### Configurar um dispositivo para execução do aplicativo
 
