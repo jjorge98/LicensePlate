@@ -8,9 +8,11 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+//Classe do retrofit que tem open para dizer que ela pode ser herdada
 open class RetrofitInit (context: Context, baseUrl: String) {
     val retrofit: Retrofit
     private val gson: Gson
+    //Gson: classe de conversão de Json para Any
 
     init {
         val logInterceptor = HttpLoggingInterceptor()

@@ -2,6 +2,7 @@ package br.com.licenseplate.views.adapters
 
 import android.content.Context
 import android.content.Intent
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.MenuInflater
 import android.view.View
@@ -16,7 +17,7 @@ import br.com.licenseplate.views.activities.adm.StoreListAdmActivity
 import kotlinx.android.synthetic.main.store_list.view.*
 
 class StoreAdapter(
-    var stores: List<Store>,
+    var stores: MutableList<Store>,
     private val context: Context,
     private val viewModelA: AdmViewModel
 ) :
@@ -57,8 +58,12 @@ class StoreAdapter(
         popup.setOnMenuItemClickListener { itemSelected ->
             if (itemSelected?.itemId == R.id.deleteStore) {
                 viewModelA.deleteStore(store)
-                val intent = Intent(context.applicationContext, StoreListAdmActivity::class.java)
-                context.startActivity(intent)
+
+                Handler().postDelayed({
+                    stores.remove(store)
+                    notifyDataSetChanged()
+                }, 2000)
+
                 return@setOnMenuItemClickListener true
             }
             return@setOnMenuItemClickListener true

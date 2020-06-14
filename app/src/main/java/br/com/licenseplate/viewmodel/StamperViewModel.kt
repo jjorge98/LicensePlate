@@ -1,23 +1,21 @@
 package br.com.licenseplate.viewmodel
 
 import android.app.Application
-import android.content.ContentValues.TAG
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import br.com.licenseplate.dataclass.AuthorizationClient
 import br.com.licenseplate.dataclass.DeletedRequest
 import br.com.licenseplate.interactor.StamperInteractor
-import java.lang.Exception
 
 class StamperViewModel(app: Application) : AndroidViewModel(app) {
     private val interactor = StamperInteractor(app.applicationContext)
-    var resultado = MutableLiveData<Set<AuthorizationClient>>()
+    var resultado = MutableLiveData<MutableSet<AuthorizationClient>>()
     var i = 0
 
     fun authorizationList() {
         val set = mutableSetOf<AuthorizationClient>()
         interactor.authorizationList { result ->
+            resultado.value?.clear()
             result.forEach { aut ->
                 set.add(aut)
             }
@@ -28,6 +26,7 @@ class StamperViewModel(app: Application) : AndroidViewModel(app) {
     fun authorizationReceivedList() {
         val set = mutableSetOf<AuthorizationClient>()
         interactor.authorizationReceivedList { result ->
+            resultado.value?.clear()
             result.forEach { aut ->
                 set.add(aut)
             }
@@ -39,6 +38,7 @@ class StamperViewModel(app: Application) : AndroidViewModel(app) {
         val set = mutableSetOf<AuthorizationClient>()
 
         interactor.authorizationHistoryList { result ->
+            resultado.value?.clear()
             result.forEach { aut ->
                 set.add(aut)
             }
@@ -49,6 +49,7 @@ class StamperViewModel(app: Application) : AndroidViewModel(app) {
     fun authorizationDeliveredList() {
         val set = mutableSetOf<AuthorizationClient>()
         interactor.authorizationDeliveredList { result ->
+            resultado.value?.clear()
             result.forEach { aut ->
                 set.add(aut)
             }
@@ -94,16 +95,25 @@ class StamperViewModel(app: Application) : AndroidViewModel(app) {
         callback(response)
     }
 
-    fun editInfo(carPrice: String, motoPrice: String, phone: String, callback: (String) -> Unit){
+    fun editInfo(carPrice: String, motoPrice: String, phone: String, callback: (String) -> Unit) {
         try {
             val newCarPrice = carPrice.toDouble()
             val newMotoPrice = motoPrice.toDouble()
 
-            interactor.editInfo(newCarPrice, newMotoPrice, phone)
+            interactor.editInfo(newCarPrice, newMotoPrice, phone) { response ->
+                if (response == "OK") {
+                    val resultado = "Informações atualizadas com sucesso!"
+                    callback(resultado)
+                } else if (response == "VAZIO") {
+                    val resultado = "Por favor, preencha todos os campos!"
+                    callback(resultado)
+                } else if (response == "PRICE") {
+                    val resultado = "Preços inválidos. Por favor ajuste e tente novamente!"
+                    callback(resultado)
+                }
+            }
 
-            val resultado = "Informações atualizadas com sucesso!"
-            callback(resultado)
-        }catch (e: Exception){
+        } catch (e: Exception) {
             val resultado = "Preços inválidos. Por favor ajuste e tente novamente!"
             callback(resultado)
         }

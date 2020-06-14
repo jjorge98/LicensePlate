@@ -28,7 +28,7 @@
     <string name="finishRequest">Finalizar requisição</string>
     <string name="userRegister">Cadastrar usuários</string>
     <string name="title_activity_store_maps">Map</string>
-    <string name="textViewFinishedRequest">Sua solicitação foi concluída! Por favor, anote ou tire print do seu número de protocolo para consulta do processo!</string>
+    <string name="textViewFinishedRequest">Sua solicitação foi concluída! Por favor, anote ou tire print do seu número de protocolo para retirada da placa!</string>
     <string name="protocolNumber">Número de protocolo:</string>
     <string name="backMain">Voltar a tela inicial</string>
     <string name="telefone">Telefone</string>
@@ -90,7 +90,7 @@
     <string name="unitMotoPrice">Preço unitário da placa de moto</string>
     <string name="storePhone">Telefone da loja</string>
     <string name="storeEdit">Editar informações da loja</string>
-    <string name="unitCarPrice">Preço unitário placa de carro</string>
+    <string name="unitCarPrice">Preço unitário da placa de carro</string>
     <string name="requestLicense">Solicitar placa</string>
     <string name="cStores">Lojas conveniadas</string>
 </resources>

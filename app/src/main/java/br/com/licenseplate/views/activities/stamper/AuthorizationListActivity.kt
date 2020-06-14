@@ -4,11 +4,13 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import br.com.licenseplate.R
+import br.com.licenseplate.dataclass.AuthorizationClient
 import br.com.licenseplate.viewmodel.LoginViewModel
 import br.com.licenseplate.viewmodel.StamperViewModel
 import br.com.licenseplate.views.activities.MainActivity
@@ -24,7 +26,7 @@ class AuthorizationListActivity : AppCompatActivity() {
         ViewModelProvider(this).get(LoginViewModel::class.java)
     }
 
-    val adapter = AuthorizationListAdapter(emptyList(), this, this)
+    val adapter = AuthorizationListAdapter(mutableListOf(), this, this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -90,8 +92,14 @@ class AuthorizationListActivity : AppCompatActivity() {
         recyclerViewAuthorizationList.adapter = adapter
 
         viewModelS.resultado.observe(this, Observer { authorizations ->
-            adapter.dataSet = authorizations.toList()
+            adapter.dataSet = authorizations.toMutableList()
             adapter.notifyDataSetChanged()
+
+            if(adapter.itemCount == 0){
+                textToGo.visibility = View.VISIBLE
+            } else{
+                textToGo.visibility = View.GONE
+            }
         })
 
     }

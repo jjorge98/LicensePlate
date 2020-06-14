@@ -173,4 +173,19 @@ class AdmInteractor(val context: Context) {
     fun deleteUser(stamper: Stamper) {
         repository.deleteUser(stamper)
     }
+
+    fun verifyThroughChiefPassword(login: String, uid: String, callback: (result: String) -> Unit) {
+        repository.verifyThroughChiefPassword { loginChief, user ->
+            if (loginChief != null && loginChief.nome == login && loginChief.uid == uid) {
+                if (user != null) {
+                    userRegisterConfirmation(user)
+                    callback("OK")
+                } else {
+                    callback("ERROR")
+                }
+            } else {
+                callback("ERROR")
+            }
+        }
+    }
 }

@@ -22,7 +22,7 @@ class UserListActivity : AppCompatActivity() {
     private val viewModelA: AdmViewModel by lazy {
         ViewModelProvider(this).get(AdmViewModel::class.java)
     }
-    val adapter = UserAdapter(emptyList(), this, viewModelA, this)
+    private lateinit var adapter: UserAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -82,11 +82,12 @@ class UserListActivity : AppCompatActivity() {
     }
 
     private fun initRecyclerView(){
+        adapter = UserAdapter(mutableListOf(), this, viewModelA, this)
         recyclerViewUserList.layoutManager = LinearLayoutManager(this)
         recyclerViewUserList.adapter = adapter
 
         viewModelA.users.observe(this, Observer { users ->
-            adapter.users = users.toList()
+            adapter.users = users.toMutableList()
             adapter.notifyDataSetChanged()
         })
     }

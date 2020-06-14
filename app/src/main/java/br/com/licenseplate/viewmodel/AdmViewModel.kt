@@ -112,4 +112,14 @@ class AdmViewModel(val app: Application) : AndroidViewModel(app) {
     fun deleteUser(stamper: Stamper) {
         interactor.deleteUser(stamper)
     }
+
+    fun verifyThroughChiefPassword(login: String, uid: String, callback: (String) -> Unit){
+        interactor.verifyThroughChiefPassword(login, uid){response ->
+            if(response == "OK"){
+                callback("Perfil aprovado")
+            } else {
+                callback("Perfil negado")
+            }
+        }
+    }
 }

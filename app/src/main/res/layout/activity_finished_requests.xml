@@ -45,4 +45,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewStoreListAdm" />
 
+    <TextView
+        android:id="@+id/textToGoFinishedRequests"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nenhuma solicitação finalizada no momento!"
+        android:textAlignment="center"
+        android:textColor="@color/cyanLighten4"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerViewLicenseHistory"
+        app:layout_constraintEnd_toStartOf="@+id/recyclerViewLicenseHistory"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/recyclerViewLicenseHistory"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewLicenseHistory" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

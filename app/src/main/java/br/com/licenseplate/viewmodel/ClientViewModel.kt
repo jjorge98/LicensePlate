@@ -1,7 +1,9 @@
 package br.com.licenseplate.viewmodel
 
 import android.app.Application
+import android.content.ContentValues.TAG
 import android.text.TextUtils.indexOf
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import br.com.licenseplate.dataclass.Authorization
@@ -102,7 +104,7 @@ class ClientViewModel(val app: Application) : AndroidViewModel(app) {
         }
     }
 
-    fun storeList(location: LatLng, uf: String?) {
+    fun storeList(location: LatLng?, uf: String?) {
         interactor.storeList(location, uf) { response ->
             storeList.value = response.toSet()
         }

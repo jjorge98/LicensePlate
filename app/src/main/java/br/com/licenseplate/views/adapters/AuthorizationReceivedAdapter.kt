@@ -3,6 +3,7 @@ package br.com.licenseplate.views.adapters
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.graphics.Color
+import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuInflater
@@ -22,7 +23,7 @@ import br.com.licenseplate.views.fragments.InfoClientFragment
 import kotlinx.android.synthetic.main.authorization_card.view.*
 
 class AuthorizationReceivedAdapter(
-    var dataSet: List<AuthorizationClient>,
+    var dataSet: MutableList<AuthorizationClient>,
     private val context: Context,
     private val view: ReceivedRequestsActivity
 ) :
@@ -258,6 +259,11 @@ class AuthorizationReceivedAdapter(
             } else if (itemSelected?.itemId == R.id.finishAuthorization) {
                 viewModelS.finishRequest(authorization) { response ->
                     Toast.makeText(context, response, Toast.LENGTH_SHORT).show()
+
+                    Handler().postDelayed({
+                        dataSet.remove(authorization)
+                        notifyDataSetChanged()
+                    }, 2000)
                 }
                 return@setOnMenuItemClickListener true
             }

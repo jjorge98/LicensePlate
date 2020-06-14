@@ -41,7 +41,6 @@ class StoreMapAdapter(
     override fun onBindViewHolder(holder: StoreMapViewHolder, position: Int) {
         val store = stores[position]
 
-        holder.position.text = position.toString() + "º"
         holder.store.text = store.nome
         holder.car.text = store.valCarro.toString()
         holder.moto.text = store.valMoto.toString()
@@ -54,6 +53,7 @@ class StoreMapAdapter(
             if (latitude != null && longitude != null) {
                 val place = LatLng(latitude, longitude)
                 map.moveCamera(CameraUpdateFactory.newLatLng(place))
+                map.animateCamera(CameraUpdateFactory.newLatLngZoom(place, 14f))
                 viewModelC.getAddress(place) { titleStr ->
                     val markerOptions = MarkerOptions().position(place).title(titleStr)
 
@@ -66,9 +66,8 @@ class StoreMapAdapter(
     }
 
     class StoreMapViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val store: TextView = itemView.storeNameMap
-        val car: TextView = itemView.carPriceMap
-        val moto: TextView = itemView.motoPriceMap
-        val position: TextView = itemView.positionStoreMap
+        val store: TextView = itemView.nameStoreMap
+        val car: TextView = itemView.carPriceStoreMap
+        val moto: TextView = itemView.motoPriceStoreMap
     }
 }

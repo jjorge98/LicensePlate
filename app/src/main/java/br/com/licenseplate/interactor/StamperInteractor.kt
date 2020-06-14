@@ -13,6 +13,7 @@ class StamperInteractor(context: Context) {
         val result = mutableListOf<AuthorizationClient>()
 
         repository.authorizationList { response ->
+            result.clear()
             response.forEach { authorizationClient ->
                 if (authorizationClient.authorization?.status == 0) {
                     result.add(authorizationClient)
@@ -28,6 +29,7 @@ class StamperInteractor(context: Context) {
         val result = mutableListOf<AuthorizationClient>()
 
         repository.authorizationList { response ->
+            result.clear()
             response.forEach { authorizationClient ->
                 if (authorizationClient.authorization?.status == 1) {
                     result.add(authorizationClient)
@@ -43,6 +45,7 @@ class StamperInteractor(context: Context) {
         val result = mutableListOf<AuthorizationClient>()
 
         repository.authorizationList { response ->
+            result.clear()
             response.forEach { authorizationClient ->
                 if (authorizationClient.authorization?.status == 2) {
                     result.add(authorizationClient)
@@ -58,6 +61,7 @@ class StamperInteractor(context: Context) {
         val result = mutableListOf<AuthorizationClient>()
 
         repository.authorizationList { response ->
+            result.clear()
             response.forEach { authorizationClient ->
                 if (authorizationClient.authorization?.status == 3) {
                     result.add(authorizationClient)
@@ -88,7 +92,19 @@ class StamperInteractor(context: Context) {
         repository.deliverRequest(authorization)
     }
 
-    fun editInfo(carPrice: Double, motoPrice: Double, phone: String) {
-        repository.editInfo(carPrice, motoPrice, phone)
+    fun editInfo(
+        carPrice: Double,
+        motoPrice: Double,
+        phone: String,
+        callback: (result: String) -> Unit
+    ) {
+        if (phone.isEmpty()) {
+            callback("VAZIO")
+        } else if (carPrice < 30 || motoPrice < 50) {
+            callback("PRICE")
+        } else {
+            repository.editInfo(carPrice, motoPrice, phone)
+            callback("OK")
+        }
     }
 }
