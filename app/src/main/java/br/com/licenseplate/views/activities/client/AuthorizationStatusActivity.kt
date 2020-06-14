@@ -17,6 +17,7 @@ class AuthorizationStatusActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        TODO("Verificar pq texto de não encontrado não ta funcionando")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_authorization_status)
 
