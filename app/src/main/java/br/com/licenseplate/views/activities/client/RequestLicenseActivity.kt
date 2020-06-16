@@ -14,7 +14,6 @@ import androidx.lifecycle.ViewModelProvider
 import br.com.licenseplate.R
 import br.com.licenseplate.viewmodel.ClientViewModel
 import kotlinx.android.synthetic.main.activity_request_license.*
-import java.time.temporal.TemporalAdjusters.next
 
 class RequestLicenseActivity : AppCompatActivity() {
     private lateinit var estado: String
@@ -85,6 +84,7 @@ class RequestLicenseActivity : AppCompatActivity() {
 
     private fun next() {
         val intent = Intent(this, ClientDataActivity::class.java)
+        Toast.makeText(this, "Localizando autorização...", Toast.LENGTH_LONG).show()
 
         if (estado == "DF") {
             val placa = inputReqLicense.text.toString()
