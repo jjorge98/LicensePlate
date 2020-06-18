@@ -2,6 +2,7 @@ package br.com.licenseplate.interactor
 
 import android.content.Context
 import android.location.Address
+import android.location.Location
 import android.text.TextUtils.indexOf
 import br.com.licenseplate.dataclass.Authorization
 import br.com.licenseplate.dataclass.AuthorizationClient
@@ -156,13 +157,12 @@ class ClientInteractor(val context: Context) {
     fun storeList(location: LatLng?, uf: String?, callback: (result: Array<Store>) -> Unit) {
         repository.storeList { response ->
             filterUF(response, uf) { arrayUFStores ->
-                if(location == null){
+                if (location == null) {
                     callback(arrayUFStores)
-                }
-                else if (arrayUFStores.size > 1) {
+                } else if (arrayUFStores.size > 1) {
                     mergeSort(arrayUFStores, location, 0, arrayUFStores.size - 1)
                     callback(arrayUFStores)
-                } else{
+                } else {
                     callback(arrayUFStores)
                 }
             }
@@ -234,18 +234,17 @@ class ClientInteractor(val context: Context) {
 
     //Função para calcular a distância
     private fun distance(start: LatLng, end: LatLng): Double {
-        val lat1 = start.latitude
-        val lat2 = end.latitude
-        val long1 = start.longitude
-        val long2 = end.longitude
-        val dLat = Math.toRadians(lat2 - lat1)
-        val dLong = Math.toRadians(long2 - long1)
-        val a =
-            sin(dLat / 2) * sin(dLat / 2) + cos(Math.toRadians(lat1)) * cos(Math.toRadians(lat2)) * sin(
-                dLong / 2
-            ) * sin(dLong / 2)
-        val c = 2 * asin(sqrt(a))
-        return 6366000 * c
+        val response = FloatArray(1)
+
+        Location.distanceBetween(
+            start.latitude,
+            start.longitude,
+            end.latitude,
+            end.longitude,
+            response
+        )
+        
+        return response[0].toDouble()
     }
 
     //Função para ordenar como merge sort
