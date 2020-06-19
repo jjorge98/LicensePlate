@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".views.adapters.AllStoresAdapter"></activity>
+        <activity android:name=".views.activities.ChatbotActivity"></activity>
+        <activity android:name=".views.adapters.AllStoresAdapter" />
         <activity android:name=".views.activities.AllStamperListActivity" />
         <activity android:name=".views.activities.stamper.EditInfoStoreActivity" />
         <activity android:name=".views.adapters.AuthorizationDeliveredAdapter" />

@@ -93,4 +93,7 @@
     <string name="unitCarPrice">Preço unitário da placa de carro</string>
     <string name="requestLicense">Solicitar placa</string>
     <string name="cStores">Lojas conveniadas</string>
+    <string name="textAMessage">Digite uma mensagem...</string>
+    <string name="titleChat">Assistente do LicensePlate</string>
+    <string name="lisa_leite">Lisa Leite</string>
 </resources>
