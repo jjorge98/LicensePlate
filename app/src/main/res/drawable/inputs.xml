@@ -9,4 +9,8 @@
 
     <!-- Round Corners -->
     <corners android:radius="200dp" />
+
+    <padding android:top="7dp"/>
+    <padding android:bottom="7dp"/>
+    <padding android:left="15dp"/>
 </shape>
