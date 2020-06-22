@@ -22,7 +22,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Lojas Conveniadas"
+        android:text="@string/lojas_conveniadas"
         android:textAlignment="center"
         android:textColor="@color/cyanLighten4"
         android:textSize="30sp"
@@ -35,12 +35,11 @@
 
     <Spinner
         android:id="@+id/spinnerEstados"
-        android:layout_width="100dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/inputs"
-        android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/recyclerViewAllStamperList"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

@@ -1,6 +1,7 @@
 package br.com.licenseplate.viewmodel
 
 import android.app.Application
+import android.os.Handler
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import br.com.licenseplate.dataclass.AuthorizationClient
@@ -69,6 +70,10 @@ class StamperViewModel(app: Application) : AndroidViewModel(app) {
         val response =
             "Solicitação da placa '${authorization.authorization?.placa}' excluída com sucesso!"
         callback(response)
+
+        Handler().postDelayed({
+            resultado.value?.remove(authorization)
+        }, 1500)
     }
 
     fun receiveRequest(authorization: AuthorizationClient, callback: (String) -> Unit) {
@@ -77,6 +82,10 @@ class StamperViewModel(app: Application) : AndroidViewModel(app) {
         val response =
             "Autorização da placa '${authorization.authorization?.placa}' recebida com sucesso!"
         callback(response)
+
+        Handler().postDelayed({
+            resultado.value?.remove(authorization)
+        }, 1500)
     }
 
     fun finishRequest(authorization: AuthorizationClient, callback: (String) -> Unit) {
@@ -85,6 +94,10 @@ class StamperViewModel(app: Application) : AndroidViewModel(app) {
         val response =
             "Autorização da placa '${authorization.authorization?.placa}' finalizada com sucesso!"
         callback(response)
+
+        Handler().postDelayed({
+            resultado.value?.remove(authorization)
+        }, 1500)
     }
 
     fun deliverRequest(authorization: AuthorizationClient, callback: (String) -> Unit) {
@@ -93,6 +106,10 @@ class StamperViewModel(app: Application) : AndroidViewModel(app) {
         val response =
             "Autorização da placa '${authorization.authorization?.placa}' entregue com sucesso!"
         callback(response)
+
+        Handler().postDelayed({
+            resultado.value?.remove(authorization)
+        }, 1500)
     }
 
     fun editInfo(carPrice: String, motoPrice: String, phone: String, callback: (String) -> Unit) {

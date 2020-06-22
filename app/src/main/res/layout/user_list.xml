@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/adapter_line"
     android:paddingBottom="5dp">
 
     <TextView
@@ -16,7 +15,7 @@
         android:text="@string/name"
         android:textAlignment="center"
         android:textColor="@color/cyanLighten4"
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/loginTextUserList"
         app:layout_constraintEnd_toStartOf="@+id/nameUserList"
@@ -33,7 +32,7 @@
         android:text="@string/name"
         android:textAlignment="center"
         android:textColor="@color/cyanLighten4"
-        android:textSize="20sp"
+        android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/loginUserList"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -49,7 +48,7 @@
         android:text="@string/login"
         android:textAlignment="center"
         android:textColor="@color/cyanLighten4"
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/storeTextUserList"
         app:layout_constraintEnd_toStartOf="@+id/loginUserList"
@@ -66,7 +65,7 @@
         android:text="@string/login"
         android:textAlignment="center"
         android:textColor="@color/cyanLighten4"
-        android:textSize="20sp"
+        android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/storeUserList"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -82,7 +81,7 @@
         android:text="@string/store"
         android:textAlignment="center"
         android:textColor="@color/cyanLighten4"
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/storeUserList"
@@ -99,11 +98,20 @@
         android:text="@string/store"
         android:textAlignment="center"
         android:textColor="@color/cyanLighten4"
-        android:textSize="20sp"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/storeTextUserList"
         app:layout_constraintTop_toBottomOf="@+id/loginUserList" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

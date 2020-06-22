@@ -33,7 +33,7 @@ class DeleteRequestFragment(private val authorization: AuthorizationClient) : Di
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         spinnerFill(view)
-        cancelButtonDeleteRequestFragment.setOnClickListener { cancel() }
+        cancelButtonDeleteRequestFragment.setOnClickListener { dismiss() }
         okButtonDeleteRequestFragment.setOnClickListener { delete() }
     }
 
@@ -79,12 +79,8 @@ class DeleteRequestFragment(private val authorization: AuthorizationClient) : Di
 
     private fun delete() {
         viewModelS.deleteRequest(authorization, reason) { response ->
-            this.dismiss()
+            dismiss()
             Toast.makeText(view?.context, response, Toast.LENGTH_SHORT).show()
         }
-    }
-
-    private fun cancel() {
-        this.dismiss()
     }
 }
