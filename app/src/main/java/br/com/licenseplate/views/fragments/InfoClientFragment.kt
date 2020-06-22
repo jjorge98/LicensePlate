@@ -28,7 +28,7 @@ class InfoClientFragment(private val client: Client?) : DialogFragment() {
         super.onViewCreated(view, savedInstanceState)
         fillTexts()
 
-        okButtonInfoClient.setOnClickListener { okDismiss() }
+        okButtonInfoClient.setOnClickListener { dismiss() }
     }
 
     private fun fillTexts() {
@@ -84,9 +84,5 @@ class InfoClientFragment(private val client: Client?) : DialogFragment() {
             startActivity(intent)
         }
 
-    }
-
-    private fun okDismiss() {
-        this.dismiss()
     }
 }

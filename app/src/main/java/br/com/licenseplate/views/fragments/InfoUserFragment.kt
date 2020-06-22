@@ -28,7 +28,7 @@ class InfoUserFragment(private val stamper: Stamper) : DialogFragment() {
         super.onViewCreated(view, savedInstanceState)
         fillTexts()
 
-        okButtonInfoUser.setOnClickListener { okDismiss() }
+        okButtonInfoUser.setOnClickListener { dismiss() }
     }
 
     private fun fillTexts() {
@@ -83,9 +83,5 @@ class InfoUserFragment(private val stamper: Stamper) : DialogFragment() {
             intent.data = Uri.parse(uri)
             startActivity(intent)
         }
-    }
-
-    private fun okDismiss() {
-        this.okDismiss()
     }
 }

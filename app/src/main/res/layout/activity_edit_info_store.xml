@@ -35,7 +35,7 @@
     <EditText
         android:id="@+id/carPriceEditInfoStore"
         android:layout_width="280dp"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/inputs"
         android:ems="10"
         android:hint="@string/unitCarPrice"
@@ -51,7 +51,7 @@
     <EditText
         android:id="@+id/motoPriceEditInfoStore"
         android:layout_width="280dp"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/inputs"
         android:ems="10"
         android:hint="@string/unitMotoPrice"
@@ -67,7 +67,7 @@
     <EditText
         android:id="@+id/phoneEditInfoStore"
         android:layout_width="280dp"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/inputs"
         android:ems="10"
         android:hint="@string/storePhone"

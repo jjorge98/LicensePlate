@@ -1,6 +1,7 @@
 package br.com.licenseplate.viewmodel
 
 import android.app.Application
+import android.os.Handler
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import br.com.licenseplate.dataclass.Stamper
@@ -9,9 +10,9 @@ import br.com.licenseplate.interactor.AdmInteractor
 
 class AdmViewModel(val app: Application) : AndroidViewModel(app) {
     private val interactor = AdmInteractor(app.applicationContext)
-    val stores = MutableLiveData<Set<String>>()
-    val users = MutableLiveData<Set<Stamper>>()
-    val storeList = MutableLiveData<Set<Store>>()
+    val stores = MutableLiveData<MutableSet<String>>()
+    val users = MutableLiveData<MutableSet<Stamper>>()
+    val storeList = MutableLiveData<MutableSet<Store>>()
 
     //Função que chama o interactor para pegar o id
     fun getID(root: String, callback: (result: Int) -> Unit) {
@@ -33,19 +34,19 @@ class AdmViewModel(val app: Application) : AndroidViewModel(app) {
 
     fun storeListAdm() {
         interactor.storeList { response ->
-            storeList.value = response.toSet()
+            storeList.value = response.toMutableSet()
         }
     }
 
     fun userList() {
         interactor.userList { response ->
-            users.value = response.toSet()
+            users.value = response.toMutableSet()
         }
     }
 
     fun userListRegister() {
         interactor.userListRegister { response ->
-            users.value = response.toSet()
+            users.value = response.toMutableSet()
         }
     }
 
@@ -103,19 +104,28 @@ class AdmViewModel(val app: Application) : AndroidViewModel(app) {
 
     fun deleteStore(store: Store) {
         interactor.deleteStore(store)
+        Handler().postDelayed({
+            storeList.value?.remove(store)
+        }, 1500)
     }
 
     fun userRegisterConfirmation(stamper: Stamper) {
         interactor.userRegisterConfirmation(stamper)
+        Handler().postDelayed({
+            users.value?.remove(stamper)
+        }, 1500)
     }
 
     fun deleteUser(stamper: Stamper) {
         interactor.deleteUser(stamper)
+        Handler().postDelayed({
+            users.value?.remove(stamper)
+        }, 1500)
     }
 
-    fun verifyThroughChiefPassword(login: String, uid: String, callback: (String) -> Unit){
-        interactor.verifyThroughChiefPassword(login, uid){response ->
-            if(response == "OK"){
+    fun verifyThroughChiefPassword(login: String, uid: String, callback: (String) -> Unit) {
+        interactor.verifyThroughChiefPassword(login, uid) { response ->
+            if (response == "OK") {
                 callback("Perfil aprovado")
             } else {
                 callback("Perfil negado")
