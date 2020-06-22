@@ -58,7 +58,7 @@
         android:id="@+id/helpMain"
         android:layout_width="83dp"
         android:layout_height="124dp"
-        app:layout_constraintBottom_toBottomOf="@+id/requestLicenseMain"
+        app:layout_constraintBottom_toBottomOf="@+id/verifyStatusLicenseMain"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/requestLicenseMain"
         app:layout_constraintTop_toTopOf="@+id/requestLicenseMain"
