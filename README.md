@@ -70,6 +70,13 @@ git checkout master
 
 2. Conecte o seu dispositivo através do USB, e faça a configuração recomendada pelo Adroid Studio, em seguida para <b>executar</b> o aplicativo clique ```Shift+F10```.
 
+### Fazendo a instalação em seu Smartphone Android
+
+<p align="justify">Na opção, <a href="https://developer.android.com/studio/debug/dev-options">release</a>release do projeto no github, escolha a opção mais atual e clique para iniciar a instalação. </p>
+
+<b>Nota:</b> Não esqueça que este executável é apenas para Smartphone Android, certifique que você esta executando no seu Smartphone.
+
+
 ### Configurar um emulador para execução do aplicativo
 
 <b>Nota:</b> Siga o passo a passo da <a href="https://developer.android.com/studio/run/emulator">documentação</a> do Android Studio.
