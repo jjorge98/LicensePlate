@@ -8,6 +8,7 @@
     <style name="LPToolbarTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:background">@color/colorazulescuro</item>
         <item name="android:textColor">@color/cyanLighten4</item>
+        <item name="colorControlNormal">@color/white</item>
     </style>
 
     <style name="Divider">

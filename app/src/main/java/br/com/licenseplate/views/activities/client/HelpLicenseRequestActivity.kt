@@ -1,5 +1,6 @@
 package br.com.licenseplate.views.activities.client
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.licenseplate.R
 import br.com.licenseplate.viewmodel.ChatbotViewModel
+import br.com.licenseplate.views.activities.MainActivity
 import br.com.licenseplate.views.adapters.ChatbotAdapter
 import kotlinx.android.synthetic.main.activity_help_license_request.*
 import java.util.*
@@ -30,6 +32,7 @@ class HelpLicenseRequestActivity : AppCompatActivity() {
 
         initRecyclerView()
         send.setOnClickListener { sendText() }
+        idbackMenu.setOnClickListener { back() }
     }
 
     //Função que encerra a atividade ao clicar no botão voltar a tela anterior
@@ -65,4 +68,9 @@ class HelpLicenseRequestActivity : AppCompatActivity() {
             }
         }
     }
+    private fun back() {
+        val intentMain = Intent(this, MainActivity::class.java)
+        startActivity(intentMain)
+    }
+
 }
