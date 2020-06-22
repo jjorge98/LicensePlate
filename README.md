@@ -72,7 +72,7 @@ git checkout master
 
 ### Fazendo a instalação em seu Smartphone Android
 
-<p align="justify">Na opção, <a href="https://developer.android.com/studio/debug/dev-options">release do projeto no github</a>, escolha a opção mais atual e clique para iniciar a instalação. </p>
+<p align="justify">Na opção, <a href="https://github.com/jjorge98/License-Plate/releases">release do projeto no github</a>, escolha a opção mais atual e clique para iniciar a instalação. </p>
 
 <b>Nota:</b> Não esqueça que o executável é apenas para Smartphone Android, certifique-se que esta sendo executado no seu Smartphone.
 
