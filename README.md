@@ -44,7 +44,7 @@
 ## COMO RODAR A APLICAÇÃO 
 <p align="justify"> Para abrir uma das amostras do projeto no Android Studio, comece fazendo checkout de uma das ramificações(Branchs) de amostra e abra o diretório raiz no Android Studio.</p>
 
-### CLONANDO O PROJETO
+### Clonar o Projeto
 
 1. Clone o repositório:
 
@@ -69,6 +69,12 @@ git checkout master
 <b>Nota:</b> Se você não encontrar as opções do desenvolvedor, siga as <a href="https://developer.android.com/studio/debug/dev-options">instruções</a> para ativar as opções do desenvolvedor.
 
 2. Conecte o seu dispositivo através do USB, e faça a configuração recomendada pelo Adroid Studio, em seguida para <b>executar</b> o aplicativo clique ```Shift+F10```.
+
+### Executar a instalação em seu Smartphone Android
+
+<p align="justify">Na opção, <a href="https://github.com/jjorge98/License-Plate/releases">release do projeto no github</a>, escolha a opção mais atual e clique para iniciar a instalação. </p>
+
+<b>Nota:</b> Não esqueça que o executável é apenas para Smartphone Android, certifique-se que esta sendo executado no seu Smartphone.
 
 ### Configurar um emulador para execução do aplicativo
 
