@@ -143,7 +143,7 @@
             android:textAlignment="center"
             android:textColor="@color/cyanLighten4"
             android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/okButtonInfoClient"
+            app:layout_constraintBottom_toTopOf="@+id/requestInfoClient"
             app:layout_constraintEnd_toStartOf="@+id/copyCelInfoClient"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/celTextInfoClient"
@@ -160,6 +160,50 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/celInfoClient"
             app:layout_constraintTop_toTopOf="@+id/celInfoClient" />
+
+        <TextView
+            android:id="@+id/requestTextInfoClient"
+            android:layout_width="87dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/alike_angular"
+            android:text="@string/requestNumber"
+            android:textAlignment="center"
+            android:textColor="@color/cyanLighten4"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/requestInfoClient"
+            app:layout_constraintEnd_toStartOf="@+id/requestInfoClient"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/requestInfoClient" />
+
+        <TextView
+            android:id="@+id/requestInfoClient"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:fontFamily="@font/alike_angular"
+            android:textAlignment="center"
+            android:textColor="@color/cyanLighten4"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/okButtonInfoClient"
+            app:layout_constraintEnd_toStartOf="@+id/copyRequestInfoClient"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/requestTextInfoClient"
+            app:layout_constraintTop_toBottomOf="@+id/celInfoClient" />
+
+        <ImageView
+            android:id="@+id/copyRequestInfoClient"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="6dp"
+            android:src="@drawable/copy"
+            app:layout_constraintBottom_toBottomOf="@+id/requestInfoClient"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/requestInfoClient"
+            app:layout_constraintTop_toTopOf="@+id/requestInfoClient" />
 
         <ImageView
             android:id="@+id/whatsappInfoClient"
