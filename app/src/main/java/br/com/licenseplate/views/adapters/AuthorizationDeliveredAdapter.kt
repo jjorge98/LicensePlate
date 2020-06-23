@@ -237,7 +237,7 @@ class AuthorizationDeliveredAdapter(
             if (itemSelected?.itemId == R.id.seeClientData) {
                 val infoFragment =
                     InfoClientFragment(
-                        authorization.client
+                        authorization
                     )
                 val manager1 = view.supportFragmentManager
                 val transaction1 = manager1.beginTransaction()
