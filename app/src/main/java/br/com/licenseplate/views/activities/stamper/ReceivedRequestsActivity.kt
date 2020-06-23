@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -13,7 +14,9 @@ import br.com.licenseplate.viewmodel.LoginViewModel
 import br.com.licenseplate.viewmodel.StamperViewModel
 import br.com.licenseplate.views.activities.MainActivity
 import br.com.licenseplate.views.adapters.AuthorizationReceivedAdapter
+import kotlinx.android.synthetic.main.activity_finished_requests.*
 import kotlinx.android.synthetic.main.activity_received_requests.*
+import kotlinx.android.synthetic.main.activity_received_requests.textToGoReceivedRequests
 
 class ReceivedRequestsActivity : AppCompatActivity() {
     private val viewModelL: LoginViewModel by lazy {
@@ -92,6 +95,13 @@ class ReceivedRequestsActivity : AppCompatActivity() {
         viewModelS.resultado.observe(this, Observer { authorizations ->
             adapter.dataSet = authorizations.toMutableList()
             adapter.notifyDataSetChanged()
+
+            if (adapter.itemCount == 0) {
+                textToGoReceivedRequests.visibility = View.VISIBLE
+            } else {
+                textToGoReceivedRequests.visibility = View.GONE
+            }
+
         })
     }
 
