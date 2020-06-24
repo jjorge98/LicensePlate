@@ -41,7 +41,7 @@
     <EditText
         android:id="@+id/licensePlateVerifyRequest"
         android:layout_width="300dp"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/inputs"
         android:ems="10"
         android:hint="@string/license"

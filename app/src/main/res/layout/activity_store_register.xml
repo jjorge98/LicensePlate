@@ -17,10 +17,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
+    <TextView
+        android:id="@+id/textViewStoreRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/alike_angular"
+        android:text="@string/storeRegister"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display4"
+        android:textColor="@color/cyanLighten4"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/nameStoreRegister"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/action_bar" />
+
     <EditText
         android:id="@+id/nameStoreRegister"
         android:layout_width="350dp"
-        android:layout_height="35dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/inputs"
         android:ems="10"
         android:hint="@string/nome_fantasia"
@@ -33,26 +49,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewStoreRegister" />
 
-    <TextView
-        android:id="@+id/textViewStoreRegister"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/carPriceStoreRegister"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/alike_angular"
-        android:text="Cadastrar loja"
+        android:background="@drawable/inputs"
+        android:ems="10"
+        android:hint="@string/carPrice"
+        android:inputType="textPersonName"
         android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display4"
-        android:textColor="@color/cyanLighten4"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/nameStoreRegister"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/motoPriceStoreRegister"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/action_bar" />
+        app:layout_constraintTop_toBottomOf="@+id/nameStoreRegister" />
 
     <EditText
         android:id="@+id/motoPriceStoreRegister"
         android:layout_width="350dp"
-        android:layout_height="35dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/inputs"
         android:ems="10"
         android:hint="@string/motoPrice"
@@ -68,7 +84,7 @@
     <EditText
         android:id="@+id/locationStoreRegister"
         android:layout_width="350dp"
-        android:layout_height="35dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/inputs"
         android:ems="10"
         android:hint="@string/location"
@@ -84,7 +100,7 @@
     <EditText
         android:id="@+id/cnpjStoreRegister"
         android:layout_width="350dp"
-        android:layout_height="35dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/inputs"
         android:ems="10"
         android:hint="@string/cnpj"
@@ -96,6 +112,22 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/locationStoreRegister" />
+
+    <EditText
+        android:id="@+id/celStoreRegister"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/inputs"
+        android:ems="10"
+        android:hint="@string/telefone"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/saveStoreRegister"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cnpjStoreRegister" />
 
     <Button
         android:id="@+id/saveStoreRegister"
@@ -111,38 +143,6 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/celStoreRegister" />
-
-    <EditText
-        android:id="@+id/carPriceStoreRegister"
-        android:layout_width="350dp"
-        android:layout_height="35dp"
-        android:background="@drawable/inputs"
-        android:ems="10"
-        android:hint="@string/carPrice"
-        android:inputType="textPersonName"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/motoPriceStoreRegister"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameStoreRegister" />
-
-    <EditText
-        android:id="@+id/celStoreRegister"
-        android:layout_width="350dp"
-        android:layout_height="35dp"
-        android:background="@drawable/inputs"
-        android:ems="10"
-        android:hint="@string/telefone"
-        android:inputType="textPersonName"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/saveStoreRegister"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cnpjStoreRegister" />
 
     <ImageView
         android:id="@+id/backActivity"

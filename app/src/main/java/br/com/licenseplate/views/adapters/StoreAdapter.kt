@@ -41,6 +41,7 @@ class StoreAdapter(
         holder.location.text = store.localizacao
         holder.car.text = store.valCarro.toString()
         holder.moto.text = store.valMoto.toString()
+        holder.cel.text = store.telefone
 
         holder.itemView.setOnClickListener {
             showPopup(holder, store)
@@ -75,5 +76,6 @@ class StoreAdapter(
         val location: TextView = itemView.storeLocation
         val car: TextView = itemView.carPrice
         val moto: TextView = itemView.motoPrice
+        val cel: TextView = itemView.celStoreList
     }
 }

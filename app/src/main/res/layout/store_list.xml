@@ -137,7 +137,7 @@
         android:textAlignment="center"
         android:textColor="@color/cyanLighten4"
         android:textSize="13sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/celTextStoreList"
         app:layout_constraintEnd_toStartOf="@+id/motoPrice"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -153,11 +153,46 @@
         android:textAlignment="center"
         android:textColor="@color/cyanLighten4"
         android:textSize="13sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/celStoreList"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textView11"
         app:layout_constraintTop_toBottomOf="@+id/carPrice" />
+
+    <TextView
+        android:id="@+id/celTextStoreList"
+        android:layout_width="133dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/alike_angular"
+        android:paddingStart="3dp"
+        android:paddingTop="3dp"
+        android:paddingEnd="0dp"
+        android:paddingBottom="3dp"
+        android:text="@string/telefone1"
+        android:textAlignment="center"
+        android:textColor="@color/cyanLighten4"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/celStoreList"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+
+    <TextView
+        android:id="@+id/celStoreList"
+        android:layout_width="278dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:textAlignment="center"
+        android:textColor="@color/cyanLighten4"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/celTextStoreList"
+        app:layout_constraintTop_toBottomOf="@+id/motoPrice" />
 
 
     <View

@@ -120,4 +120,6 @@
     <string name="cancel">Cancelar</string>
     <string name="check">Check</string>
     <string name="uid">UID</string>
+    <string name="storeRegister">Cadastrar loja</string>
+    <string name="telefone1">Telefone:</string>
 </resources>

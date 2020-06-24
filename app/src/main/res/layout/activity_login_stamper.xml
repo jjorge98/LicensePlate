@@ -22,7 +22,7 @@
     <EditText
         android:id="@+id/emailLogin"
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/inputs"
         android:ems="10"
         android:hint="@string/email"
@@ -38,7 +38,7 @@
     <EditText
         android:id="@+id/passwordLogin"
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/inputs"
         android:ems="10"
         android:hint="@string/password"
@@ -53,8 +53,8 @@
 
     <Button
         android:id="@+id/buttonReqLicense"
-        android:layout_width="147dp"
-        android:layout_height="51dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="@drawable/botoes"
         android:text="@string/login"
         android:textStyle="bold"

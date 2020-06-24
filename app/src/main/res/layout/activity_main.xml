@@ -33,7 +33,7 @@
     <Button
         android:id="@+id/requestLicenseMain"
         android:layout_width="189dp"
-        android:layout_height="46dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/botoes"
         android:text="@string/requestLicense"
         android:textStyle="bold"
@@ -45,7 +45,7 @@
     <Button
         android:id="@+id/verifyStatusLicenseMain"
         android:layout_width="189dp"
-        android:layout_height="46dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/botoes"
         android:text="@string/verifyRequest"
         android:textStyle="bold"
@@ -78,7 +78,7 @@
     <Button
         android:id="@+id/loginStamperMain"
         android:layout_width="189dp"
-        android:layout_height="46dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/botoes"
         android:text="@string/restrictedArea"
         android:textColor="#000"
@@ -92,7 +92,7 @@
     <Button
         android:id="@+id/storesMain"
         android:layout_width="189dp"
-        android:layout_height="46dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/botoes"
         android:text="@string/cStores"
         android:textAlignment="center"

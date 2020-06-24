@@ -22,7 +22,7 @@
     <Spinner
         android:id="@+id/spinnerLogin"
         android:layout_width="wrap_content"
-        android:layout_height="35dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/inputs"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/spinnerStores"
@@ -34,7 +34,7 @@
     <Spinner
         android:id="@+id/spinnerStores"
         android:layout_width="wrap_content"
-        android:layout_height="35dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/inputs"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/nameProfileRegister"
@@ -46,7 +46,7 @@
     <EditText
         android:id="@+id/nameProfileRegister"
         android:layout_width="370dp"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/inputs"
         android:ems="10"
         android:hint="@string/fullName"
@@ -61,7 +61,7 @@
     <EditText
         android:id="@+id/cpfProfileRegister"
         android:layout_width="370dp"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/inputs"
         android:ems="10"
         android:hint="@string/cpf"
@@ -76,7 +76,7 @@
     <EditText
         android:id="@+id/rgProfileRegister"
         android:layout_width="370dp"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/inputs"
         android:ems="10"
         android:hint="@string/rg"
@@ -91,7 +91,7 @@
     <EditText
         android:id="@+id/celProfileRegister"
         android:layout_width="370dp"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/inputs"
         android:ems="10"
         android:hint="@string/telefone"
