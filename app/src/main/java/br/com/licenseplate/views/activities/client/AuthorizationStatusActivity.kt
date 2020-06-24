@@ -12,14 +12,15 @@ import kotlinx.android.synthetic.main.activity_authorization_status.*
 
 class AuthorizationStatusActivity : AppCompatActivity() {
     private var licensePlate: String? = null
-    private val viewModelC: ClientViewModel by lazy{
+    private val viewModelC: ClientViewModel by lazy {
         ViewModelProvider(this).get(ClientViewModel::class.java)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        TODO("Verificar pq texto de não encontrado não ta funcionando")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_authorization_status)
+
+        Toast.makeText(this, "Localizando placa...", Toast.LENGTH_LONG).show()
 
         val intent = this.intent
         licensePlate = intent.getStringExtra("placa")
@@ -30,7 +31,7 @@ class AuthorizationStatusActivity : AppCompatActivity() {
     }
 
     private fun verify(licensePlate: String) {
-        viewModelC.verifyProcess(licensePlate){response ->
+        viewModelC.verifyProcess(licensePlate) { response ->
             textAuthorizationStatus.text = response
         }
     }

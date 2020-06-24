@@ -15,7 +15,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import java.text.DateFormat
 import java.util.*
-import kotlin.math.*
+import kotlin.math.pow
 
 class ClientInteractor(val context: Context) {
     private val repository = ClientRepository(context)
@@ -243,7 +243,7 @@ class ClientInteractor(val context: Context) {
             end.longitude,
             response
         )
-        
+
         return response[0].toDouble()
     }
 
@@ -382,25 +382,7 @@ class ClientInteractor(val context: Context) {
         licensePlate: String,
         callback: (response: String, autCli: AuthorizationClient?, store: Store?) -> Unit
     ) {
-        if (licensePlate.isEmpty()) {
-            callback("VAZIO", null, null)
-        } else if (licensePlate.length != 7) {
-            callback("PLACA", null, null)
-        } else {
-            var ver = 0
-            for (i in 0 until 7) {//PBR4724
-                if ((i == 0 || i == 1 || i == 2) && !licensePlate[i].isLetter()) {
-                    ver = 1
-                    callback("PLACA", null, null)
-                } else if ((i == 3 || i == 5 || i == 6) && !licensePlate[i].isDigit()) {
-                    ver = 1
-                    callback("PLACA", null, null)
-                }
-            }
-            if (ver == 0) {
-                repository.verifyProcess(licensePlate, callback)
-            }
-        }
+        repository.verifyProcess(licensePlate, callback)
     }
 
     //Função para verificar a placa do cliente na tela de verificar o processo

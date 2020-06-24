@@ -10,7 +10,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import br.com.licenseplate.R
-import br.com.licenseplate.dataclass.AuthorizationClient
 import br.com.licenseplate.viewmodel.LoginViewModel
 import br.com.licenseplate.viewmodel.StamperViewModel
 import br.com.licenseplate.views.activities.MainActivity
@@ -95,9 +94,9 @@ class AuthorizationListActivity : AppCompatActivity() {
             adapter.dataSet = authorizations.toMutableList()
             adapter.notifyDataSetChanged()
 
-            if(adapter.itemCount == 0){
+            if (adapter.itemCount == 0) {
                 textToGo.visibility = View.VISIBLE
-            } else{
+            } else {
                 textToGo.visibility = View.GONE
             }
         })

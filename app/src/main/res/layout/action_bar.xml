@@ -4,4 +4,4 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:theme="@style/LPToolbarTheme"
-    app:titleTextColor="@color/cyanLighten4"></androidx.appcompat.widget.Toolbar>
+    app:titleTextColor="@color/cyanLighten4"/>

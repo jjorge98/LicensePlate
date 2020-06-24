@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></include>
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:id="@+id/textDeliveredRequests"
@@ -46,6 +46,21 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textDeliveredRequests" />
+
+    <TextView
+        android:id="@+id/textToGoDeliveredRequests"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/noDeliveredRequest"
+        android:textAlignment="center"
+        android:textColor="@color/cyanLighten4"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerViewDeliveredRequests"
+        app:layout_constraintEnd_toStartOf="@+id/recyclerViewDeliveredRequests"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/recyclerViewDeliveredRequests"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewDeliveredRequests" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

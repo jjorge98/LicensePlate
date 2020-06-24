@@ -79,10 +79,14 @@ class StoreMapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnM
 
     private fun storesRecyclerView(location: LatLng?) {
         storesMapRecyclerView.layoutManager = LinearLayoutManager(this)
-        val adapter = StoreMapAdapter(emptyList(), this, map, this, viewModelC)
+
+        val adapter = StoreMapAdapter(mutableListOf(), this, map, this, viewModelC)
+
         storesMapRecyclerView.adapter = adapter
+
         viewModelC.storeList.observe(this, Observer { store ->
-            adapter.stores = store.toList()
+            adapter.stores = store.toMutableList()
+
             adapter.notifyDataSetChanged()
             store.forEach { s ->
                 val latitude = s.localizacao?.substring(0, indexOf(s.localizacao, ','))?.toDouble()

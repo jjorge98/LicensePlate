@@ -58,7 +58,10 @@ class LoginViewModel(val app: Application) : AndroidViewModel(app) {
                 val resultado = arrayOf("ERROR", "Por favor, preencha todos os campos!")
                 callback(resultado)
             } else if (result == "SENHAS") {
-                val resultado = arrayOf("ERROR", "As senhas informadas estão diferentes. Por favor, verifique e tente novamente!")
+                val resultado = arrayOf(
+                    "ERROR",
+                    "As senhas informadas estão diferentes. Por favor, verifique e tente novamente!"
+                )
                 callback(resultado)
             } else if (result == "SENHA") {
                 val resultado = arrayOf("ERROR", "A senha deve ter no mínimo 6 caracteres!")

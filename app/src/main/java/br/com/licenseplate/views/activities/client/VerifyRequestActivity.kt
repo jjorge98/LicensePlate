@@ -31,12 +31,12 @@ class VerifyRequestActivity : AppCompatActivity() {
     private fun verify() {
         val licensePlate = licensePlateVerifyRequest.text.toString()
 
-        viewModelC.verifyLicensePlate(licensePlate){result ->
-            if(result == "OK"){
+        viewModelC.verifyLicensePlate(licensePlate) { result ->
+            if (result == "OK") {
                 val intent = Intent(this, AuthorizationStatusActivity::class.java)
                 intent.putExtra("placa", licensePlate)
                 startActivity(intent)
-            } else{
+            } else {
                 Toast.makeText(this, result, Toast.LENGTH_SHORT).show()
             }
         }

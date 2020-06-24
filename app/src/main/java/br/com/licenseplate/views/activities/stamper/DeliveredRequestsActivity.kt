@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -95,6 +96,12 @@ class DeliveredRequestsActivity : AppCompatActivity() {
             adapter.dataSet = emptyList()
             adapter.dataSet = authorizations.toList()
             adapter.notifyDataSetChanged()
+
+            if (adapter.itemCount == 0) {
+                textToGoDeliveredRequests.visibility = View.VISIBLE
+            } else {
+                textToGoDeliveredRequests.visibility = View.GONE
+            }
         })
     }
 

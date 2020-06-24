@@ -11,7 +11,6 @@ import br.com.licenseplate.interactor.StamperInteractor
 class StamperViewModel(app: Application) : AndroidViewModel(app) {
     private val interactor = StamperInteractor(app.applicationContext)
     var resultado = MutableLiveData<MutableSet<AuthorizationClient>>()
-    var i = 0
 
     fun authorizationList() {
         val set = mutableSetOf<AuthorizationClient>()
@@ -56,7 +55,6 @@ class StamperViewModel(app: Application) : AndroidViewModel(app) {
             }
 
             resultado.value = set
-            i++
         }
     }
 
@@ -112,26 +110,33 @@ class StamperViewModel(app: Application) : AndroidViewModel(app) {
         }, 1500)
     }
 
-    fun editInfo(carPrice: String, motoPrice: String, phone: String, callback: (String) -> Unit) {
+    fun editInfo(
+        carPrice: String,
+        motoPrice: String,
+        phone: String,
+        callback: (Array<String>) -> Unit
+    ) {
         try {
             val newCarPrice = carPrice.toDouble()
             val newMotoPrice = motoPrice.toDouble()
 
             interactor.editInfo(newCarPrice, newMotoPrice, phone) { response ->
                 if (response == "OK") {
-                    val resultado = "Informações atualizadas com sucesso!"
+                    val resultado = arrayOf("OK", "Informações atualizadas com sucesso!")
                     callback(resultado)
                 } else if (response == "VAZIO") {
-                    val resultado = "Por favor, preencha todos os campos!"
+                    val resultado = arrayOf("ERROR", "Por favor, preencha todos os campos!")
                     callback(resultado)
                 } else if (response == "PRICE") {
-                    val resultado = "Preços inválidos. Por favor ajuste e tente novamente!"
+                    val resultado =
+                        arrayOf("ERROR", "Preços inválidos. Por favor ajuste e tente novamente!")
                     callback(resultado)
                 }
             }
 
         } catch (e: Exception) {
-            val resultado = "Preços inválidos. Por favor ajuste e tente novamente!"
+            val resultado =
+                arrayOf("ERROR", "Preços inválidos. Por favor ajuste e tente novamente!")
             callback(resultado)
         }
     }

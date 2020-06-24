@@ -1,9 +1,7 @@
 package br.com.licenseplate.viewmodel
 
 import android.app.Application
-import android.content.ContentValues.TAG
 import android.text.TextUtils.indexOf
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import br.com.licenseplate.dataclass.Authorization
@@ -77,12 +75,12 @@ class ClientViewModel(val app: Application) : AndroidViewModel(app) {
     }
 
     fun verifyAuthorization(
-        authorization: String,
+        authorizationNumber: String,
         callback: (result: String?, responseAuthorization: Authorization?) -> Unit
     ) {
         val calendar = Calendar.getInstance()
         val date = DateFormat.getDateInstance().format(calendar.time)
-        val authorization = Authorization(authorization, "0", date, "0", 0)
+        val authorization = Authorization(authorizationNumber, "0", date, "0", 0)
 
         interactor.verifyAuthorization(authorization) { result, responseAPI ->
             if (result == "VAZIO") {
@@ -143,11 +141,9 @@ class ClientViewModel(val app: Application) : AndroidViewModel(app) {
     }
 
     fun getAddress(latLng: LatLng, callback: (result: String) -> Unit) {
-        var addressText = ""
-
         interactor.getAddress(latLng) { addresses ->
-            if (null != addresses && addresses.isNotEmpty()) {
-                addressText = addresses[0].getAddressLine(0)
+            if (addresses.isNotEmpty()) {
+                val addressText = addresses[0].getAddressLine(0)
                 callback(addressText)
             }
         }
@@ -177,11 +173,12 @@ class ClientViewModel(val app: Application) : AndroidViewModel(app) {
             categoria
         ) { response ->
             if (response == "VAZIO") {
-                val response = arrayOf("ERROR", "Por favor, escolha uma loja e tente novamente!")
-                callback(response)
+                val responseText =
+                    arrayOf("ERROR", "Por favor, escolha uma loja e tente novamente!")
+                callback(responseText)
             } else {
-                val response = arrayOf("OK")
-                callback(response)
+                val responseText = arrayOf("OK")
+                callback(responseText)
             }
         }
     }

@@ -2,6 +2,7 @@
   <dictionary name="jjorg">
     <words>
       <w>abertura</w>
+      <w>aceita</w>
       <w>aceitas</w>
       <w>acesso</w>
       <w>acha</w>
@@ -29,15 +30,19 @@
       <w>auxiliar</w>
       <w>banco</w>
       <w>bloqueado</w>
+      <w>botoes</w>
       <w>botão</w>
+      <w>cadastrada</w>
       <w>cadastradas</w>
       <w>cadastrado</w>
       <w>cadastrados</w>
       <w>cadastrar</w>
+      <w>cadastre</w>
       <w>cadastro</w>
       <w>calcular</w>
       <w>cancelada</w>
       <w>cancelamento</w>
+      <w>cancelar</w>
       <w>caracteres</w>
       <w>carro</w>
       <w>caso</w>
@@ -59,10 +64,12 @@
       <w>colorazulescuro</w>
       <w>colorgreen</w>
       <w>colorpessego</w>
+      <w>completo</w>
       <w>concluída</w>
       <w>confirmada</w>
       <w>confirmar</w>
       <w>confirmação</w>
+      <w>confirme</w>
       <w>consulta</w>
       <w>contate</w>
       <w>contato</w>
@@ -112,6 +119,8 @@
       <w>estiver</w>
       <w>está</w>
       <w>estão</w>
+      <w>etapa</w>
+      <w>excluidas</w>
       <w>excluir</w>
       <w>excluída</w>
       <w>experiencia</w>
@@ -124,10 +133,12 @@
       <w>feita</w>
       <w>filtra</w>
       <w>finaliza</w>
+      <w>finalizada</w>
       <w>finalizadas</w>
       <w>finalizando</w>
       <w>finalizar</w>
       <w>foram</w>
+      <w>forg</w>
       <w>formato</w>
       <w>função</w>
       <w>geocoder</w>
@@ -138,6 +149,8 @@
       <w>histórico</w>
       <w>houve</w>
       <w>houveram</w>
+      <w>icone</w>
+      <w>idback</w>
       <w>incluída</w>
       <w>informadas</w>
       <w>informado</w>
@@ -147,6 +160,7 @@
       <w>inicial</w>
       <w>insere</w>
       <w>insira</w>
+      <w>instância</w>
       <w>interactor</w>
       <w>intercala</w>
       <w>inválida</w>
@@ -173,6 +187,7 @@
       <w>meio</w>
       <w>mensagem</w>
       <w>minha</w>
+      <w>momento</w>
       <w>mostra</w>
       <w>mostrar</w>
       <w>motivo</w>
@@ -184,6 +199,7 @@
       <w>negado</w>
       <w>negócio</w>
       <w>nenhuma</w>
+      <w>notfound</w>
       <w>novamente</w>
       <w>novos</w>
       <w>número</w>
@@ -220,6 +236,8 @@
       <w>produção</w>
       <w>protocolo</w>
       <w>proximo</w>
+      <w>próxima</w>
+      <w>próximas</w>
       <w>próximo</w>
       <w>página</w>
       <w>quando</w>
@@ -232,6 +250,7 @@
       <w>recebido</w>
       <w>recuperar</w>
       <w>recupere</w>
+      <w>recusa</w>
       <w>recusar</w>
       <w>referente</w>
       <w>registra</w>
@@ -300,7 +319,9 @@
       <w>verifique</w>
       <w>veículo</w>
       <w>vindas</w>
+      <w>você</w>
       <w>voltar</w>
+      <w>whatsapp</w>
       <w>área</w>
     </words>
   </dictionary>

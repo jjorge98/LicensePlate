@@ -16,6 +16,7 @@ import kotlinx.android.synthetic.main.activity_all_stamper_list.*
 
 class AllStamperListActivity : AppCompatActivity() {
     private lateinit var adapter: AllStoresAdapter
+    private lateinit var estado: String
     private val viewModelC: ClientViewModel by lazy {
         ViewModelProvider(this).get(ClientViewModel::class.java)
     }
@@ -75,7 +76,7 @@ class AllStamperListActivity : AppCompatActivity() {
                 id: Long
             ) {
                 //Variável que pega o item que o usuário selecionou
-                var estado = parent?.getItemAtPosition(position).toString()
+                estado = parent?.getItemAtPosition(position).toString()
 
                 fillRecycler(estado)
             }

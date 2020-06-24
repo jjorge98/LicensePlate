@@ -72,7 +72,7 @@ class AdmViewModel(val app: Application) : AndroidViewModel(app) {
             motoPrice,
             location,
             newCnpj,
-            cel,
+            newCel,
             id,
             root
         ) { response ->

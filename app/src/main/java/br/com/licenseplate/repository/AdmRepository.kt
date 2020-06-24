@@ -1,9 +1,6 @@
 package br.com.licenseplate.repository
 
-import android.content.ContentValues.TAG
 import android.content.Context
-import android.renderscript.Sampler
-import android.util.Log
 import br.com.licenseplate.dataclass.Stamper
 import br.com.licenseplate.dataclass.Store
 import com.google.firebase.auth.FirebaseAuth
@@ -171,7 +168,7 @@ class AdmRepository(val context: Context) {
         val reference = database.getReference("user")
         val query = reference.orderByChild("uid").equalTo(uid)
 
-        query.addListenerForSingleValueEvent(object: ValueEventListener{
+        query.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
                 //
             }

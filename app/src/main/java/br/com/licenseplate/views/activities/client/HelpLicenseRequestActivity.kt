@@ -68,6 +68,7 @@ class HelpLicenseRequestActivity : AppCompatActivity() {
             }
         }
     }
+
     private fun back() {
         val intentMain = Intent(this, MainActivity::class.java)
         startActivity(intentMain)

@@ -36,9 +36,9 @@ class LoginStamperActivity : AppCompatActivity() {
         val email = emailLogin.text.toString()
         val password = passwordLogin.text.toString()
 
-        viewModel.login(email, password) { result ->
-            Toast.makeText(this, result[1], Toast.LENGTH_LONG).show()
-            if (result[0] == "OK") {
+        viewModel.login(email, password) { response ->
+            Toast.makeText(this, response[1], Toast.LENGTH_LONG).show()
+            if (response[0] == "OK") {
                 viewModel.verifyLogin { result ->
                     if (result?.uid == null) {
                         val intent = Intent(this, ProfileRegisterActivity::class.java)

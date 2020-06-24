@@ -92,7 +92,13 @@ class EditInfoStoreActivity : AppCompatActivity() {
         val phone = phoneEditInfoStore.text.toString()
 
         viewModelS.editInfo(carPrice, motoPrice, phone) { response ->
-            Toast.makeText(this, response, Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, response[1], Toast.LENGTH_SHORT).show()
+
+            if (response[0] == "OK") {
+                val intent = Intent(this, AuthorizationListActivity::class.java)
+                startActivity(intent)
+            }
         }
+
     }
 }

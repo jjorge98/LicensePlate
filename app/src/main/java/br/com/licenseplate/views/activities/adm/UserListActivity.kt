@@ -81,7 +81,7 @@ class UserListActivity : AppCompatActivity() {
         return false
     }
 
-    private fun initRecyclerView(){
+    private fun initRecyclerView() {
         adapter = UserAdapter(mutableListOf(), this, viewModelA, this)
         recyclerViewUserList.layoutManager = LinearLayoutManager(this)
         recyclerViewUserList.adapter = adapter

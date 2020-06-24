@@ -24,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/alike_angular"
-        android:text="Cadastro"
+        android:text="@string/register1"
         android:textAlignment="center"
         android:textColor="@color/cyanLighten4"
         android:textSize="35sp"
@@ -40,7 +40,7 @@
         android:layout_height="40dp"
         android:background="@drawable/inputs"
         android:ems="10"
-        android:hint="E-mail"
+        android:hint="@string/email"
         android:inputType="textEmailAddress"
         android:textAlignment="center"
         android:textColor="@color/black"
@@ -51,28 +51,12 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewRegisterUser" />
 
     <EditText
-        android:id="@+id/confirmPasswordRegisterUser"
-        android:layout_width="370dp"
-        android:layout_height="40dp"
-        android:background="@drawable/inputs"
-        android:ems="10"
-        android:hint="Confirme a senha"
-        android:inputType="textPassword"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/registerRegisterUser"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordRegisterUser" />
-
-    <EditText
         android:id="@+id/passwordRegisterUser"
         android:layout_width="370dp"
         android:layout_height="40dp"
         android:background="@drawable/inputs"
         android:ems="10"
-        android:hint="Senha"
+        android:hint="@string/password"
         android:inputType="textPassword"
         android:textAlignment="center"
         android:textColor="@color/black"
@@ -82,12 +66,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailRegisterUser" />
 
+    <EditText
+        android:id="@+id/confirmPasswordRegisterUser"
+        android:layout_width="370dp"
+        android:layout_height="40dp"
+        android:background="@drawable/inputs"
+        android:ems="10"
+        android:hint="@string/confirmPassword"
+        android:inputType="textPassword"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/registerRegisterUser"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordRegisterUser" />
+
     <Button
         android:id="@+id/registerRegisterUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/botoes"
-        android:text="Cadastrar"
+        android:text="@string/register"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textStyle="bold"

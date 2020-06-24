@@ -2,7 +2,6 @@ package br.com.licenseplate.views.activities.client
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import br.com.licenseplate.R
 import br.com.licenseplate.views.activities.MainActivity

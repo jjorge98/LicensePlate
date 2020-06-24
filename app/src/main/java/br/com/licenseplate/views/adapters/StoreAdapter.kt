@@ -1,7 +1,6 @@
 package br.com.licenseplate.views.adapters
 
 import android.content.Context
-import android.content.Intent
 import android.os.Handler
 import android.view.LayoutInflater
 import android.view.MenuInflater
@@ -13,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.licenseplate.R
 import br.com.licenseplate.dataclass.Store
 import br.com.licenseplate.viewmodel.AdmViewModel
-import br.com.licenseplate.views.activities.adm.StoreListAdmActivity
 import kotlinx.android.synthetic.main.store_list.view.*
 
 class StoreAdapter(

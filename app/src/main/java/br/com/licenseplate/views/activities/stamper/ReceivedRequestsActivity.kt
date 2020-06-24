@@ -14,9 +14,7 @@ import br.com.licenseplate.viewmodel.LoginViewModel
 import br.com.licenseplate.viewmodel.StamperViewModel
 import br.com.licenseplate.views.activities.MainActivity
 import br.com.licenseplate.views.adapters.AuthorizationReceivedAdapter
-import kotlinx.android.synthetic.main.activity_finished_requests.*
 import kotlinx.android.synthetic.main.activity_received_requests.*
-import kotlinx.android.synthetic.main.activity_received_requests.textToGoReceivedRequests
 
 class ReceivedRequestsActivity : AppCompatActivity() {
     private val viewModelL: LoginViewModel by lazy {

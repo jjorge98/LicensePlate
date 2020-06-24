@@ -18,7 +18,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.store_map_list.view.*
 
 class StoreMapAdapter(
-    var stores: List<Store>,
+    var stores: MutableList<Store>,
     private val context: Context,
     private val map: GoogleMap,
     private val cl: StoreMapsActivity,

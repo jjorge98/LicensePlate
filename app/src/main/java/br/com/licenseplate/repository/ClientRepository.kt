@@ -67,7 +67,7 @@ class ClientRepository(private val context: Context) {
 
     fun getAddress(latLng: LatLng, callback: (result: List<Address>) -> Unit) {
         val geocoder = Geocoder(context)
-        val addresses: List<Address>?
+        val addresses: List<Address>
 
         try {
             addresses = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1)
@@ -151,6 +151,8 @@ class ClientRepository(private val context: Context) {
                             null
                         )
                     }
+
+                    callback("NOTFOUND", null, null)
                 }
             }
         })

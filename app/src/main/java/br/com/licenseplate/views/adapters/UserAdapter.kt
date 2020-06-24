@@ -1,7 +1,6 @@
 package br.com.licenseplate.views.adapters
 
 import android.content.Context
-import android.content.Intent
 import android.os.Handler
 import android.view.LayoutInflater
 import android.view.MenuInflater
@@ -14,7 +13,6 @@ import br.com.licenseplate.R
 import br.com.licenseplate.dataclass.Stamper
 import br.com.licenseplate.viewmodel.AdmViewModel
 import br.com.licenseplate.views.activities.adm.UserListActivity
-import br.com.licenseplate.views.activities.adm.UserRegisterActivity
 import br.com.licenseplate.views.fragments.InfoUserFragment
 import kotlinx.android.synthetic.main.user_list.view.*
 

@@ -1,8 +1,6 @@
 package br.com.licenseplate.repository
 
-import android.content.ContentValues.TAG
 import android.content.Context
-import android.util.Log
 import br.com.licenseplate.dataclass.AuthorizationClient
 import br.com.licenseplate.dataclass.DeletedRequest
 import com.google.firebase.auth.FirebaseAuth

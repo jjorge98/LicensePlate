@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -14,7 +13,6 @@
         android:paddingTop="3dp"
         android:paddingRight="3dp"
         android:paddingBottom="3dp"
-        android:text="Emplacar Comércio de Placas para Veículos"
         android:textAlignment="center"
         android:textColor="@color/cyanLighten4"
         android:textSize="22sp"
@@ -29,10 +27,11 @@
         android:layout_width="133dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/alike_angular"
-        android:paddingLeft="5dp"
+        android:paddingStart="5dp"
         android:paddingTop="3dp"
+        android:paddingEnd="0dp"
         android:paddingBottom="3dp"
-        android:text="Localização: "
+        android:text="@string/location1"
         android:textAlignment="center"
         android:textColor="@color/cyanLighten4"
         android:textSize="13sp"
@@ -48,7 +47,6 @@
         android:layout_height="wrap_content"
         android:paddingTop="3dp"
         android:paddingBottom="3dp"
-        android:text="-1315315315311 -13516446811"
         android:textAlignment="center"
         android:textColor="@color/cyanLighten4"
         android:textSize="13sp"
@@ -59,30 +57,49 @@
         app:layout_constraintTop_toBottomOf="@+id/storeName" />
 
     <TextView
-        android:id="@+id/carPrice"
+        android:id="@+id/textView12"
+        android:layout_width="133dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/alike_angular"
+        android:paddingStart="3dp"
+        android:paddingTop="3dp"
+        android:paddingEnd="0dp"
+        android:paddingBottom="3dp"
+        android:text="@string/cnpj1"
+        android:textAlignment="center"
+        android:textColor="@color/cyanLighten4"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toTopOf="@+id/price1"
+        app:layout_constraintEnd_toStartOf="@+id/cnpj"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/location" />
+
+    <TextView
+        android:id="@+id/cnpj"
         android:layout_width="278dp"
         android:layout_height="wrap_content"
         android:paddingTop="3dp"
         android:paddingBottom="3dp"
-        android:text="80.00"
         android:textAlignment="center"
         android:textColor="@color/cyanLighten4"
         android:textSize="13sp"
-        app:layout_constraintBottom_toTopOf="@+id/motoPrice"
+        app:layout_constraintBottom_toTopOf="@+id/carPrice"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/price1"
-        app:layout_constraintTop_toBottomOf="@+id/cnpj" />
+        app:layout_constraintStart_toEndOf="@+id/textView12"
+        app:layout_constraintTop_toBottomOf="@+id/storeLocation" />
 
     <TextView
         android:id="@+id/price1"
         android:layout_width="133dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/alike_angular"
-        android:paddingLeft="3dp"
+        android:paddingStart="3dp"
         android:paddingTop="3dp"
+        android:paddingEnd="0dp"
         android:paddingBottom="3dp"
-        android:text="Preço placa de carro: "
+        android:text="@string/carPrice1"
         android:textAlignment="center"
         android:textColor="@color/cyanLighten4"
         android:textSize="13sp"
@@ -93,14 +110,30 @@
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
     <TextView
+        android:id="@+id/carPrice"
+        android:layout_width="278dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:textAlignment="center"
+        android:textColor="@color/cyanLighten4"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toTopOf="@+id/motoPrice"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/price1"
+        app:layout_constraintTop_toBottomOf="@+id/cnpj" />
+
+    <TextView
         android:id="@+id/textView11"
         android:layout_width="133dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/alike_angular"
-        android:paddingLeft="3dp"
+        android:paddingStart="3dp"
         android:paddingTop="3dp"
+        android:paddingEnd="0dp"
         android:paddingBottom="3dp"
-        android:text="Preço placa de moto: "
+        android:text="@string/motoPrice1"
         android:textAlignment="center"
         android:textColor="@color/cyanLighten4"
         android:textSize="13sp"
@@ -117,7 +150,6 @@
         android:layout_height="wrap_content"
         android:paddingTop="3dp"
         android:paddingBottom="3dp"
-        android:text="120.00"
         android:textAlignment="center"
         android:textColor="@color/cyanLighten4"
         android:textSize="13sp"
@@ -127,40 +159,6 @@
         app:layout_constraintStart_toEndOf="@+id/textView11"
         app:layout_constraintTop_toBottomOf="@+id/carPrice" />
 
-
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="133dp"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/alike_angular"
-        android:paddingLeft="3dp"
-        android:paddingTop="3dp"
-        android:paddingBottom="3dp"
-        android:text="CNPJ:"
-        android:textAlignment="center"
-        android:textColor="@color/cyanLighten4"
-        android:textSize="13sp"
-        app:layout_constraintBottom_toTopOf="@+id/price1"
-        app:layout_constraintEnd_toStartOf="@+id/cnpj"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/location" />
-
-    <TextView
-        android:id="@+id/cnpj"
-        android:layout_width="278dp"
-        android:layout_height="wrap_content"
-        android:paddingTop="3dp"
-        android:paddingBottom="3dp"
-        android:text="38.008.405/0001-49"
-        android:textAlignment="center"
-        android:textColor="@color/cyanLighten4"
-        android:textSize="13sp"
-        app:layout_constraintBottom_toTopOf="@+id/carPrice"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView12"
-        app:layout_constraintTop_toBottomOf="@+id/storeLocation" />
 
     <View
         android:layout_width="match_parent"

@@ -13,7 +13,6 @@ import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import br.com.licenseplate.R
 import br.com.licenseplate.dataclass.AuthorizationClient
-import br.com.licenseplate.dataclass.Client
 import kotlinx.android.synthetic.main.fragment_info_client.*
 
 class InfoClientFragment(private val aut: AuthorizationClient?) : DialogFragment() {

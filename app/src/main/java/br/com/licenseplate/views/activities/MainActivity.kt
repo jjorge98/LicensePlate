@@ -2,7 +2,6 @@ package br.com.licenseplate.views.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import br.com.licenseplate.R
@@ -71,7 +70,7 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    private fun listAllStores(){
+    private fun listAllStores() {
         val intent = Intent(this, AllStamperListActivity::class.java)
         startActivity(intent)
     }

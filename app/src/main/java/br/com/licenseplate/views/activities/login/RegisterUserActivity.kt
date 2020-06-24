@@ -2,10 +2,10 @@ package br.com.licenseplate.views.activities.login
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import br.com.licenseplate.R
 import br.com.licenseplate.viewmodel.LoginViewModel
@@ -28,12 +28,12 @@ class RegisterUserActivity : AppCompatActivity() {
         backActivity.setOnClickListener { finish() }
     }
 
-    private fun saveUser(){
+    private fun saveUser() {
         val email = emailRegisterUser.text.toString()
         val password = passwordRegisterUser.text.toString()
         val confirmPassword = confirmPasswordRegisterUser.text.toString()
 
-        viewModelL.registerUser(email,password, confirmPassword){response ->
+        viewModelL.registerUser(email, password, confirmPassword) { response ->
             Toast.makeText(this, response[1], Toast.LENGTH_LONG).show()
             if (response[0] == "OK") {
                 val intentLogin = Intent(this, ProfileRegisterActivity::class.java)

@@ -100,6 +100,11 @@ class StoreRegisterActivity : AppCompatActivity() {
 
         viewModelA.storeSave(name, carPrice, motoPrice, location, cnpj, cel, id, root) { response ->
             Toast.makeText(this, response[1], Toast.LENGTH_SHORT).show()
+
+            if (response[0] == "OK") {
+                val intent = Intent(this, StoreListAdmActivity::class.java)
+                startActivity(intent)
+            }
         }
     }
 }
