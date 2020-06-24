@@ -17,6 +17,9 @@
 
 <p align="justify">Para mais informações leia o <b><a href="https://github.com/jjorge98/LicensePlate/files/4773447/Artigo_PI_II_LicensePlate.pdf">Artigo<a></b>.  </p>
    
+   <img width="934" alt="FLUXOGRAMA" src="https://user-images.githubusercontent.com/48803004/85627446-dffaac00-b644-11ea-9b95-5ee0791050d1.png">
+
+   
 ## MENU E FUNCIONALIDADES
 <p align="justify"> O aplicativo LicensePlate é inicializado no menu principal, no qual identificamos o usuário como Reservado ou Solicitante, conforme <b><a href="https://user-images.githubusercontent.com/48803004/84548533-33333d00-acdc-11ea-95ef-e63d58b01e64.jpeg">Tela Inicial<a></b>.  </p>
 <p align="justify">O usuário Solicitante terá duas linhas de ação:</p>
