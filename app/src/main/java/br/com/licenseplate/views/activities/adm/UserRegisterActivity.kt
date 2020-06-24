@@ -83,7 +83,7 @@ class UserRegisterActivity : AppCompatActivity() {
     }
 
     private fun initRecyclerView() {
-        adapter = UserAdapter(mutableListOf(), this, viewModelA, null)
+        adapter = UserAdapter(mutableListOf(), this, viewModelA, null, this)
         recyclerViewUserRegister.layoutManager = LinearLayoutManager(this)
         recyclerViewUserRegister.adapter = adapter
 

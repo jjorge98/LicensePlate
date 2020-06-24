@@ -13,6 +13,7 @@ import br.com.licenseplate.R
 import br.com.licenseplate.dataclass.Stamper
 import br.com.licenseplate.viewmodel.AdmViewModel
 import br.com.licenseplate.views.activities.adm.UserListActivity
+import br.com.licenseplate.views.activities.adm.UserRegisterActivity
 import br.com.licenseplate.views.fragments.InfoUserFragment
 import kotlinx.android.synthetic.main.user_list.view.*
 
@@ -20,7 +21,8 @@ class UserAdapter(
     var users: MutableList<Stamper>,
     private val context: Context,
     private val viewModelA: AdmViewModel,
-    private val view: UserListActivity?
+    private val view: UserListActivity?,
+    private val view2: UserRegisterActivity?
 ) :
     RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
@@ -78,8 +80,8 @@ class UserAdapter(
 
                 return@setOnMenuItemClickListener true
             } else if (itemSelected?.itemId == R.id.seeUserData) {
+                val manager1 = view?.supportFragmentManager ?: view2?.supportFragmentManager
                 val infoFragment = InfoUserFragment(stamper)
-                val manager1 = view?.supportFragmentManager
                 val transaction1 = manager1?.beginTransaction()
                 transaction1?.add(infoFragment, "infoFragment")
                 transaction1?.commit()
